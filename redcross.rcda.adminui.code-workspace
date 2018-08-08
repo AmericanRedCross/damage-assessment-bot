@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "RedCross.Rcda.Spa"
+		},
+		{
+			"path": "RedCross.Rcda.Api"
+		},
+		{
+			"path": "RedCross.Rcda.Common"
+		},
+		{
+			"path": "RedCross.Rcda.Api.AzFunctions"
+		}
+	],
+	"settings": {}
+}
