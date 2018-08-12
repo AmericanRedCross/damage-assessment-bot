@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "install": "npm run install-api && npm run install-common && npm run install-web",
+        "install-api": "cd api && npm install",
+        "install-common": "cd common && npm install",
+        "install-web": "cd web && npm install"
+    }
+}

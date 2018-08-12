@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/RedCross.RCDA.Api\\src\\main.ts",
+            "program": "${workspaceFolder}/RedCross.DamageAssessment.Api\\src\\main.ts",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
