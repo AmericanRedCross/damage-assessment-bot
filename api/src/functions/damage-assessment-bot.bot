@@ -1,0 +1,15 @@
+{
+    "name": "functionschatbot",
+    "description": "",
+    "secretKey": "",
+    "services": [
+        {
+            "id": "09c241d0-9cf0-11e8-80bc-092366b8620a",
+            "name": "functionschatbot",
+            "type": "endpoint",
+            "appId": "ef9d908e-30f2-4b9f-8f56-758c3eb69121",
+            "appPassword": "mhqeuISO3031(xgAVPG3+-]",
+            "endpoint": "http://127.0.0.1:3000/api/messages"
+        }
+    ]
+}

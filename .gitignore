@@ -60,6 +60,9 @@ typings/
 # next.js build output
 .next
 
+# Azure Functions local settings
+local.settings.json
+
 # built output directories
 bin/
 dist/

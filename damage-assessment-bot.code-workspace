@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "web"
+		},
+		{
+			"path": "common"
+		},
+		{
+			"path": "api"
+		},
+		{
+			"path": "deploy"
+		}
+	],
+	"settings": {}
+}
