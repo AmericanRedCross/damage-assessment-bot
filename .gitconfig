@@ -1,0 +1,8 @@
+[branch "deploy-dev"]
+  mergeoptions = --ff-only
+
+[branch "deploy-stage"]
+  mergeoptions = --ff-only
+
+[branch "deploy-prod"]
+  mergeoptions = --ff-only
