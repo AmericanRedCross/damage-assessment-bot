@@ -3,6 +3,8 @@ const uglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 
+const isProductionBuild = process.env.NODE_ENV === 'production';
+
 module.exports = {
   target: 'node',
   entry: function() {
@@ -14,7 +16,7 @@ module.exports = {
     }
     return entryPoints;
   },
-  devtool: "source-map",
+  devtool: isProductionBuild ? undefined : "source-map",
   output: {
     path: pathHelper.root('dist'),
     filename: '[name]/index.js',
@@ -40,24 +42,23 @@ module.exports = {
     }
   },
   plugins: [
-    // new uglifyJSPlugin({
-    //   uglifyOptions: {
-    //     ecma: 6
-    //   },
-    //   sourceMap: true
-    // }),
     new copyWebpackPlugin([
       {
-        from: 'src/functions/host.json',
-        to: 'host.json'
-      },
-      {
         context: 'src/functions',
-        from: '**/function.json',
-        to: ''
+        from: '**/*.json',
+        to: '',
+        ignore: isProductionBuild ? [ '**/local.settings.json' ] : []
       }
     ])
-  ],
+  ].concat(!isProductionBuild ? [] : [
+    // production-only plugins
+    new uglifyJSPlugin({
+      uglifyOptions: {
+        ecma: 6,
+        compress: true
+      }
+    })
+  ]),
   node: {
     __filename: false,
     __dirname: false,
