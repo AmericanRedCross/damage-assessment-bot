@@ -1,0 +1,11 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+      "MicrosoftAppId": "",
+      "MicrosoftAppPassword": ""
+    },
+    "Host": {
+      "LocalHttpPort": 7071,
+      "CORS": "*"
+    }
+  }
