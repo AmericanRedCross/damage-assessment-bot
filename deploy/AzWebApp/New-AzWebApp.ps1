@@ -1,5 +1,5 @@
 <#
-	.SYNOPSIS
+    .SYNOPSIS
 	This script is used to deploy App Service Plan & Websites.
 
 	.DESCRIPTION
@@ -14,38 +14,31 @@
 	.NOTES
 		
 		Author -- Pranav V Jituri (AIS)
-		Last Revision -- 16th August 2018
-		
+        Last Revision -- 16th August 2018
+        
 #>
-
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$true)][string]$DeploymentSubscriptionId,
+    [Parameter(Mandatory=$true)][string]$DeploymentResourceGroupName,
+    [Parameter(Mandatory=$true)][string]$AppServicePlanName,
+    [Parameter(Mandatory=$true)][string]$Region,
+    [Parameter(Mandatory=$true)][string]$Tier,
+    [Parameter(Mandatory=$true)][string]$Sku,
+    [Parameter(Mandatory=$true)][string]$WebAppNames
+)
 
 #Set ErrorAction to ensure that the script stops on error and not keep on proceeding ahead...
 $ErrorActionPreference = 'Stop'
 Set-StrictMode -Version Latest
 
-function Check-AzResourceAvailability {
-[cmdletbinding()]
-param(
-    [Parameter(Mandatory=$true)][string]$ResourceType,
-    [Parameter(Mandatory=$true)][string]$ResourceName
-)
-Write-Verbose "[Start]:: Check-AzResourceAvailability"
-Write-Verbose "[Info]:: ResourceType,ResourceName passed (respectively) -- [$ResourceType],[$ResourceName]"
-
-$resources = Get-AzureRmResource -Name "$ResourceName*" -ResourceType $ResourceType
-
-if($resources) {
-    Write-Verbose "[Info]:: Found few resources which are already existing in the subscription -- "
-    Write-Verbose ($resources | Out-String)
-    throw "[Error]:: Unable to proceed ahead because few resources already exist"
-}
-
-} #End Check-AzResourceAvailability
-
 function Start-AzWebAppDeployment{
     <#
 	.SYNOPSIS
 	This function is used to deploy the Azure App Service Plan & Websites.
+
+    .PARAMETER AzureCredentials
+    This parameter accepts a PSCredential object which is used to authenticate with Azure to deploy resources.
 
 	.PARAMETER Region
 	The Data center location where the resources need to be deployed.
@@ -125,19 +118,13 @@ try{
     # Construct Array for Web Apps from CSV List
     [array]$webAppsArray = $WebAppNameList -split ","
 
-    # Check if the resources already exist in the subscription. This is to prevent ARM Template engine from moving already existing resources from 1 App Service Plan to another. Imagine a scenario where a user accidentally passes in a Web App name which is already existing in a different app service plan but in same resource group. In that case, engine will not error out but rather than move the resources
-    foreach($webApp in $webAppsArray) {
-        Write-Verbose "[Info]:: Checking resource existence in current subscription -- [$webApp]"
-        Check-AzResourceAvailability -ResourceType "Microsoft.Web/sites" -ResourceName $webApp
-    }
-
     #Construct the Template Parameter Object
     $appServicePlanTemplateParametersObject = @{
         "AppServicePlanName" = $AppServicePlanName
         "WebAppNames" = $webAppsArray;
         "Region" = $Region;
-        "sku" = $Sku;
-        "tier" = $Tier;
+        "Sku" = $Sku;
+        "Tier" = $Tier;
     }
     Write-Verbose "[Info]:: ARM Template Deployment Parameters -- "
     Write-Verbose ($appServicePlanTemplateParametersObject | Out-String)
@@ -151,9 +138,9 @@ try{
     $appServicePlanDeployment = New-AzureRmResourceGroupDeployment -Name $appServicePlanTemplateDeploymentName `
                                         -ResourceGroupName $deploymentResourceGroupName `
                                         -Mode "Incremental" `
-                                        -TemplateParameterFile "AzWebApp.Template.json" `
+                                        -TemplateFile "AzWebApp.Template.json" `
                                         -TemplateParameterObject $appServicePlanTemplateParametersObject `
-                                        -Force -ErrorAction Stop
+                                        -Force -ErrorAction Stop -Verbose
     Write-Verbose "[Info]:: Azure Template Deployment Complete -- "
     Write-Verbose ($appServicePlanDeployment | Out-String)
 
@@ -174,12 +161,12 @@ catch{
 Write-Verbose "[End]:: Start-AzDeployment"
 } #end function Start-AzDeployment
 
-Start-AzWebAppDeployment -DeploymentSubscriptionId "" `
-                        -DeploymentResourceGroupName "" `
+Start-AzWebAppDeployment -DeploymentSubscriptionId $DeploymentSubscriptionId `
+                        -DeploymentResourceGroupName $DeploymentResourceGroupName `
                         -AzureCredentials (Get-Credential -Message "Please Enter your credentials to login to Azure Subscription") `
-                        -AppServicePlanName "" `
-                        -Region "" `
-                        -Sku "" `
-                        -Tier "" `
-                        -WebAppNames "" `
+                        -AppServicePlanName $AppServicePlanName `
+                        -Region $Region `
+                        -Sku $Sku `
+                        -Tier $Tier `
+                        -WebAppNameList $WebAppNames `
                         -Verbose
