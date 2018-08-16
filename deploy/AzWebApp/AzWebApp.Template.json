@@ -1,0 +1,70 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "AppServicePlanName": {
+        "type": "string",
+        "metadata": {
+          "description": "This is the name of the App Service Plan which will be deployed"
+        }
+      },
+      "Region": {
+        "type": "string",
+        "metadata": {
+          "description": "This is the region where deployment will take place"
+        }
+      },
+      "Sku": {
+        "type": "string",
+        "defaultValue": "b1",
+        "metadata": {
+          "description": "The App Service Plan SKU. Few examples -- b1,s1,p1v2 etc"
+        }
+      },
+      "Tier": {
+        "type": "string",
+        "defaultValue": "Basic",
+        "metadata": {
+          "description": "The App Service Plan Tier which helps in determining the SKU. Few examples -- Basic,Premium,Standard etc."
+        }
+      },
+      "WebAppNames": {
+        "type": "array",
+        "metadata": {
+          "description": "This parameter is used to deploy the websites to the app service plan. The delimiter is a comma. Any websites listed are deployed to the particular app service plan."
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "apiVersion": "2015-08-01",
+        "location": "[parameters('Region')]",
+        "name": "[parameters('AppServicePlanName')]",
+        "type": "Microsoft.Web/serverfarms",
+        "properties": {
+          "name": "[parameters('AppServicePlanName')]"
+        },
+        "sku": {
+          "name": "[parameters('Sku')]",
+          "tier": "[parameters('Tier')]"
+        }
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "location": "[parameters('Region')]",
+        "name": "[parameters('WebAppNames')[copyindex()]]",
+        "type": "Microsoft.Web/sites",
+        "dependsOn": [ "[concat('Microsoft.Web/serverFarms/', parameters('AppServicePlanName'))]" ],
+        "properties": {
+          "name": "[parameters('WebAppNames')[copyindex()]]",
+          "serverFarmId": "[parameters('AppServicePlanName')]"
+        },
+        "copy": {
+          "name": "Multiple Web App Deploy",
+          "count": "[length(parameters('WebAppNames'))]"
+        }
+      }
+    ],
+    "outputs": {}
+  }
