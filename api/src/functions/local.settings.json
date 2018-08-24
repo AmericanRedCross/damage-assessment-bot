@@ -12,7 +12,8 @@
     "MondoDbArcDataCollectionName" : "bot-data",
     "BingMapsApiKey": "",
     "MongoDbTtlInSeconds": 60,
-    "LuisConnectionString": ""
+    "LuisConnectionString": "",
+    "NODE_TLS_REJECT_UNAUTHORIZED": "0"
   },
   "Host": {
     "LocalHttpPort": 7071,

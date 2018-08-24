@@ -3,7 +3,7 @@
     {
       "type": "httpTrigger",
       "methods": [
-        "get"
+        "post"
       ],
       "authLevel": "function",
       "direction": "in",

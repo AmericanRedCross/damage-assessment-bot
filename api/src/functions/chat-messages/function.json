@@ -2,6 +2,7 @@
   "bindings": [
     {
       "authLevel": "function",
+      "route": "chat/messages",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req"
