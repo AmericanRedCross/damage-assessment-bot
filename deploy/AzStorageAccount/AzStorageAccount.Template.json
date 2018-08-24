@@ -1,0 +1,86 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "StorageAccountName": {
+        "type": "string",
+        "metadata": {
+          "description": "This is the name of the Storage Account which will be deployed"
+        }
+      },
+      "Region": {
+        "type": "string",
+        "metadata": {
+          "description": "This is the region where deployment will take place"
+        }
+      },
+      "StorageType": {
+        "type": "string",
+        "defaultValue": "Standard_LRS",
+        "allowedValues": [
+          "Standard_LRS",
+          "Standard_ZRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Premium_LRS"
+        ],
+        "metadata": {
+          "description": "The type of Storage account which will be created."
+        }
+      },
+      "StorageAccessType": {
+        "type": "string",
+        "defaultValue": "Cool",
+        "allowedValues": [
+          "Cool",
+          "Hot"
+        ],
+        "metadata": {
+          "description": "The access type of the storage account. Whether data access would be from a Hot storage or a cold storage"
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "apiVersion": "2017-10-01",
+        "dependsOn": [],
+        "kind": "StorageV2",
+        "location": "[parameters('Region')]",
+        "name": "[parameters('StorageAccountName')]",
+        "properties": {
+          "accessTier": "[parameters('StorageAccessType')]",
+          "supportsHttpsTrafficOnly": true,
+                  "encryption": {
+                      "services": {
+                          "file": {
+                              "enabled": true
+                          },
+                          "blob": {
+                              "enabled": true
+                          }
+                      },
+                      "keySource": "Microsoft.Storage"
+                  }
+        },
+        "sku": {
+          "name": "[parameters('storageType')]"
+        },
+        "type": "Microsoft.Storage/storageAccounts"
+      }
+    ],
+    "outputs": {
+      "storageAccountName": {
+        "type": "string",
+        "value": "[parameters('StorageAccountName')]"
+      },
+      "key1": {
+        "type": "string",
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
+      },
+      "key2": {
+        "type": "string",
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[1].value]"
+      }
+    }
+  }
