@@ -12,7 +12,7 @@
     "test": "jest --coverage --colors",
     "test:ci": "jest --ci --coverage --colors",
     "release": "standard-version",
-    "start:dev": "cd dist && func start host --debug VSCode --port 3000",
+    "start:dev": "cd dist && func host start . --debug VSCode --port 3000",
     "postinstall": "cd ../common && npm install"
   },
   "dependencies": {
