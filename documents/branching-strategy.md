@@ -14,5 +14,5 @@ The features of the branches would always be Master < Staging < Dev
 | Branch  | Protected?  | Base Branch      | Description    |
 | :-------|:------------|:-----------------|:---------------|
 | `master`| YES         | N/A              | What is live in production (**stable**).<br/>A pull request is required to merge code into `master`. |
-| `staging` | NO          | `master`         | Completed cutting-edge features (**unstable**).|
+| `staging` | NO          | `master`         | Completed cutting-edge features (**stable**).|
 | `dev` | NO       | `staging`         | Active development (**unstable**).<br/> |
