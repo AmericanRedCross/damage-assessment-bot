@@ -2,6 +2,7 @@ import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextForm
 import {MongoClient, MongoError} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
+import { nextTick } from "async";
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -108,26 +109,15 @@ rcdaBot.dialog("/ask_sector_concern",[
 
 rcdaBot.dialog("/sector_severity",[
     function (session:Session,args:any,next:any):void {
-        console.log(session.conversationData);
         if (!args) {
             let sectorsConcernSeverity:object = {};
             session.dialogData.form = {};
             session.dialogData.index = 0;
-            for (let i:number = 0; i < concernSectors.length; i++) {
-                if (!session.conversationData.sector_concern[concernSectors[i]]) {
-                    session.dialogData.form[concernSectors[i]] = 0;
-                } else {
-                    session.dialogData.form[concernSectors[i]] = -1;
-                }
-            }
-            // console.log(concernSectors);
-            console.log(session.dialogData);
         } else {
             session.dialogData.form = args.form;
             session.dialogData.index = args.index;
         }
-        console.log(session.dialogData.form[concernSectors[session.dialogData.index]]);
-        if (session.dialogData.form[concernSectors[session.dialogData.index]] === -1) {
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the severity of concern in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -154,6 +144,90 @@ rcdaBot.dialog("/sector_severity",[
     }
 ]);
 
+rcdaBot.dialog("/sector_problem_factors",[
+    function (session:Session,args:any,next:any):void {
+        // console.log(session.conversationData);
+        let sectorsConcernFactors:object = {};
+        if (!args) {
+            session.dialogData.form = {};
+            session.dialogData.index = 0;
+            // console.log(concernSectors);
+            console.log(session.dialogData);
+        } else {
+            session.dialogData.form = args.form;
+            session.dialogData.index = args.index;
+        }
+        next();
+    },
+    function (session:Session,results:any,next:any):void {
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+            Prompts.number(session,`What is the factor scoring in Access in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any,next:any):void {
+        const sector:string = concernSectors[session.dialogData.index];
+        let sectorConcernFactorScore:number = results.response;
+        session.dialogData.form[sector] = {};
+        if (sectorConcernFactorScore === undefined) {
+            sectorConcernFactorScore = 0;
+        }
+        session.dialogData.form[sector].Access = sectorConcernFactorScore;
+        console.log(session.dialogData.form);
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+            Prompts.number(session,`What is the factor scoring in Availability in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any,next:any):void {
+        const sector:string = concernSectors[session.dialogData.index];
+        let sectorConcernFactorScore:number = results.response;
+        if (sectorConcernFactorScore === undefined) {
+            sectorConcernFactorScore = 0;
+        }
+        session.dialogData.form[sector].Availability = sectorConcernFactorScore;
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+            Prompts.number(session,`What is the factor scoring in Quality in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any,next:any):void {
+        const sector:string = concernSectors[session.dialogData.index];
+        let sectorConcernFactorScore:number = results.response;
+        if (sectorConcernFactorScore === undefined) {
+            sectorConcernFactorScore = 0;
+        }
+        session.dialogData.form[sector].Quality = sectorConcernFactorScore;
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+            Prompts.number(session,`What is the factor scoring in Use in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any,next:any):void {
+        const sector:string = concernSectors[session.dialogData.index++];
+        let sectorConcernFactorScore:number = results.response;
+        if (sectorConcernFactorScore === undefined) {
+            sectorConcernFactorScore = 0;
+        }
+        session.dialogData.form[sector].Use = sectorConcernFactorScore;
+        if (session.dialogData.index >= concernSectors.length) {
+            // return completed form
+            session.endDialogWithResult({ response: session.dialogData.form });
+        } else {
+            // next field
+            session.replaceDialog("/sector_problem_factors", session.dialogData);
+        }
+    }
+]);
+
 rcdaBot.dialog("/name",[
     function (session:Session): any {
         session.beginDialog("/ask_sector_concern");
@@ -169,6 +243,11 @@ rcdaBot.dialog("/name",[
     function (session:Session,results:any):void {
         console.log(results.response);
         session.conversationData.sector_severity = results.response;
+        // console.log(session.conversationData);
+        session.beginDialog("/sector_problem_factors");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.sector_problem_factors = results.response;
         console.log(session.conversationData);
     }
 ]
