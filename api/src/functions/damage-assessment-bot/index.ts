@@ -1,4 +1,4 @@
-import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle } from "botbuilder";
+import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle, Prompt } from "botbuilder";
 import {MongoClient, MongoError} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
@@ -67,28 +67,114 @@ rcdaBot.dialog("GreetingDialog",[
 // });
 
 // rcdaBot.use(Middleware.firstRun({ version: 1.0, dialogId: "*:/name" }));
+let concernSectors:Array<string> = new Array("Health","Food","Wash","Shelter/NFI","Protection","Education","Livelihood","Other");
+let genaFormData:Map<string,string> = new Map();
+let sectorConcern:Map<string,boolean> = new Map();
 
+rcdaBot.dialog("/ask_sector_concern",[
+    function (session:Session,args:any):void {
+        // session.dialogData.index = args ? args.index : 0;
+        // session.dialogData.form = args ? args.sectorConcern : {};
+        if (!args) {
+            let sectorsConcern:object = {};
+            // for (let i:number = 0; i < concernSectors.length; i++) {
+            //     sectorsConcern[concernSectors[i]] = "no";
+            // }
+            console.log(sectorsConcern);
+            session.dialogData.form = sectorsConcern;
+            session.dialogData.index = 0;
+        } else {
+            session.dialogData.form = args.form;
+            session.dialogData.index = args.index;
+        }
+        Prompts.confirm(session,`Do you have a concern in sector **${concernSectors[session.dialogData.index]}** ?`,
+        {listStyle: ListStyle.button});
+    },
+    function (session:Session,results:any):void {
+        const sector:string = concernSectors[session.dialogData.index++];
+        const isConcernInSector:string = results.response;
+        session.dialogData.form[sector] = isConcernInSector;
+
+        // check for end of form
+        if (session.dialogData.index >= concernSectors.length) {
+            // return completed form
+            session.endDialogWithResult({ response: session.dialogData.form });
+        } else {
+            // next field
+            session.replaceDialog("/ask_sector_concern", session.dialogData);
+        }
+    }
+]);
+
+rcdaBot.dialog("/sector_severity",[
+    function (session:Session,args:any,next:any):void {
+        console.log(session.conversationData);
+        if (!args) {
+            let sectorsConcernSeverity:object = {};
+            session.dialogData.form = {};
+            session.dialogData.index = 0;
+            for (let i:number = 0; i < concernSectors.length; i++) {
+                if (!session.conversationData.sector_concern[concernSectors[i]]) {
+                    session.dialogData.form[concernSectors[i]] = 0;
+                } else {
+                    session.dialogData.form[concernSectors[i]] = -1;
+                }
+            }
+            // console.log(concernSectors);
+            console.log(session.dialogData);
+        } else {
+            session.dialogData.form = args.form;
+            session.dialogData.index = args.index;
+        }
+        console.log(session.dialogData.form[concernSectors[session.dialogData.index]]);
+        if (session.dialogData.form[concernSectors[session.dialogData.index]] === -1) {
+            Prompts.number(session,`What is the severity of concern in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any):void {
+        const sector:string = concernSectors[session.dialogData.index++];
+        const sectorConcernSeverity:number = results.response;
+        if (sectorConcernSeverity === undefined) {
+            session.dialogData.form[sector] = 0;
+        } else {
+            session.dialogData.form[sector] = sectorConcernSeverity;
+        }
+        // console.log(session.dialogData);
+        // check for end of form
+        if (session.dialogData.index >= concernSectors.length) {
+            // return completed form
+            session.endDialogWithResult({ response: session.dialogData.form });
+        } else {
+            // next field
+            session.replaceDialog("/sector_severity", session.dialogData);
+        }
+    }
+]);
 
 rcdaBot.dialog("/name",[
-    function (session:any): any {
-        Prompts.text(session,"Hi! What's your name?");
+    function (session:Session): any {
+        session.beginDialog("/ask_sector_concern");
+        // session.beginDialog("/sector_severity");
     },
-    function (session:Session,results: any): any {
-        session.userData.Name = results.response;
-        console.log(session.message.user.id);
-        session.sendTyping();
-        console.log(typeof results);
-        session.send("Sending you to Global ENA Data Collection");
-        session.replaceDialog("/ask_iana");
+    function (session:Session,results: any):any {
+        // implement session resumption functionality
+        // session.conversationData.sector = session.conversationData.sector ? session.conversationData.sector : {};
+        session.conversationData.sector_concern = results.response;
+       // console.log(session.conversationData);
+        session.beginDialog("/sector_severity");
+    },
+    function (session:Session,results:any):void {
+        console.log(results.response);
+        session.conversationData.sector_severity = results.response;
+        console.log(session.conversationData);
     }
 ]
 ).triggerAction({
     matches: "Greeting"
 });
-
-let concernSectors:Array<string> = new Array("Health","Food","Wash","Shelter/NFI","Protection","Education","Livelihood","Other");
-let genaFormData:Map<string,string> = new Map();
-let sectorConcern:Map<string,boolean> = new Map();
 
 
 rcdaBot.dialog("/ask_iana",gena.ask_iana_details);
@@ -339,6 +425,8 @@ rcdaBot.dialog("/ask_sector_concerns_score",[
         }
     }
 ]);
+
+
 
 // environment glue
 module.exports = function (context: any, req: any): any {
