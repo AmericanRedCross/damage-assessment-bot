@@ -77,12 +77,7 @@ rcdaBot.dialog("/ask_sector_concern",[
         // session.dialogData.index = args ? args.index : 0;
         // session.dialogData.form = args ? args.sectorConcern : {};
         if (!args) {
-            let sectorsConcern:object = {};
-            // for (let i:number = 0; i < concernSectors.length; i++) {
-            //     sectorsConcern[concernSectors[i]] = "no";
-            // }
-            console.log(sectorsConcern);
-            session.dialogData.form = sectorsConcern;
+            session.dialogData.form = {};
             session.dialogData.index = 0;
         } else {
             session.dialogData.form = args.form;
@@ -146,8 +141,6 @@ rcdaBot.dialog("/sector_severity",[
 
 rcdaBot.dialog("/sector_problem_factors",[
     function (session:Session,args:any,next:any):void {
-        // console.log(session.conversationData);
-        let sectorsConcernFactors:object = {};
         if (!args) {
             session.dialogData.form = {};
             session.dialogData.index = 0;
@@ -228,6 +221,40 @@ rcdaBot.dialog("/sector_problem_factors",[
     }
 ]);
 
+rcdaBot.dialog("/sector_future_concern",[
+    function (session:Session,args:any,next:any):void {
+        if (!args) {
+            session.dialogData.form = {};
+            session.dialogData.index = 0;
+        } else {
+            session.dialogData.form = args.form;
+            session.dialogData.index = args.index;
+        }
+        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+            Prompts.number(session,`Do you have a future concern in **${concernSectors[session.dialogData.index]}** sector?`,
+            {textFormat:TextFormat.markdown});
+        } else {
+            next();
+        }
+    },
+    function (session:Session,results:any,next:any):void {
+        const sector:string = concernSectors[session.dialogData.index++];
+        let sectorFutureConcernScore:number = results.response;
+        if (sectorFutureConcernScore === undefined) {
+            sectorFutureConcernScore = 0;
+        }
+        session.dialogData.form[sector] = sectorFutureConcernScore;
+
+        if (session.dialogData.index >= concernSectors.length) {
+            // return completed form
+            session.endDialogWithResult({ response: session.dialogData.form });
+        } else {
+            // next field
+            session.replaceDialog("/sector_future_concern", session.dialogData);
+        }
+    }
+]);
+
 rcdaBot.dialog("/name",[
     function (session:Session): any {
         session.beginDialog("/ask_sector_concern");
@@ -249,6 +276,9 @@ rcdaBot.dialog("/name",[
     function (session:Session,results:any):void {
         session.conversationData.sector_problem_factors = results.response;
         console.log(session.conversationData);
+        // tslint:disable-next-line:max-line-length
+        session.send("Without more assistance than the one already provided, are you worried about your ability to meet your basic needs for the sectors you have chosen in the next 3 months?");
+        session.beginDialog("/sector_future_concerns");
     }
 ]
 ).triggerAction({
