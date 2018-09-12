@@ -1,8 +1,7 @@
-import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle, Prompt } from "botbuilder";
+import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle, Prompt, IIntent, IEntity } from "botbuilder";
 import {MongoClient, MongoError} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
-import { nextTick } from "async";
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -40,7 +39,7 @@ MongoClient.connect(mongoDbHostUri,
    rcdaBot.set("storage",botStorageAdapter);
 });
 
-const recognizer:any = new LuisRecognizer(process.env.LuisConnectionString);
+const recognizer:LuisRecognizer = new LuisRecognizer(process.env.LuisConnectionString);
 rcdaBot.recognizer(recognizer);
 
 console.log(recognizer);
@@ -221,7 +220,7 @@ rcdaBot.dialog("/sector_problem_factors",[
     }
 ]);
 
-rcdaBot.dialog("/sector_future_concern",[
+rcdaBot.dialog("/sector_future_concerns",[
     function (session:Session,args:any,next:any):void {
         if (!args) {
             session.dialogData.form = {};
@@ -250,17 +249,88 @@ rcdaBot.dialog("/sector_future_concern",[
             session.endDialogWithResult({ response: session.dialogData.form });
         } else {
             // next field
-            session.replaceDialog("/sector_future_concern", session.dialogData);
+            session.replaceDialog("/sector_future_concerns", session.dialogData);
         }
     }
 ]);
 
+rcdaBot.dialog("/groups_requiring_immediate_assistance",[
+    function (session:Session,args:any,next:any):void {
+        Prompts.text(session,"Who are the top three affected groups (comma-separated) that require immediate assistance in this area?");
+    },
+    function (session:Session,results:any,next:any):void {
+        let groupsAffected:string = results.response;
+        const groupsAffectedArray:Array<string> = groupsAffected.split(",");
+        // look into recognizing entities...
+        // luisRecognizer.recognize(groupsAffected,process.env.LuisConnectionString,
+        //     function (error:Error,intents?: IIntent[],entities?: IEntity[]):void {
+        //     console.log(entities);
+        // });
+        session.endDialogWithResult({response : groupsAffectedArray});
+    }
+]);
+
+rcdaBot.dialog("/immediate_priority_sectors",[
+    function (session:Session,args:any,next:any):void {
+        Prompts.text(session,"What are the top three priority sectors (comma separated) requiring immediate assistance in this area?");
+    },
+    function (session:Session,results:any,next:any):void {
+        let immediatePrioritySectors:string = results.response;
+        const immediatePrioritySectorsArray:Array<string> = immediatePrioritySectors.split(",");
+        // look into recognizing entities...
+        // luisRecognizer.recognize(groupsAffected,process.env.LuisConnectionString,
+        //     function (error:Error,intents?: IIntent[],entities?: IEntity[]):void {
+        //     console.log(entities);
+        // });
+        session.endDialogWithResult({response : immediatePrioritySectorsArray});
+    }
+]);
+
+rcdaBot.dialog("/immediate_vulnerable_groups",[
+    function (session:Session,args:any,next:any):void {
+        Prompts.text(session,"What are the top three vulnerable groups (comma separated) requiring immediate assistance in this area?");
+    },
+    function (session:Session,results:any,next:any):void {
+        let vulnerableGroups:string = results.response;
+        const vulnerableGroupsArray:Array<string> = vulnerableGroups.split(",");
+        // look into recognizing entities...
+        // luisRecognizer.recognize(groupsAffected,process.env.LuisConnectionString,
+        //     function (error:Error,intents?: IIntent[],entities?: IEntity[]):void {
+        //     console.log(entities);
+        // });
+        session.endDialogWithResult({response : vulnerableGroupsArray});
+    }
+]);
+
+rcdaBot.dialog("/favorable_response_modalities",[
+    function (session:Session,args:any,next:any):void {
+        // tslint:disable-next-line:max-line-length
+        Prompts.text(session,"What are the top three response modalities (comma separated) you would favour? (Chose among cash assistance, Service provision, in kind, etc.). If cash selected, verify that markets are functioning…");
+    },
+    function (session:Session,results:any,next:any):void {
+        let responseModalities:string = results.response;
+        const responseModalitiesArray:Array<string> = responseModalities.split(",");
+        // look into recognizing entities...
+        // luisRecognizer.recognize(groupsAffected,process.env.LuisConnectionString,
+        //     function (error:Error,intents?: IIntent[],entities?: IEntity[]):void {
+        //     console.log(entities);
+        // });
+        session.endDialogWithResult({response : responseModalitiesArray});
+    }
+]);
+
 rcdaBot.dialog("/name",[
-    function (session:Session): any {
+    function (session:Session):void {
+        session.beginDialog("/ask_iana");
+    },
+    function (session:Session,results:any):void {
+        session.beginDialog("/ask_people_affected");
+    },
+    function (session:Session,results:any):void {
         session.beginDialog("/ask_sector_concern");
         // session.beginDialog("/sector_severity");
     },
-    function (session:Session,results: any):any {
+    function (session:Session,results: any):void {
         // implement session resumption functionality
         // session.conversationData.sector = session.conversationData.sector ? session.conversationData.sector : {};
         session.conversationData.sector_concern = results.response;
@@ -279,6 +349,31 @@ rcdaBot.dialog("/name",[
         // tslint:disable-next-line:max-line-length
         session.send("Without more assistance than the one already provided, are you worried about your ability to meet your basic needs for the sectors you have chosen in the next 3 months?");
         session.beginDialog("/sector_future_concerns");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.sector_future_concern = results.response;
+        console.log(session.conversationData);
+        session.beginDialog("/groups_requiring_immediate_assistance");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.groups_requiring_immediate_assistance = results.response;
+        console.log(session.conversationData);
+        session.beginDialog("/immediate_priority_sectors");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.immediate_priority_sectors = results.response;
+        console.log(session.conversationData);
+        session.beginDialog("/immediate_vulnerable_groups");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.immediate_vulnerable_groups = results.response;
+        console.log(session.conversationData);
+        session.beginDialog("/favorable_response_modalities");
+    },
+    function (session:Session,results:any):void {
+        session.conversationData.favorable_response_modalities = results.response;
+        console.log(session.conversationData);
+        session.endConversation("Thanks for providing this data!");
     }
 ]
 ).triggerAction({
@@ -329,18 +424,7 @@ rcdaBot.dialog("/ask_people_affected",[
     },
     function (session:Session,results:any):void {
         session.conversationData.numberOfCasualties = results.response;
-        genaFormData.set("numberOfCasualties",results.response);
-        Prompts.confirm(session,("Does the below information look correct?"+JSON.stringify(genaFormData)));
-    },
-    function (session:Session,results:any):void {
-        const confirmation:string = results.response.toString();
-        if (confirmation.toLowerCase() === "yes") {
-            session.send("Thank you for confirmation!");
-            session.endDialog();
-        } else {
-            session.send("Resetting the conversation...");
-            session.reset("/ask_people_affected");
-        }
+        session.endDialog();
     }
 ]);
 
