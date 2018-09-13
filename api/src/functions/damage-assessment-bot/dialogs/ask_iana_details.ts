@@ -9,7 +9,7 @@ export const ask_iana_details:any = [
     },
     function (session:Session,results:any):void {
         session.conversationData.disasterName = results.response;
-        session.conversationData.Date = Date.now();
+        session.conversationData.date = (new Date(Date.now())).toISOString();
         Prompts.text(session,"What is your complete name?");
     },
     function (session:Session,results:any):void {

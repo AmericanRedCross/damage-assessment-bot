@@ -1,5 +1,5 @@
 import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle, Prompt, IIntent, IEntity } from "botbuilder";
-import {MongoClient, MongoError} from "mongodb";
+import {MongoClient, MongoError, Db} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
 import * as jsBeautify from "js-beautify";
@@ -11,6 +11,8 @@ const connector: ChatConnector = new ChatConnector({
 
 const listener: any = connector.listen();
 
+let rcdaDataStorageDb:Db = null;
+const rcdaDataStorageCollectionName:string = process.env.MondoDbArcDataCollectionName;
 const rcdaBot: UniversalBot = new UniversalBot(connector,function (session:Session):any {
     session.send("Please types something!");
 });
@@ -34,7 +36,8 @@ MongoClient.connect(mongoDbHostUri,
                  privateConversationData: MongoDbTtlInSeconds
              }
    };
-   const db:any = client.db(process.env.MongoDbName);
+   const db:Db = client.db(process.env.MongoDbName);
+   rcdaDataStorageDb = db;
    const botStorageAdapter:MongoBotStorage = new MongoBotStorage(db,connectionSettings);
 
    rcdaBot.set("storage",botStorageAdapter);
@@ -105,14 +108,13 @@ rcdaBot.dialog("/ask_sector_concern",[
 rcdaBot.dialog("/sector_severity",[
     function (session:Session,args:any,next:any):void {
         if (!args) {
-            let sectorsConcernSeverity:object = {};
             session.dialogData.form = {};
             session.dialogData.index = 0;
         } else {
             session.dialogData.form = args.form;
             session.dialogData.index = args.index;
         }
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the severity of concern in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -153,7 +155,7 @@ rcdaBot.dialog("/sector_problem_factors",[
         next();
     },
     function (session:Session,results:any,next:any):void {
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the factor scoring in Access in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -169,7 +171,7 @@ rcdaBot.dialog("/sector_problem_factors",[
         }
         session.dialogData.form[sector].Access = sectorConcernFactorScore;
         console.log(session.dialogData.form);
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the factor scoring in Availability in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -183,7 +185,7 @@ rcdaBot.dialog("/sector_problem_factors",[
             sectorConcernFactorScore = 0;
         }
         session.dialogData.form[sector].Availability = sectorConcernFactorScore;
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the factor scoring in Quality in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -197,7 +199,7 @@ rcdaBot.dialog("/sector_problem_factors",[
             sectorConcernFactorScore = 0;
         }
         session.dialogData.form[sector].Quality = sectorConcernFactorScore;
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`What is the factor scoring in Use in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -230,7 +232,7 @@ rcdaBot.dialog("/sector_future_concerns",[
             session.dialogData.form = args.form;
             session.dialogData.index = args.index;
         }
-        if (session.conversationData.sector_concern[concernSectors[session.dialogData.index]]) {
+        if (session.conversationData.sectorConcern[concernSectors[session.dialogData.index]]) {
             Prompts.number(session,`Do you have a future concern in **${concernSectors[session.dialogData.index]}** sector?`,
             {textFormat:TextFormat.markdown});
         } else {
@@ -376,8 +378,17 @@ rcdaBot.dialog("/name",[
         console.log(session.conversationData);
         console.log(JSON.stringify(session.conversationData));
         console.log(jsBeautify.js_beautify(
-            JSON.stringify(session.conversationData),{indent_size: 4,end_with_newline:true}));
-        session.endConversation("Thanks for providing this data!");
+            JSON.stringify(session.conversationData),
+            {indent_size: 4,end_with_newline:true}));
+        rcdaDataStorageDb.collection(rcdaDataStorageCollectionName).insertOne(session.conversationData,
+            function(err:Error,results:any):void {
+                console.log(err);
+                console.log(results);
+                if (err) {
+                    throw "There was an issue while storing the data";
+                }
+                session.endConversation("Thanks for providing this data!");
+        });
     }
 ]
 ).triggerAction({
