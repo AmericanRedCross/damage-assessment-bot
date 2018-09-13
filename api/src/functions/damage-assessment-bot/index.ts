@@ -2,6 +2,7 @@ import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextForm
 import {MongoClient, MongoError} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
+import * as jsBeautify from "js-beautify";
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -333,46 +334,49 @@ rcdaBot.dialog("/name",[
     function (session:Session,results: any):void {
         // implement session resumption functionality
         // session.conversationData.sector = session.conversationData.sector ? session.conversationData.sector : {};
-        session.conversationData.sector_concern = results.response;
+        session.conversationData.sectorConcern = results.response;
        // console.log(session.conversationData);
         session.beginDialog("/sector_severity");
     },
     function (session:Session,results:any):void {
         console.log(results.response);
-        session.conversationData.sector_severity = results.response;
+        session.conversationData.sectorSeverity = results.response;
         // console.log(session.conversationData);
         session.beginDialog("/sector_problem_factors");
     },
     function (session:Session,results:any):void {
-        session.conversationData.sector_problem_factors = results.response;
+        session.conversationData.sectorProblemFactors = results.response;
         console.log(session.conversationData);
         // tslint:disable-next-line:max-line-length
         session.send("Without more assistance than the one already provided, are you worried about your ability to meet your basic needs for the sectors you have chosen in the next 3 months?");
         session.beginDialog("/sector_future_concerns");
     },
     function (session:Session,results:any):void {
-        session.conversationData.sector_future_concern = results.response;
+        session.conversationData.sectorFutureConcern = results.response;
         console.log(session.conversationData);
         session.beginDialog("/groups_requiring_immediate_assistance");
     },
     function (session:Session,results:any):void {
-        session.conversationData.groups_requiring_immediate_assistance = results.response;
+        session.conversationData.groupsRequiringImmediateAssistance = results.response;
         console.log(session.conversationData);
         session.beginDialog("/immediate_priority_sectors");
     },
     function (session:Session,results:any):void {
-        session.conversationData.immediate_priority_sectors = results.response;
+        session.conversationData.immediatePrioritySectors = results.response;
         console.log(session.conversationData);
         session.beginDialog("/immediate_vulnerable_groups");
     },
     function (session:Session,results:any):void {
-        session.conversationData.immediate_vulnerable_groups = results.response;
+        session.conversationData.immediateVulnerableGroups = results.response;
         console.log(session.conversationData);
         session.beginDialog("/favorable_response_modalities");
     },
     function (session:Session,results:any):void {
-        session.conversationData.favorable_response_modalities = results.response;
+        session.conversationData.favorableResponseModalities = results.response;
         console.log(session.conversationData);
+        console.log(JSON.stringify(session.conversationData));
+        console.log(jsBeautify.js_beautify(
+            JSON.stringify(session.conversationData),{indent_size: 4,end_with_newline:true}));
         session.endConversation("Thanks for providing this data!");
     }
 ]
