@@ -1,0 +1,25 @@
+language: node_js
+node_js: 
+  - "lts/*"
+before_install:
+  - rm -rf ".git"
+  - cd api
+install:
+  - npm install
+  - npm run build:dev
+script: echo "Skipping NPM Tests!"
+cache:
+  directories:
+    - "node_modules"
+before_deploy:
+  - cd dist
+  - git init
+  - rm local.settings.json
+  - git add .
+  - git commit -m "Azure Functions Bot Deployment Commit"
+deploy:
+  provider: azure_web_apps
+  skip_cleanup: true
+  verbose: true
+  on:
+    branch: dev
