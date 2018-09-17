@@ -14,6 +14,8 @@ cache:
 before_deploy:
   - cd dist
   - git init
+  - git add .
+  - git commit -m "Azure Functions Bot Deployment Commit"
 deploy:
   provider: azure_web_apps
   on:
