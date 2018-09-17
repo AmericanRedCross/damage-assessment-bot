@@ -22,4 +22,4 @@ deploy:
   skip_cleanup: true
   verbose: true
   on:
-    branch: Travis-CI-Setup
+    branch: dev
