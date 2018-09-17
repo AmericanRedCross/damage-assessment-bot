@@ -18,5 +18,6 @@ before_deploy:
   - git commit -m "Azure Functions Bot Deployment Commit"
 deploy:
   provider: azure_web_apps
+  skip_cleanup: true
   on:
     branch: Travis-CI-Setup
