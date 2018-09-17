@@ -14,10 +14,9 @@ cache:
 before_deploy:
   - cd dist
   - git init
+  - rm local.settings.json
   - git add .
   - git commit -m "Azure Functions Bot Deployment Commit"
-  - git status
-  - ls -la
 deploy:
   provider: azure_web_apps
   skip_cleanup: true
