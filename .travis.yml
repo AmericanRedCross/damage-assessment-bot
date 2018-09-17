@@ -1,0 +1,20 @@
+language: node_js
+node_js: 
+  - "nodejs"
+  - "lts/*"
+before_install:
+  - rm -rf ".git"
+  - cd api
+install:
+  - npm install
+  - npm run build:dev
+cache:
+  directories:
+    - "node_modules"
+before_deploy:
+  - cd dist
+  - git init
+deploy:
+  provider: azure_web_apps
+  on:
+    branch: Travis-CI-Setup
