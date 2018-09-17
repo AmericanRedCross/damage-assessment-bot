@@ -20,6 +20,7 @@ before_deploy:
   - ls -la
 deploy:
   provider: azure_web_apps
+  username: "\$est1-hum-azf-bot-dev-02"
   skip_cleanup: true
   verbose: true
   on:
