@@ -1,4 +1,4 @@
-import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle, Prompt, IIntent, IEntity } from "botbuilder";
+import { ChatConnector, UniversalBot, Prompts, Session, LuisRecognizer, TextFormat, ListStyle } from "botbuilder";
 import {MongoClient, MongoError, Db} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
@@ -62,7 +62,6 @@ rcdaBot.dialog("GreetingDialog",[
 ]).triggerAction({
     matches: "HelloWorld"
 });
-
 // rcdaBot.dialog("/",function (session:Session):any {
 //    session.sendTyping();
 //    session.send("Hello! Your name is %s?",session.userData.Name);
@@ -376,18 +375,29 @@ rcdaBot.dialog("/name",[
     function (session:Session,results:any):void {
         session.conversationData.favorableResponseModalities = results.response;
         console.log(session.conversationData);
-        console.log(JSON.stringify(session.conversationData));
-        console.log(jsBeautify.js_beautify(
+        Prompts.confirm(session,"I have recorded your data. Do you want to review this data once?",{listStyle: ListStyle.button});
+    },
+    function (session:Session,results:any):void {
+        const beautifiedJsonReport:string = jsBeautify.js_beautify(
             JSON.stringify(session.conversationData),
-            {indent_size: 4,end_with_newline:true}));
+            {indent_size: 4,end_with_newline:true});
+        console.log(beautifiedJsonReport);
         rcdaDataStorageDb.collection(rcdaDataStorageCollectionName).insertOne(session.conversationData,
-            function(err:Error,results:any):void {
+            function(err:Error,operationResult:any):void {
                 console.log(err);
-                console.log(results);
+                console.log(operationResult);
+                console.log(JSON.stringify(operationResult));
                 if (err) {
                     throw "There was an issue while storing the data";
                 }
-                session.endConversation("Thanks for providing this data!");
+                // const documentId:string = "1";
+                session.send("Thanks for providing this data!");
+                // session.send(`Your Report ID is -- ${documentId}`);
+                if (results.response === true) {
+                    session.endConversation(beautifiedJsonReport);
+                } else {
+                    session.endConversation();
+                }
         });
     }
 ]
