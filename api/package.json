@@ -23,7 +23,8 @@
     "botbuilder-storage": "^1.0.2",
     "hoek": "^4.2.1",
     "js-beautify": "^1.8.6",
-    "mongodb": "^3.1.4"
+    "mongodb": "^3.1.4",
+    "hoek": "^4.2.1"
   },
   "//": "**NOTE: hoek is an indirect dependency of the project, but the installed version has a security vulnerability that GitHub reports. We list it directly to control the version.",
   "devDependencies": {
