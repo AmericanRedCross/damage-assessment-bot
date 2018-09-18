@@ -3,11 +3,7 @@ import {MongoClient, MongoError, Db} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
 import * as jsBeautify from "js-beautify";
-import * as applicationinsights from "applicationinsights";
-
-// enable Application Insights
-const appInsightsKey:string = process.env.AppInsightsInstrumentationKey;
-applicationinsights.setup(appInsightsKey);
+import * as applicationInsights from "applicationinsights";
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -654,5 +650,8 @@ rcdaBot.dialog("/ask_sector_concerns_score",[
 // environment glue
 module.exports = function (context: any, req: any): any {
     context.log("Passing body", req.body);
+    // enable Application Insights
+    const appInsightsKey:string = process.env.AppInsightsInstrumentationKey;
+    applicationInsights.setup(appInsightsKey).start();
     listener(req, context.res);
 };
