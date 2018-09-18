@@ -17,7 +17,7 @@ const connector: ChatConnector = new ChatConnector({
 const listener: any = connector.listen();
 
 let rcdaDataStorageDb:Db = null;
-const rcdaDataStorageCollectionName:string = process.env.MondoDbArcDataCollectionName;
+const rcdaDataStorageCollectionName:string = process.env.MongoDbArcDataCollectionName;
 const rcdaBot: UniversalBot = new UniversalBot(connector,function (session:Session):any {
     session.send("Please types something!");
 });
