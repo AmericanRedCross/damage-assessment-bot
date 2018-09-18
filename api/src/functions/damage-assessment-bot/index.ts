@@ -3,6 +3,11 @@ import {MongoClient, MongoError, Db} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
 import * as jsBeautify from "js-beautify";
+import * as applicationinsights from "applicationinsights";
+
+// enable Application Insights
+const appInsightsKey:string = process.env.AppInsightsInstrumentationKey;
+applicationinsights.setup(appInsightsKey);
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,

@@ -16,3 +16,4 @@ test-report.xml
 # misc
 npm-debug.log
 yarn-error.log
+local.settings.json
