@@ -651,7 +651,7 @@ rcdaBot.dialog("/ask_sector_concerns_score",[
 module.exports = function (context: any, req: any): any {
     context.log("Passing body", req.body);
     // enable Application Insights
-    const appInsightsKey:string = process.env.AppInsightsInstrumentationKey;
+    const appInsightsKey:string = process.env.APPINSIGHTS_INSTRUMENTATIONKEY;
     applicationInsights.setup(appInsightsKey).start();
     listener(req, context.res);
 };
