@@ -1,25 +1,38 @@
 language: node_js
-node_js: 
-  - "lts/*"
+node_js:
+- lts/*
 before_install:
-  - rm -rf ".git"
-  - cd api
+- echo "The current branch which is being built -- $TRAVIS_BRANCH"
+- git checkout $TRAVIS_BRANCH
+- rm -rf ".git"
+- cd api
 install:
-  - npm install
-  - npm run build:dev
+- npm install
+- npm run build:dev
 script: echo "Skipping NPM Tests!"
 cache:
   directories:
-    - "node_modules"
+  - node_modules
 before_deploy:
-  - cd dist
-  - git init
-  - rm local.settings.json
-  - git add .
-  - git commit -m "Azure Functions Bot Deployment Commit"
+- cd dist
+- git init
+- rm local.settings.json
+- git add .
+- git commit -m "Azure Functions Bot Deployment Commit"
 deploy:
-  provider: azure_web_apps
+- provider: azure_web_apps
+  username: $AZ_DEV_SITE_USERNAME
+  password: $AZ_DEV_SITE_PASSWORD
+  site: $AZ_DEV_SITE_NAME
   skip_cleanup: true
   verbose: true
   on:
     branch: dev
+- provider: azure_web_apps
+  username: $AZ_STAGING_SITE_USERNAME
+  password: $AZ_STAGING_SITE_PASSWORD
+  site: $AZ_STAGING_SITE_NAME
+  skip_cleanup: true
+  verbose: true
+  on:
+    branch: staging

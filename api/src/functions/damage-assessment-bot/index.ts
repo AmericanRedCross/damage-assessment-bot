@@ -3,6 +3,7 @@ import {MongoClient, MongoError, Db} from "mongodb";
 import {MongoBotStorage} from "botbuilder-storage";
 import * as gena from "./dialogs/ask_iana_details";
 import * as jsBeautify from "js-beautify";
+import * as applicationInsights from "applicationinsights";
 
 const connector: ChatConnector = new ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -12,7 +13,7 @@ const connector: ChatConnector = new ChatConnector({
 const listener: any = connector.listen();
 
 let rcdaDataStorageDb:Db = null;
-const rcdaDataStorageCollectionName:string = process.env.MondoDbArcDataCollectionName;
+const rcdaDataStorageCollectionName:string = process.env.MongoDbArcDataCollectionName;
 const rcdaBot: UniversalBot = new UniversalBot(connector,function (session:Session):any {
     session.send("Please types something!");
 });
@@ -649,5 +650,8 @@ rcdaBot.dialog("/ask_sector_concerns_score",[
 // environment glue
 module.exports = function (context: any, req: any): any {
     context.log("Passing body", req.body);
+    // enable Application Insights
+    const appInsightsKey:string = process.env.APPINSIGHTS_INSTRUMENTATIONKEY;
+    applicationInsights.setup(appInsightsKey).start();
     listener(req, context.res);
 };
