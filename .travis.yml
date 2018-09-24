@@ -23,15 +23,15 @@ deploy:
 - provider: azure_web_apps
   username: $AZ_DEV_SITE_USERNAME
   password: $AZ_DEV_SITE_PASSWORD
-  site: $AZ_DEV_SITE_URL
+  site: $AZ_DEV_SITE_NAME
   skip_cleanup: true
   verbose: true
   on:
     branch: dev
 - provider: azure_web_apps
-  username:
-  password: 
-  site: 
+  username: $AZ_STAGING_SITE_USERNAME
+  password: $AZ_STAGING_SITE_PASSWORD
+  site: $AZ_STAGING_SITE_NAME
   skip_cleanup: true
   verbose: true
   on:
