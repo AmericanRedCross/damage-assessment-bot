@@ -4,6 +4,15 @@ const copyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 
 const isProductionBuild = process.env.NODE_ENV === 'production';
+const isOfflineBuild = false;
+
+const ignoredFunctions = isOfflineBuild ? [
+  // cloud-only functions
+  "chat-login"
+] : [
+  // offline-only functions
+
+];
 
 module.exports = {
   target: 'node',
@@ -12,7 +21,9 @@ module.exports = {
     const entryPoints = {};
     for (const scriptPath of glob.sync('./src/functions/*/*.ts')) {
       let scriptName = scriptPath.slice('./src/functions/'.length, scriptPath.lastIndexOf('/') - scriptPath.length);
-      entryPoints[scriptName] = pathHelper.root(scriptPath.slice('./'.length));
+      if (!ignoredFunctions.includes(scriptName)){
+        entryPoints[scriptName] = pathHelper.root(scriptPath.slice('./'.length));
+      }
     }
     return entryPoints;
   },

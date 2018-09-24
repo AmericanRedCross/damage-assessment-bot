@@ -12,9 +12,10 @@
         "outDir": "bin",
         "composite": true,
         "declaration": true,
-        "rootDir": "src"
-    },
-    "include": [
-        "./src/**/*.ts"
-    ]
+        "rootDir": "./src",
+        "baseUrl": "src",
+        "paths": {
+            "@common/*": [ "./*" ]
+        }
+    }
 }

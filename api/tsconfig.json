@@ -6,12 +6,16 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
     "sourceMap": true,
     "baseUrl": "src",
     "paths": {
       "@/*": [ "./*" ],
-      "@common/*": [ "../../common/bin/*" ]
-    }
+      "@common/*": [ "../../common/src/*" ]
+    },
+    "lib": [
+       "esnext"
+     ]
   },
   "include": [
     "src/**/*.ts"

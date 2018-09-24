@@ -59,7 +59,6 @@ module.exports = {
                   }
               }]
           }
-          // other vue-loader options go here
         }
       },
       {
@@ -102,7 +101,8 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  mode: process.env.NODE_ENV
 }
 
 if (process.env.NODE_ENV === 'production') {
