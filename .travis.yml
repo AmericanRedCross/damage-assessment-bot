@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - lts/*
 before_install:
+- echo "The current branch which is being built -- $TRAVIS_BRANCH"
+- git checkout $TRAVIS_BRANCH
 - rm -rf ".git"
 - cd api
 install:
@@ -19,20 +21,17 @@ before_deploy:
 - git commit -m "Azure Functions Bot Deployment Commit"
 deploy:
 - provider: azure_web_apps
-  username: "$AZ_DEV_SITE_USERNAME"
+  username: $AZ_DEV_SITE_USERNAME
   password: $AZ_DEV_SITE_PASSWORD
-  site: "$AZ_DEV_SITE_URL"
+  site: $AZ_DEV_SITE_URL
   skip_cleanup: true
   verbose: true
   on:
     branch: dev
 - provider: azure_web_apps
   username:
-    secure: jPjDoUyVq1fFf/nAUUrzxcUSebBusLoTW2a6SM9INtXVAabctJrFPkMY43Dh5d49fCGWWD8OZQcSqDiZfxNe+usOagGOAuoveI6CNBVXaC3AOuiubBIr2ccVh6ut+5zZqveaj827Bg4ehZx8FJU85abiJBi7teYbd6G9o6ypTzwirIoLNs92ck+xMilhhWKd7ASME6/jcqFiOMdyZeZKbaWhtFeg4UkOlxZSkr51LWTGVlwfnQVQCwF4mmgnVDSxGAJoXF1VZazebJQfJvmqjt2Gm5Gcin+eRkGEo0SEHKRSLWn2D/y0Frar9mTjoqTiI5yFXE+gICWP93lbOHf5MDWaGa52+D8avczv/K0+kY6lKTHpYoRJHdDn1ayhcztOVinjvkzKbTYfJle+WOEj8XZEEKOrqlFw701ZSB8kyNi+FbMyvPAGHHkU7iSH4WExJAW+8PcfX2WbJ8CH0R+E7T53Z+9lZgttWn7L9av14TMyVOlwaQ0cEUS2I1HqBDRmpREzqO8H4iSjr98qQtNArhGfDgOm6HUzKRfqnHdzgMGKyzRGzPgb8kPP331HshwgtTaR947qwxOJkIdwYFbRd1BuX2b2vPvERrBL0RJcX/7FvG0g7W3yxfUKTsTz6bOl+b4R45liS+ItzcTVdfnYF74ELNOTzqfL5Cz49/nd5LA=
-  password:
-    secure: LU3noo7bNhjIXWRvZ7v5tGKke3Q6nxk73U7wDFzbnZHjM8WpD4KwOjvSMF9nVZiS/qn8dwZ2b0PWZCFE+xPEAtq+N5VFMsItuFLkyg5JlTeXi4vcU2wmgntljzF3T3idJfqZuvD7Gv65KYu6Pwvia3ru0aUannKyroP3f5JEs4n8WzsdFpHEMKEg9epNhfC6RWS8K6P9SgN7cdakvmnybM4VIUFxaAWxoo+U7XUx6eWg825WGCxRMoR7wO2RhBr0nX4rOAKm5iAR1j2ICRgfDtpHpwQQQRbAKLmM1Rd/JQHGjEo1H4inm8WyKKqphTma16xuIuvIb/sDHIJNP0XAX0e3o8S3YkwT0QSHDrXrj831ryWHU0zzUl0OqTQxIBXofDaXgZeopo1cjLWzvVAi4A5iqcmcz25hRnn8A7U78FAAX7X+k0DE3r+2vq4pYvlBA+nAPhYvRZfnDBgOdQDm/LUe5YYoR2KJMAbS1Ml1AEmsTosTh05+Z1Y5AFqGbr6SLBrAiUxHcaX7T8S2wyNxgIiYRwI0mG64rjnUYd7Uvy9iUFwZLA0TUCU5fQoGxRLgLP2ZyvEwlk08qDyFnkEhfP47uAR2cwI38yoTYYFFmAa8vJnpBXh3VEQ6gVLazhxe2G+QOA8X8nq3IKzz1F3Ai9IGAI87MCeqA0wNBY8IjpI=
-  site:
-    secure: IHd2gQYnaICkIOkvEInAmWb2wbZdNFexVBPvWhXyLqtQ5/X4VtUr9jh/kqu0Abe7ilSS4kdjpYiLaS8gru2wCWFkScVfPbIp06Dkk6i5ujCLRcbGzM868tUSYCWcKBCRpUBAFguw1mL4WGLhJRIRfajrvTF5WUmFrecZASnSeWwoZlqnbjcmaGjx4HHLGqjTSdoAlccPHkNTszQMaAuzW6dF3U41ParYVE5U3mA2Gs279dmW3jE0vNipUjv/i/PYLEZ2D/Mv/MWedrMWY5lCffBfdVHAyx13MHf6Rv7iqvWXpjjxuwgHj/sB2KqwIsZ3E7Spql59GhaZSMfv4lujivl8ai0yQcL3wYEkgWpp1UZfWZ3paNnzAW/iMqUS8Z/OZPucFmXY4Osfo2qGsgdv4o3JpP2lkyhKC9z4DCn+UV6girGyfApM9T9hecP7UHqy8cddMP40WrhXDIQrMFu3UqaF7T2q/t/y8DNLQ0fmAItE3r9bZ1LQHeW4CGbSMuM7dcwLQT82eOO58Qj2zFzXfbfsTbp0Gvg+3N2IbsAx1JIMHgWei+gd0wtwbl9IOsaQvcFc9V9iro0oRLcjbU7PqTpkJ6GNossMZkUa/2V3cqy/lBs4ztpFtXXz97GqOcEVqkmGE6ZgUxvyaloM8lsuWqjPtu2AbKVosCdoFMyo8aU=
+  password: 
+  site: 
   skip_cleanup: true
   verbose: true
   on:
