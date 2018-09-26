@@ -1,18 +1,27 @@
 import { SuggestedActions, CardAction, Message } from "botbuilder";
 import ChatRegistrationRepo from "@/repo/ChatRegistrationRepo";
-import UserRepo from "repo/UserRepo";
+import UserRepo from "@/repo/UserRepo";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
+import { getRegistrationToken } from "../utils/getChatRegistrationToken";
+import getChatAddressId from "../utils/getChatAddressId";
 
 export default rcdaChatDialog(
     "/authentication",
     () => ({
-        chatAddressRepo: ChatRegistrationRepo.getInstance(),
+        chatRegistrationRepo: ChatRegistrationRepo.getInstance(),
         userRepo: UserRepo.getInstance()
     }),
     [
-        async function ({ session }, { chatAddressRepo, userRepo }) {
+        async function ({ session }, { chatRegistrationRepo, userRepo }) {
             let address = session.message.address;
-            let registrationToken = await chatAddressRepo.setupRegistrationToken(address);
+
+            let registrationToken = getRegistrationToken();
+            await chatRegistrationRepo.create({
+                id: registrationToken,
+                chatAddressId: getChatAddressId(address),
+                chatAddress: address
+            });
+
             let loginText = `Hi! It looks like you haven't registered yet. Please sign and register to continue. Registration token: ${registrationToken}`;
             let url = `http://localhost:8080/#/register`;
             var msg: Message = new Message(session)
@@ -24,11 +33,5 @@ export default rcdaChatDialog(
                                     ]
                                 ));
             session.send(msg);
-            session.endDialog();
-
-        },
-        function ({ session, result }) {
-            session.userData.name = result.response;
-            session.endDialog("Hi %s. Now tell me something", session.userData.name);
         }
     ]);

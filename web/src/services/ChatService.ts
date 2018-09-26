@@ -1,5 +1,5 @@
 import axios from "axios";
-import ChatRegistrationRequest from "@common/models/chat-registration/ChatRegistrationRequest";
+import ChatRegistrationRequest from "@common/models/services/chat-registration/ChatRegistrationRequest";
 
 export default class ChatService {
 

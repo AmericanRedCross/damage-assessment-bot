@@ -14,10 +14,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "dayjs": "^1.7.5",
+    "hoek": "^4.2.1",
     "vue": "^2.5.11",
     "vue-component-decorator": "0.0.2",
     "vue-property-decorator": "^7.0.0",
-    "hoek": "^4.2.1"
+    "vue-router": "^3.0.1"
   },
   "//": "**NOTE: hoek is an indirect dependency of the project, but the installed version has a security vulnerability that GitHub reports. We list it directly to control the version.",
   "browserslist": [

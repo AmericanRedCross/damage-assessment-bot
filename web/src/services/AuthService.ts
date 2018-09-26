@@ -1,8 +1,8 @@
 import axios from "axios";
 //import dayjs from "dayjs";
-import UserSession from "@common/models/user/UserSession";
-import LoginRequest from "@common/models/login/LoginRequest";
-import LoginResponse from "@common/models/login/LoginResponse";
+import UserSession from "@common/models/resources/UserSession";
+import LoginRequest from "@common/models/services/login/LoginRequest";
+import LoginResponse from "@common/models/services/login/LoginResponse";
 
 export default class AuthService {
 

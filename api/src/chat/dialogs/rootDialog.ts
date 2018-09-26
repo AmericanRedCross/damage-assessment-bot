@@ -1,14 +1,11 @@
-import {  Prompts } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
+import { myanmarDisasterAssessmentDialog } from "@/chat/dialogs/disaster-assessment/myanmar/myanmarDisasterAssessmentDialog";
 
 export default rcdaChatDialog(
     "/",
     null,
     [
         ({ session, result }) => {
-            Prompts.text(session, "Tell me something");
-        },
-        ({ session, result }) => {
-            session.send(result.response);
+            session.beginDialog(myanmarDisasterAssessmentDialog.id)
         }
     ]);

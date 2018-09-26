@@ -19,8 +19,8 @@ module.exports = {
   entry: function() {
     // Automatically discovers azure functions and registers them as entrypoints
     const entryPoints = {};
-    for (const scriptPath of glob.sync('./src/functions/*/*.ts')) {
-      let scriptName = scriptPath.slice('./src/functions/'.length, scriptPath.lastIndexOf('/') - scriptPath.length);
+    for (const scriptPath of glob.sync('./src/functions/root/*/*.ts')) {
+      let scriptName = scriptPath.slice('./src/functions/root/'.length, scriptPath.lastIndexOf('/') - scriptPath.length);
       if (!ignoredFunctions.includes(scriptName)){
         entryPoints[scriptName] = pathHelper.root(scriptPath.slice('./'.length));
       }
@@ -49,13 +49,14 @@ module.exports = {
       'src'
     ],
     alias: {
-      '@': pathHelper.root("src")
+      '@': pathHelper.root("src"),
+      '@common': pathHelper.root("../common/src")
     }
   },
   plugins: [
     new copyWebpackPlugin([
       {
-        context: 'src/functions',
+        context: 'src/functions/root',
         from: '**/*.json',
         to: '',
         ignore: isProductionBuild ? [ '**/local.settings.json' ] : []

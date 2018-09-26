@@ -11,7 +11,7 @@
         "baseUrl": "src",
         "paths": {
             "@/*": [ "./*" ],
-            "@common/*": [ "../../common/bin/*" ]
+            "@common/*": [ "../../common/src/*" ]
         }
     },
     "include": [
