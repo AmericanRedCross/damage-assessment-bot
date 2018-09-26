@@ -1,7 +1,8 @@
-import UserModel from "@common/models/user/UserModel";
+import UserModel from "@common/models/resources/UserModel";
 import UserRepo from "@/repo/UserRepo";
 import authenticationDialog from "@/chat/dialogs/authenticationDialog";
 import rcdaChatMiddleware from "@/chat/utils/rcdaChatMiddleware";
+import getChatAddressId from "@/chat/utils/getChatAddressId";
 
 export default rcdaChatMiddleware(
     () => ({
@@ -14,8 +15,8 @@ export default rcdaChatMiddleware(
         let userSession: UserModel = session.userData.userSession;
 
         if (!authDialogIsActive && !userSession) {
-            let address = session.message.address;
-            let user = await userRepo.getByChatAddress({ channelId: address.channelId, userId: address.user.id});
+            let addressId = getChatAddressId(session.message.address);
+            let user = await userRepo.getByChatAddress(addressId);
             if (!user) {
                 session.beginDialog(authenticationDialog.id);
                 return;

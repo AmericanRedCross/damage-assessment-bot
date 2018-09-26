@@ -1,7 +1,6 @@
-import ChatRegistrationRepo from "repo/ChatRegistrationRepo";
-import ChatRegistrationRequest from "@common/models/chat-registration/ChatRegistrationRequest";
-import RcdaClientError from "common/errors/RcdaClientError";
-import UserSession from "@common/models/user/UserSession";
+import ChatRegistrationRepo from "@/repo/ChatRegistrationRepo";
+import ChatRegistrationRequest from "@common/models/services/chat-registration/ChatRegistrationRequest";
+import RcdaError, { RcdaErrorTypes } from "@common/system/RcdaError";
 import UserRepo from "@/repo/UserRepo";
 
 export default class ChatRegistrationService {
@@ -16,22 +15,26 @@ export default class ChatRegistrationService {
             UserRepo.getInstance());
     }
     
-    public async register(chatRegistrationRequest: ChatRegistrationRequest, userSession: UserSession): Promise<void> {
-        //need user model
-        let address = await this.chatRegistrationRepo.verifyRegistrationToken(chatRegistrationRequest.registrationToken)
+    public async register(chatRegistrationRequest: ChatRegistrationRequest, userId: string): Promise<void> {
+
+        let registration = await this.chatRegistrationRepo.get(chatRegistrationRequest.registrationToken)
         
-        if (!address) {
-            throw new RcdaClientError("The provided registration token is invalid.");
+        if (!registration) {
+            throw new RcdaError(RcdaErrorTypes.ClientError, "The provided registration token is invalid.");
         }
 
-        // add address for user (aka this info is needed. should get it back from repo)
-        let user = await this.userRepo.get((<any>userSession).id);
-        user.chatChannels = user.chatChannels || {};
-        user.chatChannels[address.channelId] = address.user.id;
+        let user = await this.userRepo.get(userId);
 
+        user.chatAddresses = user.chatAddresses || [];
+        user.chatAddresses.push({
+            id: registration.chatAddressId,
+            value: registration.chatAddress
+        });
+        
+        await this.chatRegistrationRepo.delete(registration.id);
         await this.userRepo.update(user);
 
         // try to message user (not a success precondition, fire and forget)
-
+        // TODO - this feature may not ever be used, so this has not yet been implemented
     }
 }

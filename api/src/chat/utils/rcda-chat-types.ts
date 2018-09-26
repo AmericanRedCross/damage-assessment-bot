@@ -1,4 +1,4 @@
-import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware } from "botbuilder";
+import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions } from "botbuilder";
 
 export interface RcdaDialogWaterfallStepContext { 
     session: Session, 
@@ -14,9 +14,14 @@ export type FrameworkDialogDefinition = Dialog|IDialogWaterfallStep[]|IDialogWat
 
 export type RcdaDialogDefinition<TDependencies> = Dialog|RcdaDialogWaterfallStep<TDependencies>[]|RcdaDialogWaterfallStep<TDependencies>;
 
+export interface RcdaChatDialogOptions {
+    triggers: ITriggerActionOptions[]
+}
+
 export interface RcdaChatDialog {
     id: string; 
     dialog: FrameworkDialogDefinition;
+    options?: RcdaChatDialogOptions
 }
 
 export interface RcdaSessionMiddleware<TDependencies> {

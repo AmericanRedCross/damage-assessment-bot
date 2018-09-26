@@ -11,7 +11,8 @@
         "baseUrl": "src",
         "paths": {
             "@/*": [ "./*" ],
-            "@common/*": [ "../../common/bin/*" ]
+            "@config": [ "./config/config.dev.ts" ],
+            "@common/*": [ "../../common/src/*" ]
         }
     },
     "include": [

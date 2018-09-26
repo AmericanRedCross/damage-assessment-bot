@@ -1,36 +1,33 @@
-import { CosmosClient, Container, Database } from "@azure/cosmos";
+import { CosmosClient, ConnectionPolicy } from "@azure/cosmos";
 
-export const RcdaDatabaseId = "Rcda";
-
-export const enum RcdaContainers {
-    ChatRegistrations = "ChatRegistrations",
-    Users = "Users"
-}
+export interface RcdaCosmosClientOptions {
+    cosmosDbHost: string;
+    cosmosDbKey: string;
+};
 
 export default class RcdaCosmosClient extends CosmosClient {
     
-    private static endpoint = process.env.HOST || "https://localhost:8081/";
-    private static primaryKey = process.env.AUTH_KEY || "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-    private static databaseId = "Rcda";
-
-    constructor() {
-        super({ 
-            endpoint: RcdaCosmosClient.endpoint, 
-            auth: { 
-                masterKey: RcdaCosmosClient.primaryKey 
-            } 
+    public static getInstance(): RcdaCosmosClient {
+        return new RcdaCosmosClient({
+            cosmosDbHost: process.env["CosmosDbHost"],
+            cosmosDbKey: process.env["CosmosDbKey"]
         });
     }
 
-    public static getInstance(): RcdaCosmosClient {
-        return new RcdaCosmosClient();
+    constructor(options: RcdaCosmosClientOptions) {
+        super({ 
+            endpoint: options.cosmosDbHost, 
+            auth: { 
+                masterKey: options.cosmosDbKey 
+            },
+            connectionPolicy: { 
+                ...new ConnectionPolicy(),
+                RequestTimeout: 15000
+            }
+        });
     }
 
-    public get chatAddresses(): Container {
-        return this.database(RcdaCosmosClient.databaseId).container(RcdaContainers.ChatRegistrations);
-    }
-
-    public get users(): Container {
-        return this.database(RcdaDatabaseId).container(RcdaContainers.Users);
+    public get rcdaDatabase() {
+        return this.database("Rcda");
     }
 }

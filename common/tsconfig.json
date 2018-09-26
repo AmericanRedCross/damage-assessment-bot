@@ -1,19 +1,23 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "lib": ["es6", "dom"],
+        "lib": ["es6", "es2016"],
         "types": ["reflect-metadata"],
         "module": "commonjs",
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "noImplicitAny": true,
         "strict": true,
         "strictNullChecks": true,
+        "isolatedModules": true,
         "outDir": "bin",
         "composite": true,
-        "declaration": true,
+        "declarationMap": true,
         "rootDir": "./src",
         "baseUrl": "src",
+        "sourceRoot": "src",
+        "sourceMap": true,
         "paths": {
             "@common/*": [ "./*" ]
         }

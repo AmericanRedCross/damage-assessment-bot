@@ -1,4 +1,4 @@
-const enum RcdaRoles {
-    Administrator = "administrator"
-}
-export default RcdaRoles;
+export enum RcdaRoles {
+    SystemAdmin = "SystemAdmin",
+    DashboardAdmin = "DashboardAdmin"
+};
