@@ -1,16 +1,18 @@
-import { Session, Prompt, IPromptFeatures, IPromptOptions, IPromptContext  } from "botbuilder";
+import { Prompt, IPromptFeatures, IPromptOptions, IPromptContext  } from "botbuilder";
 
 export class RcdaPromptAdaptiveCard extends Prompt<IPromptFeatures> {
     constructor(features?: IPromptFeatures) {
         super({
-            defaultRetryPrompt: 'default_text' //TODO what should this be?
+            defaultRetryPrompt: "Unable to determine input. Please try again.",
+            defaultRetryNamespace: "BotBuilder"
+            // recognizeScore: 1.0
         });
         
         this.updateFeatures(features);
 
         // Default recognizer logic
         this.onRecognize((context, cb) => {
-          const form = context.message.value;
+            const form = context.message.value;
 
             if (form && !this.features.disableRecognizer) {
                 cb(null, 1.0, form);

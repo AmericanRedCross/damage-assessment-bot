@@ -2,8 +2,8 @@ import { SuggestedActions, CardAction, Message } from "botbuilder";
 import ChatRegistrationRepo from "@/repo/ChatRegistrationRepo";
 import UserRepo from "@/repo/UserRepo";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { getRegistrationToken } from "../utils/getChatRegistrationToken";
-import getChatAddressId from "../utils/getChatAddressId";
+import { getRegistrationToken } from "@/chat/utils/getChatRegistrationToken";
+import getChatAddressId from "@/chat/utils/getChatAddressId";
 
 export default rcdaChatDialog(
     "/authentication",
