@@ -1,5 +1,4 @@
 import axios, { AxiosInstance } from "axios";
-import RcdaCosmosClient from "@/repo/utils/RcdaCosmosClient";
 
 export default class IfrcGoAuthRepo {
     constructor(

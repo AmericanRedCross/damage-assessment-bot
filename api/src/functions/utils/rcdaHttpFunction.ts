@@ -10,41 +10,28 @@ import { RcdaRoles } from "@common/system/RcdaRoles";
 
 export default function rcdaHttpFunction<TBody, TResult, TDependencies>(    
     dependencyFactory: () => TDependencies,
-    auth: boolean|RcdaRoles[]|RcdaAuthorizationPolicy,
+    authDef: boolean|RcdaRoles[]|RcdaAuthorizationPolicy,
     implementation: RcdaHttpFunction<TBody, TResult, TDependencies>): RcdaAzureHttpFunction<TBody,TResult,TDependencies>
 {
-    let authPolicy: RcdaAuthorizationPolicy;
-    if (typeof auth === "boolean") {
-        authPolicy = auth ? new RcdaAuthorizationPolicy() : null;
-    }
-    else if (typeof auth === "object") {
-        if (auth.hasOwnProperty("length")) {
-            authPolicy = new RcdaAuthorizationPolicy(<RcdaRoles[]>auth);
-        }
-        else {
-            authPolicy = <RcdaAuthorizationPolicy>auth;
-        }
-    }
+    let authPolicy = getAuthPolicy(authDef);
 
-    let result: any = async function(context: Context, req: RcdaHttpRequest<TBody>): Promise<RcdaHttpResponse<TResult>> 
+    let run: any = async function(context: Context, req: RcdaHttpRequest<TBody>): Promise<RcdaHttpResponse<TResult>> 
     {
-        let session: UserSession = null;
-        // Authenticate, if required
-        if (authPolicy) {
+        try {
+            // Authorize
             let sessionUtil = SessionUtility.getInstance();
             
             let authHeader = req.headers && req.headers.authorization ? req.headers.authorization : "";
             let sessionToken = authHeader.toLowerCase().startsWith("bearer ") ? authHeader.slice("bearer ".length) : "";
                 
-            session = sessionUtil.parseSessionToken(sessionToken);
-            if (!sessionUtil.isValidSession(session)) {
+            let session = sessionUtil.parseSessionToken(sessionToken);
+            if (authPolicy && !sessionUtil.isValidSession(session)) {
                 return httpResponse(HttpStatusCode.Unauthorized);
             }
             if (!sessionUtil.isAuthorized(session, authPolicy)) {
                 return httpResponse(HttpStatusCode.Forbidden);
             }
-        }
-        try {
+
             // Execute the request
             let response = await implementation(req, dependencyFactory(), { context, session });
             response.headers = response.headers || {};
@@ -58,11 +45,38 @@ export default function rcdaHttpFunction<TBody, TResult, TDependencies>(
         }
     }
 
-    result.dependencyFactory = dependencyFactory;
-    result.implementation = implementation;
-    result.authPolicy = authPolicy;
+    run.dependencyFactory = dependencyFactory;
+    run.implementation = implementation;
+    run.authPolicy = authPolicy;
+    run.run = run;
 
-    return result;
+    return run;
+
+    // return {
+    //     dependencyFactory: dependencyFactory,
+    //     implementation: implementation,
+    //     authPolicy: authPolicy,
+    //     run: run
+    // };
+}
+
+function getAuthPolicy(authDef: boolean|RcdaRoles[]|RcdaAuthorizationPolicy): RcdaAuthorizationPolicy {
+    if (typeof authDef === "boolean") {
+        return authDef ? new RcdaAuthorizationPolicy() : null;
+    }
+    if (typeof authDef === "object") {
+        if (!authDef) {
+            return null;
+        }
+        if (authDef.hasOwnProperty("length")) {
+            return new RcdaAuthorizationPolicy(<RcdaRoles[]>authDef);
+        }
+        else {
+            return <RcdaAuthorizationPolicy>authDef;
+        }
+    }
+
+    throw new Error("Invalid auth definition");
 }
 
 function formatErrorResponse(error: Error): RcdaHttpResponse<RcdaHttpResponseError> {

@@ -3,7 +3,7 @@ import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import ChatRegistrationRequest from "@common/models/services/chat-registration/ChatRegistrationRequest";
 import ChatRegistrationService from "@/services/ChatRegistrationService";
 
-export class ChatRegistrationDependencies {
+class ChatRegistrationDependencies {
 
   constructor(public chatRegistrationService: ChatRegistrationService) {}
 

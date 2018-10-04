@@ -11,5 +11,5 @@ export default async function testRcdaHttpFunction<TBody, TResult, TDependencies
 
     let testFunction = rcdaHttpFunction(() => <TDependencies>config.dependencies, config.definition.authPolicy, config.definition.implementation);
     
-    return await testFunction(config.context || <any>{ bindings: {}}, config.request);
+    return await testFunction.run(config.context || <any>{ bindings: {}}, config.request);
 }

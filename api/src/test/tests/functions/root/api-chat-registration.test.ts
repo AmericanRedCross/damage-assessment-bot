@@ -1,4 +1,4 @@
-import apiChatRegistration, { ChatRegistrationDependencies } from "@/functions/root/api-chat-registration/index";
+import apiChatRegistration from "@/functions/root/api-chat-registration/index";
 import ChatRegistrationService from "@/services/ChatRegistrationService";
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import HttpRequestMock from "@/test/mocks/HttpRequestMock";
