@@ -71,8 +71,7 @@ describe("api/chat/prompt/report function", () => {
         });
         let chatPromptReportService = new ChatPromptReportService(mockUserRepo)
 
-        let userSession = TestUserSession.Valid();
-        let httpRequest = new HttpRequestMock<ChatPromptReportRequest>({
+        let httpRequest = new HttpRequestMock<any>({
             body: {
                 country: "invalid-country"
             },
@@ -118,7 +117,7 @@ describe("api/chat/prompt/report function", () => {
             let userSession = TestUserSession.Valid();
             let httpRequest = new HttpRequestMock<ChatPromptReportRequest>({
                 body: {
-                    country: "invalid-country"
+                    country: RcdaCountries.Myanmar
                 },
                 userSession: roles !== null ? TestUserSession.Valid({ roles }) : null
             });
