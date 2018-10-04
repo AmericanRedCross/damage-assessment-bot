@@ -1,5 +1,5 @@
 import RcdaWebAppConfig from "@/config/RcdaWebAppConfig"
 
 export default new RcdaWebAppConfig({
-    rcdaApiHost: "http://localhost:7071"
+    rcdaApiHost: "https://rcda-chat-bot-func.azurewebsites.net"
 });

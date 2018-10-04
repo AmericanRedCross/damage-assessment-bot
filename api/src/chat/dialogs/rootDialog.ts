@@ -1,12 +1,15 @@
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { myanmarDisasterAssessmentDialog } from "@/chat/dialogs/disaster-assessment/myanmar/myanmarDisasterAssessmentDialog";
-import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
+import { rootMyanmarDialog } from "@/chat/dialogs/myanmar/rootMyanmarDialog";
 
-export default rcdaChatDialog(
+export const rootDialog = rcdaChatDialog(
     "/",
     null,
     [
-        ({ session, result }) => {
-            session.beginDialog(myanmarDisasterAssessmentDialog.id)
+        ({ session }) => {
+            // eventually this can be expanded to support more than one country. for now it can assume country is myanmar.
+            session.beginDialog(rootMyanmarDialog.id);
         }
-    ]);
+    ],
+    {
+        references: [rootMyanmarDialog]
+    });

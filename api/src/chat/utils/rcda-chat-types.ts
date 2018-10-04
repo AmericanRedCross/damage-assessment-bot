@@ -1,21 +1,33 @@
 import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions } from "botbuilder";
+import RcdaBotConversationData from "@/chat/models/RcdaBotConversationData";
 
-export interface RcdaDialogWaterfallStepContext { 
-    session: Session, 
-    result?: any | IDialogResult<any>, 
-    skip?: (results?: IDialogResult<any>) => void
+export interface RcdaTypedSession<TDialogData extends {}={}> extends Session {
+    dialogData: TDialogData,
+    conversationData: RcdaBotConversationData
+}
+
+type DefaultDialogWaterfallStepResult = any|IDialogResult<any>;
+
+export interface RcdaDialogWaterfallStepContext<TDialogData, TResult=DefaultDialogWaterfallStepResult> { 
+    session: RcdaTypedSession<TDialogData>, 
+    result?: TResult, 
+    next?: (results?: IDialogResult<any>) => void
 };
 
-export interface RcdaDialogWaterfallStep<TDependencies> {
-    (context: RcdaDialogWaterfallStepContext, dependencies: TDependencies): void;
+//shorthand alias
+export type RcdaChatStep<TResult=DefaultDialogWaterfallStepResult, TDialogData=any> = RcdaDialogWaterfallStepContext<TDialogData, TResult>;
+
+export interface RcdaDialogWaterfallStep<TDialogData, TDependencies> {
+    (context: RcdaDialogWaterfallStepContext<TDialogData>, dependencies: TDependencies): void;
 }
 
 export type FrameworkDialogDefinition = Dialog|IDialogWaterfallStep[]|IDialogWaterfallStep;
 
-export type RcdaDialogDefinition<TDependencies> = Dialog|RcdaDialogWaterfallStep<TDependencies>[]|RcdaDialogWaterfallStep<TDependencies>;
+export type RcdaDialogDefinition<TDialogData, TDependencies> = Dialog|RcdaDialogWaterfallStep<TDialogData, TDependencies>[]|RcdaDialogWaterfallStep<TDialogData, TDependencies>;
 
 export interface RcdaChatDialogOptions {
-    triggers: ITriggerActionOptions[]
+    triggers?: ITriggerActionOptions[],
+    references?: RcdaChatDialog[] | (() => RcdaChatDialog[])
 }
 
 export interface RcdaChatDialog {
@@ -25,7 +37,7 @@ export interface RcdaChatDialog {
 }
 
 export interface RcdaSessionMiddleware<TDependencies> {
-    (context: { session: Session, next: Function }, dependencies: TDependencies): void;
+    (context: { session: RcdaTypedSession, next: Function }, dependencies: TDependencies): void;
 }
 
 export interface RcdaChatMiddleware<TDependencies> {
