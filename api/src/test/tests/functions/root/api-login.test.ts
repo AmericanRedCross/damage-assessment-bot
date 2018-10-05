@@ -58,8 +58,10 @@ describe("api/login function", () => {
         describe("response body", () => {
             
             it("should have valid session token", async () => {
+                let sessionUtil = SessionUtility.getInstance();
                 let responseBody = <LoginResponse>(await asyncAction).body;
                 expect(responseBody.sessionToken).not.toBeNull();
+                expect(sessionUtil.isValidSession(sessionUtil.parseSessionToken(responseBody.sessionToken))).toBeTruthy();
             })
 
         })

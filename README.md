@@ -1,20 +1,13 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
-
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+    1.	Clone the git repo locally.
+    2.	From directory root, run `npm install`. This installs npm packages for all projects (web, api, & common), which have their own package.json files.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# Build and Run
+    Before running the app locally, start the azure storage and cosmos emulators by running `./LocalDev.ps1` from the project root.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+    To start the web app, change to the 'web' directory and run `npm run dev`. This supports editing files without having to restart the development server.
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+    To Start the api app, change to the 'api' directory and run `npm run build:dev` followed by `npm run start:dev`. To make changes, the app must be rebuilt and the server restarted.
+
+# Test
+    Tests are currently only available for 'api'. Change into the 'api' directory root and run `npm run test`, or for code coverage run `npm run test:coverage`.

@@ -5,18 +5,19 @@ before_install:
 - echo "The current branch which is being built -- $TRAVIS_BRANCH"
 - git checkout $TRAVIS_BRANCH
 - rm -rf ".git"
-- cd api
-install:
-- npm install
-- npm run build:dev
-script: echo "Skipping NPM Tests!"
+install: npm install
+script: 
+- npm run build:dev --prefix api
+- npm run build:dev --prefix web
+- npm run build --prefix api
+- npm run build --prefix web
+- npm run test:ci --prefix api
 cache:
   directories:
   - node_modules
 before_deploy:
-- cd dist
+- cd api/dist
 - git init
-- rm local.settings.json
 - git add .
 - git commit -m "Azure Functions Bot Deployment Commit"
 deploy:
@@ -36,3 +37,12 @@ deploy:
   verbose: true
   on:
     branch: staging
+- provider: azure_web_apps
+  username: $AZ_DEV_SITE_USERNAME
+  password: $AZ_DEV_SITE_PASSWORD
+  site: $AZ_DEV_SITE_NAME
+  skip_cleanup: true
+  verbose: true
+  on:
+    all_branches: true
+    condition: $TRAVIS_COMMIT_MESSAGE = deploy-dev && $TRAVIS_EVENT_TYPE = api # event type condition ensures this was manually triggered in travis dashboard ui

@@ -22,7 +22,7 @@ export default class RcdaBot extends UniversalBot {
         });
      
         this.use(Middleware.sendTyping());
-        this.useSessionMiddleware(authenticationMiddleware);
+        //this.useSessionMiddleware(authenticationMiddleware);
 
         this.addDialog(rootDialog);
         this.addDialog(authenticationDialog);
