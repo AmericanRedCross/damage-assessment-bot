@@ -41,7 +41,11 @@ export default function rcdaHttpFunction<TBody, TResult, TDependencies>(
             return response;
         }
         catch (error) {
-            return formatErrorResponse(error);
+            let errorResponse = formatErrorResponse(error);
+
+            if (errorResponse.status === HttpStatusCode.InternalServerError) {
+                context.log.error(error.message);
+            }
         }
     }
 
