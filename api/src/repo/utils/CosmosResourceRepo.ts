@@ -10,7 +10,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
 
     protected resourceContainer!: Container;
     
-    async create(user: TResource): Promise<TResource> {
+    public async create(user: TResource): Promise<TResource> {
         try {
             let response = await this.resourceContainer.items.create<TResource>(user);
             return response.body;
@@ -20,7 +20,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
         }
     }
 
-    async get(id: string): Promise<TResource> {
+    public async get(id: string): Promise<TResource> {
         try {
             let result = await this.resourceContainer.item(id).read<TResource>();
             return result.body;
@@ -30,7 +30,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
         }
     }
 
-    async update(model: TResource): Promise<TResource> {
+    public async update(model: TResource): Promise<TResource> {
         try {
             let response = await this.resourceContainer.item(model.id).replace<TResource>(model);
             return response.body;
@@ -40,7 +40,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
         }
     }
 
-    async delete(id: string): Promise<void> {
+    public async delete(id: string): Promise<void> {
         try {
             let response = await this.resourceContainer.item(id).delete();
             return;
@@ -50,7 +50,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
         }
     }
 
-    async query<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource[]> {
+    protected async query<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource[]> {
 
         let querySpec: SqlQuerySpec = { query, parameters: [] }
 
@@ -66,7 +66,7 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
         return response.result;
     }
 
-    async querySingle<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource> {
+    protected async querySingle<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource> {
 
         let results = await this.query(query, parameters, options);
         

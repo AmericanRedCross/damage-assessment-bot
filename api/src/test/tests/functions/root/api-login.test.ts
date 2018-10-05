@@ -62,7 +62,7 @@ describe("api/login function", () => {
                 let responseBody = <LoginResponse>(await asyncAction).body;
                 expect(responseBody.sessionToken).not.toBeNull();
                 expect(sessionUtil.isValidSession(sessionUtil.parseSessionToken(responseBody.sessionToken))).toBeTruthy();
-            })
+            }) 
 
         })
     });
