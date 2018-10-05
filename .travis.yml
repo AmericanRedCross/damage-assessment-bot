@@ -45,4 +45,4 @@ deploy:
   verbose: true
   on:
     all_branches: true
-    condition: $TRAVIS_COMMIT_MESSAGE = deploy-dev && $TRAVIS_EVENT_TYPE = api # event type condition ensures this was manually triggered in travis dashboard ui
+    condition: $deploy = dev && $TRAVIS_EVENT_TYPE = api # event type condition ensures this was manually triggered in travis dashboard ui
