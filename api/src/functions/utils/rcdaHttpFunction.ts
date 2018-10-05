@@ -46,22 +46,16 @@ export default function rcdaHttpFunction<TBody, TResult, TDependencies>(
             if (errorResponse.status === HttpStatusCode.InternalServerError) {
                 context.log.error(error.message);
             }
+
+            return errorResponse;
         }
     }
 
     run.dependencyFactory = dependencyFactory;
     run.implementation = implementation;
     run.authPolicy = authPolicy;
-    run.run = run;
 
     return run;
-
-    // return {
-    //     dependencyFactory: dependencyFactory,
-    //     implementation: implementation,
-    //     authPolicy: authPolicy,
-    //     run: run
-    // };
 }
 
 function getAuthPolicy(authDef: boolean|RcdaRoles[]|RcdaAuthorizationPolicy): RcdaAuthorizationPolicy {

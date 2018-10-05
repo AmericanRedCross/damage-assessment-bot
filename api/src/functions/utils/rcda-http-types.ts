@@ -34,7 +34,6 @@ export interface RcdaHttpFunction<TBody, TResult, TDependencies> {
 
 export interface RcdaAzureHttpFunction<TBody, TResult, TDependencies> {
     (context: Context, req: RcdaHttpRequest<TBody>): Promise<RcdaHttpResponse<TResult>>;
-    run(context: Context, req: RcdaHttpRequest<TBody>): Promise<RcdaHttpResponse<TResult>>;
     dependencyFactory: () => TDependencies;
     implementation: RcdaHttpFunction<TBody, TResult, TDependencies>,
     authPolicy: RcdaAuthorizationPolicy
