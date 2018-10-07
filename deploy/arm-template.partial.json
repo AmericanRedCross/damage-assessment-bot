@@ -1,0 +1,119 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "functionAppName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "tenantId": {
+            "type": "string"
+        },
+        "securityPrincipalid": {
+            "type": "string",
+            "description": "This value is not specified in the config files like the others, it is provided automatically by deploy.js"
+        },
+        "$secrets": "// deploy.js removes this and adds additional parameters for every secret listed in config.$secrets"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp",
+            "name": "[parameters('functionAppName')]",
+            "apiVersion": "2016-03-01",
+            "location": "East US 2",
+            "properties": {
+                "siteConfig": {
+                    "appSettings": "// deploy.js dynamically builds this setting with config values before deploying"
+                },
+                "name": "[parameters('functionAppName')]",
+                "clientAffinityEnabled": false,
+                "reserved": false
+            },
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components/', parameters('functionAppName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Insights/components",
+            "name": "[parameters('functionAppName')]",
+            "apiVersion": "2015-05-01",
+            "location": "East US",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('functionAppName'))]": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('functionAppName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccountName')]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "tags": {},
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "trustedDirectories": [
+                    "a6da4e16-b382-4475-9ee1-1617bdda5b04"
+                ],
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true,
+                            "lastEnabledTime": "2018-10-07T00:43:29.1745736Z"
+                        },
+                        "blob": {
+                            "enabled": true,
+                            "lastEnabledTime": "2018-10-07T00:43:29.1745736Z"
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "kind": "StorageV2",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[parameters('tenantId')]",
+                "accessPolicies": [
+                    {
+                        "tenantId": "[parameters('tenantId')]",
+                        "objectId": "[parameters('securityPrincipalid')]",
+                        "permissions": {
+                            "secrets": [
+                                "get",
+                                "list"
+                            ]
+                        }
+                    }
+                ],
+                "enabledForTemplateDeployment": true
+            }
+        }
+    ]
+}
