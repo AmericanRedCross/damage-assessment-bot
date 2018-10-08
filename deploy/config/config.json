@@ -1,12 +1,14 @@
 {
     "tenantId": "a6da4e16-b382-4475-9ee1-1617bdda5b04",
     "subscriptionId": "cd7267f6-3dfe-4cce-890e-bb35cc8c4bbc",
-    "location": "eastus",
-    "resourceGroupName": "rcda-chat-bot",
-    "functionAppName": "rcda-chat-bot-test",
-    "storageAccountName": "mnrcdachatbotstorage",
-    "keyVaultName": "rcda-chat-bot-keyvault",
+    "cosmosReadUnitsDefault": 400,
+    "cosmosReadUnitsPerCollection": {
+        "Rcda.Users": 400,
+        "Rcda.DisasterAssessments": 400
+    },
     "$secrets": {
-        "storageConnectionString": "storageConnectionString"
+        "microsoftAppId": "MicrosoftAppId",
+        "microsoftAppPassword": "MicrosoftAppPassword",
+        "luisConnectionString": "LuisConnectionString"
     }
 }

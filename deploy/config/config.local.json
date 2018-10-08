@@ -1,3 +1,19 @@
 {
+    "tenantId": "a6da4e16-b382-4475-9ee1-1617bdda5b04",
+    "subscriptionId": "cd7267f6-3dfe-4cce-890e-bb35cc8c4bbc",
+    "location": "eastus2",
+    "resourceGroupName": "rcda-chat-bot",
+    "functionAppName": "rcda-chat-bot9",
+    "storageAccountName": "rcdachatbotstorage9",
+    "keyVaultName": "rcda-chat-bot-keyvault9",
+    "cosmosAccountName": "rcda-db",
+    "luisAccountName": "rcda-luis",
     
+    "microsoftAppId": "0b7a7dec-2f88-48c8-a7c2-8a9551fcb0ec",
+    "microsoftAppPassword": "suzDVZHY1?|ozytGM2381:!",
+    "luisConnectionString": "blabla",
+    "facebookAppId": "2242142539347125",
+    "facebookAppSecret": "ad47969512103d30c6d3694b4a4bc91c",
+    "facebookPageId": "531235534003119",
+    "facebookPageAccessToken": "EAAf3N32X9LUBAFcOT32r24y8SlkC1PdObN6akWzrzNPHslP9nX1Xk1XaurUx5PkrbHnbObkO6WiVWpSDGVCL47EyR1xWZB1fFvWJbontxk8Xzc1oDh4x9R9CR4ihEMJAxOIzgOOl0R3juAtiCsdk5yMnIhqhYwPquaCAPOwZDZD"
 }

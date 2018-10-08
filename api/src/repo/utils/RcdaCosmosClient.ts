@@ -19,6 +19,6 @@ export default class RcdaCosmosClient extends CosmosClient {
     }
 
     public get rcdaDatabase() {
-        return this.database("damage-assessment-bot");
+        return this.database("Rcda");
     }
 }

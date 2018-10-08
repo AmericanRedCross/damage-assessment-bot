@@ -1,3 +1,9 @@
 {
-    
+    "location": "eastus",
+    "resourceGroupName": "EST1-HUM-RG-BOT-STG-01",
+    "functionAppName": "est1-hum-azf-bot-stg-01",
+    "storageAccountName": "est1humstrbotstg01",
+    "keyVaultName": "est1-hum-key-bot-stg-01",
+    "cosmosAccountName": "est1-hum-cdb-bot-stg-01",
+    "luisAccountName": "est1-hum-lui-bot-stg-01"
 }

@@ -24,7 +24,7 @@ export default class AuthService {
             password
         };
 
-        let loginResponse = await axios.post<LoginResponse>("api/login", loginRequest);
+        let loginResponse = await axios.post<LoginResponse>("api/login", loginRequest, );
 
         localStorage.setItem(AuthService.localStorageSessionKey, loginResponse.data.sessionToken);
     };

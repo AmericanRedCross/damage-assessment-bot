@@ -4,6 +4,9 @@ import ConfigService from '@/services/ConfigService';
 import ChatService from "@/services/ChatService";
 import AuthService from '@/services/AuthService';
 import RootComponent from "@/components/RootComponent.vue";
+import axios from "axios";
+
+axios.defaults.baseURL = 'https://rcda-chat-bot9.azurewebsites.net';
 
 Vue.use(VueRouter);
 

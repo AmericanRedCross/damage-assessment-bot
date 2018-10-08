@@ -52,18 +52,23 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
 
     protected async query<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource[]> {
 
-        let querySpec: SqlQuerySpec = { query, parameters: [] }
+        try {
+            let querySpec: SqlQuerySpec = { query, parameters: [] }
 
-        for (const parameterName in parameters) {
-            querySpec.parameters.push({
-                name: `@${parameterName}`,
-                value: parameters[parameterName]
-            });
+            for (const parameterName in parameters) {
+                querySpec.parameters.push({
+                    name: `@${parameterName}`,
+                    value: parameters[parameterName]
+                });
+            }
+
+            let response = await this.resourceContainer.items.query<TResource>(querySpec, options).toArray();
+
+            return response.result;
         }
-
-        let response = await this.resourceContainer.items.query<TResource>(querySpec, options).toArray();
-
-        return response.result;
+        catch (ex) {
+            throw ex;
+        }
     }
 
     protected async querySingle<TResult = TResource>(query: string, parameters?: {[key: string]: string|number|boolean}, options?: FeedOptions): Promise<TResource> {

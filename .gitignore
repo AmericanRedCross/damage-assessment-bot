@@ -66,6 +66,9 @@ typings/
 # Azure Functions local settings
 local.settings.json
 
+# deploy local environment config
+deploy/config.local.json
+
 # built output directories
 bin/
 dist/
