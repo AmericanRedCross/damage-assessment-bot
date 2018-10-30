@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
-import ConfigService from '@/services/ConfigService';
+import { rcdaApiClient } from '@/services/utils/RcdaApiClient';
 import ChatService from "@/services/ChatService";
 import AuthService from '@/services/AuthService';
 import RootComponent from "@/components/RootComponent.vue";
@@ -11,8 +11,7 @@ new Vue({
   el: "#app",
   render: h => h(RootComponent),
   provide: {
-    ['configService']: new ConfigService(),
-    ['authService']: new AuthService(),
-    ['chatService']: new ChatService()
+    ['authService']: new AuthService(rcdaApiClient),
+    ['chatService']: new ChatService(rcdaApiClient)
   }
-})
+});

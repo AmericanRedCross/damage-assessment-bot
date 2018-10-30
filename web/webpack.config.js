@@ -1,12 +1,14 @@
 var path = require('path')
 var webpack = require('webpack')
 
+const targetEnvironment = (process.env.TargetEnvironment || "custom").toLowerCase();
+
 module.exports = {
   entry: './src/main.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'app.js'
   },
   module: {
     rules: [
@@ -86,17 +88,16 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, "src")
+      '@config': path.resolve(__dirname, `src/config/config.${targetEnvironment}.ts`),
+      '@': path.resolve(__dirname, "src"),
+      '@common': path.resolve(__dirname, "../common/src")
     },
     extensions: ['*', '.js', '.ts', '.vue', '.json']
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true,
-    proxy: {
-      '/api/': 'http://127.0.0.1:7071'
-    }
+    overlay: true
   },
   performance: {
     hints: false

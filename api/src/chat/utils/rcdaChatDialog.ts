@@ -1,10 +1,11 @@
-import { Dialog, IDialogWaterfallStep } from "botbuilder";
-import { RcdaDialogDefinition, RcdaDialogWaterfallStep, RcdaChatDialog, FrameworkDialogDefinition, RcdaDialogWaterfallStepContext } from "@/chat/utils/rcda-chat-types";
+import { Dialog, IDialogWaterfallStep, ITriggerActionOptions } from "botbuilder";
+import { RcdaDialogDefinition, RcdaDialogWaterfallStep, RcdaChatDialog, RcdaChatDialogOptions, FrameworkDialogDefinition, RcdaDialogWaterfallStepContext } from "@/chat/utils/rcda-chat-types";
 
 export default function rcdaChatDialog<TDependencies>(
     id: string, 
     dependencyFactory: () => TDependencies,
-    rcdaDialog: RcdaDialogDefinition<TDependencies>): RcdaChatDialog 
+    rcdaDialog: RcdaDialogDefinition<TDependencies>,
+    options?: RcdaChatDialogOptions): RcdaChatDialog 
 {    
     let dialog: FrameworkDialogDefinition;
     // is a function
@@ -23,7 +24,7 @@ export default function rcdaChatDialog<TDependencies>(
         }
     }
     
-    return { id, dialog }
+    return { id, dialog, options }
 }
 
 function standardDialogAdapter<TDependencies>(

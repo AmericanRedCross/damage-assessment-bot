@@ -1,0 +1,52 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2018-05-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "tenantId": {
+            "type": "string"
+        },
+        "keyVaultName": {
+            "type": "string"
+        },
+        "securityPrincipalId": {
+            "type": "string"
+        },
+        "additionalAccessPolicies": {
+            "type": "array",
+            "defaultValue": []
+        }
+    },
+    "variables": {
+        "deployAgentAccessPolicy": {
+            "tenantId": "[parameters('tenantId')]",
+            "objectId": "[parameters('securityPrincipalId')]",
+            "permissions": {
+                "secrets": [
+                    "get",
+                    "list"
+                ]
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "[parameters('keyVaultName')]",
+            "kind": "StorageV2",
+            "location": "[parameters('location')]",
+            "apiVersion": "2018-02-14",
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "accessPolicies": "[union(array(variables('deployAgentAccessPolicy')), parameters('additionalAccessPolicies'))]",
+                "tenantId": "[parameters('tenantId')]",
+                "enabledForTemplateDeployment": true
+            }
+        }
+    ]
+}

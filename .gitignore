@@ -63,10 +63,13 @@ typings/
 # VS2017 files
 .vs/
 
-# Azure Functions local settings
-local.settings.json
+# Local development config files
+api/src/functions/root/local.settings.json
+web/src/config/config.custom.ts
+deploy/config/config.values.json
 
 # built output directories
 bin/
 dist/
 built/
+obj/
