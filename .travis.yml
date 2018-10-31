@@ -1,10 +1,6 @@
 language: node_js
 node_js:
 - lts/*
-before_install:
-- echo "The current branch which is being built -- $TRAVIS_BRANCH"
-- git checkout $TRAVIS_BRANCH
-- rm -rf ".git"
 install: npm install
 before_script: |
     case "$TRAVIS_BRANCH" in
