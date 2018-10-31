@@ -5,5 +5,8 @@
         "install-common": "cd common && npm install",
         "install-web": "cd web && npm install",
         "install-deploy": "cd deploy && npm install"
+    },
+    "devDependencies": {
+        "axios": "^0.18.0"
     }
 }
