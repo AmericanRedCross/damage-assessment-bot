@@ -3,6 +3,7 @@ const fs = require("fs");
 
 (async function() {
 
+    // data sourced from web page http://geonode.themimu.info/layers/geonode%3Amyanmar_township_boundaries (click link 'Download Layer', then 'GeoJSON')
     let myanmarTownshipsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_township_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
 
     let townships = [];
