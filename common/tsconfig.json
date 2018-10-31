@@ -5,12 +5,12 @@
         "types": ["reflect-metadata"],
         "module": "commonjs",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "noImplicitAny": true,
         "strict": true,
         "strictNullChecks": true,
-        "isolatedModules": true,
         "outDir": "bin",
         "composite": true,
         "declarationMap": true,
@@ -21,5 +21,11 @@
         "paths": {
             "@common/*": [ "./*" ]
         }
-    }
+    },
+    "include": [
+        "./src/**/*.ts",
+    ],
+    "files": [
+        "./src/system/countries/myanmar/myanmarTownships.json"
+    ]
 }
