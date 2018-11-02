@@ -31,10 +31,7 @@ module.exports = async function deployCosmos(armSessionToken) {
             let collection = require(`${cosmosFolderRelativePath}/${collectionFile}`);
 
             await client.database(db.id).containers.createIfNotExists(collection);
-            await client.database(db.id).container(collection.id).replace(collection, {
-                // TODO: this isn't working, need to query these out and update them individually
-               // offerThroughput: configValues.cosmosReadUnitsPerCollection[`${db.id}.${collection.id}`] || configValues.cosmosReadUnitsDefault
-            });
+            await client.database(db.id).container(collection.id).replace(collection);
         }
     }
 }

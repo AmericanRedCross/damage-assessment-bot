@@ -84,25 +84,17 @@
             ],
             "properties": {
                 "name": "[parameters('functionAppName')]",
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('functionAppName'))]"
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('functionAppName'))]",
+                "siteConfig": {
+                    "use32BitWorkerProcess": false,
+                    "cors": {
+                        "allowedOrigins": [
+                            "*"
+                        ]
+                    }
+                }
             },
             "resources": [
-                {
-                    "apiVersion": "2018-02-01",
-                    "type": "config",
-                    "name": "web",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
-                    ],
-                    "properties": {
-                        "use32BitWorkerProcess": false,
-                        "cors": {
-                            "allowedOrigins": [
-                                "*"
-                            ]
-                        }
-                    }
-                },
                 {
                     "apiVersion": "2018-02-01",
                     "name": "swap",
@@ -111,26 +103,16 @@
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
                     ],
-                    "properties": {},
-                    "resources": [
-                        {
-                            "apiVersion": "2018-02-01",
-                            "type": "config",
-                            "name": "web",
-                            "dependsOn": [
-                                "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]",
-                                "[resourceId('Microsoft.Web/sites/slots', parameters('functionAppName'), 'swap')]"
-                            ],
-                            "properties": {
-                                "use32BitWorkerProcess": false,
-                                "cors": {
-                                    "allowedOrigins": [
-                                        "*"
-                                    ]
-                                }
+                    "properties": {
+                        "siteConfig": {
+                            "use32BitWorkerProcess": false,
+                            "cors": {
+                                "allowedOrigins": [
+                                    "*"
+                                ]
                             }
                         }
-                    ]
+                    }
                 }
             ]
         },
