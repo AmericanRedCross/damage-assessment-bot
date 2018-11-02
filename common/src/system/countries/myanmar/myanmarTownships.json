@@ -1,0 +1,2972 @@
+[
+    {
+        "townshipName": "Hinthada",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဟင်္သာတ",
+        "townshipCode": "MMR017008",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Ingapu",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "အင်္ဂပူ",
+        "townshipCode": "MMR017013",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Kyangin",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ကြံခင်း",
+        "townshipCode": "MMR017012",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Lemyethna",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "လေးမျက်နှာ",
+        "townshipCode": "MMR017010",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Myanaung",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "မြန်အောင်",
+        "townshipCode": "MMR017011",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Zalun",
+        "districtName": "Hinthada",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဇလွန်",
+        "townshipCode": "MMR017009",
+        "districtCode": "MMR017D002",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Labutta",
+        "districtName": "Labutta",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "လပွတ္တာ",
+        "townshipCode": "MMR017016",
+        "districtCode": "MMR017D004",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Mawlamyinegyun",
+        "districtName": "Labutta",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "မော်လမြိုင်ကျွန်း",
+        "townshipCode": "MMR017018",
+        "districtCode": "MMR017D004",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Danubyu",
+        "districtName": "Maubin",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဓနုဖြူ",
+        "townshipCode": "MMR017022",
+        "districtCode": "MMR017D005",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Maubin",
+        "districtName": "Maubin",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "မအူပင်",
+        "townshipCode": "MMR017019",
+        "districtCode": "MMR017D005",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Nyaungdon",
+        "districtName": "Maubin",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ညောင်တုန်း",
+        "townshipCode": "MMR017021",
+        "districtCode": "MMR017D005",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Pantanaw",
+        "districtName": "Maubin",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ပန်းတနော်",
+        "townshipCode": "MMR017020",
+        "districtCode": "MMR017D005",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Einme",
+        "districtName": "Myaungmya",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "အိမ္မဲ",
+        "townshipCode": "MMR017015",
+        "districtCode": "MMR017D003",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Myaungmya",
+        "districtName": "Myaungmya",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "မြောင်းမြ",
+        "townshipCode": "MMR017014",
+        "districtCode": "MMR017D003",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Wakema",
+        "districtName": "Myaungmya",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဝါးခယ်မ",
+        "townshipCode": "MMR017017",
+        "districtCode": "MMR017D003",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Kangyidaunt",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ကန်ကြီးထောင့်",
+        "townshipCode": "MMR017002",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Kyaunggon",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ကျောင်းကုန်း",
+        "townshipCode": "MMR017007",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Kyonpyaw",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ကျုံပျော်",
+        "townshipCode": "MMR017005",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Ngapudaw",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ငပုတော",
+        "townshipCode": "MMR017004",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Pathein",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ပုသိမ်",
+        "townshipCode": "MMR017001",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Thabaung",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "သာပေါင်း",
+        "townshipCode": "MMR017003",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Yegyi",
+        "districtName": "Pathein",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ရေကြည်",
+        "townshipCode": "MMR017006",
+        "districtCode": "MMR017D001",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Bogale",
+        "districtName": "Pyapon",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဘိုကလေး",
+        "townshipCode": "MMR017024",
+        "districtCode": "MMR017D006",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Dedaye",
+        "districtName": "Pyapon",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဒေးဒရဲ",
+        "townshipCode": "MMR017026",
+        "districtCode": "MMR017D006",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Kyaiklat",
+        "districtName": "Pyapon",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ကျိုက်လတ်",
+        "townshipCode": "MMR017025",
+        "districtCode": "MMR017D006",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Pyapon",
+        "districtName": "Pyapon",
+        "regionName": "Ayeyarwady",
+        "townshipNameBurmese": "ဖျာပုံ",
+        "townshipCode": "MMR017023",
+        "districtCode": "MMR017D006",
+        "regionCode": "MMR017"
+    },
+    {
+        "townshipName": "Bago",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ပဲခူး",
+        "townshipCode": "MMR007001",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Daik-U",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ဒိုက်ဦး",
+        "townshipCode": "MMR007007",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Kawa",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ကဝ",
+        "townshipCode": "MMR007003",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Kyauktaga",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ကျောက်တံခါး",
+        "townshipCode": "MMR007006",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Nyaunglebin",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ညောင်လေးပင်",
+        "townshipCode": "MMR007005",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Shwegyin",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ရွှေကျင်",
+        "townshipCode": "MMR007008",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Thanatpin",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "သနပ်ပင်",
+        "townshipCode": "MMR007002",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Waw",
+        "districtName": "Bago",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ဝေါ",
+        "townshipCode": "MMR007004",
+        "districtCode": "MMR007D001",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Htantabin",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ထန်းတပင်",
+        "townshipCode": "MMR007014",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Kyaukkyi",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ကျောက်ကြီး",
+        "townshipCode": "MMR007011",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Oktwin",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "အုတ်တွင်း",
+        "townshipCode": "MMR007013",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Phyu",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ဖြူး",
+        "townshipCode": "MMR007012",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Taungoo",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "တောင်ငူ",
+        "townshipCode": "MMR007009",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Yedashe",
+        "districtName": "Taungoo",
+        "regionName": "Bago (East)",
+        "townshipNameBurmese": "ရေတာရှည်",
+        "townshipCode": "MMR007010",
+        "districtCode": "MMR007D002",
+        "regionCode": "MMR007"
+    },
+    {
+        "townshipName": "Padaung",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ပန်းတောင်း",
+        "townshipCode": "MMR008003",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Paukkhaung",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ပေါက်ခေါင်း",
+        "townshipCode": "MMR008002",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Paungde",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ပေါင်းတည်",
+        "townshipCode": "MMR008004",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Pyay",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ပြည်",
+        "townshipCode": "MMR008001",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Shwedaung",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ရွှေတောင်",
+        "townshipCode": "MMR008006",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Thegon",
+        "districtName": "Pyay",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "သဲကုန်း",
+        "townshipCode": "MMR008005",
+        "districtCode": "MMR008D001",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Gyobingauk",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ကြို့ပင်ကောက်",
+        "townshipCode": "MMR008014",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Letpadan",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "လက်ပံတန်း",
+        "townshipCode": "MMR008008",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Minhla",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "မင်းလှ",
+        "townshipCode": "MMR008009",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Monyo",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "မိုးညို",
+        "townshipCode": "MMR008013",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Nattalin",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "နတ္တလင်း",
+        "townshipCode": "MMR008012",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Okpho",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "အုတ်ဖို",
+        "townshipCode": "MMR008010",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Thayarwady",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "သာယာဝတီ",
+        "townshipCode": "MMR008007",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Zigon",
+        "districtName": "Thayarwady",
+        "regionName": "Bago (West)",
+        "townshipNameBurmese": "ဇီးကုန်း",
+        "townshipCode": "MMR008011",
+        "districtCode": "MMR008D002",
+        "regionCode": "MMR008"
+    },
+    {
+        "townshipName": "Falam",
+        "districtName": "Falam",
+        "regionName": "Chin",
+        "townshipNameBurmese": "ဖလမ်း",
+        "townshipCode": "MMR004001",
+        "districtCode": "MMR004D001",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Tedim",
+        "districtName": "Falam",
+        "regionName": "Chin",
+        "townshipNameBurmese": "တီးတိန်",
+        "townshipCode": "MMR004004",
+        "districtCode": "MMR004D001",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Tonzang",
+        "districtName": "Falam",
+        "regionName": "Chin",
+        "townshipNameBurmese": "တွန်းဇံ",
+        "townshipCode": "MMR004005",
+        "districtCode": "MMR004D001",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Hakha",
+        "districtName": "Hakha",
+        "regionName": "Chin",
+        "townshipNameBurmese": "ဟားခါး",
+        "townshipCode": "MMR004002",
+        "districtCode": "MMR004D003",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Thantlang",
+        "districtName": "Hakha",
+        "regionName": "Chin",
+        "townshipNameBurmese": "ထန်တလန်",
+        "townshipCode": "MMR004003",
+        "districtCode": "MMR004D003",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Kanpetlet",
+        "districtName": "Mindat",
+        "regionName": "Chin",
+        "townshipNameBurmese": "ကန်ပက်လက်",
+        "townshipCode": "MMR004008",
+        "districtCode": "MMR004D002",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Matupi",
+        "districtName": "Mindat",
+        "regionName": "Chin",
+        "townshipNameBurmese": "မတူပီ",
+        "townshipCode": "MMR004007",
+        "districtCode": "MMR004D002",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Mindat",
+        "districtName": "Mindat",
+        "regionName": "Chin",
+        "townshipNameBurmese": "မင်းတပ်",
+        "townshipCode": "MMR004006",
+        "districtCode": "MMR004D002",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Paletwa",
+        "districtName": "Mindat",
+        "regionName": "Chin",
+        "townshipNameBurmese": "ပလက်ဝ",
+        "townshipCode": "MMR004009",
+        "districtCode": "MMR004D002",
+        "regionCode": "MMR004"
+    },
+    {
+        "townshipName": "Bhamo",
+        "districtName": "Bhamo",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ဗန်းမော်",
+        "townshipCode": "MMR001010",
+        "districtCode": "MMR001D003",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Mansi",
+        "districtName": "Bhamo",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မန်စီ",
+        "townshipCode": "MMR001013",
+        "districtCode": "MMR001D003",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Momauk",
+        "districtName": "Bhamo",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မိုးမောက်",
+        "townshipCode": "MMR001012",
+        "districtCode": "MMR001D003",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Shwegu",
+        "districtName": "Bhamo",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ရွှေကူ",
+        "townshipCode": "MMR001011",
+        "districtCode": "MMR001D003",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Hpakant",
+        "districtName": "Mohnyin",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ဖားကန့်",
+        "townshipCode": "MMR001009",
+        "districtCode": "MMR001D002",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Mogaung",
+        "districtName": "Mohnyin",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မိုးကောင်း",
+        "townshipCode": "MMR001008",
+        "districtCode": "MMR001D002",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Mohnyin",
+        "districtName": "Mohnyin",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မိုးညှင်း",
+        "townshipCode": "MMR001007",
+        "districtCode": "MMR001D002",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Chipwi",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ချီဗွေ",
+        "townshipCode": "MMR001005",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Injangyang",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "အင်ဂျန်းယန်",
+        "townshipCode": "MMR001003",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Myitkyina",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မြစ်ကြီးနား",
+        "townshipCode": "MMR001001",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Tanai",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "တနိုင်း",
+        "townshipCode": "MMR001004",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Tsawlaw",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ဆော့လော်",
+        "townshipCode": "MMR001006",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Waingmaw",
+        "districtName": "Myitkyina",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ဝိုင်းမော်",
+        "townshipCode": "MMR001002",
+        "districtCode": "MMR001D001",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Khaunglanhpu",
+        "districtName": "Puta-O",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ခေါင်လန်ဖူး",
+        "townshipCode": "MMR001018",
+        "districtCode": "MMR001D004",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Machanbaw",
+        "districtName": "Puta-O",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "မချမ်းဘော",
+        "townshipCode": "MMR001016",
+        "districtCode": "MMR001D004",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Nawngmun",
+        "districtName": "Puta-O",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "နောင်မွန်း",
+        "townshipCode": "MMR001017",
+        "districtCode": "MMR001D004",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Puta-O",
+        "districtName": "Puta-O",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ပူတာအို",
+        "townshipCode": "MMR001014",
+        "districtCode": "MMR001D004",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Sumprabum",
+        "districtName": "Puta-O",
+        "regionName": "Kachin",
+        "townshipNameBurmese": "ဆွမ်ပရာဘွမ်",
+        "townshipCode": "MMR001015",
+        "districtCode": "MMR001D004",
+        "regionCode": "MMR001"
+    },
+    {
+        "townshipName": "Bawlake",
+        "districtName": "Bawlake",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "ဘောလခဲ",
+        "townshipCode": "MMR002005",
+        "districtCode": "MMR002D002",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Hpasawng",
+        "districtName": "Bawlake",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "ဖားဆောင်း",
+        "townshipCode": "MMR002006",
+        "districtCode": "MMR002D002",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Mese",
+        "districtName": "Bawlake",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "မယ်စဲ့",
+        "townshipCode": "MMR002007",
+        "districtCode": "MMR002D002",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Demoso",
+        "districtName": "Loikaw",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "ဒီမောဆို",
+        "townshipCode": "MMR002002",
+        "districtCode": "MMR002D001",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Hpruso",
+        "districtName": "Loikaw",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "ဖရူဆို",
+        "townshipCode": "MMR002003",
+        "districtCode": "MMR002D001",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Loikaw",
+        "districtName": "Loikaw",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "လွိုင်ကော်",
+        "townshipCode": "MMR002001",
+        "districtCode": "MMR002D001",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Shadaw",
+        "districtName": "Loikaw",
+        "regionName": "Kayah",
+        "townshipNameBurmese": "ရှားတော",
+        "townshipCode": "MMR002004",
+        "districtCode": "MMR002D001",
+        "regionCode": "MMR002"
+    },
+    {
+        "townshipName": "Hlaingbwe",
+        "districtName": "Hpa-An",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "လှိုင်းဘွဲ့",
+        "townshipCode": "MMR003002",
+        "districtCode": "MMR003D001",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Hpa-An",
+        "districtName": "Hpa-An",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "ဘားအံ",
+        "townshipCode": "MMR003001",
+        "districtCode": "MMR003D001",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Thandaunggyi",
+        "districtName": "Hpa-An",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "သံတောင်ကြီး",
+        "townshipCode": "MMR003004",
+        "districtCode": "MMR003D001",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Hpapun",
+        "districtName": "Hpapun",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "ဖာပွန်",
+        "townshipCode": "MMR003003",
+        "districtCode": "MMR003D004",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Kawkareik",
+        "districtName": "Kawkareik",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "ကော့ကရိတ်",
+        "townshipCode": "MMR003006",
+        "districtCode": "MMR003D003",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Kyainseikgyi",
+        "districtName": "Kawkareik",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "ကြာအင်းဆိပ်ကြီး",
+        "townshipCode": "MMR003007",
+        "districtCode": "MMR003D003",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Myawaddy",
+        "districtName": "Myawaddy",
+        "regionName": "Kayin",
+        "townshipNameBurmese": "မြဝတီ",
+        "townshipCode": "MMR003005",
+        "districtCode": "MMR003D002",
+        "regionCode": "MMR003"
+    },
+    {
+        "townshipName": "Gangaw",
+        "districtName": "Gangaw",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ဂန့်ဂေါ",
+        "townshipCode": "MMR009023",
+        "districtCode": "MMR009D005",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Saw",
+        "districtName": "Gangaw",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ဆော",
+        "townshipCode": "MMR009025",
+        "districtCode": "MMR009D005",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Tilin",
+        "districtName": "Gangaw",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ထီးလင်း",
+        "townshipCode": "MMR009024",
+        "districtCode": "MMR009D005",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Chauk",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ချောက်",
+        "townshipCode": "MMR009003",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Magway",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မကွေး",
+        "townshipCode": "MMR009001",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Myothit",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မြို့သစ်",
+        "townshipCode": "MMR009005",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Natmauk",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "နတ်မောက်",
+        "townshipCode": "MMR009006",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Taungdwingyi",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "တောင်တွင်းကြီး",
+        "townshipCode": "MMR009004",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Yenangyaung",
+        "districtName": "Magway",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ရေနံချောင်း",
+        "townshipCode": "MMR009002",
+        "districtCode": "MMR009D001",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Minbu",
+        "districtName": "Minbu",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မင်းဘူး",
+        "townshipCode": "MMR009007",
+        "districtCode": "MMR009D002",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Ngape",
+        "districtName": "Minbu",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ငဖဲ",
+        "townshipCode": "MMR009009",
+        "districtCode": "MMR009D002",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Pwintbyu",
+        "districtName": "Minbu",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ပွင့်ဖြူ",
+        "townshipCode": "MMR009008",
+        "districtCode": "MMR009D002",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Salin",
+        "districtName": "Minbu",
+        "regionName": "Magway",
+        "townshipNameBurmese": "စလင်း",
+        "townshipCode": "MMR009010",
+        "districtCode": "MMR009D002",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Sidoktaya",
+        "districtName": "Minbu",
+        "regionName": "Magway",
+        "townshipNameBurmese": "စေတုတ္တရာ",
+        "townshipCode": "MMR009011",
+        "districtCode": "MMR009D002",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Myaing",
+        "districtName": "Pakokku",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မြိုင်",
+        "townshipCode": "MMR009020",
+        "districtCode": "MMR009D004",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Pakokku",
+        "districtName": "Pakokku",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ပခုက္ကူ",
+        "townshipCode": "MMR009018",
+        "districtCode": "MMR009D004",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Pauk",
+        "districtName": "Pakokku",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ပေါက်",
+        "townshipCode": "MMR009021",
+        "districtCode": "MMR009D004",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Seikphyu",
+        "districtName": "Pakokku",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ဆိပ်ဖြူ",
+        "townshipCode": "MMR009022",
+        "districtCode": "MMR009D004",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Yesagyo",
+        "districtName": "Pakokku",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ရေစကြို",
+        "townshipCode": "MMR009019",
+        "districtCode": "MMR009D004",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Aunglan",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "အောင်လံ",
+        "townshipCode": "MMR009016",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Kamma",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ကံမ",
+        "townshipCode": "MMR009015",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Mindon",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မင်းတုန်း",
+        "townshipCode": "MMR009014",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Minhla",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "မင်းလှ",
+        "townshipCode": "MMR009013",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Sinbaungwe",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "ဆင်ပေါင်ဝဲ",
+        "townshipCode": "MMR009017",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Thayet",
+        "districtName": "Thayet",
+        "regionName": "Magway",
+        "townshipNameBurmese": "သရက်",
+        "townshipCode": "MMR009012",
+        "districtCode": "MMR009D003",
+        "regionCode": "MMR009"
+    },
+    {
+        "townshipName": "Kyaukse",
+        "districtName": "Kyaukse",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ကျောက်ဆည်",
+        "townshipCode": "MMR010013",
+        "districtCode": "MMR010D003",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Myittha",
+        "districtName": "Kyaukse",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မြစ်သား",
+        "townshipCode": "MMR010015",
+        "districtCode": "MMR010D003",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Sintgaing",
+        "districtName": "Kyaukse",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "စဉ့်ကိုင်",
+        "townshipCode": "MMR010014",
+        "districtCode": "MMR010D003",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Tada-U",
+        "districtName": "Kyaukse",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "တံတားဦး",
+        "townshipCode": "MMR010016",
+        "districtCode": "MMR010D003",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Amarapura",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "အမရပူရ",
+        "townshipCode": "MMR010006",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Aungmyaythazan",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "အောင်မြေသာဇံ",
+        "townshipCode": "MMR010001",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Chanayethazan",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ချမ်းအေးသာဇံ",
+        "townshipCode": "MMR010002",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Chanmyathazi",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ချမ်းမြသာစည်",
+        "townshipCode": "MMR010004",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Mahaaungmyay",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မဟာအောင်မြေ",
+        "townshipCode": "MMR010003",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Patheingyi",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ပုသိမ်ကြီး",
+        "townshipCode": "MMR010007",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Pyigyitagon",
+        "districtName": "Mandalay",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ပြည်ကြီးတံခွန်",
+        "townshipCode": "MMR010005",
+        "districtCode": "MMR010D001",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Mahlaing",
+        "districtName": "Meiktila",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မလှိုင်",
+        "townshipCode": "MMR010029",
+        "districtCode": "MMR010D007",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Meiktila",
+        "districtName": "Meiktila",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မိတ္ထီလာ",
+        "townshipCode": "MMR010028",
+        "districtCode": "MMR010D007",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Thazi",
+        "districtName": "Meiktila",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "သာစည်",
+        "townshipCode": "MMR010030",
+        "districtCode": "MMR010D007",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Wundwin",
+        "districtName": "Meiktila",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ဝမ်းတွင်း",
+        "townshipCode": "MMR010031",
+        "districtCode": "MMR010D007",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Myingyan",
+        "districtName": "Myingyan",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မြင်းခြံ",
+        "townshipCode": "MMR010017",
+        "districtCode": "MMR010D004",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Natogyi",
+        "districtName": "Myingyan",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "နွားထိုးကြီး",
+        "townshipCode": "MMR010019",
+        "districtCode": "MMR010D004",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Ngazun",
+        "districtName": "Myingyan",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ငါန်းဇွန်",
+        "townshipCode": "MMR010021",
+        "districtCode": "MMR010D004",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Taungtha",
+        "districtName": "Myingyan",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "တောင်သာ",
+        "townshipCode": "MMR010018",
+        "districtCode": "MMR010D004",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Kyaukpadaung",
+        "districtName": "Nyaung-U",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ကျောက်ပန်းတောင်း",
+        "townshipCode": "MMR010020",
+        "districtCode": "MMR010D005",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Nyaung-U",
+        "districtName": "Nyaung-U",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ညောင်ဦး",
+        "townshipCode": "MMR010022",
+        "districtCode": "MMR010D005",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Madaya",
+        "districtName": "Pyinoolwin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မတ္တရာ",
+        "townshipCode": "MMR010009",
+        "districtCode": "MMR010D002",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Mogoke",
+        "districtName": "Pyinoolwin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "မိုးကုတ်",
+        "townshipCode": "MMR010011",
+        "districtCode": "MMR010D002",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Pyinoolwin",
+        "districtName": "Pyinoolwin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ပြင်ဦးလွင်",
+        "townshipCode": "MMR010008",
+        "districtCode": "MMR010D002",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Singu",
+        "districtName": "Pyinoolwin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "စဉ့်ကူး",
+        "townshipCode": "MMR010010",
+        "districtCode": "MMR010D002",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Thabeikkyin",
+        "districtName": "Pyinoolwin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "သပိတ်ကျဉ်း",
+        "townshipCode": "MMR010012",
+        "districtCode": "MMR010D002",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Pyawbwe",
+        "districtName": "Yamethin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ပျော်ဘွယ်",
+        "townshipCode": "MMR010024",
+        "districtCode": "MMR010D006",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Yamethin",
+        "districtName": "Yamethin",
+        "regionName": "Mandalay",
+        "townshipNameBurmese": "ရမည်းသင်း",
+        "townshipCode": "MMR010023",
+        "districtCode": "MMR010D006",
+        "regionCode": "MMR010"
+    },
+    {
+        "townshipName": "Chaungzon",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ချောင်းဆုံ",
+        "townshipCode": "MMR011003",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Kyaikmaraw",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ကျိုက္မရော",
+        "townshipCode": "MMR011002",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Mawlamyine",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "မော်လမြိုင်",
+        "townshipCode": "MMR011001",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Mudon",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "မုဒုံ",
+        "townshipCode": "MMR011005",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Thanbyuzayat",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "သံဖြူဇရပ်",
+        "townshipCode": "MMR011004",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Ye",
+        "districtName": "Mawlamyine",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ရေး",
+        "townshipCode": "MMR011006",
+        "districtCode": "MMR011D001",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Bilin",
+        "districtName": "Thaton",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ဘီးလင်း",
+        "townshipCode": "MMR011010",
+        "districtCode": "MMR011D002",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Kyaikto",
+        "districtName": "Thaton",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ကျိုက်ထို",
+        "townshipCode": "MMR011009",
+        "districtCode": "MMR011D002",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Paung",
+        "districtName": "Thaton",
+        "regionName": "Mon",
+        "townshipNameBurmese": "ပေါင်",
+        "townshipCode": "MMR011008",
+        "districtCode": "MMR011D002",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Thaton",
+        "districtName": "Thaton",
+        "regionName": "Mon",
+        "townshipNameBurmese": "သထုံ",
+        "townshipCode": "MMR011007",
+        "districtCode": "MMR011D002",
+        "regionCode": "MMR011"
+    },
+    {
+        "townshipName": "Det Khi Na Thi Ri",
+        "districtName": "Det Khi Na",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ဒက္ခိဏသီရိ",
+        "townshipCode": "MMR018004",
+        "districtCode": "MMR018D002",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Lewe",
+        "districtName": "Det Khi Na",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "လယ်ဝေး",
+        "townshipCode": "MMR018007",
+        "districtCode": "MMR018D002",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Pyinmana",
+        "districtName": "Det Khi Na",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ပျဉ်းမနား",
+        "townshipCode": "MMR018006",
+        "districtCode": "MMR018D002",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Za Bu Thi Ri",
+        "districtName": "Det Khi Na",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ဇမ္ဗူသီရိ",
+        "townshipCode": "MMR018002",
+        "districtCode": "MMR018D002",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Oke Ta Ra Thi Ri",
+        "districtName": "Oke Ta Ra",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ဥတ္တရသီရိ",
+        "townshipCode": "MMR018008",
+        "districtCode": "MMR018D001",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Poke Ba Thi Ri",
+        "districtName": "Oke Ta Ra",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ပုဗ္ဗသီရိ",
+        "townshipCode": "MMR018005",
+        "districtCode": "MMR018D001",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Tatkon",
+        "districtName": "Oke Ta Ra",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "တပ်ကုန်း",
+        "townshipCode": "MMR018003",
+        "districtCode": "MMR018D001",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Zay Yar Thi Ri",
+        "districtName": "Oke Ta Ra",
+        "regionName": "Nay Pyi Taw",
+        "townshipNameBurmese": "ဇေယျာသီရိ",
+        "townshipCode": "MMR018001",
+        "districtCode": "MMR018D001",
+        "regionCode": "MMR018"
+    },
+    {
+        "townshipName": "Ann",
+        "districtName": "Kyaukpyu",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "အမ်း",
+        "townshipCode": "MMR012014",
+        "districtCode": "MMR012D003",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Kyaukpyu",
+        "districtName": "Kyaukpyu",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ကျောက်ဖြူ",
+        "townshipCode": "MMR012011",
+        "districtCode": "MMR012D003",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Munaung",
+        "districtName": "Kyaukpyu",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "မာန်အောင်",
+        "townshipCode": "MMR012012",
+        "districtCode": "MMR012D003",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Ramree",
+        "districtName": "Kyaukpyu",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ရမ်းဗြဲ",
+        "townshipCode": "MMR012013",
+        "districtCode": "MMR012D003",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Buthidaung",
+        "districtName": "Maungdaw",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ဘူးသီးတောင်",
+        "townshipCode": "MMR012010",
+        "districtCode": "MMR012D002",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Maungdaw",
+        "districtName": "Maungdaw",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "မောင်တော",
+        "townshipCode": "MMR012009",
+        "districtCode": "MMR012D002",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Kyauktaw",
+        "districtName": "Mrauk-U",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ကျောက်တော်",
+        "townshipCode": "MMR012004",
+        "districtCode": "MMR012D005",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Minbya",
+        "districtName": "Mrauk-U",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "မင်းပြား",
+        "townshipCode": "MMR012005",
+        "districtCode": "MMR012D005",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Mrauk-U",
+        "districtName": "Mrauk-U",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "မြောက်ဦး",
+        "townshipCode": "MMR012003",
+        "districtCode": "MMR012D005",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Myebon",
+        "districtName": "Mrauk-U",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "မြေပုံ",
+        "townshipCode": "MMR012006",
+        "districtCode": "MMR012D005",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Pauktaw",
+        "districtName": "Sittwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ပေါက်တော",
+        "townshipCode": "MMR012007",
+        "districtCode": "MMR012D001",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Ponnagyun",
+        "districtName": "Sittwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ပုဏ္ဏားကျွန်း",
+        "townshipCode": "MMR012002",
+        "districtCode": "MMR012D001",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Rathedaung",
+        "districtName": "Sittwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ရသေ့တောင်",
+        "townshipCode": "MMR012008",
+        "districtCode": "MMR012D001",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Sittwe",
+        "districtName": "Sittwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "စစ်တွေ",
+        "townshipCode": "MMR012001",
+        "districtCode": "MMR012D001",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Gwa",
+        "districtName": "Thandwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "ဂွ",
+        "townshipCode": "MMR012017",
+        "districtCode": "MMR012D004",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Thandwe",
+        "districtName": "Thandwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "သံတွဲ",
+        "townshipCode": "MMR012015",
+        "districtCode": "MMR012D004",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Toungup",
+        "districtName": "Thandwe",
+        "regionName": "Rakhine",
+        "townshipNameBurmese": "တောင်ကုတ်",
+        "townshipCode": "MMR012016",
+        "districtCode": "MMR012D004",
+        "regionCode": "MMR012"
+    },
+    {
+        "townshipName": "Hkamti",
+        "districtName": "Hkamti",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ခန္တီး",
+        "townshipCode": "MMR005033",
+        "districtCode": "MMR005D008",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Homalin",
+        "districtName": "Hkamti",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဟုမ္မလင်း",
+        "townshipCode": "MMR005034",
+        "districtCode": "MMR005D008",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Lahe",
+        "districtName": "Hkamti",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "လဟယ်",
+        "townshipCode": "MMR005036",
+        "districtCode": "MMR005D008",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Lay Shi",
+        "districtName": "Hkamti",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "လေရှီး",
+        "townshipCode": "MMR005035",
+        "districtCode": "MMR005D008",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Nanyun",
+        "districtName": "Hkamti",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "နန်းယွန်း",
+        "townshipCode": "MMR005037",
+        "districtCode": "MMR005D008",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kale",
+        "districtName": "Kale",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကလေး",
+        "townshipCode": "MMR005027",
+        "districtCode": "MMR005D005",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kalewa",
+        "districtName": "Kale",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကလေးဝ",
+        "townshipCode": "MMR005028",
+        "districtCode": "MMR005D005",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Mingin",
+        "districtName": "Kale",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "မင်းကင်း",
+        "townshipCode": "MMR005029",
+        "districtCode": "MMR005D005",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kanbalu",
+        "districtName": "Kanbalu",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကန့်ဘလူ",
+        "townshipCode": "MMR005007",
+        "districtCode": "MMR005D010",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kyunhla",
+        "districtName": "Kanbalu",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကျွန်းလှ",
+        "townshipCode": "MMR005008",
+        "districtCode": "MMR005D010",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Banmauk",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဗန်းမောက်",
+        "townshipCode": "MMR005023",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Indaw",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "အင်းတော်",
+        "townshipCode": "MMR005021",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Katha",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကသာ",
+        "townshipCode": "MMR005020",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kawlin",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကောလင်း",
+        "townshipCode": "MMR005024",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Pinlebu",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ပင်လည်ဘူး",
+        "townshipCode": "MMR005026",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Tigyaing",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ထီးချိုင့်",
+        "townshipCode": "MMR005022",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Wuntho",
+        "districtName": "Katha",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဝန်းသို",
+        "townshipCode": "MMR005025",
+        "districtCode": "MMR005D004",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Mawlaik",
+        "districtName": "Mawlaik",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "မော်လိုက်",
+        "townshipCode": "MMR005031",
+        "districtCode": "MMR005D007",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Paungbyin",
+        "districtName": "Mawlaik",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဖေါင်းပြင်",
+        "townshipCode": "MMR005032",
+        "districtCode": "MMR005D007",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Ayadaw",
+        "districtName": "Monywa",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "အရာတော်",
+        "townshipCode": "MMR005014",
+        "districtCode": "MMR005D003",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Budalin",
+        "districtName": "Monywa",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဘုတလင်",
+        "townshipCode": "MMR005013",
+        "districtCode": "MMR005D003",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Chaung-U",
+        "districtName": "Monywa",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ချောင်းဦး",
+        "townshipCode": "MMR005015",
+        "districtCode": "MMR005D003",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Monywa",
+        "districtName": "Monywa",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "မုံရွာ",
+        "townshipCode": "MMR005012",
+        "districtCode": "MMR005D003",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Myaung",
+        "districtName": "Sagaing",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "မြောင်",
+        "townshipCode": "MMR005003",
+        "districtCode": "MMR005D001",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Myinmu",
+        "districtName": "Sagaing",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "မြင်းမူ",
+        "townshipCode": "MMR005002",
+        "districtCode": "MMR005D001",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Sagaing",
+        "districtName": "Sagaing",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "စစ်ကိုင်း",
+        "townshipCode": "MMR005001",
+        "districtCode": "MMR005D001",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Khin-U",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ခင်ဦး",
+        "townshipCode": "MMR005005",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Shwebo",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ရွှေဘို",
+        "townshipCode": "MMR005004",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Tabayin",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဒီပဲယင်း",
+        "townshipCode": "MMR005010",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Taze",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "တန့်ဆည်",
+        "townshipCode": "MMR005011",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Wetlet",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဝက်လက်",
+        "townshipCode": "MMR005006",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Ye-U",
+        "districtName": "Shwebo",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ရေဦး",
+        "townshipCode": "MMR005009",
+        "districtCode": "MMR005D002",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Tamu",
+        "districtName": "Tamu",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "တမူး",
+        "townshipCode": "MMR005030",
+        "districtCode": "MMR005D006",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kani",
+        "districtName": "Yinmarbin",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ကနီ",
+        "townshipCode": "MMR005017",
+        "districtCode": "MMR005D009",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Pale",
+        "districtName": "Yinmarbin",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ပုလဲ",
+        "townshipCode": "MMR005019",
+        "districtCode": "MMR005D009",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Salingyi",
+        "districtName": "Yinmarbin",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ဆားလင်းကြီး",
+        "townshipCode": "MMR005018",
+        "districtCode": "MMR005D009",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Yinmarbin",
+        "districtName": "Yinmarbin",
+        "regionName": "Sagaing",
+        "townshipNameBurmese": "ယင်းမာပင်",
+        "townshipCode": "MMR005016",
+        "districtCode": "MMR005D009",
+        "regionCode": "MMR005"
+    },
+    {
+        "townshipName": "Kengtung",
+        "districtName": "Kengtung",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "ကျိုင်းတုံ",
+        "townshipCode": "MMR016001",
+        "districtCode": "MMR016D001",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongkhet",
+        "districtName": "Kengtung",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းခတ်",
+        "townshipCode": "MMR016002",
+        "districtCode": "MMR016D001",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongla",
+        "districtName": "Kengtung",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းလား",
+        "townshipCode": "MMR016005",
+        "districtCode": "MMR016D001",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongping",
+        "districtName": "Kengtung",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းပျင်း",
+        "townshipCode": "MMR016007",
+        "districtCode": "MMR016D001",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongyang",
+        "districtName": "Kengtung",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းယန်း",
+        "townshipCode": "MMR016003",
+        "districtCode": "MMR016D001",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Monghsat",
+        "districtName": "Monghsat",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းဆတ်",
+        "townshipCode": "MMR016006",
+        "districtCode": "MMR016D002",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongton",
+        "districtName": "Monghsat",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းတုံ",
+        "townshipCode": "MMR016008",
+        "districtCode": "MMR016D002",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Monghpyak",
+        "districtName": "Tachileik",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းဖြတ်",
+        "townshipCode": "MMR016010",
+        "districtCode": "MMR016D003",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Mongyawng",
+        "districtName": "Tachileik",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "မိုင်းယောင်း",
+        "townshipCode": "MMR016011",
+        "districtCode": "MMR016D003",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Tachileik",
+        "districtName": "Tachileik",
+        "regionName": "Shan (East)",
+        "townshipNameBurmese": "တာချီလိတ်",
+        "townshipCode": "MMR016009",
+        "districtCode": "MMR016D003",
+        "regionCode": "MMR016"
+    },
+    {
+        "townshipName": "Hopang",
+        "districtName": "Hopang",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ဟိုပန်",
+        "townshipCode": "MMR015021",
+        "districtCode": "MMR015D006",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Mongmao",
+        "districtName": "Hopang",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မိုင်းမော",
+        "townshipCode": "MMR015008",
+        "districtCode": "MMR015D006",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Pangwaun",
+        "districtName": "Hopang",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ပန်ဝိုင်",
+        "townshipCode": "MMR015007",
+        "districtCode": "MMR015D006",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Hsipaw",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "သီပေါ",
+        "townshipCode": "MMR015014",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Kyaukme",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ကျောက်မဲ",
+        "townshipCode": "MMR015012",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Manton",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မန်တုန်",
+        "townshipCode": "MMR015019",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Namhsan",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "နမ့်ဆန်",
+        "townshipCode": "MMR015016",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Namtu",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "နမ္မတူ",
+        "townshipCode": "MMR015015",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Nawnghkio",
+        "districtName": "Kyaukme",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "နောင်ချို",
+        "townshipCode": "MMR015013",
+        "districtCode": "MMR015D003",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Hseni",
+        "districtName": "Lashio",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "သိန်းနီ",
+        "townshipCode": "MMR015002",
+        "districtCode": "MMR015D001",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Kunlong",
+        "districtName": "Lashio",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ကွမ်းလုံ",
+        "townshipCode": "MMR015020",
+        "districtCode": "MMR015D001",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Lashio",
+        "districtName": "Lashio",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "လားရှိုး",
+        "townshipCode": "MMR015001",
+        "districtCode": "MMR015D001",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Mongyai",
+        "districtName": "Lashio",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မိုင်းရယ်",
+        "townshipCode": "MMR015003",
+        "districtCode": "MMR015D001",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Tangyan",
+        "districtName": "Lashio",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "တန့်ယန်း",
+        "townshipCode": "MMR015004",
+        "districtCode": "MMR015D001",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Konkyan",
+        "districtName": "Laukkaing",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ကုန်းကြမ်း",
+        "townshipCode": "MMR015023",
+        "districtCode": "MMR015D005",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Laukkaing",
+        "districtName": "Laukkaing",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "လောက်ကိုင်",
+        "townshipCode": "MMR015022",
+        "districtCode": "MMR015D005",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Matman",
+        "districtName": "Matman",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မက်မန်း",
+        "townshipCode": "MMR015024",
+        "districtCode": "MMR015D007",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Narphan",
+        "districtName": "Matman",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "နားဖန့်",
+        "townshipCode": "MMR015006",
+        "districtCode": "MMR015D007",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Pangsang",
+        "districtName": "Matman",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ပန်ဆန်း",
+        "townshipCode": "MMR015005",
+        "districtCode": "MMR015D007",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Mabein",
+        "districtName": "Mongmit",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မဘိမ်း",
+        "townshipCode": "MMR015018",
+        "districtCode": "MMR015D008",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Mongmit",
+        "districtName": "Mongmit",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မိုးမိတ်",
+        "townshipCode": "MMR015017",
+        "districtCode": "MMR015D008",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Kutkai",
+        "districtName": "Muse",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "ကွတ်ခိုင်",
+        "townshipCode": "MMR015011",
+        "districtCode": "MMR015D002",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Muse",
+        "districtName": "Muse",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "မူဆယ်",
+        "townshipCode": "MMR015009",
+        "districtCode": "MMR015D002",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Namhkan",
+        "districtName": "Muse",
+        "regionName": "Shan (North)",
+        "townshipNameBurmese": "နမ့်ခမ်း",
+        "townshipCode": "MMR015010",
+        "districtCode": "MMR015D002",
+        "regionCode": "MMR015"
+    },
+    {
+        "townshipName": "Langkho",
+        "districtName": "Langkho",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "လင်းခေး",
+        "townshipCode": "MMR014018",
+        "districtCode": "MMR014D003",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Mawkmai",
+        "districtName": "Langkho",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "မောက်မယ်",
+        "townshipCode": "MMR014020",
+        "districtCode": "MMR014D003",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Mongnai",
+        "districtName": "Langkho",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "မိုးနဲ",
+        "townshipCode": "MMR014019",
+        "districtCode": "MMR014D003",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Mongpan",
+        "districtName": "Langkho",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "မိုင်းပန်",
+        "townshipCode": "MMR014021",
+        "districtCode": "MMR014D003",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Kunhing",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ကွန်ဟိန်း",
+        "townshipCode": "MMR014014",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Kyethi",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ကျေးသီး",
+        "townshipCode": "MMR014015",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Laihka",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "လဲချား",
+        "townshipCode": "MMR014012",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Loilen",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "လွိုင်လင်",
+        "townshipCode": "MMR014011",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Monghsu",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "မိုင်းရှုး",
+        "townshipCode": "MMR014017",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Mongkaing",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "မိုင်းကိုင်",
+        "townshipCode": "MMR014016",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Nansang",
+        "districtName": "Loilen",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "နမ့်စန်",
+        "townshipCode": "MMR014013",
+        "districtCode": "MMR014D002",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Hopong",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ဟိုပုံး",
+        "townshipCode": "MMR014003",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Hsihseng",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ဆီဆိုင်",
+        "townshipCode": "MMR014004",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Kalaw",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ကလော",
+        "townshipCode": "MMR014005",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Lawksawk",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ရပ်စောက်",
+        "townshipCode": "MMR014008",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Nyaungshwe",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ညောင်ရွှေ",
+        "townshipCode": "MMR014002",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Pekon",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ဖယ်ခုံ",
+        "townshipCode": "MMR014010",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Pindaya",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ပင်းတယ",
+        "townshipCode": "MMR014006",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Pinlaung",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ပင်လောင်း",
+        "townshipCode": "MMR014009",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Taunggyi",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "တောင်ကြီး",
+        "townshipCode": "MMR014001",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Ywangan",
+        "districtName": "Taunggyi",
+        "regionName": "Shan (South)",
+        "townshipNameBurmese": "ရွာငံ",
+        "townshipCode": "MMR014007",
+        "districtCode": "MMR014D001",
+        "regionCode": "MMR014"
+    },
+    {
+        "townshipName": "Dawei",
+        "districtName": "Dawei",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ထားဝယ်",
+        "townshipCode": "MMR006001",
+        "districtCode": "MMR006D001",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Launglon",
+        "districtName": "Dawei",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "လောင်းလုံ",
+        "townshipCode": "MMR006002",
+        "districtCode": "MMR006D001",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Thayetchaung",
+        "districtName": "Dawei",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "သရက်ချောင်း",
+        "townshipCode": "MMR006003",
+        "districtCode": "MMR006D001",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Yebyu",
+        "districtName": "Dawei",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ရေဖြူ",
+        "townshipCode": "MMR006004",
+        "districtCode": "MMR006D001",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Bokpyin",
+        "districtName": "Kawthoung",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ဘုတ်ပြင်း",
+        "townshipCode": "MMR006010",
+        "districtCode": "MMR006D003",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Kawthoung",
+        "districtName": "Kawthoung",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ကော့သောင်း",
+        "townshipCode": "MMR006009",
+        "districtCode": "MMR006D003",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Kyunsu",
+        "districtName": "Myeik",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ကျွန်းစု",
+        "townshipCode": "MMR006006",
+        "districtCode": "MMR006D002",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Myeik",
+        "districtName": "Myeik",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "မြိတ်",
+        "townshipCode": "MMR006005",
+        "districtCode": "MMR006D002",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Palaw",
+        "districtName": "Myeik",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "ပုလော",
+        "townshipCode": "MMR006007",
+        "districtCode": "MMR006D002",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Tanintharyi",
+        "districtName": "Myeik",
+        "regionName": "Tanintharyi",
+        "townshipNameBurmese": "တနင်္သာရီ",
+        "townshipCode": "MMR006008",
+        "districtCode": "MMR006D002",
+        "regionCode": "MMR006"
+    },
+    {
+        "townshipName": "Botahtaung",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဗိုလ်တထောင်",
+        "townshipCode": "MMR013017",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dagon Myothit (East)",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒဂုံမြို့သစ်အရှေ့ပိုင်း",
+        "townshipCode": "MMR013020",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dagon Myothit (North)",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒဂုံမြို့သစ်မြောက်ပိုင်း",
+        "townshipCode": "MMR013019",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dagon Myothit (Seikkan)",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒဂုံမြို့သစ်ဆိပ်ကမ်း",
+        "townshipCode": "MMR013021",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dagon Myothit (South)",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒဂုံမြို့သစ်တောင်ပိုင်း",
+        "townshipCode": "MMR013018",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dawbon",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒေါပုံ",
+        "townshipCode": "MMR013014",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Mingalartaungnyunt",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "မင်္ဂလာတောင်ညွန်",
+        "townshipCode": "MMR013022",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "North Okkalapa",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "မြောက်ဥက္ကလာပ",
+        "townshipCode": "MMR013012",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Pazundaung",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ပုဇွန်တောင်",
+        "townshipCode": "MMR013016",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "South Okkalapa",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "တောင်ဥက္ကလာပ",
+        "townshipCode": "MMR013011",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Tamwe",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "တာမွေ",
+        "townshipCode": "MMR013015",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Thaketa",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "သာကေတ",
+        "townshipCode": "MMR013013",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Thingangyun",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "သင်္ဃန်းကျွန်း",
+        "townshipCode": "MMR013009",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Yankin",
+        "districtName": "Yangon (East)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ရန်ကင်း",
+        "townshipCode": "MMR013010",
+        "districtCode": "MMR013D002",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Hlaingtharya",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "လှိုင်သာယာ",
+        "townshipCode": "MMR013008",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Hlegu",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "လှည်းကူး",
+        "townshipCode": "MMR013004",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Hmawbi",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "မှော်ဘီ",
+        "townshipCode": "MMR013003",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Htantabin",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ထန်းတပင်",
+        "townshipCode": "MMR013006",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Insein",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "အင်းစိန်",
+        "townshipCode": "MMR013001",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Mingaladon",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "မင်္ဂလာဒုံ",
+        "townshipCode": "MMR013002",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Shwepyithar",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ရွှေပြည်သာ",
+        "townshipCode": "MMR013007",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Taikkyi",
+        "districtName": "Yangon (North)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "တိုက်ကြီး",
+        "townshipCode": "MMR013005",
+        "districtCode": "MMR013D001",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Cocokyun",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကိုကိုးကျွန်း",
+        "townshipCode": "MMR013032",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dala",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒလ",
+        "townshipCode": "MMR013030",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kawhmu",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကော့မှုး",
+        "townshipCode": "MMR013028",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kayan",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ခရမ်း",
+        "townshipCode": "MMR013026",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kungyangon",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကွမ်းခြံကုန်း",
+        "townshipCode": "MMR013029",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kyauktan",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကျောက်တန်း",
+        "townshipCode": "MMR013024",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Seikgyikanaungto",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဆိပ်ကြီးခနောင်တို",
+        "townshipCode": "MMR013031",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Thanlyin",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "သန်လျှင်",
+        "townshipCode": "MMR013023",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Thongwa",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "သုံးခွ",
+        "townshipCode": "MMR013025",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Twantay",
+        "districtName": "Yangon (South)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "တွံတေး",
+        "townshipCode": "MMR013027",
+        "districtCode": "MMR013D003",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Ahlone",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "အလုံ",
+        "townshipCode": "MMR013037",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Bahan",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဗဟန်း",
+        "townshipCode": "MMR013044",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Dagon",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဒဂုံ",
+        "townshipCode": "MMR013043",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Hlaing",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "လှိုင်",
+        "townshipCode": "MMR013040",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kamaryut",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကမာရွတ်",
+        "townshipCode": "MMR013041",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kyauktada",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကျောက်တံတား",
+        "townshipCode": "MMR013033",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Kyeemyindaing",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ကြည့်မြင်တိုင်",
+        "townshipCode": "MMR013038",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Lanmadaw",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "လမ်းမတော်",
+        "townshipCode": "MMR013035",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Latha",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "လသာ",
+        "townshipCode": "MMR013036",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Mayangone",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "မရမ်းကုန်း",
+        "townshipCode": "MMR013042",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Pabedan",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ပန်းပဲတန်း",
+        "townshipCode": "MMR013034",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Sanchaung",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "စမ်းချောင်း",
+        "townshipCode": "MMR013039",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    },
+    {
+        "townshipName": "Seikkan",
+        "districtName": "Yangon (West)",
+        "regionName": "Yangon",
+        "townshipNameBurmese": "ဆိပ်ကမ်း",
+        "townshipCode": "MMR013045",
+        "districtCode": "MMR013D004",
+        "regionCode": "MMR013"
+    }
+]
