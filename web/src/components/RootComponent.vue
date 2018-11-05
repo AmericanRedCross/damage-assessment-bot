@@ -12,13 +12,15 @@ import LoginPage from "@/components/pages/LoginPage.vue";
 import AuthService from "@/services/AuthService";
 import ChatRegistrationPage from "@/components/pages/ChatRegistrationPage.vue";
 import DashboardPage from "@/components/pages/DashboardPage.vue";
+import WebChatPage from "@/components/pages/web-chat/WebChatPage.vue";
 
 @Component({
     router: new VueRouter({
         routes: [
             { path: '/', component: DashboardPage },
             { path: '/login', component: LoginPage },
-            { path: '/register', component: ChatRegistrationPage },
+            { path: '/chat', component: WebChatPage },
+            { path: '/chat/register', component: ChatRegistrationPage },
             { path: '*', redirect: '/' }
         ]
     })
@@ -43,9 +45,10 @@ export default class RootComponent extends Vue {
         }
     }
 
-    // hooks TODO: test this
+    // hooks
     private errorCaptured(error: Error) {
-        alert(error.message);
+        // TODO: error notifications in UI?
+        console.error(error.message);
     }
 }
 </script>

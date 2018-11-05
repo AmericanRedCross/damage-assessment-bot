@@ -1,18 +1,19 @@
 {
   "bindings": [
     {
-      "authLevel": "anonymous",
       "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
+      "route": "chat/web/token",
       "methods": [
         "get"
-      ]
+      ],
+      "authLevel": "anonymous",
+      "direction": "in",
+      "name": "req"
     },
     {
       "type": "http",
       "direction": "out",
-      "name": "res"
+      "name": "$return"
     }
   ],
   "disabled": false
