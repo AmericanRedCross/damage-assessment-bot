@@ -94,9 +94,13 @@ async function deployStorageQueues(storageSessionToken) {
 async function deployAzureFunctions(armSessionToken) {
 
     console.log("Deploying azure functions");
+
+    let botServiceKeyResult = await get(azureResourceUrl("Microsoft.BotService/botServices", `${configValues.functionAppName}/channels/WebChatChannel/listkeys`, "2018-07-12"), armSessionToken);
     
     // deploy app settings to the deployment slot
-    await deployArmTemplate("appsettings", armSessionToken);
+    await deployArmTemplate("appsettings", armSessionToken, {
+        "botServiceWebChatSecret": botServiceKeyResult.data.properties.properties.sites[0].key
+    });
 
     // get publish profile credentials
     let publishProfilesResult = await post(azureResourceUrl("Microsoft.Web/sites", `${configValues.functionAppName}/slots/swap/config/publishingcredentials/list`, "2016-08-01"), null, armSessionToken);
