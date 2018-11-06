@@ -14,9 +14,7 @@ export default class AuthService {
             return false;
         }
 
-        //let expirationDate = dayjs(this.userSession.expires);
-
-        return true;//!!expirationDate;
+        return Date.now() < this.userSession.exp;
     }
 
     public async logIn(username: string, password: string) {
