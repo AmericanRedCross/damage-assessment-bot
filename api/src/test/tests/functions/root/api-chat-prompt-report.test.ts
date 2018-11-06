@@ -114,7 +114,6 @@ describe("api/chat/prompt/report function", () => {
                 getChatPromptQueueItems: async () => []
             });
 
-            let userSession = TestUserSession.Valid();
             let httpRequest = new HttpRequestMock<ChatPromptReportRequest>({
                 body: {
                     country: RcdaCountries.Myanmar

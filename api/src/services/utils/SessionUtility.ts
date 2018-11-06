@@ -24,16 +24,24 @@ export default class SessionUtility {
          });
     }
 
-    public getUserSession(user: UserModel): UserSession {
-        return {
+    public getSessionTokenForUser(user: UserModel) {
+        let session: UserSession = {
             userId: user.id,
             roles: user.permissions.roles,
-            issued: this.dateUtility.currentDateString()
+            iat: undefined,
+            exp: undefined
         };
+
+        return this.getSessionToken(session);
     }
 
     public getSessionToken(userSession: UserSession): string {
-        let token = this.jwt.sign(userSession, this.options.jwtSignature, { 
+        let sessionCopy = Object.assign({}, userSession);
+        
+        delete sessionCopy.iat;
+        delete sessionCopy.exp;
+
+        let token = this.jwt.sign(sessionCopy, this.options.jwtSignature, { 
             algorithm: "HS512",
             expiresIn: this.options.sessionDuration
         });
