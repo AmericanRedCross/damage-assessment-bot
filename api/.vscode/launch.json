@@ -5,13 +5,21 @@
       "name": "Debug Jest Tests",
       "type": "node",
       "request": "launch",
-      "runtimeArgs": [
+      "cwd": "${workspaceFolder}",
+      "args": [
         "--inspect-brk",
         "${workspaceRoot}/node_modules/.bin/jest",
         "--runInBand",
-        "--coverage",
-        "false"
+        "--config",
+        "${workspaceRoot}/jest.config.json"
       ],
+      "windows": {
+        "args": [
+          "--inspect-brk",
+          "${workspaceRoot}/node_modules/jest/bin/jest.js",
+          "--runInBand"         
+        ],
+      },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },

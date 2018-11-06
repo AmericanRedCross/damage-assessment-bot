@@ -44,10 +44,8 @@ export default class LoginService {
             });
         }
 
-        let userSession = this.sessionUtility.getUserSession(user);
-
         return {
-            sessionToken: await this.sessionUtility.getSessionToken(userSession)
+            sessionToken: await this.sessionUtility.getSessionTokenForUser(user)
         };
     }
 }
