@@ -14,7 +14,7 @@ export default class AuthService {
             return false;
         }
 
-        return Date.now() < this.userSession.exp;
+        return Date.now() < (this.userSession.exp * 1000 /* convert to milliseconds */);
     }
 
     public async logIn(username: string, password: string) {
