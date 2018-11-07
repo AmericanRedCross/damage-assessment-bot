@@ -18,7 +18,9 @@
             "type": "securestring"
         }
     },
-    "variables": {},
+    "variables": {
+        "apiHealthEndpoint": "/api/health"
+    },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
@@ -127,6 +129,47 @@
             "properties": {
                 "ApplicationId": "[parameters('functionAppName')]"
             }
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "api-health-check",
+            "type": "Microsoft.Insights/webtests",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('functionAppName')))]": "Resource"
+            },
+            "properties": {
+                "Name": "Keep Azure Functions Runtime Warm",
+                "Description": "Pings the API's health check endpoint every 5 minutes. Verifies availability and also keeps the app running, reducing chance of slow-running cold starts.",
+                "Enabled": true,
+                "Frequency": 300,
+                "Timeout": 120,
+                "Kind": "ping",
+                "RetryEnabled": true,
+                "Locations": [
+                    {
+                        "Id": "us-ca-sjc-azr"
+                    },
+                    {
+                        "Id": "us-tx-sn1-azr"
+                    },
+                    {
+                        "Id": "us-il-ch1-azr"
+                    },
+                    {
+                        "Id": "us-va-ash-azr"
+                    },
+                    {
+                        "Id": "us-fl-mia-edge"
+                    }
+                ],
+                "Configuration": {
+                    "WebTest": "[concat('<WebTest Name=\"Keep Azure Functions Runtime Warm\" Id=\"4f2bda38-fdcd-426a-ab10-1c5467ad607a\" Enabled=\"True\" Timeout=\"120\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" > <Items> <Request Method=\"GET\" Guid=\"a8ac8c43-f56b-9a5b-03f8-8db48ef530fc\" Version=\"1.1\" Url=\"https://', reference(resourceId('Microsoft.Web/sites', parameters('functionAppName'))).defaultHostName, variables('apiHealthEndpoint'), '\" ThinkTime=\"0\" Timeout=\"120\" ParseDependentRequests=\"False\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" IgnoreHttpStatusCode=\"False\" /> </Items> </WebTest>')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Insights/components', parameters('functionAppName'))]"
+            ]
         },
         {
             "apiVersion": "2016-03-31",
