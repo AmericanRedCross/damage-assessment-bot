@@ -5,7 +5,7 @@
       "label": "Run Functions Host",
       "identifier": "runFunctionsHost",
       "type": "shell",
-      "command": "func host start --script-root dist --debug VSCode",
+      "command": "npm run start:dev",
       "options": {
         "env": {
           "languageWorkers:node:arguments": "--inspect=5858"

@@ -1,13 +1,17 @@
-import Vue from 'vue'
-import TestComponent from './TestComponent.vue'
-import ConfigService from '@/services/ConfigService';
+import Vue from 'vue';
+import VueRouter from "vue-router";
+import { rcdaApiClient } from '@/services/utils/RcdaApiClient';
+import ChatService from "@/services/ChatService";
+import AuthService from '@/services/AuthService';
+import RootComponent from "@/components/RootComponent.vue";
 
-Vue.config.devtools = true
+Vue.use(VueRouter);
 
 new Vue({
-  el: '#app',
-  render: h => h(TestComponent),
+  el: "#app",
+  render: h => h(RootComponent),
   provide: {
-    ['configService']: new ConfigService()
+    ['authService']: new AuthService(rcdaApiClient),
+    ['chatService']: new ChatService(rcdaApiClient)
   }
-})
+});

@@ -1,20 +1,31 @@
 {
     "compilerOptions": {
         "target": "es5",
-        "lib": ["es6", "dom"],
+        "lib": ["es6", "es2016"],
         "types": ["reflect-metadata"],
         "module": "commonjs",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
+        "noImplicitAny": true,
         "strict": true,
         "strictNullChecks": true,
         "outDir": "bin",
         "composite": true,
-        "declaration": true,
-        "rootDir": "src"
+        "declarationMap": true,
+        "rootDir": "./src",
+        "baseUrl": "src",
+        "sourceRoot": "src",
+        "sourceMap": true,
+        "paths": {
+            "@common/*": [ "./*" ]
+        }
     },
     "include": [
-        "./src/**/*.ts"
+        "./src/**/*.ts",
+    ],
+    "files": [
+        "./src/system/countries/myanmar/myanmarTownships.json"
     ]
 }

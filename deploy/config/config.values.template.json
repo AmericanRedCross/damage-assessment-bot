@@ -1,0 +1,21 @@
+{   "//": "This file is only used for deployment testing, it is not for live CI/CD deployments in travis-ci. See the deploy/README.md for more info.",
+    
+    "tenantId": null,
+    "subscriptionId": null,
+    "resourceGroupName": null,
+    "keyVaultName": null,
+    "deployAgentClientId": null,
+    "deployAgentClientSecret": null,
+
+    "useKeyVaultForConfig": false,
+    
+    "location": null,
+    "functionAppName": null,
+    "storageAccountName": null,
+    "cosmosAccountName": null,
+    "cosmosDbReadUnits": null,
+    "ifrcGoHost": null,
+    "microsoftAppId": null,
+    "microsoftAppPassword": null,
+    "jsonWebTokenSignature": null
+}

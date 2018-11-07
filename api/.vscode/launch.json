@@ -2,6 +2,28 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug Jest Tests",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "args": [
+        "--inspect-brk",
+        "${workspaceRoot}/node_modules/.bin/jest",
+        "--runInBand",
+        "--config",
+        "${workspaceRoot}/jest.config.json"
+      ],
+      "windows": {
+        "args": [
+          "--inspect-brk",
+          "${workspaceRoot}/node_modules/jest/bin/jest.js",
+          "--runInBand"         
+        ],
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
       "name": "Attach to JavaScript Functions",
       "type": "node",
       "request": "attach",
@@ -9,6 +31,7 @@
       "protocol": "inspector",
       "preLaunchTask": "runFunctionsHost",
       "localRoot": "${workspaceRoot}",
+      "remoteRoot": "${workspaceRoot}",
       "cwd": "${workspaceRoot}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {

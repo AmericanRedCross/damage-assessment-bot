@@ -1,0 +1,20 @@
+{
+    "id": "ChatRegistrations",
+    "defaultTtl": 30000,
+    "indexingPolicy": {
+        "automatic": true,
+        "indexingMode": "Consistent",
+        "includedPaths": [
+            {
+                "path": "/*",
+                "indexes": [
+                    {
+                        "dataType": "String",
+                        "precision": -1,
+                        "kind": "Range"
+                    }
+                ]
+            }
+        ]
+    }
+}
