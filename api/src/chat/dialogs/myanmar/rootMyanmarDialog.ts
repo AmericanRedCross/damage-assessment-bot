@@ -2,29 +2,33 @@ import { ListStyle, Prompts, IPromptChoiceResult } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { createReportDialog } from "@/chat/dialogs/myanmar/disaster-assessment/createReportDialog";
 import MyanmarConversationData from "@/chat/models/MyanmarConversationData";
+import { RcdaChatStep } from "@/chat/utils/rcda-chat-types";
 
 export const rootMyanmarDialog = rcdaChatDialog(
     "/rootMyanmar",
     null,
     [
-        ({ session }) => {
-            Prompts.choice(session, "What can I assist with?", 
+        ({ session, localizer }) => {
+            // prompt choice of 'start report' or 'help'
+            Prompts.choice(session, localizer.mm.promptUserToSelectChatbotFeature, 
             [
-                "Start reporting on a disaster",
-                "Help"
+                localizer.mm.startDisasterAssessmentOption,
+                localizer.mm.getHelpOption
             ], { 
                 listStyle: ListStyle.button,
-                retryPrompt: "Sorry, I didn't understand that. Please select one of the listed options."
+                retryPrompt: localizer.mm.invalidChoicePromptRetry
             });
         },
-        ({ session, result }) => {
-            const selection = (<IPromptChoiceResult>result).response.entity;
-            if (selection === "Start reporting on a disaster") {
+        ({ session, result, localizer }: RcdaChatStep<IPromptChoiceResult>) => {
+            const selection = result.response.entity;
+            if (selection === localizer.mm.startDisasterAssessmentOption) {
+                // begin 'start report' dialog
                 session.beginDialog(createReportDialog.id);
             }
-            if (selection === "Help") {
-                session.send("Not yet implemented, please select another option");
-                session.delay(200)
+            if (selection === localizer.mm.getHelpOption) {
+                // not yet supported, start over
+                session.send(localizer.mm.choiceNotYetSupportedPromptRetry);
+                session.delay(200);
                 session.replaceDialog(rootMyanmarDialog.id);
             }
         },

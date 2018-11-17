@@ -4,11 +4,8 @@ import rcdaChatDialog, { rcdaChatDialogStateful } from "@/chat/utils/rcdaChatDia
 import { RcdaChatDialog, RcdaChatStep } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import * as askSectors from "@/chat/dialogs/myanmar/disaster-assessment/questions/askSectors";
-import { Sectors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/Sectors";
-import { SectorFactors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorFactors";
-import { SectorFactorImpactScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorFactorImpactScale";
-import { SectorSeverityScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorSeverityScale";
-import { SectorBasicNeedsConcernScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorBasicNeedsConcernScale";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
 
 // review list of selected sectors
 // if edit, go back to start of edit sectors
@@ -18,8 +15,8 @@ export const reviewSectorsDialog: RcdaChatDialog = rcdaChatDialog(
     "/reviewSectors",
     null,
     [
-        ({ session, result }) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForReviewSelectedSectors(session));
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForReviewSelectedSectors(session, localizer));
         },
         ({ session, result, next }) => {
             const userChoice: string = result.response.id;
@@ -39,9 +36,9 @@ export const reviewSectorsDialog: RcdaChatDialog = rcdaChatDialog(
 export const reviewCompletedSectors = rcdaChatDialogStateful(
     "/reviewCompletedSectors",
     null,
-    class DialogData {
-        currentSectorIndex: number;
-    },
+    () => ({
+        currentSectorIndex: 0
+    }),
     [
         ({ session, result: currentSectorIndex = 0 }: RcdaChatStep<number>) => {
             session.dialogData.currentSectorIndex = currentSectorIndex;
@@ -67,13 +64,12 @@ export const reviewCompletedSectors = rcdaChatDialogStateful(
 const reviewIndividualSectorDialog = rcdaChatDialogStateful(
     "/reviewIndividualSector",
     null,
-    class DialogData {
-        sector: string;
-    },
+    ({ result }) => ({
+        sector: result as MyanmarSectors
+    }),
     [
-        ({ session, result: sector }: RcdaChatStep<string>) => {
-            session.dialogData.sector = sector;
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForReviewIndividualSector(session, sector));
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForReviewIndividualSector(session, localizer, session.dialogData.sector));
         },
         ({ session, result }) => {
             const userChoice: string = result.response.id;
@@ -92,7 +88,7 @@ const reviewIndividualSectorDialog = rcdaChatDialogStateful(
         references: () => [askSectors.askIndividualSectorDialog]
     });
 
-function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession): Message {
+function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession, localizer: RcdaChatLocalizer) {
     
     const adaptiveCardBody: object[] = [];
 
@@ -100,7 +96,7 @@ function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession): 
         "type": "TextBlock",
         "size": "medium",
         "weight": "default",
-        "text": `Please confirm that this is the complete list of sectors you can report on`,
+        "text": localizer.mm.reviewSectorListHeader,
         "wrap": true,
         "horizontalAlignment": "left"
     });
@@ -110,45 +106,39 @@ function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession): 
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": `- ${Sectors.find(x => x.id == sectorId).name.en}`,
+            "text": `- ${localizer.mm.sectors[sectorId]}`,
             "horizontalAlignment": "left"
         });
     }
     
-    const sectorSelectionReviewCard: Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: [...adaptiveCardBody],
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Edit",
-                    "data": {
-                        "id": "Edit"
-                    }
-                },
-                {
-                    "type": "Action.Submit",
-                    "title": "Accept",
-                    "data": {
-                        "id": "Accept"
-                    }
+    return {
+        body: [...adaptiveCardBody],
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": "Edit",
+                "data": {
+                    "id": "Edit"
                 }
-            ]
-        }
-    });
-
-    return sectorSelectionReviewCard;
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Accept",
+                "data": {
+                    "id": "Accept"
+                }
+            }
+        ]
+    };
 }
 
-function createAdaptiveCardForReviewIndividualSector(session: RcdaTypedSession, sectorId: string): Message {
+function createAdaptiveCardForReviewIndividualSector(session: RcdaTypedSession, localizer: RcdaChatLocalizer, sectorId: MyanmarSectors) {
     const adaptiveCardBody: object[] = [
         {
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": `Please review **${Sectors.find(x => x.id == sectorId).name.en}**`,
+            "text": localizer.mm.reviewSectionHeader(localizer.mm.sectors[sectorId]),
             "horizontalAlignment": "left"
         }
     ];
@@ -162,49 +152,40 @@ function createAdaptiveCardForReviewIndividualSector(session: RcdaTypedSession, 
 
     const sectorData = session.conversationData.mm.sectors.completedSectors.find(x => x.id === sectorId);
 
-    let severityDescription = (severity: number) => SectorSeverityScale.find(x => x.value == severity).label.en;
     facts.push({
         title: "Severity",
-        value: sectorData.severity ? `${sectorData.severity} - ${severityDescription(sectorData.severity)}` : "No Response"
+        value: sectorData.severity ? `${sectorData.severity} - ${localizer.mm.sectorSeverityScale[sectorData.severity]}` : localizer.mm.reviewSectionNoResponseValue
     });
 
-    let scaleDescription = (factorScore: number) => SectorFactorImpactScale.find(x => x.value == factorScore).label.en;
     sectorData.factors.forEach(factor => {
         facts.push({
-            title: SectorFactors.find(x => x.id == factor.id).name.en,
-            value: factor.factorScore ? `${factor.factorScore} - ${scaleDescription(factor.factorScore)}` : "No Response"
+            title: localizer.mm.sectorFactors[factor.id],
+            value: factor.factorScore ? `${factor.factorScore} - ${localizer.mm.sectorFactorImpactScale[factor.factorScore]}` : localizer.mm.reviewSectionNoResponseValue
         });
     });
     
-    let basicNeedsConcernDescription = (concern: number) => SectorBasicNeedsConcernScale.find(x => x.value == concern).label.en;
     facts.push({
-        title: "Basic Needs",
-        value: sectorData.basicNeedsConcern ? `${sectorData.basicNeedsConcern} - ${basicNeedsConcernDescription(sectorData.basicNeedsConcern)}` : "No Response"
+        title: localizer.mm.sectorBasicNeedsQuestionHeader,
+        value: sectorData.basicNeedsConcern ? `${sectorData.basicNeedsConcern} - ${localizer.mm.sectorBasicNeedsConcernScale[sectorData.basicNeedsConcern]}` : localizer.mm.reviewSectionNoResponseValue
     });
 
-    const sectorReviewCard: Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: [...adaptiveCardBody],
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Edit",
-                    "data": {
-                        "id": "Edit"
-                    }
-                },
-                {
-                    "type": "Action.Submit",
-                    "title": "Accept",
-                    "data": {
-                        "id": "Accept"
-                    }
+    return {
+        body: adaptiveCardBody,
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": "Edit",
+                "data": {
+                    "id": "Edit"
                 }
-            ]
-        }
-    });
-
-    return sectorReviewCard;
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Accept",
+                "data": {
+                    "id": "Accept"
+                }
+            }
+        ]
+    };
 }

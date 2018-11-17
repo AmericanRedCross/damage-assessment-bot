@@ -1,21 +1,18 @@
-import { Message } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { RcdaTypedSession, RcdaChatStep } from "@/chat/utils/rcda-chat-types";
+import { RcdaChatStep } from "@/chat/utils/rcda-chat-types";
 import { reviewSectorsDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewSectorsDialog";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
-import { Sectors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/Sectors"
-import { SectorFactors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorFactors"
-import { SectorSeverityScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorSeverityScale"
-import { SectorFactorImpactScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorFactorImpactScale"
-import { SectorBasicNeedsConcernScale } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorBasicNeedsConcernScale"
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
+import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
 
 export const askSectorsDialog = rcdaChatDialog(
     "/askSectors",
     null,
     [        
-        ({ session, result }) => {
-            session.send("Which sectors can you report on?");
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAskSectorsToReport(session));
+        ({ session, localizer }) => {
+            session.send(localizer.mm.askSectorsToReport);
+            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAskSectorsToReport(localizer));
         },
         ({ session, result }) => {
             session.conversationData.mm.sectors.selectedSectorIds = result.response.sectors.split(",");
@@ -64,25 +61,29 @@ export const askIndividualSectorDialog = rcdaChatDialog(
     "/askIndividualSector",
     null,
     [
-        ({ session, result: sector }: RcdaChatStep<string>) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAskSector(session, sector))
+        ({ session, localizer, result: sector }: RcdaChatStep<string>) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAskSector(localizer, sector))
         },
-        ({ session, result: { response } }) => {
+        ({ session, localizer, result: { response } }) => {
 
+            const placeholder = localizer.common.selectDropdownPlaceholder;
             let sectorsData = session.conversationData.mm.sectors;
             
             // remove existing entry for this sector
             sectorsData.completedSectors = sectorsData.completedSectors.filter(x => x.id !== response.sectorId);
 
-            function getFactorScore(id: string) { 
+            function getFactorScore(id: string): MyanmarSectorFactorImpactScale { 
                 let factorResponse = response[`factors-${id}`];
-                return factorResponse === placeholder ? null : factorResponse;
+                return (factorResponse === placeholder ? null : factorResponse) as MyanmarSectorFactorImpactScale;
             }
             // add sector
             sectorsData.completedSectors.push({
                 id: response.sectorId,
                 severity: response.severity === placeholder ? null : response.severity,
-                factors: SectorFactors.map(factor => ({ id: factor.id, factorScore: getFactorScore(factor.id) })),
+                factors: Object.keys(localizer.mm.sectorFactors).map(factor => ({ 
+                    id: factor as MyanmarSectorFactors, 
+                    factorScore: getFactorScore(factor)
+                })),
                 basicNeedsConcern: response.basicNeedsConcern === placeholder ? null : response.basicNeedsConcern
             });
 
@@ -90,52 +91,36 @@ export const askIndividualSectorDialog = rcdaChatDialog(
         }
     ]);
 
-const placeholder = "Choose..."
-
-function createAdaptiveCardForAskSectorsToReport(session: any): Message {
-    let choices = Sectors.map(sector => ({
-        title: sector.name.en,
-        value: sector.id
+function createAdaptiveCardForAskSectorsToReport(localizer: RcdaChatLocalizer) {
+    let choices = Object.keys(localizer.mm.sectors).map(sectorId => ({
+        title: localizer.mm.sectors[sectorId],
+        value: sectorId
     }));
-    const sectorAdaptiveCard: Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: [
-                {
-                    "type": "Input.ChoiceSet",
-                    "id": "sectors",
-                    "isMultiSelect": true,
-                    "placeholder": "Choose...",
-                    "choices": [...choices]
-                }
-            ],
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Save"
-                }
-            ]
-        }
-    });
-    return sectorAdaptiveCard;
+
+    return {
+        body: [
+            {
+                "type": "Input.ChoiceSet",
+                "id": "sectors",
+                "isMultiSelect": true,
+                "placeholder": localizer.common.selectDropdownPlaceholder,
+                "choices": choices
+            }
+        ],
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": localizer.mm.submitCard
+            }
+        ]
+    };
 }
 
-function createAdaptiveCardForAskSector(session: RcdaTypedSession, sectorId: string): Message {
+function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: string) {
     
-    const adaptiveCardChoices = SectorSeverityScale.map(x => ({
-        title: `${x.value} - ${x.label.en}`,
-        value: x.value
-    }));
-
-    const factorSeverityScaleChoices = SectorFactorImpactScale.map(x => ({
-        title: `${x.value} - ${x.label.en}`,
-        value: x.value
-    }));
-
-    const basicNeedsConcernChoices = SectorBasicNeedsConcernScale.map(x => ({
-        title: `${x.value} - ${x.label.en}`,
-        value: x.value
+    const getChoices = (enumLabelMap: object) => Object.keys(enumLabelMap).map(enumValue => ({
+        title: `${enumValue} - ${enumLabelMap[enumValue]}`,
+        value: enumValue
     }));
 
     let adaptiveCardBody:Array<object> = [];
@@ -144,7 +129,7 @@ function createAdaptiveCardForAskSector(session: RcdaTypedSession, sectorId: str
             "type": "TextBlock",
             "size": "large",
             "weight": "bolder",
-            "text": Sectors.find(x => x.id === sectorId).name.en,
+            "text": localizer.mm.sectors[sectorId],
             "horizontalAlignment": "left"
         },
         // severity
@@ -152,38 +137,38 @@ function createAdaptiveCardForAskSector(session: RcdaTypedSession, sectorId: str
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": "Severity",
+            "text": localizer.mm.sectorSeverityQuestionHeader,
             "horizontalAlignment": "left"
         },
         {
             "type": "Input.ChoiceSet",
             "id": "severity",
             "style": "compact",
-            "placeholder": "Choose...",
-            "choices": adaptiveCardChoices
+            "placeholder": localizer.common.selectDropdownPlaceholder,
+            "choices": getChoices(localizer.mm.sectorSeverityScale)
         });
     adaptiveCardBody.push({
         "type": "TextBlock",
         "size": "medium",
         "weight": "default",
-        "text": "Factors",
+        "text": localizer.mm.sectorFactorsQuestionsHeader,
         "horizontalAlignment": "left"
     })
     // main concerns (iterate over each factor, add fields per type)
-    SectorFactors.forEach(factor => adaptiveCardBody.push(
+    Object.keys(localizer.mm.sectorFactors).forEach(factorId => adaptiveCardBody.push(
         {
             "type": "TextBlock",
             "size": "default",
             "weight": "default",
-            "text": factor.name.en,
+            "text": localizer.mm.sectorFactors[factorId],
             "horizontalAlignment": "left"
         },
         {
             "type": "Input.ChoiceSet",
-            "id": `factors-${factor.id}`,
+            "id": `factors-${factorId}`,
             "style": "compact",
-            "placeholder": "Choose...",
-            "choices": factorSeverityScaleChoices
+            "placeholder": localizer.common.selectDropdownPlaceholder,
+            "choices": getChoices(localizer.mm.sectorFactorImpactScale)
         }));
     // basic needs concern
     adaptiveCardBody.push(
@@ -191,14 +176,14 @@ function createAdaptiveCardForAskSector(session: RcdaTypedSession, sectorId: str
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": "Basic Needs",
+            "text": localizer.mm.sectorBasicNeedsQuestionHeader,
             "horizontalAlignment": "left"
         },
         {
             "type": "TextBlock",
             "size": "default",
             "weight": "default",
-            "text": "Without additional assistance, are you worried about your ability to meet your basic needs for this sector in the next 3 months?",
+            "text": localizer.mm.sectorBasicNeedsQuestionLabel,
             "horizontalAlignment": "left",
             "wrap": true
         },
@@ -206,26 +191,20 @@ function createAdaptiveCardForAskSector(session: RcdaTypedSession, sectorId: str
             "type": "Input.ChoiceSet",
             "id": "basicNeedsConcern",
             "style": "compact",            
-            "placeholder": "Choose...",
-            "choices": basicNeedsConcernChoices
+            "placeholder": localizer.common.selectDropdownPlaceholder,
+            "choices": getChoices(localizer.mm.sectorBasicNeedsConcernScale)
         });
 
-    const sectorSeverityAdaptiveCard:Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: adaptiveCardBody,
-            actions: [
-                {
-                    "data": {
-                        "sectorId": sectorId
-                    },
-                    "type": "Action.Submit",
-                    "title": "Save"
-                }
-            ]
-        }
-    });
-
-    return sectorSeverityAdaptiveCard;
+    return {
+        body: adaptiveCardBody,
+        actions: [
+            {
+                "data": {
+                    "sectorId": sectorId
+                },
+                "type": "Action.Submit",
+                "title": "Save"
+            }
+        ]
+    };
 }
