@@ -7,7 +7,7 @@ export default class MyanmarConversationData {
     sectors = new MyanmarSectorsSectionInput();
 }
 
-class MyanmarAffectedPeopleSectionInput {
+export class MyanmarAffectedPeopleSectionInput {
     numberOfPeopleBeforeDisaster: number;
     numberOfPeopleLeftArea: number;
     numberOfPeopleReturned: number;
@@ -42,7 +42,7 @@ class MyanmarSectorInput {
     basicNeedsConcern: number;
 }
 
-class MyanmarSectorFactorInput {
+export class MyanmarSectorFactorInput {
     id: string;
     factorScore: number;
 }

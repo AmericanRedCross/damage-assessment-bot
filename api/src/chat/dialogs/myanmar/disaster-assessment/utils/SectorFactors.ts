@@ -1,4 +1,4 @@
-interface MyanmarSectorFactors {
+export interface MyanmarSectorFactors {
     id: string,
     name: {
         en: string

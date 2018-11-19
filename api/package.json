@@ -30,8 +30,10 @@
         "botbuilder": "^3.15.0",
         "botbuilder-azure": "^3.1.0",
         "botbuilder-location": "^2.0.0",
+        "fast-csv": "^2.4.1",
         "hoek": "^4.2.1",
         "jsonwebtoken": "^8.3.0",
+        "parse-multipart": "^1.0.4",
         "uuid": "^3.3.2"
     },
     "//": "**NOTE: hoek is an indirect dependency of the project, but the installed version has a security vulnerability that GitHub reports. We list it directly to control the version.",
