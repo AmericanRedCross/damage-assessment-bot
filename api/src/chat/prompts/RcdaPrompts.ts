@@ -1,10 +1,10 @@
-import { Library, TextOrMessageType, Prompts } from "botbuilder";
+import { Library, TextOrMessageType, Message } from "botbuilder";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import { RcdaPromptAdaptiveCard, IRcdaPromptAdaptiveCardOptions } from "@/chat/prompts/RcdaPromptAdaptiveCard";
 
 const promptPrefix = '';//'Rcda:prompt-';
 
-const RcdaPrompts = { adaptiveCard }
+const RcdaPrompts = { adaptiveCard, adaptiveCardBuilder }
 export default RcdaPrompts;
 
 const adaptiveCardId = `${promptPrefix}adaptiveCard`;
@@ -18,3 +18,18 @@ function adaptiveCard(session: RcdaTypedSession, prompt: TextOrMessageType, opti
     args.prompt = prompt || options.prompt;
     session.beginDialog(adaptiveCardId, args);
 }
+
+type RcdaAdaptiveCard = { type?: string, body: object[], actions: object[] };
+function adaptiveCardBuilder(session: RcdaTypedSession, cardDefinition: RcdaAdaptiveCard, options?: IRcdaPromptAdaptiveCardOptions) {
+
+    let prompt = new Message(session).addAttachment({
+        contentType: "application/vnd.microsoft.card.adaptive",
+        content: {
+            type: "AdaptiveCard",
+            ...cardDefinition
+        }
+    });
+
+    adaptiveCard(session, prompt, options);
+}
+

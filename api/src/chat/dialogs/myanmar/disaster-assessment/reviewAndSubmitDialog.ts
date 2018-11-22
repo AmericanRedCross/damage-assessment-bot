@@ -8,17 +8,17 @@ export const reviewAndSubmitDialog = rcdaChatDialog(
     "/reviewAndSubmit",
     null,
     [
-        ({ session }) => {
+        ({ session, localizer }) => {
             Prompts.choice(session, "Are you ready to submit the report?", 
             [
                 "Review",
                 "Submit"
             ], { 
                 listStyle: ListStyle.button,
-                retryPrompt: "Sorry, I didn't understand that. Please select one of the listed options."
+                retryPrompt: localizer.mm.invalidChoicePromptRetry
             });
         },
-        ({ session, result }) => {
+        ({ session, localizer, result }) => {
             const selection = (<IPromptChoiceResult>result).response.entity;
             if (selection === "Submit") {
                 session.endDialog();
@@ -32,7 +32,7 @@ export const reviewAndSubmitDialog = rcdaChatDialog(
                     "Rankings"
                 ], { 
                     listStyle: ListStyle.button,
-                    retryPrompt: "Sorry, I didn't understand that. Please select one of the listed options."
+                    retryPrompt: localizer.mm.invalidChoicePromptRetry
                 });
                 return;
             }

@@ -1,5 +1,8 @@
-import { Dialog, IDialogWaterfallStep, ITriggerActionOptions } from "botbuilder";
+import { Dialog, IDialogWaterfallStep } from "botbuilder";
 import { RcdaTypedSession, RcdaDialogDefinition, RcdaDialogWaterfallStep, RcdaChatDialog, RcdaChatDialogOptions, FrameworkDialogDefinition, RcdaDialogWaterfallStepContext } from "@/chat/utils/rcda-chat-types";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+
+type RcdaDialogDataFactory<TResult> = (args: { session: RcdaTypedSession, localizer: RcdaChatLocalizer, result: any }) => TResult;
 
 export default function rcdaChatDialog<TDialogData, TDependencies>(
     id: string,
@@ -13,19 +16,19 @@ export default function rcdaChatDialog<TDialogData, TDependencies>(
 export function rcdaChatDialogStateful<TDialogData, TDependencies>(
     id: string,
     dependencyFactory: () => TDependencies,
-    dialogDataConstructor: new (session: RcdaTypedSession) => TDialogData,
+    dialogDataFactory: (args: { session: RcdaTypedSession, localizer: RcdaChatLocalizer, result: any }) => TDialogData,
     rcdaDialog: RcdaDialogDefinition<TDialogData, TDependencies>,
     options?: RcdaChatDialogOptions): RcdaChatDialog 
 {    
     let dialog: FrameworkDialogDefinition;
     // is a function
     if (typeof rcdaDialog === "function") {
-        dialog = standardDialogAdapter(rcdaDialog, dependencyFactory, dialogDataConstructor);
-    } 
+        dialog = standardDialogAdapter(rcdaDialog, dependencyFactory, dialogDataFactory);
+    }
     else if (typeof rcdaDialog === "object") {
         // is an array of functions
         if ((<any>rcdaDialog).length !== undefined) {
-            dialog = (<RcdaDialogWaterfallStep<TDialogData, TDependencies>[]>rcdaDialog).map(d => standardDialogAdapter(d, dependencyFactory, dialogDataConstructor))
+            dialog = (<RcdaDialogWaterfallStep<TDialogData, TDependencies>[]>rcdaDialog).map(d => standardDialogAdapter(d, dependencyFactory, dialogDataFactory))
         }
         // is an instance of the Dialog class
         else {
@@ -40,17 +43,19 @@ export function rcdaChatDialogStateful<TDialogData, TDependencies>(
 function standardDialogAdapter<TDialogData, TDependencies>(
     rcdaDialogWaterfallStep: RcdaDialogWaterfallStep<TDialogData, TDependencies>,
     dependencyFactory: () => TDependencies,
-    dialogDataConstructor: new (session: RcdaTypedSession) => TDialogData): IDialogWaterfallStep 
+    dialogDataFactory: (args: { session: RcdaTypedSession, localizer: RcdaChatLocalizer, result: any }) => TDialogData): IDialogWaterfallStep 
 {
     return function(session, result, next) {
 
-        if (dialogDataConstructor && !session.dialogData.__rcdaDialogInitialized) {
-            let dialogData = new dialogDataConstructor(session);
+        let localizer = new RcdaChatLocalizer(session);
+
+        if (dialogDataFactory && !session.dialogData.__rcdaDialogInitialized) {
+            let dialogData = dialogDataFactory({ session, localizer, result });
             Object.assign(session.dialogData, dialogData);
             session.dialogData.__rcdaDialogInitialized = true;
         }
         
         let dependencies = dependencyFactory ? dependencyFactory() : null;
-        rcdaDialogWaterfallStep({ session, result, next }, dependencies);
+        rcdaDialogWaterfallStep({ session, result, next, localizer }, dependencies);
     }
 }

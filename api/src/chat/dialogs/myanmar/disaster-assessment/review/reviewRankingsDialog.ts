@@ -1,24 +1,20 @@
-import { Message } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import { RcdaChatDialog } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import * as askRankings from "@/chat/dialogs/myanmar/disaster-assessment/questions/askRankings";
-import { AffectedGroups } from "@/chat/dialogs/myanmar/disaster-assessment/utils/AffectedGroups";
-import { Sectors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/Sectors"
-import { ResponseModalities } from "@/chat/dialogs/myanmar/disaster-assessment/utils/ResponseModalities";
-import { VulnerableGroups } from "@/chat/dialogs/myanmar/disaster-assessment/utils/VulnerableGroups";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 
 export const reviewRankingsDialog: RcdaChatDialog = rcdaChatDialog(
     "/reviewRankings",
     null,
     [
-        ({ session }) => {
-            RcdaPrompts.adaptiveCard(session, createRankingsReviewCard(session));
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createRankingsReviewCard(session, localizer));
         },
         ({ session, result }) => {
             const userChoice: string = result.response.id;
-            if (userChoice && userChoice.toLowerCase() === "edit") {
+            if (userChoice === "edit") {
                 session.beginDialog(askRankings.askRankingsDialog.id);
             } else {
                 session.endDialog();
@@ -31,64 +27,61 @@ export const reviewRankingsDialog: RcdaChatDialog = rcdaChatDialog(
         ]
     });
 
-function createRankingsReviewCard(session: RcdaTypedSession): Message {
+function createRankingsReviewCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer) {
 
     const adaptiveCardBody: object[] = [
         {
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": `Please review **Rankings**`,
+            "text": localizer.mm.reviewSectionHeader(localizer.mm.reportSectionNameRankings),
             "horizontalAlignment": "left"
         }
     ];
 
     type Ranking = { value: string; rank: number; };
-    function addRanking(ranking: Ranking[], name: string, definition: { id: string, name: { en: string } }[]) {
+    function addRanking(rankings: Ranking[], name: string, definition: any) {
+        //sort
+        rankings = rankings.sort((x, y) => x.rank - y.rank);
         adaptiveCardBody.push({
             "type": "TextBlock",
             "size": "medium",
             "weight": "bolder",
-            "text": `${name}`,
+            "text": name,
             "separator": true,
             "horizontalAlignment": "left"
         }, {
             "type": "FactSet",
-            "facts": ranking.sort((x, y) => x.rank - y.rank).map(x => ({
-                title: `${x.rank} -`,
-                value: (definition.find(d => d.id === x.value) || { name: { en: "No Response" /*TODO validation?*/}}).name.en
+            "facts": rankings.map(ranking => ({
+                title: `${ranking.rank} -`,
+                value: ranking.value ? definition[ranking.value] : localizer.mm.reviewSectionNoResponseValue
             }))
         });
     }
 
-    addRanking(session.conversationData.mm.rankings.affectedGroups, "Affected Groups", AffectedGroups);
-    addRanking(session.conversationData.mm.rankings.prioritySectors, "Priority Sectors", Sectors);
-    addRanking(session.conversationData.mm.rankings.vulnerableGroups, "Vulnerable Groups", VulnerableGroups);
-    addRanking(session.conversationData.mm.rankings.responseModalities, "Response Modalities", ResponseModalities);
+    let rankingsData = session.conversationData.mm.rankings;
+    addRanking(rankingsData.affectedGroups, localizer.mm.rankingSectionAffectedGroupsTitle, localizer.mm.affectedGroups);
+    addRanking(rankingsData.prioritySectors, localizer.mm.rankingSectionPrioritySectorsTitle, localizer.mm.sectors);
+    addRanking(rankingsData.vulnerableGroups, localizer.mm.rankingSectionVulnerableGroupsTitle, localizer.mm.vulnerableGroups);
+    addRanking(rankingsData.responseModalities, localizer.mm.rankingSectionResponseModalitiesTitle, localizer.mm.responseModalities);
 
-    const affectedPeopleReviewCard = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: adaptiveCardBody,
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Edit",
-                    "data": {
-                        "id": "Edit"
-                    }
-                },
-                {
-                    "type": "Action.Submit",
-                    "title": "Accept",
-                    "data": {
-                        "id": "Accept"
-                    }
+    return {
+        body: adaptiveCardBody,
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": "Edit",
+                "data": {
+                    "id": "edit"
                 }
-            ]
-        }
-    });
-
-    return affectedPeopleReviewCard;
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Accept",
+                "data": {
+                    "id": "accept"
+                }
+            }
+        ]
+    };
 }

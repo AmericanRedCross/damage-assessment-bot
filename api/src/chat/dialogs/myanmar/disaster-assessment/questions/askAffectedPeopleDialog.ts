@@ -1,23 +1,21 @@
-import { Message } from "botbuilder";
+import { Message, Prompts } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { reviewAffectedPeopleDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewAffectedPeopleDialog";
-import { askAffectedPeopleQuestions } from "@/chat/dialogs/myanmar/disaster-assessment/utils/askAffectedPeopleQuestions";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import { MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData";
 
 export const askAffectedPeopleDialog = rcdaChatDialog(
     "/askAffectedPeople",
     null,
     [
-        ({ session }) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAffectedPeople(session));
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAffectedPeople(localizer));
         },
         ({ session, result }) => {
             // save selections
-            const affectedPeople: object = result.response;
-            for (const peopleAffected of askAffectedPeopleQuestions.keys()) {
-                session.conversationData[peopleAffected] = affectedPeople[peopleAffected];
-            }
+            session.conversationData.mm.people = result.response;
             // review
             session.beginDialog(reviewAffectedPeopleDialog.id);
         }
@@ -27,16 +25,16 @@ export const askAffectedPeopleDialog = rcdaChatDialog(
         ]
     });
 
-function createAdaptiveCardForAffectedPeople(session: RcdaTypedSession): Message {
+function createAdaptiveCardForAffectedPeople(localizer: RcdaChatLocalizer) {
     const adaptiveCardBody:Array<object> = [];
 
-    for (const [formVariableName,question] of askAffectedPeopleQuestions) {
+    const addQuestion = (questionName: keyof MyanmarAffectedPeopleSectionInput, inputLabel: string) => {
         adaptiveCardBody.push(
             {
                 "type": "TextBlock",
                 "size": "medium",
                 "weight": "default",
-                "text": question,
+                "text": localizer.mm[`inputLabel${inputLabel}`],
                 "horizontalAlignment": "left"
             },
             {
@@ -45,27 +43,27 @@ function createAdaptiveCardForAffectedPeople(session: RcdaTypedSession): Message
                 "min": 0,
                 // Check if there is any maximum value for these type of questions. Just confirm. "max": 5,
                 "value": null,
-                "id": formVariableName
+                "id": questionName
             }
         );
     }
+    
+    addQuestion("numberOfPeopleBeforeDisaster", localizer.mm.inputLabelNumberOfPeopleBeforeDisaster);
+    addQuestion("numberOfPeopleLeftArea", localizer.mm.inputLabelNumberOfPeopleLeftArea);
+    addQuestion("numberOfPeopleReturned", localizer.mm.inputLabelNumberOfPeopleReturned);
+    addQuestion("numberOfPeopleLivingCurrently", localizer.mm.inputLabelNumberOfPeopleLivingCurrently);
+    addQuestion("numberOfPeopleAffected", localizer.mm.inputLabelNumberOfPeopleAffected);
+    addQuestion("numberOfPeopleDisplaced", localizer.mm.inputLabelNumberOfPeopleDisplaced);
+    addQuestion("numberOfPeopleNotDisplaced", localizer.mm.inputLabelNumberOfPeopleNotDisplaced);
+    addQuestion("numberOfCasualties", localizer.mm.inputLabelNumberOfCasualties);
 
-    const affectedPeopleAdaptiveCard:Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: [...adaptiveCardBody],
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Save"// ,
-                    // "data": {
-                    //     "id": "1234567890" // TODO Discuss with Max if these hidden fields could be utilized for something like authentication. Link to schema - https://adaptivecards.io/schemas/adaptive-card.json
-                    // }
-                }
-            ]
-        }
-    });
-
-    return affectedPeopleAdaptiveCard;
+    return {
+        body: [...adaptiveCardBody],
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": "Save"
+            }
+        ]
+    };
 }

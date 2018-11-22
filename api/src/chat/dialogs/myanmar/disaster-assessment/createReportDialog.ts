@@ -20,12 +20,12 @@ export const createReportDialog = rcdaChatDialog(
         ({ session }) => {
             session.beginDialog(reviewAndSubmitDialog.id);
         },
-        async ({ session }, { disasterAssessmentRepo }) => {
+        async ({ session, localizer }, { disasterAssessmentRepo }) => {
 
             // Save the report - TODO review format of report object
             //await disasterAssessmentRepo.create({ id: });
             
-            session.endDialog("Thank you, your report has been submitted")
+            session.endDialog(localizer.mm.confirmReportSubmitted)
         }
     ],
     {

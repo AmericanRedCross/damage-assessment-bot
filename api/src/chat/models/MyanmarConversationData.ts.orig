@@ -53,6 +53,11 @@ export class MyanmarSectorInput {
 }
 
 export class MyanmarSectorFactorInput {
+<<<<<<< HEAD
+    id: string;
+    factorScore: number;
+=======
     id: MyanmarSectorFactors;
     factorScore: MyanmarSectorFactorImpactScale;
+>>>>>>> chat-localization
 }

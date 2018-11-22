@@ -1,5 +1,6 @@
 import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions } from "botbuilder";
 import RcdaBotConversationData from "@/chat/models/RcdaBotConversationData";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 
 export interface RcdaTypedSession<TDialogData extends {}={}> extends Session {
     dialogData: TDialogData,
@@ -11,7 +12,8 @@ type DefaultDialogWaterfallStepResult = any|IDialogResult<any>;
 export interface RcdaDialogWaterfallStepContext<TDialogData, TResult=DefaultDialogWaterfallStepResult> { 
     session: RcdaTypedSession<TDialogData>, 
     result?: TResult, 
-    next?: (results?: IDialogResult<any>) => void
+    next?: (results?: IDialogResult<any>) => void,
+    localizer: RcdaChatLocalizer
 };
 
 //shorthand alias
