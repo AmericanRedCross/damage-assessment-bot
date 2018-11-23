@@ -1,4 +1,4 @@
-export const enum MyanmarGeographicalSettings 
+export enum MyanmarGeographicalSettings 
 {
     Urban = "Urban",
     Rural = "Rural",
