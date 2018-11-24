@@ -17,6 +17,10 @@ import { MyanmarAffectedGroups } from "@/../../common/src/models/resources/disas
 import { MyanmarVulnerableGroups } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
 import { MyanmarResponseModalities } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
 
+const numberOfTopAffectedGroups:number = 3;
+const numberOfTopPrioritySectors:number = 3;
+const numberOfTopVulnerableGroups:number = 3;
+const numberOfTopResponseModalities:number = 3;
 
 module.exports = function (context:any,req:any):void {
     context.log('JavaScript HTTP trigger function processed a request.');
@@ -173,7 +177,6 @@ function validateSectorBasicNeedsConcern(data:object,errorLog:Array<string>):voi
 }
 
 function validateTopAffectedGroups(data:object,errorLog:Array<string>):void {
-    const numberOfTopAffectedGroups:number = 3;
     for (let index = 1; index <= numberOfTopAffectedGroups; index++) {
         const affectedGroup:string = data[`topAffectedGroup${index}`];
         if (!Object.values(MyanmarAffectedGroups).includes(affectedGroup)) {
@@ -183,7 +186,6 @@ function validateTopAffectedGroups(data:object,errorLog:Array<string>):void {
 }
 
 function validateTopPrioritySectors(data:object,errorLog:Array<string>):void {
-    const numberOfTopPrioritySectors:number = 3;
     for (let index = 1; index <= numberOfTopPrioritySectors; index++) {
         const affectedGroup:string = data[`topPrioritySector${index}`];
         if (!Object.values(MyanmarSectors).includes(affectedGroup)) {
@@ -193,7 +195,6 @@ function validateTopPrioritySectors(data:object,errorLog:Array<string>):void {
 }
 
 function validateTopVulnerableGroups(data:object,errorLog:Array<string>):void {
-    const numberOfTopVulnerableGroups:number = 3;
     for (let index = 1; index <= numberOfTopVulnerableGroups; index++) {
         const affectedGroup:string = data[`topVulnerableGroup${index}`];
         if (!Object.values(MyanmarVulnerableGroups).includes(affectedGroup)) {
@@ -203,7 +204,6 @@ function validateTopVulnerableGroups(data:object,errorLog:Array<string>):void {
 }
 
 function validateTopResponseModalities(data:object,errorLog:Array<string>):void {
-    const numberOfTopResponseModalities:number = 3;
     for (let index = 1; index <= numberOfTopResponseModalities; index++) {
         const affectedGroup:string = data[`topResponseModality${index}`];
         if (!Object.values(MyanmarResponseModalities).includes(affectedGroup)) {
@@ -217,113 +217,85 @@ function validateTopResponseModalities(data:object,errorLog:Array<string>):void 
     
 // }
 
-// function createReport(data:any):MyanmarConversationData {
-//     const reportData = new MyanmarConversationData();
+function createReport(data:any):MyanmarConversationData {
+    const reportData = new MyanmarConversationData();
     
-//     reportData.townshipId = data.townshipId;
-//     reportData.disasterTypeId = data.disasterTypeId;
-//     reportData.geographicalSettingId = data.geographicalSettingId;
 
-//     // const people:MyanmarAffectedPeopleSectionInput = new MyanmarAffectedPeopleSectionInput();
-//     // console.log(JSON.stringify(Object.keys(people)));
+    reportData.townshipId = data.townshipId;
+    reportData.disasterTypeId = data.disasterTypeId;
+    reportData.geographicalSettingId = data.geographicalSettingId;
 
-//     // for (const key of Object.keys(new MyanmarAffectedPeopleSectionInput())) {
-//     //     console.log(JSON.stringify(key));
-//     //     console.log(JSON.stringify(data[key]));
-//     //     reportData.people[key] = parseInt(data[key])
-//     // }
+    reportData.people.numberOfCasualties = data.numberOfCasualties;
+    reportData.people.numberOfPeopleBeforeDisaster = data.numberOfPeopleBeforeDisaster;
+    reportData.people.numberOfPeopleDisplaced = data.numberOfPeopleDisplaced;
+    reportData.people.numberOfPeopleLeftArea = data.numberOfPeopleLeftArea;
+    reportData.people.numberOfPeopleLivingCurrently = data.numberOfPeopleLivingCurrently;
+    reportData.people.numberOfPeopleNotDisplaced = data.numberOfPeopleNotDisplaced;
+    reportData.people.numberOfPeopleReturned = data.numberOfPeopleReturned;
+    reportData.people.numberOfPeopleAffected = data.numberOfPeopleAffected;
 
-//     reportData.people.numberOfCasualties = data.numberOfCasualties;
-//     reportData.people.numberOfPeopleBeforeDisaster = data.numberOfPeopleBeforeDisaster;
-//     reportData.people.numberOfPeopleDisplaced = data.numberOfPeopleDisplaced;
-//     reportData.people.numberOfPeopleLeftArea = data.numberOfPeopleLeftArea;
-//     reportData.people.numberOfPeopleLivingCurrently = data.numberOfPeopleLivingCurrently;
-//     reportData.people.numberOfPeopleNotDisplaced = data.numberOfPeopleNotDisplaced;
-//     reportData.people.numberOfPeopleReturned = data.numberOfPeopleReturned;
-//     reportData.people.numberOfPeopleAffected = data.numberOfPeopleAffected;
+    // Get Values for Top Affected Groups
+    for (let index = 1; index <= numberOfTopAffectedGroups; index++) {
+        reportData.rankings.affectedGroups.push(
+            {
+                rank: index,
+                value: data[`topAffectedGroup${index}`]
+            }
+        );
+    }
 
-//     reportData.rankings.affectedGroups = [
-//         {
-//             rank: 1,
-//             value: data.topAffectedGroup1
-//         },
-//         {
-//             rank: 2,
-//             value: data.topAffectedGroup2
-//         },
-//         {
-//             rank: 3,
-//             value: data.topAffectedGroup3
-//         }
-//     ];
+    // Get Values for Top Priority Sectors
+    for (let index = 1; index <= numberOfTopPrioritySectors; index++) {
+        reportData.rankings.prioritySectors.push(
+            {
+                rank: index,
+                value: data[`topPrioritySector${index}`]
+            }
+        );
+    }
+    
+    // Get Values for Top Vulnerable Groups
+    for (let index = 1; index <= numberOfTopVulnerableGroups; index++) {
+        reportData.rankings.vulnerableGroups.push(
+            {
+                rank: index,
+                value: data[`topVulnerableGroup${index}`]
+            }
+        );
+        
+    }
 
-//     reportData.rankings.prioritySectors = [
-//         {
-//             rank: 1,
-//             value: data.topPrioritySector1
-//         },
-//         {
-//             rank: 2,
-//             value: data.topPrioritySector2
-//         },
-//         {
-//             rank: 3,
-//             value: data.topPrioritySector3
-//         }
-//     ];
+    // Get Values for Top Response Modalities
+    for (let index = 1; index <= numberOfTopResponseModalities; index++) {
+        reportData.rankings.responseModalities.push(
+            {
+                rank: index,
+                value: data[`topResponseModality${index}`]
+            }
+        );
+    }
 
-//     reportData.rankings.responseModalities = [
-//         {
-//             rank: 1,
-//             value: data.topResponseModality1
-//         },
-//         {
-//             rank: 2,
-//             value: data.topResponseModality2
-//         },
-//         {
-//             rank: 3,
-//             value: data.topResponseModality3
-//         }
-//     ];
+    Object.values(MyanmarSectors).forEach( (sector:MyanmarSectors) => {
+        const sectorSeverity = data["sector" + sector + "Severity"];
+        const sectorbasicNeedsConcern = data["sector" + sector + "FutureConcern"];
+        let sectorFactorsArray:MyanmarSectorFactorInput[] = [];
 
-//     reportData.rankings.vulnerableGroups = [
-//         {
-//             rank: 1,
-//             value: data.topVulnerableGroup1
-//         },
-//         {
-//             rank: 2,
-//             value: data.topVulnerableGroup2
-//         },
-//         {
-//             rank: 3,
-//             value: data.topVulnerableGroup3
-//         }
-//     ];
+        Object.values(MyanmarSectorFactors).forEach( (sectorFactor:MyanmarSectorFactors) => {
+            sectorFactorsArray.push({
+                id: sectorFactor,
+                factorScore: data[`sector${sector}${sectorFactor}`]
+            });
+        });
 
-//     Sectors.forEach( (sector:MyanmarSectors) => {
-//         const sectorId = sector.id;
-//         const sectorSeverity = data["sector" + sector + "Severity"];
-//         const sectorbasicNeedsConcern = data["sector" + sector + "FutureConcern"];
-//         let sectorFactorsArray:MyanmarSectorFactorInput[] = [];
+        reportData.sectors.completedSectors.push(
+            {
+                id: sector,
+                factors: sectorFactorsArray,
+                severity: sectorSeverity,
+                basicNeedsConcern: sectorbasicNeedsConcern
+            }
+        );
+    });
 
-//         SectorFactors.forEach( (sectorFactor:MyanmarSectorFactors) => {
-//             sectorFactorsArray.push({
-//                 id: sectorFactor.id,
-//                 factorScore: data["sector" + sector.name.en + sectorFactor.name.en]
-//             });
-//         });
-
-//         reportData.sectors.completedSectors.push(
-//             {
-//                 id: sectorId,
-//                 factors: sectorFactorsArray,
-//                 severity: sectorSeverity,
-//                 basicNeedsConcern: sectorbasicNeedsConcern
-//             }
-//         );
-//     });
-
-//     return reportData;
-// }
+    return reportData;
+}
