@@ -1,4 +1,4 @@
-export const enum MyanmarResponseModalities
+export enum MyanmarResponseModalities
 {
     Foods = "Foods",
     HygeineItems = "HygeineItems",

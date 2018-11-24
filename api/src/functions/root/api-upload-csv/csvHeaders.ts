@@ -1,0 +1,127 @@
+
+export interface userInfoHeaders {
+    townshipId: string
+}
+
+export const userInfoHeaders:Array<string> = new Array(
+    "townshipId",
+    "disasterTypeId",
+    "geographicalSettingId",
+);
+
+export const affectedPeopleHeaders:Array<string> = new Array(
+    "numberOfPeopleBeforeDisaster",
+    "numberOfPeopleLeftArea",
+    "numberOfPeopleReturned",
+    "numberOfPeopleLivingCurrently",
+    "totalNumberOfPeopleAffected",
+    "numberOfPeopleDisplaced",
+    "numberOfPeopleNotDisplaced",
+    "numberOfCasualties"
+);
+
+// export const sectorConcernHeaders:Array<string> = new Array(
+//     "sectorHealthConcern",
+//     "sectorFoodConcern",
+//     "sectorWashConcern",
+//     "sectorShelterNfiConcern",
+//     "sectorProtectionConcern",
+//     "sectorEducationConcern",
+//     "sectorLivelihoodConcern",
+//     "sectorOtherConcern"
+// );
+
+export const sectorSeverityHeaders:Array<string> = new Array(
+    "sectorHealthSeverity",
+    "sectorFoodSeverity",
+    "sectorWashSeverity",
+    "sectorShelterNfiSeverity",
+    "sectorProtectionSeverity",
+    "sectorEducationSeverity",
+    "sectorLivelihoodSeverity",
+    "sectorOtherSeverity",
+);
+
+export const sectorAccessHeaders:Array<string> = new Array();
+
+export const csvHeaders:Array<string> = new Array(
+    "townshipId",
+    "disasterTypeId",
+    "geographicalSettingId",
+    "numberOfPeopleBeforeDisaster",
+    "numberOfPeopleLeftArea",
+    "numberOfPeopleReturned",
+    "numberOfPeopleLivingCurrently",
+    "totalNumberOfPeopleAffected",
+    "numberOfPeopleDisplaced",
+    "numberOfPeopleNotDisplaced",
+    "numberOfCasualties",
+    "sectorHealthConcern",
+    "sectorHealthSeverity",
+    "sectorHealthAccess",
+    "sectorHealthAvailability",
+    "sectorHealthQuality",
+    "sectorHealthUse",
+    "sectorHealthFutureConcern",
+    "sectorFoodConcern",
+    "sectorFoodSeverity",
+    "sectorFoodAccess",
+    "sectorFoodAvailability",
+    "sectorFoodQuality",
+    "sectorFoodUse",
+    "sectorFoodFutureConcern",
+    "sectorWashConcern",
+    "sectorWashSeverity",
+    "sectorWashAccess",
+    "sectorWashAvailability",
+    "sectorWashQuality",
+    "sectorWashUse",
+    "sectorWashFutureConcern",
+    "sectorShelterNfiConcern",
+    "sectorShelterNfiSeverity",
+    "sectorShelterNfiAccess",
+    "sectorShelterNfiAvailability",
+    "sectorShelterNfiQuality",
+    "sectorShelterNfiUse",
+    "sectorShelterNfiFutureConcern",
+    "sectorProtectionConcern",
+    "sectorProtectionSeverity",
+    "sectorProtectionAccess",
+    "sectorProtectionAvailability",
+    "sectorProtectionQuality",
+    "sectorProtectionUse",
+    "sectorProtectionFutureConcern",
+    "sectorEducationConcern",
+    "sectorEducationSeverity",
+    "sectorEducationAccess",
+    "sectorEducationAvailability",
+    "sectorEducationQuality",
+    "sectorEducationUse",
+    "sectorEducationFutureConcern",
+    "sectorLivelihoodConcern",
+    "sectorLivelihoodSeverity",
+    "sectorLivelihoodAccess",
+    "sectorLivelihoodAvailability",
+    "sectorLivelihoodQuality",
+    "sectorLivelihoodUse",
+    "sectorLivelihoodFutureConcern",
+    "sectorOtherConcern",
+    "sectorOtherSeverity",
+    "sectorOtherAccess",
+    "sectorOtherAvailability",
+    "sectorOtherQuality",
+    "sectorOtherUse",
+    "sectorOtherFutureConcern",
+    "topAffectedGroup1",
+    "topAffectedGroup2",
+    "topAffectedGroup3",
+    "topPrioritySector1",
+    "topPrioritySector2",
+    "topPrioritySector3",
+    "topVulnerableGroup1",
+    "topVulnerableGroup2",
+    "topVulnerableGroup3",
+    "topResponseModality1",
+    "topResponseModality2",
+    "topResponseModality3"
+);
