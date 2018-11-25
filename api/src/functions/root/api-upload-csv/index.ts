@@ -1,10 +1,6 @@
-import { HttpStatusCode } from "azure-functions-ts-essentials";
-import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import fast_csv = require("fast-csv");
 import { csvHeaders } from "./csvHeaders";
 import MyanmarConversationData, { MyanmarSectorFactorInput, MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData"
-// import { SectorFactors, MyanmarSectorFactors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/SectorFactors"
-// import { Sectors, MyanmarSectors } from "@/chat/dialogs/myanmar/disaster-assessment/utils/Sectors";
 import { MyanmarDisasterTypes } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
 import { MyanmarGeographicalSettings } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
 import { myanmarTownships, MyanmarTownship } from "@/../../common/src/system/countries/myanmar/MyanmarTownship";
@@ -17,58 +13,85 @@ import { MyanmarAffectedGroups } from "@/../../common/src/models/resources/disas
 import { MyanmarVulnerableGroups } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
 import { MyanmarResponseModalities } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
 
+interface IErrorLog {
+    row: number,
+    errorMessages: Array<string>
+}
+
 const numberOfTopAffectedGroups:number = 3;
 const numberOfTopPrioritySectors:number = 3;
 const numberOfTopVulnerableGroups:number = 3;
 const numberOfTopResponseModalities:number = 3;
 
+
+
 module.exports = function (context:any,req:any):void {
     context.log('JavaScript HTTP trigger function processed a request.');
     
+    let rowNumber:number = 0;
+    let errorLog:IErrorLog[] = [];
+    
     const requestBody = req.body;
-    let rowNumber:number = 1;
     fast_csv.fromString(requestBody, {
         objectMode:true,
         headers:true,
         trim:true
     }).validate(function (data:IUserInfo):boolean {
-        let errorLog:Array<string> = [];
-        validateUserInfo(data,errorLog);
-        validateAffectedPeople(data,errorLog);
-        validateSectorSeverity(data,errorLog);
-        validateSectorFactorData(data,errorLog);
-        validateSectorBasicNeedsConcern(data,errorLog);
-        validateTopAffectedGroups(data,errorLog);
-        validateTopPrioritySectors(data,errorLog);
-        validateTopVulnerableGroups(data,errorLog);
-        validateTopResponseModalities(data,errorLog);
-        context.log(JSON.stringify(errorLog));
-        if (errorLog.length === 0) {
+        let validationErrorLog:Array<string> = [];
+        rowNumber++;
+
+        validateHeaders(data,validationErrorLog);
+        validateUserInfo(data,validationErrorLog);
+        validateAffectedPeople(data,validationErrorLog);
+        validateSectorSeverity(data,validationErrorLog);
+        validateSectorFactorData(data,validationErrorLog);
+        validateSectorBasicNeedsConcern(data,validationErrorLog);
+        validateTopAffectedGroups(data,validationErrorLog);
+        validateTopPrioritySectors(data,validationErrorLog);
+        validateTopVulnerableGroups(data,validationErrorLog);
+        validateTopResponseModalities(data,validationErrorLog);
+        if (validationErrorLog.length === 0) {
             return true;
         } else {
+            errorLog.push(
+                {
+                    row: rowNumber,
+                    errorMessages: validationErrorLog
+                }
+            );
             return false;
         }
-
     }).on("data-invalid", function (data:any):void {
         context.log("Data is Invalid! Please review the errors below.");
     }).on("data",function (data:any):void {
-        context.log(typeof data.townshipId);
-        // context.log(JSON.stringify(createReport(data)));
+        
+        // TODO Save the report in cosmos
+        
+        context.log(JSON.stringify(createReport(data)));
     }).on("end",function ():void {
+        let csvUploadResponse:object = {};
+        if (errorLog.length === 0) {
+            context.log("Data has been imported successfully!");
+            csvUploadResponse["Message"] = "Data has been imported successfully!";
+            context.res = {status: 200, body: csvUploadResponse};
+        } else {
+            context.log("There were various errors. Please review them below - ");
+            csvUploadResponse["Message"] = "There were various errors. Please review them below - ";
+            csvUploadResponse["Errors"] = errorLog;
+            context.res = {status: 422, body: csvUploadResponse};
+        }
         context.done();
     })
 }
 
-function validateHeaders(headers:object):Array<string> {
-    const csvProperties:Array<string> = Object.getOwnPropertyNames(headers);
-    let errorLog:Array<string> = [];
+function validateHeaders(data:object,errorLog:Array<string>):void {
+    const csvProperties:Array<string> = Object.getOwnPropertyNames(data);
 
     for (const header of csvProperties) {
-        if (!(header in csvHeaders)) {
-            errorLog.push(`Following CSV Header was not recognized -- "${header}"`);
+        if (!csvHeaders.includes(header)) {
+            errorLog.push(`Following CSV Header was not recognized [${header}]`);
         }
     }
-    return errorLog;
 }
 
 interface IUserInfo {
@@ -83,15 +106,15 @@ function validateUserInfo({townshipId, disasterTypeId, geographicalSettingId}:IU
     });
 
     if (!townshipMatch) {
-        errorLog.push(`Could not find township - "${townshipId}"`);
+        errorLog.push(`Could not find township [${townshipId}]`);
     }
 
     if (!Object.values(MyanmarDisasterTypes).includes(disasterTypeId)) {
-        errorLog.push(`Did not find the Disaster Type ID - "${disasterTypeId}"`);
+        errorLog.push(`Did not find the Disaster Type ID [${disasterTypeId}]`);
     }
     
     if (!Object.values(MyanmarGeographicalSettings).includes(geographicalSettingId)) {
-        errorLog.push(`The Geographical Setting is not valid - "${geographicalSettingId}"`)
+        errorLog.push(`The Geographical Setting is not valid [${geographicalSettingId}]`)
     }
 };
 
@@ -129,7 +152,7 @@ function validateSectorSeverity(data:object,errorLog:Array<string>):void {
         "sectorHealthSeverity",
         "sectorFoodSeverity",
         "sectorWashSeverity",
-        "sectorShelterNfiSeverity",
+        "sectorShelterNFISeverity",
         "sectorProtectionSeverity",
         "sectorEducationSeverity",
         "sectorLivelihoodSeverity",
@@ -139,10 +162,10 @@ function validateSectorSeverity(data:object,errorLog:Array<string>):void {
     sectorSeverityHeaders.forEach((header:string) => {
         if (isNumeric(data[header])) {
             if (!Object.values(MyanmarSectorSeverityScale).includes(parseInt(data[header]))) {
-                errorLog.push(`The value for header "${header}" is not within range.`);
+                errorLog.push(`The value for header [${header}] is not within range.`);
             }
         } else {
-            errorLog.push(`The value for header "${header}" is not a number.`);
+            errorLog.push(`The value for header [${header}] is not a number.`);
             
         }
     });
@@ -154,10 +177,10 @@ function validateSectorFactorData(data:object,errorLog:Array<string>):void {
             const sectorFactorScore:string = data[`sector${sector}${factor}`];
             if (isNumeric(sectorFactorScore)) {
                 if (!Object.values(MyanmarSectorFactorImpactScale).includes(parseInt(sectorFactorScore))) {
-                    errorLog.push(`The value for sector "${sector}" and factor "${factor}" is not in range.`);
+                    errorLog.push(`The value for sector [${sector}] and factor [${factor}] is not in range.`);
                 }
             } else {
-                errorLog.push(`The value for sector "${sector}" and factor "${factor}" is not a number`);
+                errorLog.push(`The value for sector [${sector}] and factor [${factor}] is not a number`);
             }
         });
     });
@@ -168,10 +191,10 @@ function validateSectorBasicNeedsConcern(data:object,errorLog:Array<string>):voi
         const sectorBasicNeedsConcern:string = data[`sector${sector}FutureConcern`];
         if (isNumeric(sectorBasicNeedsConcern)) {
             if (!Object.values(MyanmarSectorBasicNeedsConcernScale).includes(parseInt(sectorBasicNeedsConcern))) {
-                errorLog.push(`The Future Concern for sector "${sector}" is not in range.`);
+                errorLog.push(`The Future Concern for sector [${sector}] is not in range.`);
             }
         } else {
-            errorLog.push(`The Future Concern for sector "${sector}" is not a number`);
+            errorLog.push(`The Future Concern for sector [${sector}] is not a number`);
         }
     });
 }
@@ -180,7 +203,7 @@ function validateTopAffectedGroups(data:object,errorLog:Array<string>):void {
     for (let index = 1; index <= numberOfTopAffectedGroups; index++) {
         const affectedGroup:string = data[`topAffectedGroup${index}`];
         if (!Object.values(MyanmarAffectedGroups).includes(affectedGroup)) {
-            errorLog.push(`The value for header "topAffectedGroup${index}" was not recognized.`);
+            errorLog.push(`The value for header [topAffectedGroup${index}] was not recognized.`);
         }
     }
 }
@@ -189,7 +212,7 @@ function validateTopPrioritySectors(data:object,errorLog:Array<string>):void {
     for (let index = 1; index <= numberOfTopPrioritySectors; index++) {
         const affectedGroup:string = data[`topPrioritySector${index}`];
         if (!Object.values(MyanmarSectors).includes(affectedGroup)) {
-            errorLog.push(`The value for header "topPrioritySector${index}" was not recognized.`);
+            errorLog.push(`The value for header [topPrioritySector${index}] was not recognized.`);
         }
     }
 }
@@ -198,7 +221,7 @@ function validateTopVulnerableGroups(data:object,errorLog:Array<string>):void {
     for (let index = 1; index <= numberOfTopVulnerableGroups; index++) {
         const affectedGroup:string = data[`topVulnerableGroup${index}`];
         if (!Object.values(MyanmarVulnerableGroups).includes(affectedGroup)) {
-            errorLog.push(`The value for header "topVulnerableGroup${index}" was not recognized.`);
+            errorLog.push(`The value for header [topVulnerableGroup${index}] was not recognized.`);
         }
     }
 }
@@ -207,7 +230,7 @@ function validateTopResponseModalities(data:object,errorLog:Array<string>):void 
     for (let index = 1; index <= numberOfTopResponseModalities; index++) {
         const affectedGroup:string = data[`topResponseModality${index}`];
         if (!Object.values(MyanmarResponseModalities).includes(affectedGroup)) {
-            errorLog.push(`The value for header "topResponseModality${index}" was not recognized.`);
+            errorLog.push(`The value for header [topResponseModality${index}] was not recognized.`);
         }
     }
 }
