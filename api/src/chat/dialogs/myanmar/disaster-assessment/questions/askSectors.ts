@@ -1,18 +1,19 @@
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { RcdaChatStep } from "@/chat/utils/rcda-chat-types";
 import { reviewSectorsDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewSectorsDialog";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
 import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarSectorInput } from "@/chat/models/MyanmarConversationData";
+import { getKeys } from "@common/utils/objectHelpers";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
 
 export const askSectorsDialog = rcdaChatDialog(
     "/askSectors",
     null,
     [        
         ({ session, localizer }) => {
-            session.send(localizer.mm.askSectorsToReport);
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAskSectorsToReport(localizer));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAskSectorsToReport(localizer, session.conversationData.mm.sectors.selectedSectorIds));
         },
         ({ session, result }) => {
             session.conversationData.mm.sectors.selectedSectorIds = result.response.sectors.split(",");
@@ -61,8 +62,9 @@ export const askIndividualSectorDialog = rcdaChatDialog(
     "/askIndividualSector",
     null,
     [
-        ({ session, localizer, result: sector }: RcdaChatStep<string>) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAskSector(localizer, sector))
+        ({ session, localizer, result: sectorId }) => {
+            let currentData = session.conversationData.mm.sectors.completedSectors.find(x => x.id === sectorId);
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAskSector(localizer, currentData, sectorId));
         },
         ({ session, localizer, result: { response } }) => {
 
@@ -91,8 +93,8 @@ export const askIndividualSectorDialog = rcdaChatDialog(
         }
     ]);
 
-function createAdaptiveCardForAskSectorsToReport(localizer: RcdaChatLocalizer) {
-    let choices = Object.keys(localizer.mm.sectors).map(sectorId => ({
+function createAdaptiveCardForAskSectorsToReport(localizer: RcdaChatLocalizer, selectedSectorIds: MyanmarSectors[]) {
+    let choices = getKeys(localizer.mm.sectors).map(sectorId => ({
         title: localizer.mm.sectors[sectorId],
         value: sectorId
     }));
@@ -100,11 +102,20 @@ function createAdaptiveCardForAskSectorsToReport(localizer: RcdaChatLocalizer) {
     return {
         body: [
             {
+                "type": "TextBlock",
+                "size": "large",
+                "weight": "default",
+                "text": localizer.mm.sectorSelectionHeader,
+                "horizontalAlignment": "left"
+            },
+            {
                 "type": "Input.ChoiceSet",
                 "id": "sectors",
+                "separator": true,
                 "isMultiSelect": true,
                 "placeholder": localizer.common.selectDropdownPlaceholder,
-                "choices": choices
+                "choices": choices,
+                "value": selectedSectorIds.join(",")
             }
         ],
         actions: [
@@ -116,8 +127,10 @@ function createAdaptiveCardForAskSectorsToReport(localizer: RcdaChatLocalizer) {
     };
 }
 
-function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: string) {
+function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorData: MyanmarSectorInput, sectorId: string) {
     
+    sectorData = sectorData || new MyanmarSectorInput();
+
     const getChoices = (enumLabelMap: object) => Object.keys(enumLabelMap).map(enumValue => ({
         title: `${enumValue} - ${enumLabelMap[enumValue]}`,
         value: enumValue
@@ -145,7 +158,8 @@ function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: 
             "id": "severity",
             "style": "compact",
             "placeholder": localizer.common.selectDropdownPlaceholder,
-            "choices": getChoices(localizer.mm.sectorSeverityScale)
+            "choices": getChoices(localizer.mm.sectorSeverityScale),
+            "value": sectorData.severity
         });
     adaptiveCardBody.push({
         "type": "TextBlock",
@@ -155,7 +169,9 @@ function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: 
         "horizontalAlignment": "left"
     })
     // main concerns (iterate over each factor, add fields per type)
-    Object.keys(localizer.mm.sectorFactors).forEach(factorId => adaptiveCardBody.push(
+    getKeys(localizer.mm.sectorFactors).forEach(factorId => {
+        let currentChoice = sectorData.factors.find(x => x.id === factorId);
+        adaptiveCardBody.push(
         {
             "type": "TextBlock",
             "size": "default",
@@ -168,8 +184,10 @@ function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: 
             "id": `factors-${factorId}`,
             "style": "compact",
             "placeholder": localizer.common.selectDropdownPlaceholder,
-            "choices": getChoices(localizer.mm.sectorFactorImpactScale)
-        }));
+            "choices": getChoices(localizer.mm.sectorFactorImpactScale),
+            "value": currentChoice ? currentChoice.factorScore : null
+        });
+    });
     // basic needs concern
     adaptiveCardBody.push(
         {
@@ -192,7 +210,8 @@ function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorId: 
             "id": "basicNeedsConcern",
             "style": "compact",            
             "placeholder": localizer.common.selectDropdownPlaceholder,
-            "choices": getChoices(localizer.mm.sectorBasicNeedsConcernScale)
+            "choices": getChoices(localizer.mm.sectorBasicNeedsConcernScale),
+            "value": sectorData.basicNeedsConcern
         });
 
     return {

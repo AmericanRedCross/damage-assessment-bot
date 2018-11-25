@@ -1,10 +1,11 @@
-import { Library, TextOrMessageType, Message } from "botbuilder";
+import { Library, Message } from "botbuilder";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import { RcdaPromptAdaptiveCard, IRcdaPromptAdaptiveCardOptions } from "@/chat/prompts/RcdaPromptAdaptiveCard";
+import * as uuid from "uuid";
 
 const promptPrefix = '';//'Rcda:prompt-';
 
-const RcdaPrompts = { adaptiveCard, adaptiveCardBuilder }
+const RcdaPrompts = { adaptiveCard }
 export default RcdaPrompts;
 
 const adaptiveCardId = `${promptPrefix}adaptiveCard`;
@@ -13,23 +14,32 @@ export function registerRcdaPrompts(bot: Library) {
     bot.dialog(adaptiveCardId, new RcdaPromptAdaptiveCard());
 }
 
-function adaptiveCard(session: RcdaTypedSession, prompt: TextOrMessageType, options?: IRcdaPromptAdaptiveCardOptions) {
-    let args: IRcdaPromptAdaptiveCardOptions = Object.assign({}, options);
-    args.prompt = prompt || options.prompt;
-    session.beginDialog(adaptiveCardId, args);
-}
+type RcdaAdaptiveCard = { type?: string, body: object[], actions: { type: string, title: string, data?: any}[] };
+function adaptiveCard(session: RcdaTypedSession, cardDefinition: RcdaAdaptiveCard, options?: IRcdaPromptAdaptiveCardOptions) {
 
-type RcdaAdaptiveCard = { type?: string, body: object[], actions: object[] };
-function adaptiveCardBuilder(session: RcdaTypedSession, cardDefinition: RcdaAdaptiveCard, options?: IRcdaPromptAdaptiveCardOptions) {
+    let args: IRcdaPromptAdaptiveCardOptions = Object.assign({}, options);
+
+    args.rcdaAdaptiveCardId = uuid();
+
+    let cardContent = {
+        type: "AdaptiveCard",
+        ...cardDefinition
+    };
+
+    for (let cardAction of cardContent.actions) {
+        cardAction.data = {
+            ...cardAction.data,
+            rcdaAdaptiveCardId: args.rcdaAdaptiveCardId
+        };
+    }
 
     let prompt = new Message(session).addAttachment({
         contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            ...cardDefinition
-        }
+        content: cardContent
     });
 
-    adaptiveCard(session, prompt, options);
+    args.prompt = prompt || options.prompt;
+
+    session.beginDialog(adaptiveCardId, args);
 }
 

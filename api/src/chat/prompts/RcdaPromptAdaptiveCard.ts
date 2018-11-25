@@ -1,9 +1,14 @@
-import { Prompt, IPromptFeatures, IPromptOptions, IPromptContext  } from "botbuilder";
+import { Prompt, IPromptFeatures, IPromptOptions, IPromptContext, Session  } from "botbuilder";
+
+interface RcdaPromptContext<TOptions extends IPromptOptions> extends IPromptContext {
+    options: TOptions;
+}
 
 export class RcdaPromptAdaptiveCard extends Prompt<IPromptFeatures> {
+
     constructor(features?: IPromptFeatures) {
         super({
-            defaultRetryPrompt: "Unable to determine input. Please try again.",
+            defaultRetryPrompt: "retry_adaptive_card",
             defaultRetryNamespace: "BotBuilder"
             // recognizeScore: 1.0
         });
@@ -12,9 +17,12 @@ export class RcdaPromptAdaptiveCard extends Prompt<IPromptFeatures> {
 
         // Default recognizer logic
         this.onRecognize((context, cb) => {
+
             const form = context.message.value;
 
-            if (form && !this.features.disableRecognizer) {
+            const isCurrentCard = form && form.rcdaAdaptiveCardId === context.dialogData.options.rcdaAdaptiveCardId;
+            
+            if (isCurrentCard && !this.features.disableRecognizer) {
                 cb(null, 1.0, form);
             } else {
                 cb(null, 0.0);
@@ -22,7 +30,7 @@ export class RcdaPromptAdaptiveCard extends Prompt<IPromptFeatures> {
         });
 
         this.onFormatMessage((session, text, speak, callback) => {
-            const context = (<IPromptContext>session.dialogData);
+            const context = <RcdaPromptContext<IRcdaPromptAdaptiveCardOptions>>session.dialogData;
             const options = context.options;
             const turnZero = context.turns === 0 || context.isReprompt;
             const message = session.message.text
@@ -45,4 +53,5 @@ export class RcdaPromptAdaptiveCard extends Prompt<IPromptFeatures> {
 
 export interface IRcdaPromptAdaptiveCardOptions extends IPromptOptions {
     //TODO define options? specify whether can be re-submitted? can that be implemented here?
+    rcdaAdaptiveCardId: string;
 }

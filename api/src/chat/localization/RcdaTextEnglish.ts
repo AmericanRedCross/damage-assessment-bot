@@ -26,12 +26,13 @@ export class RcdaMyanmarTextEnglish {
     getHelpOption = "Help";
     invalidChoicePromptRetry = "Sorry, I didn't understand that. Please select one of the listed options.";
     choiceNotYetSupportedPromptRetry = "Not yet implemented, please select another option";
-    // report navigation
-    askReportOnAnotherSection = "Would you like to report on anything else?";
-    confirmReportSubmitted = "Thank you, your report has been submitted";
+    // card buttons
     submitCard = "Save";
     acceptReviewCard = "Accept";
     editReviewCard = "Edit";
+    // report navigation
+    askReportOnAnotherSection = "Would you like to report on anything else?";
+    confirmReportSubmitted = "Thank you, your report has been submitted";
     // report info section
     askTownshipName = "What township are you reporting on?";
     askDisasterType = "What is the disaster type?";
@@ -45,7 +46,9 @@ export class RcdaMyanmarTextEnglish {
     // review
     reviewSectionHeader = (sectionName: string) => `Please review **${sectionName}**`;
     reviewSectionNoResponseValue = "No Response";
-    reviewSectorListHeader = "Please confirm that this is the complete list of sectors you can report on";
+    reviewSectorListHeader = "Please confirm the selected **Sectors**";
+    reviewSectorsReported = "You **have** reported on these sectors:";
+    reviewSectorsNotReported = "You **have not** reported on these sectors:";
     // people section
     inputLabelNumberOfPeopleBeforeDisaster = "Number of people before disaster";
     inputLabelNumberOfPeopleLeftArea = "Number of people who have left the area";
@@ -56,7 +59,7 @@ export class RcdaMyanmarTextEnglish {
     inputLabelNumberOfPeopleNotDisplaced = "Number of people affected non-displaced";
     inputLabelNumberOfCasualties = "Number of casualties";
     // sectors section
-    askSectorsToReport = "Which sectors can you report on?";
+    sectorSelectionHeader = "Please select the **Sectors** to report";
     sectorSeverityQuestionHeader = "Severity";
     sectorFactorsQuestionsHeader = "Factors";
     sectorBasicNeedsQuestionHeader = "Basic Needs";
@@ -112,11 +115,11 @@ export class RcdaMyanmarTextEnglish {
         [SectorFactors.Use]: "Use",
     };
     sectorBasicNeedsConcernScale: RcdaEnumLabels<SectorBasicNeedsConcernScale> = {
-        [1]: "I don’t feel worried at all about meeting this need",
-        [2]: "I feel worried but we should be able to cope",
-        [3]: "I feel worried for some or all family members and I’m not sure we will be able to cope",
-        [4]: "I feel worried for the health of some or all family members",
-        [5]: "I feel worried for the life of some or all family members"
+        [1]: "People do not feel worried at all about meeting this need",
+        [2]: "People are worried but think they should be able to cope",
+        [3]: "People are worried about the wellbeing of some or all their family members and not sure they will be able to cope",
+        [4]: "People are worried about the health of some or all their family members",
+        [5]: "People are worried about the life of some or all their family members"
     };
     sectorFactorImpactScale: RcdaEnumLabels<SectorFactorImpactScale> = {
         [0]: "Factor with Zero Impact",

@@ -2,7 +2,7 @@ import rcdaChatDialog, { rcdaChatDialogStateful } from "@/chat/utils/rcdaChatDia
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import RcdaChatLocalizer, { RcdaMyanmarText } from "@/chat/localization/RcdaChatLocalizer";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
-import RcdaBotConversationData from "@/chat/models/RcdaBotConversationData";
+import  { reviewRankingsDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewRankingsDialog";
 import { MyanmarRankingSectionInput,MyanmarRankingInput } from "@/chat/models/MyanmarConversationData";
 
 type AskRankingsConfiguration = {
@@ -51,10 +51,16 @@ export const askRankingsDialog = rcdaChatDialog(
                 choiceDataLocalizerProperty: "responseModalities",
                 rankingResultProperty: "responseModalities"
             });
+        },
+        ({ session }) => {
+            session.beginDialog(reviewRankingsDialog.id)
         }
     ],
     {
-        references: () => [ askIndividualRankingDialog ]
+        references: () => [ 
+            askIndividualRankingDialog,
+            reviewRankingsDialog
+        ]
     }
 );
 
@@ -70,10 +76,11 @@ export const askIndividualRankingDialog = rcdaChatDialogStateful(
         ({ session, localizer }) => {
             let askRankingPromptText = localizer.mm[session.dialogData.askRankingsPromptLocalizerProperty] as string;
             let inputLabelGetter = localizer.mm[session.dialogData.rankingInputLabelLocalizerProperty] as (rank: string) => string;
+            let rankingData = session.conversationData.mm.rankings[session.dialogData.rankingResultProperty];
             let choiceData = localizer.mm[session.dialogData.choiceDataLocalizerProperty] as any;
 
             session.send(askRankingPromptText);
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForRankingSection(localizer, choiceData, inputLabelGetter));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForRankingSection(localizer, rankingData, choiceData, inputLabelGetter));
         },
         ({ session, result: { response } }) => {
 
@@ -94,7 +101,7 @@ function getRankings(response: any): MyanmarRankingInput<any>[] {
     ];
 }
 
-function createAdaptiveCardForRankingSection(localizer: RcdaChatLocalizer, choiceData: any, getInputLabelText: (rank: string) => string) {
+function createAdaptiveCardForRankingSection(localizer: RcdaChatLocalizer, rankingData: MyanmarRankingInput<any>[], choiceData: any, getInputLabelText: (rank: string) => string) {
     
     const choices = Object.keys(choiceData).map(id => ({
         title: choiceData[id],
@@ -103,6 +110,7 @@ function createAdaptiveCardForRankingSection(localizer: RcdaChatLocalizer, choic
 
     const adaptiveCardBody: object[] = [];
     for (let i: number = 1; i <= 3; i++) {
+        let currentValue = rankingData.find(x => x.rank === i);
         adaptiveCardBody.push({
             "type": "TextBlock",
             "size": "medium",
@@ -114,7 +122,8 @@ function createAdaptiveCardForRankingSection(localizer: RcdaChatLocalizer, choic
             "id": `ranking${i}`,
             "style": "compact",
             "placeholder": localizer.common.selectDropdownPlaceholder,
-            "choices": choices
+            "choices": choices,
+            "value": currentValue ? currentValue.value : null
         });
     }
     

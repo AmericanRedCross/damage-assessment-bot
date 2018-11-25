@@ -6,24 +6,24 @@ import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import * as askSectors from "@/chat/dialogs/myanmar/disaster-assessment/questions/askSectors";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
-
-// review list of selected sectors
-// if edit, go back to start of edit sectors
-// if accept, iterate through each sector and review
+import { getKeys } from "@common/utils/objectHelpers";
 
 export const reviewSectorsDialog: RcdaChatDialog = rcdaChatDialog(
     "/reviewSectors",
     null,
     [
-        ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForReviewSelectedSectors(session, localizer));
+        ({ session }) => {
+            session.beginDialog(reviewCompletedSectors.id);
         },
-        ({ session, result, next }) => {
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForReviewSelectedSectors(session, localizer));
+        },
+        ({ session, result }) => {
             const userChoice: string = result.response.id;
             if (userChoice && userChoice.toLowerCase() === "edit") {
                 session.replaceDialog(askSectors.askSectorsDialog.id);
             } else {
-                session.beginDialog(reviewCompletedSectors.id)
+                session.endDialog();
             }
         }
     ], {
@@ -69,7 +69,7 @@ const reviewIndividualSectorDialog = rcdaChatDialogStateful(
     }),
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForReviewIndividualSector(session, localizer, session.dialogData.sector));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForReviewIndividualSector(session, localizer, session.dialogData.sector));
         },
         ({ session, result }) => {
             const userChoice: string = result.response.id;
@@ -90,6 +90,9 @@ const reviewIndividualSectorDialog = rcdaChatDialogStateful(
 
 function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession, localizer: RcdaChatLocalizer) {
     
+    let selectedSectorIds = session.conversationData.mm.sectors.selectedSectorIds;
+    let unselectedSectorIds = getKeys(localizer.mm.sectors).filter(x => !selectedSectorIds.includes(x));
+
     const adaptiveCardBody: object[] = [];
 
     adaptiveCardBody.push({
@@ -101,7 +104,36 @@ function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession, l
         "horizontalAlignment": "left"
     });
 
-    for (let sectorId of session.conversationData.mm.sectors.selectedSectorIds) {
+    // List selected sectors
+    adaptiveCardBody.push({
+        "type": "TextBlock",
+        "size": "medium",
+        "weight": "default",
+        "text": localizer.mm.reviewSectorsReported,
+        "wrap": true,
+        "separator": true,
+        "horizontalAlignment": "left"
+    });
+    for (let sectorId of selectedSectorIds) {
+        adaptiveCardBody.push({
+            "type": "TextBlock",
+            "size": "medium",
+            "weight": "default",
+            "text": `- ${localizer.mm.sectors[sectorId]}`,
+            "horizontalAlignment": "left"
+        });
+    }
+
+    // List unselected sectors
+    adaptiveCardBody.push({
+        "type": "TextBlock",
+        "size": "medium",
+        "weight": "default",
+        "text": localizer.mm.reviewSectorsNotReported,
+        "wrap": true,
+        "horizontalAlignment": "left"
+    });
+    for (let sectorId of unselectedSectorIds) {
         adaptiveCardBody.push({
             "type": "TextBlock",
             "size": "medium",

@@ -10,7 +10,7 @@ export const reviewRankingsDialog: RcdaChatDialog = rcdaChatDialog(
     null,
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createRankingsReviewCard(session, localizer));
+            RcdaPrompts.adaptiveCard(session, createRankingsReviewCard(session, localizer));
         },
         ({ session, result }) => {
             const userChoice: string = result.response.id;

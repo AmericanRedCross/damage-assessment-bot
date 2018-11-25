@@ -10,7 +10,7 @@ export const reviewAffectedPeopleDialog: RcdaChatDialog = rcdaChatDialog(
     null,
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createAffectedPeopleReviewCard(session, localizer));
+            RcdaPrompts.adaptiveCard(session, createAffectedPeopleReviewCard(session, localizer));
         },
         ({ session, result }) => {
             if (result.response.action === editAction) {

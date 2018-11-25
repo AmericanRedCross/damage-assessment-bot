@@ -3,7 +3,7 @@ import UserRepo from "@/repo/UserRepo";
 import ChatPromptRequest, { ChatPromptRequestType } from "@common/models/services/chat-prompt/ChatPromptRequest";
 import RcdaCountries from "@common/system/RcdaCountries";
 import RcdaError, { RcdaErrorTypes } from "@common/system/RcdaError";
-import enumContainsValue from "@common/utils/enumContainsValue";
+import { enumContainsValue } from "@common/utils/enumHelpers";
 
 export default class ChatPromptReportService {
 
