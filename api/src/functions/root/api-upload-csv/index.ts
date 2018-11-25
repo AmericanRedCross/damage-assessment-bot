@@ -141,7 +141,7 @@ function validateAffectedPeople(data:object,errorLog:Array<string>):void {
     );
     affectedPeopleArray.map((element:string) => {
         if (!isNumeric(data[element])) {
-            errorLog.push(`${element} needs to be a number!`)
+            errorLog.push(`[${element}] needs to be a number!`)
         }
     });
 }
