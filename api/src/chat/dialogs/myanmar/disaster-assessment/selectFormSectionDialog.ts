@@ -36,7 +36,7 @@ export const selectFormSectionDialog = rcdaChatDialog(
             }
         },
         ({ session, localizer }) => {
-            Prompts.choice(session, "Would you like to report on anything else?", 
+            Prompts.choice(session, localizer.mm.askIfReportAnotherSection, 
             [
                 localizer.common.yes,
                 localizer.common.no
@@ -45,14 +45,14 @@ export const selectFormSectionDialog = rcdaChatDialog(
                 retryPrompt: localizer.mm.invalidChoicePromptRetry
             });
         },
-        ({ session, localizer, result, next }) => {
+        ({ session, localizer, result }) => {
             const selection = (<IPromptChoiceResult>result).response.entity;
             if (selection === localizer.common.yes) {
-                session.beginDialog(selectFormSectionDialog.id);
+                session.replaceDialog(selectFormSectionDialog.id);
                 return;
             }
             if (selection === localizer.common.no) {
-                next();
+                session.endDialog();
                 return;
             }
         }

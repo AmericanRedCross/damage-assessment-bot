@@ -41,6 +41,7 @@ export class RcdaMyanmarTextEnglish {
     reportSectionNamePeople = "People";
     reportSectionNameSectors = "Sectors";
     reportSectionNameRankings = "Rankings";
+    askIfReportAnotherSection = "Would you like to report on anything else?";
     // review
     reviewSectionHeader = (sectionName: string) => `Please review **${sectionName}**`;
     reviewSectionNoResponseValue = "No Response";

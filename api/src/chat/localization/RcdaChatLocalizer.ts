@@ -29,7 +29,7 @@ function getLocalizedText<TResult>(
     textLocaleMap: {[key:string]: new() => TResult}, 
     name: string,
     session: RcdaTypedSession): TResult {
-    
+
     let locale = session.preferredLocale().split("-")[0].toLowerCase();
     let localizedTextType = textLocaleMap[locale];
     if (!localizedTextType) {

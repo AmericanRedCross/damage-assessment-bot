@@ -34,7 +34,7 @@ function createAdaptiveCardForAffectedPeople(localizer: RcdaChatLocalizer) {
                 "type": "TextBlock",
                 "size": "medium",
                 "weight": "default",
-                "text": localizer.mm[`inputLabel${inputLabel}`],
+                "text": inputLabel,
                 "horizontalAlignment": "left"
             },
             {
