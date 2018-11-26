@@ -9,50 +9,50 @@ export const selectFormSectionDialog = rcdaChatDialog(
     "/selectFormSection",
     null,
     [
-        ({ session }) => {
-            Prompts.choice(session, "What do you want to report on?", 
+        ({ session, localizer }) => {
+            Prompts.choice(session, localizer.mm.askNextSectionToReport, 
             [
-                "People",
-                "Sectors",
-                "Rankings"
+                localizer.mm.reportSectionNamePeople,
+                localizer.mm.reportSectionNameSectors,
+                localizer.mm.reportSectionNameRankings
             ], { 
                 listStyle: ListStyle.button,
-                retryPrompt: "Sorry, I didn't understand that. Please select one of the listed options."
+                retryPrompt: localizer.mm.invalidChoicePromptRetry
             });
         },
-        ({ session, result }: RcdaChatStep<IPromptChoiceResult>) => {
+        ({ session, localizer, result }: RcdaChatStep<IPromptChoiceResult>) => {
             const selection =  result.response.entity;
-            if (selection === "People") {
+            if (selection === localizer.mm.reportSectionNamePeople) {
                 session.beginDialog(askAffectedPeopleDialog.id);
                 return;
             }
-            if (selection === "Sectors") {
+            if (selection === localizer.mm.reportSectionNameSectors) {
                 session.beginDialog(askSectorsDialog.id);
                 return;
             }
-            if (selection === "Rankings") {
+            if (selection === localizer.mm.reportSectionNameRankings) {
                 session.beginDialog(askRankingsDialog.id);
                 return;
             }
         },
-        ({ session }) => {
-            Prompts.choice(session, "Would you like to report on anything else?", 
+        ({ session, localizer }) => {
+            Prompts.choice(session, localizer.mm.askIfReportAnotherSection, 
             [
-                "Yes",
-                "No"
+                localizer.common.yes,
+                localizer.common.no
             ], {
                 listStyle: ListStyle.button,
-                retryPrompt: "Sorry, I didn't understand that. Please select one of the listed options."
+                retryPrompt: localizer.mm.invalidChoicePromptRetry
             });
         },
-        ({ session, result, next }) => {
+        ({ session, localizer, result }) => {
             const selection = (<IPromptChoiceResult>result).response.entity;
-            if (selection === "Yes") {
-                session.beginDialog(selectFormSectionDialog.id);
+            if (selection === localizer.common.yes) {
+                session.replaceDialog(selectFormSectionDialog.id);
                 return;
             }
-            if (selection === "No") {
-                next();
+            if (selection === localizer.common.no) {
+                session.endDialog();
                 return;
             }
         }

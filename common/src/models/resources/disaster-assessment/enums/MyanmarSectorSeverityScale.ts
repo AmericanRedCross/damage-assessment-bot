@@ -1,4 +1,4 @@
-export enum MyanmarSectorySeverityScore {
+export enum MyanmarSectorSeverityScale {
     NoConcern = 1, 
     RequiresMonitoring = 2, 
     PeopleAreSuffering = 3, 

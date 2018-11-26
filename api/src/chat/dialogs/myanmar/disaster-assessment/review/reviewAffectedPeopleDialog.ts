@@ -1,21 +1,19 @@
-import { Message } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import { RcdaChatDialog } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import * as askAffectedPeople from "@/chat/dialogs/myanmar/disaster-assessment/questions/askAffectedPeopleDialog";
-import { askAffectedPeopleQuestions } from "@/chat/dialogs/myanmar/disaster-assessment/utils/askAffectedPeopleQuestions";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 
 export const reviewAffectedPeopleDialog: RcdaChatDialog = rcdaChatDialog(
     "/reviewAffectedPeople",
     null,
     [
-        ({ session }) => {
-            RcdaPrompts.adaptiveCard(session, createAffectedPeopleReviewCard(session));
+        ({ session, localizer }) => {
+            RcdaPrompts.adaptiveCardBuilder(session, createAffectedPeopleReviewCard(session, localizer));
         },
         ({ session, result }) => {
-            const userChoice:string = result.response.id;
-            if (userChoice && userChoice.toLowerCase() === "edit") {
+            if (result.response.action === editAction) {
                 session.beginDialog(askAffectedPeople.askAffectedPeopleDialog.id);
             } else {
                 session.endDialog();
@@ -26,55 +24,60 @@ export const reviewAffectedPeopleDialog: RcdaChatDialog = rcdaChatDialog(
         references: () => [askAffectedPeople.askAffectedPeopleDialog]
     });
 
-function createAffectedPeopleReviewCard(session: RcdaTypedSession):Message {
+const editAction = "edit";
+const saveAction = "save";
+
+function createAffectedPeopleReviewCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer) {
     
     const adaptiveCardBody: Array<object> = [
         {
             "type": "TextBlock",
             "size": "medium",
             "weight": "default",
-            "text": `Please review **People**`,
+            "text": localizer.mm.reviewSectionHeader(localizer.mm.reportSectionNamePeople),
             "horizontalAlignment": "left"
         }];
 
-    let isFirstValue = true;
-    for (const [formVariableName,description] of askAffectedPeopleQuestions) {
-        if (session.conversationData[formVariableName]) {
+    function addQuestionReview(value: any, label: string, addSeparator: boolean = false) {
+        if (value || value === 0) {
             adaptiveCardBody.push({
                 "type": "TextBlock",
                 "size": "medium",
                 "weight": "default",
-                "separator": isFirstValue,
-                "text": `${description} - ${session.conversationData[formVariableName]}`,
+                "separator": addSeparator,
+                "text": `${label} - ${value}`,
                 "horizontalAlignment": "left"
             });
-            isFirstValue = false;
         }
     }
 
-    const affectedPeopleReviewCard:Message = new Message(session).addAttachment({
-        contentType: "application/vnd.microsoft.card.adaptive",
-        content: {
-            type: "AdaptiveCard",
-            body: [...adaptiveCardBody],
-            actions: [
-                {
-                    "type": "Action.Submit",
-                    "title": "Edit",
-                    "data": {
-                        "id": "Edit"
-                    }
-                },
-                {
-                    "type": "Action.Submit",
-                    "title": "Accept",
-                    "data": {
-                        "id": "Save People"
-                    }
-                }
-            ]
-        }
-    });
+    let peopleData = session.conversationData.mm.people;
+    addQuestionReview(peopleData.numberOfPeopleBeforeDisaster, localizer.mm.inputLabelNumberOfPeopleBeforeDisaster, true);
+    addQuestionReview(peopleData.numberOfPeopleLeftArea, localizer.mm.inputLabelNumberOfPeopleLeftArea);
+    addQuestionReview(peopleData.numberOfPeopleReturned, localizer.mm.inputLabelNumberOfPeopleReturned);
+    addQuestionReview(peopleData.numberOfPeopleLivingCurrently, localizer.mm.inputLabelNumberOfPeopleLivingCurrently);
+    addQuestionReview(peopleData.numberOfPeopleAffected, localizer.mm.inputLabelNumberOfPeopleAffected);
+    addQuestionReview(peopleData.numberOfPeopleDisplaced, localizer.mm.inputLabelNumberOfPeopleDisplaced);
+    addQuestionReview(peopleData.numberOfPeopleNotDisplaced, localizer.mm.inputLabelNumberOfPeopleNotDisplaced);
+    addQuestionReview(peopleData.numberOfCasualties, localizer.mm.inputLabelNumberOfCasualties);
 
-    return affectedPeopleReviewCard;
+    return {
+        body: [...adaptiveCardBody],
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": "Edit",
+                "data": {
+                    "action": editAction
+                }
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Accept",
+                "data": {
+                    "action": saveAction
+                }
+            }
+        ]
+    };
 }

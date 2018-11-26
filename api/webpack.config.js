@@ -60,6 +60,11 @@ module.exports = {
         from: '**/*.json',
         to: '',
         ignore: isProductionBuild ? [ '**/local.settings.json' ] : []
+      },
+      {
+        context: 'src/chat/localization/botbuilder',
+        from: '*/BotBuilder.json',
+        to: 'locale'
       }
     ])
   ].concat(!isProductionBuild ? [] : [

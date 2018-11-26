@@ -1,27 +1,26 @@
-import { Prompts,ListStyle,TextFormat } from "botbuilder";
+import { Prompts, ListStyle } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { GeographicalSettings } from "@/chat/dialogs/myanmar/disaster-assessment/utils/GeographicalSettings"
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
 
 export const askUserInfoDialog = rcdaChatDialog(
     "/askUserInfo",
     null,
     [
-        ({ session }) => {
-            Prompts.text(session, "What township are you reporting on?");
+        ({ session, localizer }) => {
+            Prompts.text(session, localizer.mm.askTownshipName);
         },
-        ({ session, result: { response } }) => {
+        ({ session, localizer, result: { response } }) => {
             // TODO validate against list of myanmar townships in /common/src/system/countries/myanmar/MyanmarTownships
             session.conversationData.mm.townshipId = response;
 
-            //TODO get full list of disaster types
-            Prompts.choice(session, "What is the disaster type?", ["Flood", "Earthquake", "Other (TODO)"], { listStyle: ListStyle.button });
+            Prompts.choice(session, localizer.mm.askDisasterType, localizer.mm.disasterTypes, { listStyle: ListStyle.button });
         },
-        ({ session, result }) => {
-            session.conversationData.mm.disasterTypeId = result.response.entity;
-            Prompts.choice(session, "What is the setting?", GeographicalSettings.map(x => x.name.en), { listStyle: ListStyle.button });
+        ({ session, localizer, result: { response } }) => {
+            session.conversationData.mm.disasterTypeId = response.entity;
+            Prompts.choice(session, localizer.mm.askGeographicalSettingType, Object.values(localizer.mm.geographicalSettings), { listStyle: ListStyle.button });
         },
-        ({ session, result }) => {
-            session.conversationData.mm.geographicalSettingId = GeographicalSettings.find(x => x.name.en === result.response.entity).id;
+        ({ session, localizer, result: { response } }) => {
+            session.conversationData.mm.geographicalSettingId = Object.keys(localizer.mm.geographicalSettings)[response.index] as MyanmarGeographicalSettings;
             session.endDialog();
         }
     ]);
