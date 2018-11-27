@@ -4,14 +4,14 @@ import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { reviewAffectedPeopleDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewAffectedPeopleDialog";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
-import { MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData";
+import MyanmarConversationData, { MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData";
 
 export const askAffectedPeopleDialog = rcdaChatDialog(
     "/askAffectedPeople",
     null,
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCardBuilder(session, createAdaptiveCardForAffectedPeople(localizer));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAffectedPeople(session.conversationData.mm, localizer));
         },
         ({ session, result }) => {
             // save selections
@@ -25,7 +25,7 @@ export const askAffectedPeopleDialog = rcdaChatDialog(
         ]
     });
 
-function createAdaptiveCardForAffectedPeople(localizer: RcdaChatLocalizer) {
+function createAdaptiveCardForAffectedPeople(myanmarData: MyanmarConversationData, localizer: RcdaChatLocalizer) {
     const adaptiveCardBody:Array<object> = [];
 
     const addQuestion = (questionName: keyof MyanmarAffectedPeopleSectionInput, inputLabel: string) => {
@@ -42,7 +42,7 @@ function createAdaptiveCardForAffectedPeople(localizer: RcdaChatLocalizer) {
                 "placeholder": "Quantity",
                 "min": 0,
                 // Check if there is any maximum value for these type of questions. Just confirm. "max": 5,
-                "value": null,
+                "value": myanmarData.people[questionName],
                 "id": questionName
             }
         );
