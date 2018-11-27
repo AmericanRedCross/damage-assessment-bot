@@ -3,6 +3,6 @@ import { RcdaLanguages } from "@common/system/RcdaLanguages";
 
 export default class RcdaBotConversationData {
     __initialized = false;
-    language: RcdaLanguages
+    language: RcdaLanguages = RcdaLanguages.English;
     mm = new MyanmarConversationData();
 }

@@ -1,6 +1,7 @@
 import { Prompts, ListStyle } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
+import { getKeys, getValues } from "@common/utils/objectHelpers";
 
 export const askUserInfoDialog = rcdaChatDialog(
     "/askUserInfo",
@@ -17,10 +18,10 @@ export const askUserInfoDialog = rcdaChatDialog(
         },
         ({ session, localizer, result: { response } }) => {
             session.conversationData.mm.disasterTypeId = response.entity;
-            Prompts.choice(session, localizer.mm.askGeographicalSettingType, Object.values(localizer.mm.geographicalSettings), { listStyle: ListStyle.button });
+            Prompts.choice(session, localizer.mm.askGeographicalSettingType, getValues(localizer.mm.geographicalSettings), { listStyle: ListStyle.button });
         },
         ({ session, localizer, result: { response } }) => {
-            session.conversationData.mm.geographicalSettingId = Object.keys(localizer.mm.geographicalSettings)[response.index] as MyanmarGeographicalSettings;
+            session.conversationData.mm.geographicalSettingId = getKeys(localizer.mm.geographicalSettings)[response.index] as MyanmarGeographicalSettings;
             session.endDialog();
         }
     ]);
