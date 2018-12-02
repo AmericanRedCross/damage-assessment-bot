@@ -1,4 +1,4 @@
-import DisasterAssessmentUploadService from "@/services/disasterAssessmentUploadService";
+import DisasterAssessmentUploadService from "@/services/DisasterAssessmentUploadService";
 import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import { HttpStatusCode, HttpResponse } from "azure-functions-ts-essentials";
 
