@@ -9,11 +9,11 @@ import SessionUtility from "@/services/utils/SessionUtility";
 import { RcdaRoles } from "@common/system/RcdaRoles";
 
 export class RcdaHttpFunctionDependencies {
-     constructor(public sessionUtility: SessionUtility) {}
+    constructor(public sessionUtility: SessionUtility) {}
 
-     public static getInstance(): RcdaHttpFunctionDependencies {
-         return new RcdaHttpFunctionDependencies(SessionUtility.getInstance())
-     }
+    public static getInstance(): RcdaHttpFunctionDependencies {
+        return new RcdaHttpFunctionDependencies(SessionUtility.getInstance())
+    }
 }
 
 export default function rcdaHttpFunction<TBody, TResult, TDependencies>(    

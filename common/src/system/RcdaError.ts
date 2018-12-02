@@ -5,7 +5,7 @@ export enum RcdaErrorTypes {
 
 export default class RcdaError<TDetails> extends Error {
 
-    constructor(typeId: RcdaErrorTypes.ClientError, message: string);
+    constructor(typeId: RcdaErrorTypes.ClientError, message: string, details?: any);
     constructor(typeId: RcdaErrorTypes.SystemError, message: string);
     constructor(typeId: RcdaErrorTypes, message: string, details?: any) {
         super(message);

@@ -1,4 +1,4 @@
-export const csvHeaders:Array<string> = new Array(
+export const rcdaCsvHeaders:Array<string> = new Array(
     "townshipId",
     "disasterTypeId",
     "geographicalSettingId",
