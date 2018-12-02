@@ -1,0 +1,22 @@
+{
+    "disabled": false,
+    "scriptFile": "index.js",
+    "bindings": [
+        {
+            "authLevel": "anonymous",
+            "route": "api/myanmar/disasterAssessment",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "dataType": "string",
+            "methods": [
+                "POST"
+            ]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}

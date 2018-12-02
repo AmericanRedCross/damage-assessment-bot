@@ -1,21 +1,21 @@
 import fast_csv = require("fast-csv");
 import { csvHeaders } from "./csvHeaders";
 import MyanmarConversationData, { MyanmarSectorFactorInput, MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData"
-import { MyanmarDisasterTypes } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
-import { MyanmarGeographicalSettings } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
-import { myanmarTownships, MyanmarTownship } from "@/../../common/src/system/countries/myanmar/MyanmarTownship";
-import { MyanmarSectorSeverityScale } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarSectorSeverityScale";
-import { MyanmarSectors } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarSectors";
-import { MyanmarSectorFactors } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
-import { MyanmarSectorFactorImpactScale } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
-import { MyanmarSectorBasicNeedsConcernScale } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarSectorBasicNeedsConcernScale";
-import { MyanmarAffectedGroups } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarAffectedGroups";
-import { MyanmarVulnerableGroups } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
-import { MyanmarResponseModalities } from "@/../../common/src/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
+import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
+import { myanmarTownships, MyanmarTownship } from "@common/system/countries/myanmar/MyanmarTownship";
+import { MyanmarSectorSeverityScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorSeverityScale";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
+import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
+import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarSectorBasicNeedsConcernScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorBasicNeedsConcernScale";
+import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarAffectedGroups";
+import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
+import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
 
 interface IErrorLog {
-    row: number,
-    errorMessages: Array<string>
+    row?: number,
+    errorMessages: Array<string>|string
 }
 
 const numberOfTopAffectedGroups:number = 3;
@@ -26,21 +26,44 @@ const numberOfTopResponseModalities:number = 3;
 
 
 module.exports = function (context:any,req:any):void {
-    context.log('JavaScript HTTP trigger function processed a request.');
     
+    // Ensure Content-Type header is set properly
+    const acceptableContentTypes:Array<string> = [
+        "text/plain",
+        "text/csv",
+        "application/vnd.ms-excel"
+    ];
+    if (!acceptableContentTypes.includes(req.headers['content-type'])) {
+        context.res = {status: 415, body: {"Message": `Only following Content-Types are acceptable - '${acceptableContentTypes}'`}};
+        context.done();
+    }
+
+    // Ensure that we are not receiving an empty request
+    if (!req.body) {
+        context.res = {status: 400, body: {"Message": `Request received is empty!`}};
+        context.done();
+    }
+
     let rowNumber:number = 0;
     let errorLog:IErrorLog[] = [];
     
-    const requestBody = req.body;
-    fast_csv.fromString(requestBody, {
+    fast_csv.fromString(req.body, {
         objectMode:true,
         headers:true,
-        trim:true
+        trim:true,
+
     }).validate(function (data:IUserInfo):boolean {
+        context.log("Just entered...");
+        if (!data) {
+            return false;
+        }
+        
         let validationErrorLog:Array<string> = [];
         rowNumber++;
-
-        validateHeaders(data,validationErrorLog);
+        if (rowNumber === 1) {
+            validateHeaders(data,validationErrorLog);    
+        }
+        
         validateUserInfo(data,validationErrorLog);
         validateAffectedPeople(data,validationErrorLog);
         validateSectorSeverity(data,validationErrorLog);
@@ -70,6 +93,11 @@ module.exports = function (context:any,req:any):void {
         context.log(JSON.stringify(createReport(data)));
     }).on("end",function ():void {
         let csvUploadResponse:object = {};
+        if (rowNumber === 0) {
+            errorLog.push({
+                errorMessages: `No rows were parsed. Are you sure the data is Comma Separated?`
+            });
+        }
         if (errorLog.length === 0) {
             context.log("Data has been imported successfully!");
             csvUploadResponse["Message"] = "Data has been imported successfully!";
@@ -81,15 +109,21 @@ module.exports = function (context:any,req:any):void {
             context.res = {status: 422, body: csvUploadResponse};
         }
         context.done();
+    }).on("error",function (error:any) {
+        errorLog.push(
+            {
+                errorMessages: error.toString()
+            }
+        );
     })
 }
 
 function validateHeaders(data:object,errorLog:Array<string>):void {
     const csvProperties:Array<string> = Object.getOwnPropertyNames(data);
-
-    for (const header of csvProperties) {
-        if (!csvHeaders.includes(header)) {
-            errorLog.push(`Following CSV Header was not recognized [${header}]`);
+    
+    for (const header of csvHeaders) {
+        if (!csvProperties.includes(header)) {
+            errorLog.push(`CSV header was not recognized: '${header}'`);
         }
     }
 }
@@ -234,11 +268,6 @@ function validateTopResponseModalities(data:object,errorLog:Array<string>):void 
         }
     }
 }
-
-// TODO -- Discuss with Max if Object Destructuring syntax makes sense when there are quite a lot of properties...
-// function validateAffectedPeopleInfo( {numberOfPeopleBeforeDisaster}:IAffectedPeople ):Array<string> {
-    
-// }
 
 function createReport(data:any):MyanmarConversationData {
     const reportData = new MyanmarConversationData();
