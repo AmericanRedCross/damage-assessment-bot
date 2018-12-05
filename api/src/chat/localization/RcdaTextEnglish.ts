@@ -37,6 +37,10 @@ export class RcdaMyanmarTextEnglish {
     askTownshipName = "What township are you reporting on?";
     askDisasterType = "What is the disaster type?";
     askGeographicalSettingType = "What is the setting?";
+    askAdminStackRegionName = "Please select the **Region** you are reporting on -";
+    askAdminStackDistrictName = "Please select the **District** you are reporting on -";
+    askAdminStackTownshipName = "Please select the **Township** you are reporting on -";
+    reportCurrentAdminStack = (sectionName: string) => `Please review **${sectionName}**`;
     // report section selection
     askNextSectionToReport = "What do you want to report on?";
     reportSectionNamePeople = "People";
