@@ -4,27 +4,27 @@ import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-a
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarTownship"
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import { getKeys, getValues } from "@common/utils/objectHelpers";
 
 export const askUserInfoDialog = rcdaChatDialog(
     "/askUserInfo",
     null,
     [
-        ({ session }) => {
-            Prompts.text(session, "What township are you reporting on?");
+        ({ session, localizer }) => {
+            Prompts.text(session, localizer.mm.askTownshipName);
         },
-        ({ session, result: { response } }) => {
+        ({ session, localizer, result: { response } }) => {
             // TODO validate against list of myanmar townships in /common/src/system/countries/myanmar/MyanmarTownships
             session.conversationData.mm.townshipId = response;
 
-            //TODO get full list of disaster types
-            Prompts.choice(session, "What is the disaster type?", ["Flood", "Earthquake", "Other (TODO)"], { listStyle: ListStyle.button });
+            Prompts.choice(session, localizer.mm.askDisasterType, localizer.mm.disasterTypes, { listStyle: ListStyle.button });
         },
-        ({ session, result }) => {
-            session.conversationData.mm.disasterTypeId = result.response.entity;
-            Prompts.choice(session, "What is the setting?", GeographicalSettings.map(x => x.name.en), { listStyle: ListStyle.button });
+        ({ session, localizer, result: { response } }) => {
+            session.conversationData.mm.disasterTypeId = response.entity;
+            Prompts.choice(session, localizer.mm.askGeographicalSettingType, getValues(localizer.mm.geographicalSettings), { listStyle: ListStyle.button });
         },
-        ({ session, result }) => {
-            session.conversationData.mm.geographicalSettingId = GeographicalSettings.find(x => x.name.en === result.response.entity).id;
+        ({ session, localizer, result: { response } }) => {
+            session.conversationData.mm.geographicalSettingId = getKeys(localizer.mm.geographicalSettings)[response.index] as MyanmarGeographicalSettings;
             session.endDialog();
         }
     ]);
@@ -34,17 +34,17 @@ export const confirmUserAdminStack = rcdaChatDialog(
     null,
     [
         ({ session, localizer, next }) => {
-            const currentAdminStack:string = session.userData.adminStack;
+            const currentAdminStack: string = session.userData.adminStack;
             if (currentAdminStack) {
                 Prompts.choice(
                     session,
-                    `The current admin stack selected is - ${currentAdminStack}. Do you want to change it?`,
+                    localizer.mm.tellCurrentAdminStack(currentAdminStack),
                     [localizer.common.yes,localizer.common.no]);
             } else {
                 next();
             }
         },
-        ({ session, result, localizer, next}) => {
+        ({ session, result, localizer }) => {
             if (result.response === localizer.common.yes && !session.userData.adminStack) {
                 session.beginDialog(askUserAdminStack.id);
             }
@@ -58,15 +58,15 @@ export const askUserAdminStack = rcdaChatDialog(
     "/askUserAdminStack",
     null,
     [
-        ({ session, localizer ,next }) => {
+        ({ session, localizer }) => {
             RcdaPrompts.adaptiveCard(session,createAdaptiveCardforRegions(localizer));
         },
         ({ session, localizer, result}) => {
-            const selectedRegion:string = result.region;
+            const selectedRegion: string = result.region;
             RcdaPrompts.adaptiveCard(session,createAdaptiveCardForDistricts(localizer,selectedRegion));
         },
         ({ session, localizer, result}) => {
-            const selectedDistrict:string = result.district;
+            const selectedDistrict: string = result.district;
             RcdaPrompts.adaptiveCard(session,createAdaptiveCardForTownships(localizer,selectedDistrict));
         },
         ({ session, result }) => {
@@ -93,9 +93,9 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
         myanmarRegionSet.add(myanmarTownship.regionName);
     });
 
-    const myanmarRegionArray:Array<string> = Array.from(myanmarRegionSet).sort();
+    const myanmarRegionArray = Array.from(myanmarRegionSet).sort();
 
-    const myanmarRegionChoices:Array<object> = new Array();
+    const myanmarRegionChoices: object[] = [];
     myanmarRegionArray.forEach(myanmarRegion => {
         myanmarRegionChoices.push({
             title: myanmarRegion,
@@ -121,8 +121,8 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
     };
 }
 
-function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer,region:string) {
-    const adaptiveCardBody:Array<object> = [
+function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, region: string) {
+    const adaptiveCardBody: object[] = [
         {
             "type": "TextBlock",
             "size": "medium",
@@ -132,7 +132,7 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer,region:stri
         }
     ];
 
-    const myanmarDistrictSet:Set<string> = new Set();
+    const myanmarDistrictSet: Set<string> = new Set();
     
     myanmarTownships.forEach(myanmarTownship => {
         if (myanmarTownship.regionName === region) {
@@ -140,9 +140,9 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer,region:stri
         }
     });
 
-    const myanmarDistrictArray:Array<string> = Array.from(myanmarDistrictSet).sort();
+    const myanmarDistrictArray = Array.from(myanmarDistrictSet).sort();
 
-    const myanmarDistrictChoices:Array<object> = new Array();
+    const myanmarDistrictChoices: object[] = [];
     myanmarDistrictArray.forEach(myanmarDistrict => {
         myanmarDistrictChoices.push({
             title: myanmarDistrict,
@@ -161,15 +161,15 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer,region:stri
         body: [...adaptiveCardBody],
         actions: [
             {
-                "type": localizer.mm.submitCard,
-                "title": "Submit",
+                "type": "Action.Submit",
+                "title": localizer.mm.submitCard
             }
         ]
     };
 }
 
-function createAdaptiveCardForTownships(localizer:RcdaChatLocalizer,district:string) {
-    const adaptiveCardBody:Array<object> = [
+function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, district: string) {
+    const adaptiveCardBody:object[] = [
         {
             "type": "TextBlock",
             "size": "medium",
@@ -187,9 +187,9 @@ function createAdaptiveCardForTownships(localizer:RcdaChatLocalizer,district:str
         }
     });
 
-    const myanmarTownshipArray:Array<string> = Array.from(myanmarTownshipSet).sort();
+    const myanmarTownshipArray = Array.from(myanmarTownshipSet).sort();
 
-    const myanmarTownshipChoices:Array<object> = new Array();
+    const myanmarTownshipChoices:object[] = [];
     myanmarTownshipArray.forEach(myanmarTownship => {
         myanmarTownshipChoices.push({
             title: myanmarTownship,
@@ -208,8 +208,8 @@ function createAdaptiveCardForTownships(localizer:RcdaChatLocalizer,district:str
         body: [...adaptiveCardBody],
         actions: [
             {
-                "type": localizer.mm.submitCard,
-                "title": "Submit",
+                "type": "Action.Submit",
+                "title": localizer.mm.submitCard,
             }
         ]
     };
