@@ -1,6 +1,6 @@
 import { Prompts, ListStyle } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import { getKeys, getValues } from "@common/utils/objectHelpers";
 
 export const askUserInfoDialog = rcdaChatDialog(

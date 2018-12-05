@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import ChatPromptReportRequest from "@common/models/services/chat-prompt-report/ChatPromptReportRequest";
-import ChatPromptReportService from "@/services/ChatPromptReportService";
+import ChatPromptReportService from "@/services/chat/ChatPromptReportService";
 import ChatPromptRequest from "@common/models/services/chat-prompt/ChatPromptRequest";
 import { RcdaRoles } from "@common/system/RcdaRoles";
 

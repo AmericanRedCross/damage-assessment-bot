@@ -4,20 +4,19 @@
     "bindings": [
         {
             "authLevel": "anonymous",
-            "route": "api/myanmar/disasterAssessment/template",
+            "route": "myanmar/disasterAssessment/import/template",
             "type": "httpTrigger",
             "direction": "in",
             "name": "req",
             "dataType": "string",
             "methods": [
-                "GET"
+                "get"
             ]
         },
         {
             "type": "http",
             "direction": "out",
-            "name": "res",
-            "dataType": "binary"
+            "name": "$return"
         }
     ]
 }

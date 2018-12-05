@@ -5,7 +5,7 @@ import { RcdaChatDialog, RcdaChatStep } from "@/chat/utils/rcda-chat-types";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import * as askSectors from "@/chat/dialogs/myanmar/disaster-assessment/questions/askSectors";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
-import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
 import { getKeys } from "@common/utils/objectHelpers";
 
 export const reviewSectorsDialog: RcdaChatDialog = rcdaChatDialog(

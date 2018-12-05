@@ -1,6 +1,10 @@
 {
     "id": "ChatBotStorage",
     "defaultTtl": -1,
+    "partitionKey": {
+        "paths": [ "/partitionKey" ],
+        "kind": "Hash"
+    },
     "indexingPolicy": {
         "automatic": true,
         "indexingMode": "Consistent",

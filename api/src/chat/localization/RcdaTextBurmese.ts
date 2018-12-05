@@ -1,14 +1,14 @@
 import RcdaEnumLabels from "@/chat/localization/utils/RcdaEnumLabels";
-import { MyanmarAffectedGroups as AffectedGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarAffectedGroups";
-import { MyanmarDisasterTypes as DisasterTypes } from "@common/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
-import { MyanmarGeographicalSettings as GeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
-import { MyanmarResponseModalities as ResponseModalities } from "@common/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
-import { MyanmarSectorBasicNeedsConcernScale as SectorBasicNeedsConcernScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorBasicNeedsConcernScale";
-import { MyanmarSectorFactorImpactScale as SectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
-import { MyanmarSectorFactors as SectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
-import { MyanmarSectors as Sectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
-import { MyanmarSectorSeverityScale as SectorSeverityScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorSeverityScale";
-import { MyanmarVulnerableGroups as VulnerableGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
+import { MyanmarAffectedGroups as AffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
+import { MyanmarDisasterTypes as DisasterTypes } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarDisasterTypes";
+import { MyanmarGeographicalSettings as GeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
+import { MyanmarResponseModalities as ResponseModalities } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarResponseModalities";
+import { MyanmarSectorBasicNeedsConcernScale as SectorBasicNeedsConcernScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorBasicNeedsConcernScale";
+import { MyanmarSectorFactorImpactScale as SectorFactorImpactScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarSectorFactors as SectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
+import { MyanmarSectors as Sectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
+import { MyanmarSectorSeverityScale as SectorSeverityScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorSeverityScale";
+import { MyanmarVulnerableGroups as VulnerableGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarVulnerableGroups";
 import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/chat/localization/RcdaTextEnglish";
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.

@@ -24,7 +24,8 @@ module.exports = async function deployCosmos(armSessionToken) {
     for (let dbFile of dbFiles) {
         let dbFolderName = dbFile.slice(0, dbFile.indexOf("/"));
         let db = require(`${cosmosFolderRelativePath}/${dbFile}`);
-        await client.databases.createIfNotExists(db);
+        // the throughput will only be set on first run. additonal changes must be made in the portal
+        await client.databases.createIfNotExists(db, { offerThroughput: 400 });
 
         let collectionFiles = glob.sync(`./${dbFolderName}/collections/*.collection.json`, { cwd: `${__dirname}/${cosmosFolderRelativePath}` });
         for (let collectionFile of collectionFiles) {

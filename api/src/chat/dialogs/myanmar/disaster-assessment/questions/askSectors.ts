@@ -2,11 +2,11 @@ import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { reviewSectorsDialog } from "@/chat/dialogs/myanmar/disaster-assessment/review/reviewSectorsDialog";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
-import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
-import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
+import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactorImpactScale";
 import { MyanmarSectorInput } from "@/chat/models/MyanmarConversationData";
 import { getKeys } from "@common/utils/objectHelpers";
-import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
 
 export const askSectorsDialog = rcdaChatDialog(
     "/askSectors",
