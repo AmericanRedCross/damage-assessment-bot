@@ -18,10 +18,16 @@ export class RcdaCommonTextEnglish {
     selectDropdownPlaceholder = "Choose...";
     yes = "Yes";
     no = "No";
+    // TODO Chane the URL for the supported channel.
+    unsupportedChannel = "We currently do not support this channel. Please visit us at - https://esthumstrbotstg01.z13.web.core.windows.net/?#/chat";
     formatNumber = (value: number) => value.toString();
 }
 
 export class RcdaMyanmarTextEnglish {
+    //misc
+    unsupportedChannel = "**Unsupported Channel**";
+    webchatRedirectToUrlMessage = "This channel is currently not supported. Please click on the button below to be redirected to Web Chat";
+    redirectButtonText = "Redirect to WebChat";
     // intro
     promptUserToSelectChatbotFeature = "What can I assist with?";
     startDisasterAssessmentOption = "Start reporting on a disaster";
