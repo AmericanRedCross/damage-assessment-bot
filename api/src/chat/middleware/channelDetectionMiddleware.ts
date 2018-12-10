@@ -1,10 +1,11 @@
 import rcdaChatMiddleware from "@/chat/utils/rcdaChatMiddleware";
+import unsupportedChannelDialog from "@/chat/dialogs/unsupportedChannelDialog";
 
 export const channelDetectionMiddleware = rcdaChatMiddleware(
     null,
     ({ session, next }) => {
         if (session.message.address.channelId !== "webchat") {
-            session.send("We currently do not support this channel. Please visit us at - https://example.com for proceeding ahead.");
+            session.beginDialog(unsupportedChannelDialog.id);
             return;
         }
         next();

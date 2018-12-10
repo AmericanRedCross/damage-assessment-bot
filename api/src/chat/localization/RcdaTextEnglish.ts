@@ -18,6 +18,8 @@ export class RcdaCommonTextEnglish {
     selectDropdownPlaceholder = "Choose...";
     yes = "Yes";
     no = "No";
+    // TODO Chane the URL for the supported channel.
+    unsupportedChannel = "We currently do not support this channel. Please visit us at - https://esthumstrbotstg01.z13.web.core.windows.net/?#/chat";
     formatNumber = (value: number) => value.toString();
 }
 
