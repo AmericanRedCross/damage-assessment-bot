@@ -1,4 +1,4 @@
 enum RcdaCountries {
-    Myanmar = "MM"
+    Myanmar = "Myanmar"
 }
 export default RcdaCountries;

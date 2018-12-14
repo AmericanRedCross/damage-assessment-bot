@@ -1,17 +1,16 @@
 import fast_csv = require("fast-csv");
-import { rcdaCsvHeaders } from "@/services/utils/RcdaCsvHeaders";
 import MyanmarConversationData, { MyanmarSectorFactorInput, MyanmarAffectedPeopleSectionInput } from "@/chat/models/MyanmarConversationData"
-import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
-import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
+import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarDisasterTypes";
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import { myanmarTownships, MyanmarTownship } from "@common/system/countries/myanmar/MyanmarTownship";
-import { MyanmarSectorSeverityScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorSeverityScale";
-import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
-import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
-import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
-import { MyanmarSectorBasicNeedsConcernScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorBasicNeedsConcernScale";
-import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarAffectedGroups";
-import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
-import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
+import { MyanmarSectorSeverityScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorSeverityScale";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
+import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
+import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarSectorBasicNeedsConcernScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorBasicNeedsConcernScale";
+import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
+import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarVulnerableGroups";
+import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarResponseModalities";
 import RcdaError, { RcdaErrorTypes } from "@common/system/RcdaError";
 import { IsNumeric } from "@common/utils/isNumeric";
 
@@ -22,95 +21,111 @@ interface IErrorLog {
 
 export default class DisasterAssessmentUploadService {
     
-    public numberOfTopAffectedGroups:number = 3;
-    public numberOfTopPrioritySectors:number = 3;
-    public numberOfTopVulnerableGroups:number = 3;
-    public numberOfTopResponseModalities:number = 3;
-
-    private rowNumber:number;
-    private errorLog:IErrorLog[];
-
     constructor() {
-        this.rowNumber = 0;
-        this.errorLog = [];
     }
 
     public static getInstance() {
         return new DisasterAssessmentUploadService();
     }
 
-    public async uploadDisasterAssessmentReport(data:any):Promise<void> {
-
-        if (!data) {
-            throw new RcdaError(RcdaErrorTypes.ClientError, "Request received is empty");
-        }
-        fast_csv.fromString(data, {
-            objectMode:true,
-            headers:true,
-            trim:true,
     
-        }).validate((data:any):boolean => {
+    private numberOfTopAffectedGroups:number = 3;
+    private numberOfTopPrioritySectors:number = 3;
+    private numberOfTopVulnerableGroups:number = 3;
+    private numberOfTopResponseModalities:number = 3;
+
+    public async uploadDisasterAssessmentReport(data:any): Promise<void> {
+        
+        let rowNumber = 0;
+        let errorLog:IErrorLog[] = [];
+        
+        let _this = this;
+
+        return new Promise<void>(function(resolve, reject) {
+            console.log("!!!!!!!!!!!")
             if (!data) {
-                return false;
+                reject(new RcdaError(RcdaErrorTypes.ClientError, "Request content is empty"));
             }
-            
-            let validationErrorLog:Array<string> = [];
-            this.rowNumber++;
-            if (this.rowNumber === 1) {
-                this.validateHeaders(data,validationErrorLog);
-            }
-            
-            this.validateUserInfo(data,validationErrorLog);
-            this.validateAffectedPeople(data,validationErrorLog);
-            this.validateSectorSeverity(data,validationErrorLog);
-            this.validateSectorFactorData(data,validationErrorLog);
-            this.validateSectorBasicNeedsConcern(data,validationErrorLog);
-            this.validateTopAffectedGroups(data,validationErrorLog);
-            this.validateTopPrioritySectors(data,validationErrorLog);
-            this.validateTopVulnerableGroups(data,validationErrorLog);
-            this.validateTopResponseModalities(data,validationErrorLog);
-            if (validationErrorLog.length === 0) {
-                return true;
-            } else {
-                this.errorLog.push(
+            fast_csv.fromString(data, {
+                objectMode:true,
+                headers:true,
+                trim:true,
+        
+            }).validate((data:any):boolean => {
+                console.log("!!!!!!!!!!!validate")
+                try {
+                    
+                    if (!data) {
+                        return false;
+                    }
+                    
+                    let validationErrorLog:Array<string> = [];
+                    rowNumber++;
+                    if (rowNumber === 1) {
+                        _this.validateHeaders(data,validationErrorLog);
+                    }
+                    
+                    _this.validateUserInfo(data,validationErrorLog);
+                    _this.validateAffectedPeople(data,validationErrorLog);
+                    _this.validateSectorSeverity(data,validationErrorLog);
+                    _this.validateSectorFactorData(data,validationErrorLog);
+                    _this.validateSectorBasicNeedsConcern(data,validationErrorLog);
+                    _this.validateTopAffectedGroups(data,validationErrorLog);
+                    _this.validateTopPrioritySectors(data,validationErrorLog);
+                    _this.validateTopVulnerableGroups(data,validationErrorLog);
+                    _this.validateTopResponseModalities(data,validationErrorLog);
+                    if (validationErrorLog.length === 0) {
+                        return true;
+                    } else {
+                        errorLog.push(
+                            {
+                                row: rowNumber,
+                                errorMessages: validationErrorLog
+                            }
+                        );
+                        return false;
+                    }
+                }
+                catch (error) {
+                    reject(error);
+                    throw error;
+                }
+            }).on("data",function (data:any):void {
+                
+                console.log("!!!!!!!!!!!data")
+                // TODO Save the report in cosmos
+                
+            }).on("end",():void => {
+                console.log("!!!!!!!!!!!end")
+                let csvUploadResponse:object = {};
+                if (rowNumber === 0) {
+                    errorLog.push({
+                        errorMessages: `No rows were parsed. Are you sure the data is Comma Separated?`
+                    });
+                }
+                resolve();
+            }).on("error",function (error:any) {
+                console.log("!!!!!!!!!!!error")
+                errorLog.push(
                     {
-                        row: this.rowNumber,
-                        errorMessages: validationErrorLog
+                        errorMessages: error.toString()
                     }
                 );
-                return false;
-            }
-        }).on("data",function (data:any):void {
-            
-            // TODO Save the report in cosmos
-            
-        }).on("end",():void => {
-            let csvUploadResponse:object = {};
-            if (this.rowNumber === 0) {
-                this.errorLog.push({
-                    errorMessages: `No rows were parsed. Are you sure the data is Comma Separated?`
-                });
-            }
-        }).on("error",function (error:any) {
-            this.errorLog.push(
-                {
-                    errorMessages: error.toString()
-                }
-            );
-        })
+                reject(error);
+            })
 
-        if (this.errorLog.length !== 0) {
-            throw new RcdaError(
-                RcdaErrorTypes.ClientError,
-                "There were various errors. Please review them below - ",
-                this.errorLog)
-        }
+            if (errorLog.length !== 0) {
+                reject(new RcdaError(RcdaErrorTypes.ClientError, "There were various errors. Please review them below - ", this.errorLog));
+            }
+            
+            console.log("!!!!!!!!!!!sync-end")
+        });
     }
 
     private validateHeaders(data:object,errorLog:Array<string>):void {
-        const csvProperties:Array<string> = Object.getOwnPropertyNames(data);
+        const csvProperties = Object.getOwnPropertyNames(data);
         
-        for (const header of rcdaCsvHeaders) {
+        for (const header of this.getCsvHeaders()) {
             if (!csvProperties.includes(header)) {
                 errorLog.push(`CSV header was not recognized: '${header}'`);
             }
@@ -323,5 +338,85 @@ export default class DisasterAssessmentUploadService {
         });
     
         return reportData;
+    }
+
+    public getCsvTemplate(): string {
+        return this.getCsvHeaders().join(",");
+    }
+
+    public getCsvHeaders(): string[] {
+        return [
+            "townshipId",
+            "disasterTypeId",
+            "geographicalSettingId",
+            "numberOfPeopleBeforeDisaster",
+            "numberOfPeopleLeftArea",
+            "numberOfPeopleReturned",
+            "numberOfPeopleLivingCurrently",
+            "totalNumberOfPeopleAffected",
+            "numberOfPeopleDisplaced",
+            "numberOfPeopleNotDisplaced",
+            "numberOfCasualties",
+            "sectorHealthSeverity",
+            "sectorHealthAccess",
+            "sectorHealthAvailability",
+            "sectorHealthQuality",
+            "sectorHealthUse",
+            "sectorHealthFutureConcern",
+            "sectorFoodSeverity",
+            "sectorFoodAccess",
+            "sectorFoodAvailability",
+            "sectorFoodQuality",
+            "sectorFoodUse",
+            "sectorFoodFutureConcern",
+            "sectorWashSeverity",
+            "sectorWashAccess",
+            "sectorWashAvailability",
+            "sectorWashQuality",
+            "sectorWashUse",
+            "sectorWashFutureConcern",
+            "sectorShelterNFISeverity",
+            "sectorShelterNFIAccess",
+            "sectorShelterNFIAvailability",
+            "sectorShelterNFIQuality",
+            "sectorShelterNFIUse",
+            "sectorShelterNFIFutureConcern",
+            "sectorProtectionSeverity",
+            "sectorProtectionAccess",
+            "sectorProtectionAvailability",
+            "sectorProtectionQuality",
+            "sectorProtectionUse",
+            "sectorProtectionFutureConcern",
+            "sectorEducationSeverity",
+            "sectorEducationAccess",
+            "sectorEducationAvailability",
+            "sectorEducationQuality",
+            "sectorEducationUse",
+            "sectorEducationFutureConcern",
+            "sectorLivelihoodSeverity",
+            "sectorLivelihoodAccess",
+            "sectorLivelihoodAvailability",
+            "sectorLivelihoodQuality",
+            "sectorLivelihoodUse",
+            "sectorLivelihoodFutureConcern",
+            "sectorOtherSeverity",
+            "sectorOtherAccess",
+            "sectorOtherAvailability",
+            "sectorOtherQuality",
+            "sectorOtherUse",
+            "sectorOtherFutureConcern",
+            "topAffectedGroup1",
+            "topAffectedGroup2",
+            "topAffectedGroup3",
+            "topPrioritySector1",
+            "topPrioritySector2",
+            "topPrioritySector3",
+            "topVulnerableGroup1",
+            "topVulnerableGroup2",
+            "topVulnerableGroup3",
+            "topResponseModality1",
+            "topResponseModality2",
+            "topResponseModality3"
+        ];
     }
 }

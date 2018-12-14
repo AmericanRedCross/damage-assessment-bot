@@ -1,5 +1,5 @@
 import apiChatRegistration from "@/functions/root/api-chat-registration/index";
-import ChatRegistrationService from "@/services/ChatRegistrationService";
+import ChatRegistrationService from "@/services/chat/ChatRegistrationService";
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import HttpRequestMock from "@/test/mocks/HttpRequestMock";
 import genericMock from "@/test/mocks/genericMock";

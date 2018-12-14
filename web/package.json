@@ -12,10 +12,12 @@
     "axios": "^0.18.0",
     "botframework-webchat": "^4.1.0",
     "hoek": "^4.2.1",
+    "native-promise-only": "^0.8.1",
     "vue": "^2.5.11",
     "vue-component-decorator": "0.0.2",
     "vue-property-decorator": "^7.0.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuejs-datepicker": "^1.5.4"
   },
   "//": "**NOTE: hoek is an indirect dependency of the project, but the installed version has a security vulnerability that GitHub reports. We list it directly to control the version.",
   "devDependencies": {

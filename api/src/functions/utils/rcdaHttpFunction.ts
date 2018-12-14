@@ -1,12 +1,12 @@
 import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
 import { RcdaHttpFunction, RcdaHttpRequest, RcdaHttpResponse, RcdaHttpResponseError } from "@/functions/utils/rcda-http-types";
 import RcdaHttpHeaders from "@/functions/utils/RcdaHttpHeaders";
-import UserSession from "@common/models/resources/UserSession";
 import RcdaError, { RcdaErrorTypes } from "@common/system/RcdaError";
 import RcdaAuthorizationPolicy from "@common/system/RcdaAuthorizationPolicy";
 import { RcdaHttpResponseHeaders, RcdaAzureHttpFunction } from "@/functions/utils/rcda-http-types";
 import SessionUtility from "@/services/utils/SessionUtility";
 import { RcdaRoles } from "@common/system/RcdaRoles";
+import jsonPrune from "@/functions/utils/jsonPrune";
 
 export class RcdaHttpFunctionDependencies {
     constructor(public sessionUtility: SessionUtility) {}
@@ -54,7 +54,7 @@ export default function rcdaHttpFunction<TBody, TResult, TDependencies>(
             let errorResponse = formatErrorResponse(error);
 
             if (errorResponse.status === HttpStatusCode.InternalServerError) {
-                context.log.error(error.message);
+                context.log.error(jsonPrune(error));
             }
 
             return errorResponse;
@@ -123,3 +123,18 @@ function formatRcdaError(error: RcdaError<any>): RcdaHttpResponseError {
     }
     return response;
 }
+
+if (!('toJSON' in Error.prototype))
+Object.defineProperty(Error.prototype, 'toJSON', {
+    value: function () {
+        var alt = {};
+
+        Object.getOwnPropertyNames(this).forEach(function (key) {
+            alt[key] = this[key];
+        }, this);
+
+        return alt;
+    },
+    configurable: true,
+    writable: true
+});

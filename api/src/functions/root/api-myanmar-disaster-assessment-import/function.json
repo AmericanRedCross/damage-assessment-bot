@@ -4,19 +4,19 @@
     "bindings": [
         {
             "authLevel": "anonymous",
-            "route": "api/myanmar/disasterAssessment",
+            "route": "myanmar/disasterAssessment/import",
             "type": "httpTrigger",
             "direction": "in",
             "name": "req",
             "dataType": "string",
             "methods": [
-                "POST"
+                "post"
             ]
         },
         {
             "type": "http",
             "direction": "out",
-            "name": "res"
+            "name": "$return"
         }
     ]
 }

@@ -2,6 +2,7 @@ import RcdaApiClient from "@/services/utils/RcdaApiClient";
 import UserSession from "@common/models/resources/UserSession";
 import LoginRequest from "@common/models/services/login/LoginRequest";
 import LoginResponse from "@common/models/services/login/LoginResponse";
+import axios from "axios";
 
 export default class AuthService {
 
@@ -17,15 +18,22 @@ export default class AuthService {
         return Date.now() < (this.userSession.exp * 1000 /* convert to milliseconds */);
     }
 
-    public async logIn(username: string, password: string) {
+    public async login(username: string, password: string): Promise<boolean> {
         let loginRequest: LoginRequest = {
             username,
             password
         };
-
-        let loginResponse = await this.apiClient.post<LoginResponse>("api/login", loginRequest, );
-
-        localStorage.setItem(AuthService.localStorageSessionKey, loginResponse.data.sessionToken);
+        let loginResponse = await this.apiClient.post<LoginResponse>("api/login", loginRequest);
+        if (loginResponse.status === 400) {
+            return false;
+        }
+        else if (loginResponse.status === 200) {
+            localStorage.setItem(AuthService.localStorageSessionKey, loginResponse.data.sessionToken);
+            return true;
+        }
+        else {
+            throw loginResponse.data;
+        }
     };
 
     private get userSession(): UserSession|null {
