@@ -1,6 +1,7 @@
 import RcdaApiClient from "@/services/utils/RcdaApiClient";
 import GenerateMyanmarDisasterAssessmentSummaryRequest from "@common/models/services/myanmar-disaster-assessment-summary/GenerateMyanmarDisasterAssessmentSummaryRequest";
 import GenerateMyanmarDisasterAssessmentSummaryResponse from "@common/models/services/myanmar-disaster-assessment-summary/GenerateMyanmarDisasterAssessmentSummaryResponse";
+import { JsonResult, jsonDate } from "@common/utils/jsonHelpers";
 
 export default class MyanmarDashboardService {
 
@@ -10,9 +11,13 @@ export default class MyanmarDashboardService {
         
         let sessionToken = localStorage.getItem("sessionToken");
         let headers = { "Authorization": `Bearer ${sessionToken}` };
-        let response = await this.apiClient.post<GenerateMyanmarDisasterAssessmentSummaryResponse>("api/myanmar/disasterAssessment/summary", request, { headers });
+        let response = await this.apiClient.post<JsonResult<GenerateMyanmarDisasterAssessmentSummaryResponse>>("api/myanmar/disasterAssessment/summary", request, { headers });
         
-        return response.data;
+        return {
+            ...response.data,
+            startDate: new Date(response.data.startDate),
+            endDate: new Date(response.data.endDate)
+        };
     }
 
     public async importFile(file: File) {

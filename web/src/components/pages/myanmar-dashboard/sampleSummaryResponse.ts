@@ -7,8 +7,8 @@ import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessm
 
 export default {
     count: 0,
-    startDate: new Date().toJSON(),
-    endDate: new Date().toJSON(),
+    startDate: new Date(),
+    endDate: new Date(),
     disasterType: <any>null,
     location: {
       regionCode: <any>null,
