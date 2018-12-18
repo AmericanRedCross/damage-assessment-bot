@@ -5,18 +5,16 @@ import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarTownship"
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import { getKeys, getValues } from "@common/utils/objectHelpers";
+import { nextTick } from "async";
 
 export const askUserInfoDialog = rcdaChatDialog(
     "/askUserInfo",
     null,
     [
-        ({ session, localizer }) => {
-            Prompts.text(session, localizer.mm.askTownshipName);
+        ({ session }) => {
+            session.beginDialog(confirmUserAdminStack.id);
         },
-        ({ session, localizer, result: { response } }) => {
-            // TODO validate against list of myanmar townships in /common/src/system/countries/myanmar/MyanmarTownships
-            session.conversationData.mm.townshipId = response;
-
+        ({ session, localizer }) => {
             Prompts.choice(session, localizer.mm.askDisasterType, localizer.mm.disasterTypes, { listStyle: ListStyle.button });
         },
         ({ session, localizer, result: { response } }) => {
@@ -27,7 +25,12 @@ export const askUserInfoDialog = rcdaChatDialog(
             session.conversationData.mm.geographicalSettingId = getKeys(localizer.mm.geographicalSettings)[response.index] as MyanmarGeographicalSettings;
             session.endDialog();
         }
-    ]);
+    ],
+    {
+        references: () => [
+            confirmUserAdminStack
+        ]
+    });
 
 export const confirmUserAdminStack = rcdaChatDialog(
     "/confirmUserAdminStack",
@@ -35,23 +38,37 @@ export const confirmUserAdminStack = rcdaChatDialog(
     [
         ({ session, localizer, next }) => {
             const currentAdminStack: string = session.userData.adminStack;
-            if (currentAdminStack) {
+            if (currentAdminStack !== undefined) {
                 Prompts.choice(
                     session,
                     localizer.mm.tellCurrentAdminStack(currentAdminStack),
-                    [localizer.common.yes,localizer.common.no]);
+                    [
+                        localizer.common.yes, 
+                        localizer.common.no
+                    ],
+                    {listStyle:ListStyle.button});
             } else {
                 next();
             }
         },
-        ({ session, result, localizer }) => {
-            if (result.response === localizer.common.yes && !session.userData.adminStack) {
+        ({ session, result, localizer, next }) => {
+            if (!session.userData.adminStack || result.response.entity === localizer.common.yes) {
                 session.beginDialog(askUserAdminStack.id);
+            } else {
+                next();
             }
+        },
+        ({ session, localizer }) => {
             session.send(localizer.mm.reportCurrentAdminStack(session.userData.adminStack));
+            session.conversationData.mm.townshipId = session.userData.adminStack;
             session.endDialog();
         }
-    ]
+    ],
+    {
+        references: () => [
+            askUserAdminStack
+        ]
+    }
 );
 
 export const askUserAdminStack = rcdaChatDialog(
@@ -59,18 +76,18 @@ export const askUserAdminStack = rcdaChatDialog(
     null,
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCard(session,createAdaptiveCardforRegions(localizer));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardforRegions(localizer));
         },
         ({ session, localizer, result}) => {
-            const selectedRegion: string = result.region;
-            RcdaPrompts.adaptiveCard(session,createAdaptiveCardForDistricts(localizer,selectedRegion));
+            const selectedRegion: string = result.response.region;
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, selectedRegion));
         },
         ({ session, localizer, result}) => {
-            const selectedDistrict: string = result.district;
-            RcdaPrompts.adaptiveCard(session,createAdaptiveCardForTownships(localizer,selectedDistrict));
+            const selectedDistrict: string = result.response.district;
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, selectedDistrict));
         },
         ({ session, result }) => {
-            session.userData.adminStack = result.township;
+            session.userData.adminStack = result.response.township;
             session.endDialog();
         }
     ]
