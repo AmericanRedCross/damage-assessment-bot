@@ -30,4 +30,8 @@ export default class RcdaCosmosClient extends CosmosClient {
     public get rcdaDatabase() {
         return this.database("Rcda");
     }
+
+    public get rcdaCoreCollection() {
+        return this.rcdaDatabase.container("Core");
+    }
 }

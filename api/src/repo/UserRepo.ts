@@ -50,7 +50,7 @@ export default class UserRepo extends CosmosResourceRepo<UserModel> {
                 ${modelProp<UserCountryMembershipModel>("id")}: @country 
             }, true)
         `, {
-            country:country 
+            country: country 
         });
     }
 }

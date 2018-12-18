@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import ChatWebTokenResult from "@common/models/services/chat-web-token/ChatWebTokenResult";
-import ChatWebTokenService from "@/services/ChatWebTokenService";
+import ChatWebTokenService from "@/services/chat/ChatWebTokenService";
 
 class ChatWebTokenDependencies {
 

@@ -65,6 +65,11 @@ export default abstract class CosmosResourceRepo<TResource extends {id: string}>
                 });
             }
 
+            options = {
+                enableCrossPartitionQuery: true,
+                ...options
+            };
+
             let response = await this.resourceContainer.items.query<TResource>(querySpec, options).toArray();
 
             return response.result;

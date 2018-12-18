@@ -32,5 +32,6 @@
     <StaticWebsite>
         <Enabled>true</Enabled>
         <IndexDocument>index.html</IndexDocument>
+        <ErrorDocument404Path>index.html</ErrorDocument404Path>
     </StaticWebsite>
 </StorageServiceProperties>

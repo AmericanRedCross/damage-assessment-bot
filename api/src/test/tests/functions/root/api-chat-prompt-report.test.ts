@@ -1,5 +1,5 @@
 import apiChatPromptReport from "@/functions/root/api-chat-prompt-report/index";
-import ChatPromptReportService from "@/services/ChatPromptReportService";
+import ChatPromptReportService from "@/services/chat/ChatPromptReportService";
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import HttpRequestMock from "@/test/mocks/HttpRequestMock";
 import genericMock from "@/test/mocks/genericMock";

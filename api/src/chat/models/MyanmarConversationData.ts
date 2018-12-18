@@ -1,12 +1,12 @@
-import { MyanmarSectors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectors";
-import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactors";
-import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorFactorImpactScale";
-import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/enums/MyanmarDisasterTypes";
-import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings";
-import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/enums/MyanmarResponseModalities";
-import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarVulnerableGroups";
-import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/enums/MyanmarAffectedGroups";
-import { MyanmarSectorSeverityScale } from "@common/models/resources/disaster-assessment/enums/MyanmarSectorSeverityScale";
+import { MyanmarSectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
+import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
+import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactorImpactScale";
+import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarDisasterTypes";
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
+import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarResponseModalities";
+import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarVulnerableGroups";
+import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
+import { MyanmarSectorSeverityScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorSeverityScale";
 
 export default class MyanmarConversationData {
     townshipId: string;

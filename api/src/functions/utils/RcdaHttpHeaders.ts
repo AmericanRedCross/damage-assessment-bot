@@ -1,6 +1,6 @@
 
 enum RcdaHttpHeaders {
-    ContentType = "Content-Type",
-    ContentDisposition = "Content-Disposition"
+    ContentType = "content-type",
+    ContentDisposition = "content-disposition"
 }
 export default RcdaHttpHeaders;

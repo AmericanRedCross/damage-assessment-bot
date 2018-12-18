@@ -1,4 +1,4 @@
-import myanmarTownshipsJson = require("@common/system/countries/myanmar/myanmarTownships.json");
+import * as myanmarTownshipsJson from "@common/system/countries/myanmar/myanmarTownships.json";
 
 export interface MyanmarTownship {
     townshipName: string;

@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "azure-functions-ts-essentials";
 import rcdaHttpFunction from "@/functions/utils/rcdaHttpFunction";
 import ChatRegistrationRequest from "@common/models/services/chat-registration/ChatRegistrationRequest";
-import ChatRegistrationService from "@/services/ChatRegistrationService";
+import ChatRegistrationService from "@/services/chat/ChatRegistrationService";
 
 class ChatRegistrationDependencies {
 

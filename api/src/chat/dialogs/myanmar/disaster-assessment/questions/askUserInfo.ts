@@ -5,7 +5,6 @@ import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarTownship"
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import { getKeys, getValues } from "@common/utils/objectHelpers";
-import { nextTick } from "async";
 
 export const askUserInfoDialog = rcdaChatDialog(
     "/askUserInfo",
