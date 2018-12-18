@@ -4,22 +4,39 @@ const fs = require("fs");
 (async function() {
 
     // data sourced from web page http://geonode.themimu.info/layers/geonode%3Amyanmar_township_boundaries (click link 'Download Layer', then 'GeoJSON')
-    let myanmarTownshipsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_township_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+    const myanmarRegionsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_state_region_boundaries_with_sub_region&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+    const myanmarDistrictsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_district_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
+    const myanmarTownshipsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_township_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
 
-    let townships = [];
+    const regions = {};
+    myanmarRegionsResponse.data.features.forEach(({ properties }) => {
+        let regionId = properties["ST_PCODE"];
+        regions[regionId] = {
+            regionCode: regionId,
+            regionName: properties["ST"],
+            regionNameBurmese: properties["NAME_M3"]
+        };
+    });
     
-    for (let feature of myanmarTownshipsResponse.data.features) {
+    const districts = {};
+    myanmarDistrictsResponse.data.features.forEach(({ properties }) => {
+        let districtId = properties["DT_PCODE"];
+        districts[districtId] = {
+            districtCode: districtId,
+            districtName: properties["DT"],
+            districtNameBurmese: properties["DT_Name_M3"]
+        };
+    });
 
-        let township = feature.properties;
+    const townships = [];    
+    for (let { properties: township } of myanmarTownshipsResponse.data.features) {
 
         townships.push({
-            townshipName: township["TS"],
-            districtName: township["DT"],
-            regionName: township["ST"],
-            townshipNameBurmese: township["T_NAME_M3"],
+            ...regions[township["ST_PCODE"]],
+            ...districts[township["DT_PCODE"]],
             townshipCode: township["TS_PCODE"],
-            districtCode: township["DT_PCODE"],
-            regionCode: township["ST_PCODE"],
+            townshipName: township["TS"],
+            townshipNameBurmese: township["T_NAME_M3"],
         });
     }
 
@@ -27,17 +44,17 @@ const fs = require("fs");
     // using a sort makes the output predictable, which will reduce noise in the git diff
     townships.sort((a, b) => {
         aComesBeforeB = undefined;
-        if (a.regionName !== b.regionName) {
-            aComesBeforeB = a.regionName < b.regionName;
+        if (a.regionCode !== b.regionCode) {
+            aComesBeforeB = a.regionCode < b.regionCode;
         }
-        else if (a.districtName !== b.districtName) {
-            aComesBeforeB = a.districtName < b.districtName;
+        else if (a.districtCode !== b.districtCode) {
+            aComesBeforeB = a.districtCode < b.districtCode;
         }
-        else if (a.townshipName !== b.townshipName) {
-            aComesBeforeB = a.townshipName < b.townshipName;
+        else if (a.townshipCode !== b.townshipCode) {
+            aComesBeforeB = a.townshipCode < b.townshipCode;
         }
         else {
-            throw new Error(`Duplicate township found: ${a.townshipName}`);
+            throw new Error(`Duplicate township found: ${a.townshipCode}`);
         }
         // output is expected in form of negative or positive number
         return aComesBeforeB ? -1 : 1; 
@@ -45,4 +62,38 @@ const fs = require("fs");
 
     let content = JSON.stringify(townships, null, 4);
     fs.writeFileSync(`${__dirname}/../common/src/system/countries/myanmar/myanmarTownships.json`, content);
+    
+    const locations = {
+        regions: {}
+    };
+    for (let township of townships) {
+
+        let region = locations.regions[township.regionCode];
+        if (!region) {
+            region = locations.regions[township.regionCode] = {};
+        }
+        region.code = township.regionCode;
+        region.name = township.regionName;
+        region.nameBurmese = township.regionNameBurmese;
+        region.districts = region.districts || {};
+        
+        let district = region.districts[township.districtCode];
+        if (!district) {
+            district = region.districts[township.districtCode] = {};
+        }
+        district.code = township.districtCode;
+        district.name = township.districtName;
+        district.nameBurmese = township.districtNameBurmese;
+        district.townships = district.townships || {};
+        
+        let township2 = district.townships[township.townshipCode];
+        if (!township2) {
+            township2 = district.townships[township.townshipCode] = {};
+        }
+        township2.code = township.townshipCode;
+        township2.name = township.townshipName;
+        township2.nameBurmese = township.townshipNameBurmese;
+    }
+    
+    fs.writeFileSync(`${__dirname}/../common/src/system/countries/myanmar/myanmarAdminStack.json`, JSON.stringify(locations, null, 4));
 })();
