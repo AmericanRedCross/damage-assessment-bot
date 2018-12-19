@@ -1,6 +1,6 @@
 import { Prompts,ListStyle,TextFormat, Session, Message } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/enums/MyanmarGeographicalSettings"
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarTownship"
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
