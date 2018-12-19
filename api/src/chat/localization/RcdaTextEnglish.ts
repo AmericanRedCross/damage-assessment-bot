@@ -24,6 +24,10 @@ export class RcdaCommonTextEnglish {
 }
 
 export class RcdaMyanmarTextEnglish {
+    //misc
+    unsupportedChannel = "**Unsupported Channel**";
+    webchatRedirectToUrlMessage = "This channel is currently not supported. Please click on the button below to be redirected to Web Chat";
+    redirectButtonText = "Redirect to WebChat";
     // intro
     promptUserToSelectChatbotFeature = "What can I assist with?";
     startDisasterAssessmentOption = "Start reporting on a disaster";

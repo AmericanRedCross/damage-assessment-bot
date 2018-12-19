@@ -1,4 +1,5 @@
 import { RcdaSessionMiddleware, RcdaChatMiddleware } from "@/chat/utils/rcda-chat-types";
+import RcdaChatLocalizer from "../localization/RcdaChatLocalizer";
 
 export default function rcdaChatMiddleware<TDependencies>(
     dependencyFactory: () => TDependencies,
@@ -8,7 +9,8 @@ export default function rcdaChatMiddleware<TDependencies>(
         dependencyFactory,
         sessionMiddleware: (session, next) => {
             let dependencies = result.dependencyFactory ? result.dependencyFactory() : null;
-            rcdaMiddleware({ session, next }, dependencies);
+            let localizer = new RcdaChatLocalizer(session);
+            rcdaMiddleware({ session, next, localizer }, dependencies);
         }
     };
     return result;

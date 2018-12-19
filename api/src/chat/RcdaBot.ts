@@ -7,8 +7,12 @@ import authenticationMiddleware from "@/chat/middleware/authenticationMiddleware
 import promptReportDialog from "@/chat/dialogs/promptReportDialog";
 import { registerRcdaPrompts } from "@/chat/prompts/RcdaPrompts"
 import { conversationDataInitMiddleware } from "@/chat/middleware/conversationDataInitMiddleware";
+<<<<<<< HEAD
 import { channelDetectionMiddleware } from "@/chat/middleware/channelDetectionMiddleware";
 import unsupportedChannelDialog from "@/chat/dialogs/unsupportedChannelDialog";
+=======
+import { webchatRedirectMiddleware } from "@/chat/middleware/webchatRedirectMiddleware";
+>>>>>>> Added localization code to the middleware
 
 export default class RcdaBot extends UniversalBot {
     static getInstance(connector: ChatConnector = null): RcdaBot {
@@ -35,8 +39,13 @@ export default class RcdaBot extends UniversalBot {
         });
     
         this.use(Middleware.sendTyping());
+<<<<<<< HEAD
         this.useSessionMiddleware(channelDetectionMiddleware);
         //this.useSessionMiddleware(authenticationMiddleware);
+=======
+        //this.useSessionMiddleware(authenticationMiddleware);
+        this.useSessionMiddleware(webchatRedirectMiddleware);
+>>>>>>> Added localization code to the middleware
         this.useSessionMiddleware(conversationDataInitMiddleware);
 
         registerRcdaPrompts(this);
