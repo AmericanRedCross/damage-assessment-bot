@@ -15,11 +15,10 @@ import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/chat/localizati
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
-    askPreferredLanguage = "Please select a language";
-    selectDropdownPlaceholder = "Choose...";
-    yes = "Yes";
-    no = "No";
-    unsupportedChannel = "We currently do not support this channel. Please visit us at - https://esthumstrbotstg01.z13.web.core.windows.net/?#/chat";
+    askPreferredLanguage = "ကျေးဇူးပြု၍ ဘာသာစကားရွေးချယ်ပါ";
+    selectDropdownPlaceholder = "ရွေးပါ...";
+    yes = "ဟုတ်သည်/ရှိသည်";
+    no = "မဟုတ်ပါ/မရှိပါ";
     formatNumber = (value: number) => value.toString();
 }
 
@@ -28,152 +27,152 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     webchatRedirectToUrlMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
     redirectButtonText = "Click here to sign in";
     // intro
-    promptUserToSelectChatbotFeature = "What can I assist with?";
-    startDisasterAssessmentOption = "Start reporting on a disaster";
-    getHelpOption = "Help";
-    invalidChoicePromptRetry = "Sorry, I didn't understand that. Please select one of the listed options.";
-    choiceNotYetSupportedPromptRetry = "Not yet implemented, please select another option";
+    promptUserToSelectChatbotFeature = "ကျွန်ပ်ဘာကူညီပေးရမလဲ";
+    startDisasterAssessmentOption = "ဘေးအန္တရာယ် ဆိုင်ရာ သတင်းပေးပို့မှု စတင်ပြုလုပ်ပါ။";
+    getHelpOption = "အကူအညီရယူရန်";
+    invalidChoicePromptRetry = "ဝမ်းနည်ပါတယ်၊ ကျွန်ုပ် နားမလည်ပါ။ ကျေးဇူးပြု၍  ဖော်ပြထားသော စာရင်းထဲမှ တစ်ခုကို ရွေးချယ်ပါ။";
+    choiceNotYetSupportedPromptRetry = "မလုပ်ဆောင်ရသေးပါ၊ ကျေးဇူးပြု၍ အခြားရွေးချယ်မှုပြုလုပ်ပါ။";
     // card buttons
-    submitCard = "Save";
-    acceptReviewCard = "Accept";
-    editReviewCard = "Edit";
+    submitCard = "သိမ်းဆည်းရန်";
+    acceptReviewCard = "လက်ခံရန်";
+    editReviewCard = "ပြန်လည်ပြင်ဆင်ရန်";
     // report navigation
-    askReportOnAnotherSection = "Would you like to report on anything else?";
-    confirmReportSubmitted = "Thank you, your report has been submitted";
+    askReportOnAnotherSection = "အခြားကိစ္စတခုခုကို သတင်းပေးပို့ လိုပါသလား။";
+    confirmReportSubmitted = "ကျေးဇူးတင်ပါတယ်။ သင့် သတင်းပေးပိုမှု အား တင်ပြပြီးဖြစ်ပါသည်။";
     // report info section
-    askTownshipName = "What township are you reporting on?";
-    askDisasterType = "What is the disaster type?";
-    askGeographicalSettingType = "What is the setting?";
+    askTownshipName = "မည်သည့် မြို့နယ်အတွက် သတင်းပို့လိုပါသလဲ။";
+    askDisasterType = "မည်သည့် ဘေးအန္တရာယ်အမျိုးအစားဖြစ်သနည်း။";
+    askGeographicalSettingType = "မည်သည့် ဒေသတွင်ဖြစ်ပါသနည်း။";
     askToChangeSelectedAdminStack = (townshipName: string) => `The current township selected is **${townshipName}**. Do you want to change it?`;
-    askAdminStackRegionName = "Please select the **Region** you are reporting on";
-    askAdminStackDistrictName = "Please select the **District** you are reporting on";
-    askAdminStackTownshipName = "Please select the **Township** you are reporting on";
+    askAdminStackRegionName = "သင် သတင်းပေးပို့နေရသည့် တိုင်းဒေသကြီး ကို ရွေးချယ်ပါ။";
+    askAdminStackDistrictName = "သင် သတင်းပေးပို့နေရသည့် ခရိုင် ကို ရွေးချယ်ပါ။";
+    askAdminStackTownshipName = "သင် သတင်းပေးပို့နေ ရသည့် မြို့နယ် ကို ရွေးချယ်ပါ။";
     reportCurrentAdminStack = (townshipName: string) => `Township is set to **${townshipName}**`;
     // report section selection
-    askNextSectionToReport = "What do you want to report on?";
-    reportSectionNamePeople = "People";
-    reportSectionNameSectors = "Sectors";
-    reportSectionNameRankings = "Rankings";
-    askIfReportAnotherSection = "Would you like to report on anything else?";
+    askNextSectionToReport = "မည်သည့် ကိစ္စကို သတင်းပို့လိုပါသနည်း။";
+    reportSectionNamePeople = "လူများ";
+    reportSectionNameSectors = "ကဏ္ဍများ";
+    reportSectionNameRankings = "အဆင့်များ";
+    askIfReportAnotherSection = "အခြားကိစ္စတခုခုကို သတင်းပို့လိုပါသလား။";
     // review
-    reviewSectionHeader = (sectionName: string) => `Please review **${sectionName}**`;
-    reviewSectionNoResponseValue = "No Response";
-    reviewSectorListHeader = "Please confirm the selected **Sectors**";
-    reviewSectorsReported = "You **have** reported on these sectors:";
-    reviewSectorsNotReported = "You **have not** reported on these sectors:";
+    reviewSectionHeader = (sectionName: string) => `ကျေးဇူးပြု၍ပြန်လည်သုံးသပ်ရန် **${sectionName}**`;
+    reviewSectionNoResponseValue = "တုံ့ပြန်မှု မရှိပါ";
+    reviewSectorListHeader = "ရွေးချယ်ထားသော ကဏ္ဍများကို ကျေးဇူးပြု၍ အတည်ပြုပါ";
+    reviewSectorsReported = "ဤကဏ္ဍများကို သင့် အနေဖြင့် သတင်း ပေးပို့ပြီး  ဖြစ်သည်။ :";
+    reviewSectorsNotReported = "ဤကဏ္ဍများကို သင့် အနေဖြင့် သတင်း မပေးပို့ရသေးပါ။ :";
     // people section
-    inputLabelNumberOfPeopleBeforeDisaster = "Number of people before disaster";
-    inputLabelNumberOfPeopleLeftArea = "Number of people who have left the area";
-    inputLabelNumberOfPeopleReturned = "Number of people who have returned";
-    inputLabelNumberOfPeopleLivingCurrently = "Number of people currently living in the area";
-    inputLabelNumberOfPeopleAffected = "Number of people affected (SUM)";
-    inputLabelNumberOfPeopleDisplaced = "Number of people displaced";
-    inputLabelNumberOfPeopleNotDisplaced = "Number of people affected non-displaced";
-    inputLabelNumberOfCasualties = "Number of casualties";
+    inputLabelNumberOfPeopleBeforeDisaster = "ဘေးအန္တရာယ်မတိုင်မီ လူဦးရေ";
+    inputLabelNumberOfPeopleLeftArea = "ဒေသကိုစွန့် ခွာသွားသည့် လူဦးရေ";
+    inputLabelNumberOfPeopleReturned = "ပြန်လည်ရောက်ရှိလာသည့် လူဦးရေ";
+    inputLabelNumberOfPeopleLivingCurrently = "ဒေသတွင်လက်ရှိနေထိုင်သည့် လူဦးရေ";
+    inputLabelNumberOfPeopleAffected = "ထိခိုက်ခံရသည့် လူဦးရေ (စုစုပေါင်း)";
+    inputLabelNumberOfPeopleDisplaced = "နေရပ်စွန့်ခွာသည့် လူဦးရေ";
+    inputLabelNumberOfPeopleNotDisplaced = "နေရပ်မစွန့်ခွာ ပဲ ထိခိုက်ခံရသည့် လူဦးရေ";
+    inputLabelNumberOfCasualties = "ဒဏ်ရာရသည့် လူဦးရေ";
     // sectors section
-    sectorSelectionHeader = "Please select the **Sectors** to report";
-    sectorSeverityQuestionHeader = "Severity";
-    sectorFactorsQuestionsHeader = "Factors";
-    sectorBasicNeedsQuestionHeader = "Basic Needs";
-    sectorBasicNeedsQuestionLabel = "Without additional assistance, are you worried about your ability to meet your basic needs for this sector in the next 3 months?";
+    sectorSelectionHeader = "မည်သည့်ကဏ္ဍကို သတင်းပို့နိုင်ပါသလဲ";
+    sectorSeverityQuestionHeader = "ပြင်းထန်မှု";
+    sectorFactorsQuestionsHeader = "အကြောင်းရင်းများ";
+    sectorBasicNeedsQuestionHeader = "အခြေခံလိုအပ်ချက်များ";
+    sectorBasicNeedsQuestionLabel = "အကူအညီများကို ထပ်မံမရရှိပါက သင့်အနေဖြင့် အခြေခံ လိုအပ်ချက်များ ကို နောက် ၃ လ အတွင်းတွင် ရရှိအောင် စွမ်းဆောင်နိုင်ရန် အတွက် စိုးရိပ်ပူပန်မှု ရှိပါသလား။";
     // rankings section
-    askTop3AffectedGroups = "Who are the top 3 affected groups that require immediate assistance in this area?"
-    askTop3ResponseModalities = "What are the top 3 response modalities you would favour?";
-    askTop3PrioritySectors = "What are the top 3 priority sectors requiring immediate assistance in this area?";
-    askTop3VulnerableGroups = "What are the top 3 vulnerable groups requiring immediate assistance in this area?";
-    rankingSectionResponseModalitiesTitle = "Response Modalities";
-    rankingSectionPrioritySectorsTitle = "Priority Sectors";
-    rankingSectionVulnerableGroupsTitle = "Vulnerable Groups";
-    rankingSectionAffectedGroupsTitle = "Affected Groups";
-    responseModalityRankingInputLabel = (rankingNumber: string) => `Response Modality #${rankingNumber}`;
-    prioritySectorsRankingInputLabel = (rankingNumber: string) => `Priority Sector #${rankingNumber}`;
-    vulnerableGroupsRankingInputLabel = (rankingNumber: string) => `Vulnerable Group #${rankingNumber}`;
-    affectedGroupsRankingInputLabel = (rankingNumber: string) => `Affected Group #${rankingNumber}`;
+    askTop3AffectedGroups = "ဤဒေသတွင် အကူအညီ ချက်ချင်း ရရှိရန် အတွက် လိုအပ်သော ဦးစားပေးဆောင်ရွက် ရမည့် ထိခိုက်ခံရလွယ်သော အုပ်စု ၃ စု"
+    askTop3ResponseModalities = "ဤဒေသတွင် တုန့် ပြန်မှုများ ဆောင်ရွက်ရန်အတွက်  ဦးစားပေးရမည့် နည်းလမ်း ၃ ခု";
+    askTop3PrioritySectors = "ဤဒေသတွင် အကူအညီ ချက်ချင်း ရရှိရန်အတွက် လိုအပ်သော ဦးစားပေး ဆောင်ရွက် ရမည့် ကဏ္ဍ ၃ ခု";
+    askTop3VulnerableGroups = "ဤဒေသတွင် အကူအညီ ချက်ချင်း ရရှိရန် အတွက် လိုအပ်သော ဦးစားပေးဆောင်ရွက် ရမည့် ထိခိုက်ခံရလွယ်သော အုပ်စု ၃ စု";
+    rankingSectionResponseModalitiesTitle = "တုံ့ပြန်မှု နည်းလမ်းများ";
+    rankingSectionPrioritySectorsTitle = "ဦးစားပေးကဏ္ဍများ";
+    rankingSectionVulnerableGroupsTitle = "ထိခိုက်ခံရလွယ်သော အုပ်စုများ";
+    rankingSectionAffectedGroupsTitle = "ထိခိုက်ခံရသောအုပ်စုများ";
+    responseModalityRankingInputLabel = (rankingNumber: string) => `တုံ့ပြန်မှု နည်းလမ်း #${rankingNumber}`;
+    prioritySectorsRankingInputLabel = (rankingNumber: string) => `ဦးစားပေးကဏ္ဍ #${rankingNumber}`;
+    vulnerableGroupsRankingInputLabel = (rankingNumber: string) => `ထိခိုက်ခံရလွယ်သော အုပ်စု #${rankingNumber}`;
+    affectedGroupsRankingInputLabel = (rankingNumber: string) => `ထိခိုက်ခံရသောအုပ်စု #${rankingNumber}`;
     // value labels
     disasterTypes: RcdaEnumLabels<DisasterTypes> = {
-        [DisasterTypes.CarAccident]: "Car accident",
-        [DisasterTypes.Cyclone]: "Cyclone",
-        [DisasterTypes.Earthquake]: "Earthquake",
-        [DisasterTypes.Explosion]: "Explosion",
-        [DisasterTypes.Fire]: "Fire",
-        [DisasterTypes.Flood]: "Flood",
-        [DisasterTypes.IDP]: "IDP",
-        [DisasterTypes.Landslide]: "Landslide",
-        [DisasterTypes.Other]: "Other",
-        [DisasterTypes.Shooting]: "Shooting",
-        [DisasterTypes.StrongWind]: "Strong wind",
-        [DisasterTypes.Tornado]: "Tornado",
-        [DisasterTypes.Wreck]: "Wreck"
+        [DisasterTypes.CarAccident]: "ယာဉ်မတော်မဆမှု",
+        [DisasterTypes.Cyclone]: "ဆိုင်ကလုန်း",
+        [DisasterTypes.Earthquake]: "ငလျင်",
+        [DisasterTypes.Explosion]: "ပေါက်ကွဲမှု",
+        [DisasterTypes.Fire]: "မီးလောင်မှု",
+        [DisasterTypes.Flood]: "ရေကြီးခြင်း",
+        [DisasterTypes.IDP]: "နေရပ်စွန့်ခွာသူများ",
+        [DisasterTypes.Landslide]: "မြေပြိုခြင်း",
+        [DisasterTypes.Other]: "အခြား",
+        [DisasterTypes.Shooting]: "ပစ်ခတ်မှု",
+        [DisasterTypes.StrongWind]: "လေပြင်းတိုက်ခတ်မှု",
+        [DisasterTypes.Tornado]: "လေဆင်နှာမောင်း",
+        [DisasterTypes.Wreck]: "ရုတ်တရက်ပျက်စီးမှု"
     };
     geographicalSettings: RcdaEnumLabels<GeographicalSettings> = {
-        [GeographicalSettings.Rural]: "Rural",
-        [GeographicalSettings.Urban]: "Urban",
-        [GeographicalSettings.SemiUrban]: "Semi-Urban"
+        [GeographicalSettings.Rural]: "ကျေးလက်ဒေသ",
+        [GeographicalSettings.Urban]: "မြို့ပြ",
+        [GeographicalSettings.SemiUrban]: "အလယ်အလတ်မြို့ပြ"
     };
     sectors: RcdaEnumLabels<Sectors> = {
-        [Sectors.Health]: "Health",
-        [Sectors.Food]: "Food",
-        [Sectors.Wash]: "Wash",
-        [Sectors.ShelterNFI]: "Shelter/NFI",
-        [Sectors.Protection]: "Protection",
-        [Sectors.Education]: "Education",
-        [Sectors.Livelihood]: "Livelihood",
-        [Sectors.Other]: "Other"
+        [Sectors.Health]: "ကျန်းမာရေး",
+        [Sectors.Food]: "အစားအစာ",
+        [Sectors.Wash]: "သန့်ရှင်းမှု",
+        [Sectors.ShelterNFI]: "အမိုးအကာ / အစားအစာ မဟုတ်သော ပစ္စည်းများ",
+        [Sectors.Protection]: "ကာကွယ်မှု",
+        [Sectors.Education]: "ပညာရေး",
+        [Sectors.Livelihood]: "အသက်မွေးဝမ်းကြောင်း",
+        [Sectors.Other]: "အခြား"
     };
     sectorFactors: RcdaEnumLabels<SectorFactors> = {
-        [SectorFactors.Access]: "Access",
-        [SectorFactors.Availability]: "Availability",
-        [SectorFactors.Quality]: "Quality",
-        [SectorFactors.Use]: "Use",
+        [SectorFactors.Access]: "လက်လှမ်းမှီနိုင်မှု",
+        [SectorFactors.Availability]: "ရရှိနိုင်မှု",
+        [SectorFactors.Quality]: "အရည်အသွေး",
+        [SectorFactors.Use]: "အသုံးပြုမှု",
     };
     sectorBasicNeedsConcernScale: RcdaEnumLabels<SectorBasicNeedsConcernScale> = {
-        [1]: "People do not feel worried at all about meeting this need",
-        [2]: "People are worried but think they should be able to cope",
-        [3]: "People are worried about the wellbeing of some or all their family members and not sure they will be able to cope",
-        [4]: "People are worried about the health of some or all their family members",
-        [5]: "People are worried about the life of some or all their family members"
+        [1]: "ယခုလိုအပ်ချက်များအတွက် လုံးဝပူပန်ခြင်းမရှိသော လူဦးရေ",
+        [2]: "စိုးရိမ်ပူပန်သော်လည်း ကိုင်တွယ်ဖြေရှင်းနိုင်မည်ဟု ယုံကြည်သော လူဦးရေ",
+        [3]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ဥစ္စာပစ္စည်း အတွက် စိုးရိမ်နေကြပြီး ပြန်လည်ဖြေရှင်းရန် မသေချာသော လူဦးရေ",
+        [4]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ကျန်းမာရေး အတွက် စိုးရိမ်နေကြသော လူဦးရေ",
+        [5]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ဘဝအတွက် စိုးရိမ်နေကြသော လူဦးရေ"
     };
     sectorFactorImpactScale: RcdaEnumLabels<SectorFactorImpactScale> = {
-        [0]: "Factor with Zero Impact",
-        [1]: "Factor with Low Impact",
-        [2]: "Factor with Medium Impact",
-        [3]: "Factor with High Impact"
+        [0]: "အကျိုးသက်ရောက်မှုလုံးဝမရှိသော ကဏ္ဍ",
+        [1]: "အနည်းငယ်အကျိုးသက်ရောက်မှုရှိသော ကဏ္ဍ",
+        [2]: "အလယ်အလတ်အကျိုးသက်ရောက်မှုရှိသောကဏ္ဍ",
+        [3]: "ကြီးမားသော အကျိုးသက်ရောက်မှုရှိသော ကဏ္ဍ"
     };
     sectorSeverityScale: RcdaEnumLabels<SectorSeverityScale> = {
-        [1]: "No concern – situation under control",
-        [2]: "Situation of concern that requires monitoring",
-        [3]: "Many people are suffering because of insufficient [supply of goods or services]",
-        [4]: "Many people will die because [supply of goods or services] are insufficient",
-        [5]: "Many people are known to be dying due to insufficient [supply of goods or services]"
+        [1]: "စိုးရိမ်မှု မရှိပါ - ထိန်းချုပ်မှု အောက်တွင် ရှိသော အခြေအနေ",
+        [2]: "စိုးရိမ်မှု သော အခြေအနေ - စောင့်ကြည့်လေ့လာရန်",
+        [3]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  ခံစားနေရသော လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)",
+        [4]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  သေဆုံး နိုင်ခြေရှိသော လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)",
+        [5]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  သေဆုံး မည့် လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)"
     };
     affectedGroups: RcdaEnumLabels<AffectedGroups> = {
-        [AffectedGroups.DisplacedIdp]: "Displaced IDP",
-        [AffectedGroups.DisplacedRefugeesAndAsylumSeekers]: "Displaced Refugees & Asylum Seekers",
-        [AffectedGroups.DisplacedReturnees]: "Displaced Returnees",
-        [AffectedGroups.DisplacedOthers]: "Displaced Others of Concern",
-        [AffectedGroups.NonDisplacedHost]: "Non-Displaced Host",
-        [AffectedGroups.NonDisplacedNonHost]: "Non-Displaced Non-Host"
+        [AffectedGroups.DisplacedIdp]: "နေရပ်စွန့်ခွာသူများ",
+        [AffectedGroups.DisplacedRefugeesAndAsylumSeekers]: "နေရပ်စွန့်ခွာပြီး ဒုက္ခခံစားရသူများ နှင့်   ခိုလှုံခွင့်တောင်းသူများ",
+        [AffectedGroups.DisplacedReturnees]: "နေရပ်စွန့်ခွားပြီး ပြန်လည်ရောက်ရှိသူများ",
+        [AffectedGroups.DisplacedOthers]: "တခြားသော စိုးရိပ်ပူပန်မှုကြောင့် နေရပ်စွန့်ခွာသူများ",
+        [AffectedGroups.NonDisplacedHost]: "နေရပ်မစွန့်ခွာသော အိမ်ရှင်မဟုတ်သူများ",
+        [AffectedGroups.NonDisplacedNonHost]: "နေရပ်မစွန့်ခွာသော အိမ်ရှင်မဟုတ်သူများ"
     };
     responseModalities: RcdaEnumLabels<ResponseModalities> = {
-        [ResponseModalities.Foods]: "Foods",
-        [ResponseModalities.HygeineItems]: "Hygiene Items",
-        [ResponseModalities.Misc]: "Misc",
-        [ResponseModalities.NFIs]: "NFI(s)",
-        [ResponseModalities.RestoringFamilyLinks]: "Restoring Family Links",
-        [ResponseModalities.Shelter]: "Shelter"
+        [ResponseModalities.Foods]: "အစားအစာများ",
+        [ResponseModalities.HygeineItems]: "တကိုယ်ရေ သန့်ရှင်းရေး အသုံးအဆောင်များ",
+        [ResponseModalities.Misc]: "အထွေထွေ",
+        [ResponseModalities.NFIs]: "အစားအစာ မဟုတ်သော ပစ္စည်းများ",
+        [ResponseModalities.RestoringFamilyLinks]: "မိသားစု ပြန်လည်ဆက်သွယ်ရေး",
+        [ResponseModalities.Shelter]: "နေအိမ်အမိုးအကာ"
     };
     vulnerableGroups: RcdaEnumLabels<VulnerableGroups> = {
-        [VulnerableGroups.Children]: "Children",
-        [VulnerableGroups.ChronicallyIll]: "Chronically Ill",
-        [VulnerableGroups.Elderly]: "Elderly",
-        [VulnerableGroups.FemaleHeadOfHousehold]: "Female Head of Household",
-        [VulnerableGroups.LactatingMothers]: "Lactating Mothers",
-        [VulnerableGroups.MentallyDisabled]: "Mentally Disabled",
-        [VulnerableGroups.MothersWithInfants]: "Mothers with infants",
-        [VulnerableGroups.PhysicallyDisabled]: "Physically disabled",
-        [VulnerableGroups.PregnantWomen]: "Pregnant Women",
-        [VulnerableGroups.Sick]: "Sick",
-        [VulnerableGroups.SingleHeadedHousehold]: "Single Headed Household"
+        [VulnerableGroups.Children]: "ကလေးသူငယ်များ",
+        [VulnerableGroups.ChronicallyIll]: "နာတာရှည် မကျန်းမာသောသူများ",
+        [VulnerableGroups.Elderly]: "သက်ကြီးရွယ်အိုများ",
+        [VulnerableGroups.FemaleHeadOfHousehold]: "အမျိုးသမီး ဦးဆောင်သော အိမ်ထောင်စု",
+        [VulnerableGroups.LactatingMothers]: "နို့တိုက်မိခင်များ",
+        [VulnerableGroups.MentallyDisabled]: "စိတ်ပိုင်းဆိုင်ရာ မသန်စွမ်းသူများ",
+        [VulnerableGroups.MothersWithInfants]: "မွေးကင်းစ ကလေးမိခင်များ",
+        [VulnerableGroups.PhysicallyDisabled]: "ရုပ်ပိုင်းဆိုင်ရာ မသန်စွမ်းသူများ",
+        [VulnerableGroups.PregnantWomen]: "ကိုယ်ဝန်ဆောင် အမျိုးသမီးများ",
+        [VulnerableGroups.Sick]: "နာမကျန်းဖြစ်ခြင်း",
+        [VulnerableGroups.SingleHeadedHousehold]: "တစ်ဦးတည်း ဦးဆောင်သော အိမ်ထောင်စု"
     };
     regions = makeObjectWithKeys(getKeys(myanmarRegions), (regionCode) => myanmarRegions[regionCode].nameBurmese);
     districts = makeObjectWithKeys(getKeys(myanmarDistricts), (districtCode) => myanmarDistricts[districtCode].nameBurmese);
