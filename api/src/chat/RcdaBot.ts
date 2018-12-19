@@ -7,7 +7,7 @@ import authenticationMiddleware from "@/chat/middleware/authenticationMiddleware
 import promptReportDialog from "@/chat/dialogs/promptReportDialog";
 import { registerRcdaPrompts } from "@/chat/prompts/RcdaPrompts"
 import { conversationDataInitMiddleware } from "@/chat/middleware/conversationDataInitMiddleware";
-import { channelDetectionMiddleware } from "@/chat/middleware/channelDetectionMiddleware";
+import { webchatRedirectMiddleware } from "@/chat/middleware/webchatRedirectMiddleware";
 
 export default class RcdaBot extends UniversalBot {
     static getInstance(connector: ChatConnector = null): RcdaBot {
@@ -35,7 +35,7 @@ export default class RcdaBot extends UniversalBot {
     
         this.use(Middleware.sendTyping());
         //this.useSessionMiddleware(authenticationMiddleware);
-        this.useSessionMiddleware(channelDetectionMiddleware);
+        this.useSessionMiddleware(webchatRedirectMiddleware);
         this.useSessionMiddleware(conversationDataInitMiddleware);
 
         registerRcdaPrompts(this);
