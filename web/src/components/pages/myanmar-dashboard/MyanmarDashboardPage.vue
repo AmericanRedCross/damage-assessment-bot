@@ -98,7 +98,7 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
 <template>
 <div class="dashboard">
-  <myanmar-dashboard-filter-panel v-if="showFilters" @apply-filters="getSummary" v-once />
+  <myanmar-dashboard-filter-panel v-if="showFilters" @apply-filters="getSummary" />
   <div class="dashboard-main-panel">
     <div class="dashboard-actions dashboard-row">
       <button class="rcda-button-primary" v-if="showFilters" @click="showFilters = false">{{localizer.mm.dashboardCloseFilterPanelButton}}</button>
@@ -190,6 +190,7 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
 .dashboard-featured-metrics {
   display: flex;
+  flex-flow: wrap;
 }
 
 .dashboard-featured-metric {
@@ -197,7 +198,8 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
   padding-left: 5px;
   padding-right: 5px;
   flex-grow: 1;
-  width: 1px;
+  width: 25%;
+  margin-top: 20px;
 }
 
 .dashboard-featured-metric-label {

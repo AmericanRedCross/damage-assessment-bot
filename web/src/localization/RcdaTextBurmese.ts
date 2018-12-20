@@ -38,20 +38,21 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     dashboardOpenFilterPanelButton = "ပွင့်လင်းစိစစ်မှုများ";
     dashboardFileImportButton = "လွှတ်တင်ခြင်း";
     dashboardDownloadCsvTemplateButton = "CSV Template";
-    dashboardChatbotLink = "Go to Chatbot";
+    dashboardChatbotLink = "စကားပြောဆိုမှုလျှောက်လွှာကိုသွားပါ";
     dashboardRankingSeeAllButton = "အားလုံးနားဆင်နိုင်ပါတယ်ကိုကြည့်ပါ";
-    dashboardSummaryHeadersAllDisasterTypes = "All Disaster Event Types";
+    dashboardSummaryHeadersAllDisasterTypes = "အားလုံးဘေးအန္တရာယ်အမျိုးအစားများ";
+    dashboardSectorHeatmapHeader = "ကဏ္ဍများ";
     // filter panel
     dashboardFilterHeader = "စိစစ်မှုများ";
-    dashboardFilterDisasterTypeInutLabel = "Disaster Event Type";
+    dashboardFilterDisasterTypeInutLabel = "သဘာဝဘေးအမျိုးအစား";
     dashboardFilterLocationInputGroupLabel = "တည်နေရာ";
-    dashboardFilterRegionInputLabel = "Region";
-    dashboardFilterDistrictInputLabel = "District";
-    dashboardFilterTownshipInputLabel = "Township";
-    dashboardFilterDateRangeInputGroupLabel = "Date Range";
-    dashboardFilterStartDateInputLabel = "Start Date";
-    dashboardFilterEndDateInputLabel = "End Date";
-    dashboarFilterApplyButton = "Apply Filters";
+    dashboardFilterRegionInputLabel = "ဒေသ";
+    dashboardFilterDistrictInputLabel = "နယ်";
+    dashboardFilterTownshipInputLabel = "မြို့နယ်";
+    dashboardFilterDateRangeInputGroupLabel = "ရက်စွဲများ";
+    dashboardFilterStartDateInputLabel = "ရက်စွဲကိုစတင်ခြင်း";
+    dashboardFilterEndDateInputLabel = "ရက်စွဲကိုအဆုံးသတ်ခြင်း";
+    dashboarFilterApplyButton = "ရေစစ်";
     // file import
     dashboardFileImportHeader = "Upload CSV File";
     dashboardFileImportNoFileSelectedError = "No file was selected. Please select a file to import.";

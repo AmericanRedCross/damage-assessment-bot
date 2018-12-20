@@ -40,6 +40,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardChatbotLink = "Go to Chatbot";
     dashboardRankingSeeAllButton = "See All Reported";
     dashboardSummaryHeadersAllDisasterTypes = "All Disaster Event Types";
+    dashboardSectorHeatmapHeader = "Summary";
     // filter panel
     dashboardFilterHeader = "Filters";
     dashboardFilterDisasterTypeInutLabel = "Disaster Event Type";

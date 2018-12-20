@@ -73,6 +73,7 @@ export default class SiteBanner extends Vue {
 
 .rcda-banner-style-dark {
     background-color: #494949;
+    border-bottom-color: #494949;
 }
 
 .rcda-banner-style-dark .rcda-site-title, .rcda-banner-style-dark .banner-language-picker-label {
