@@ -26,6 +26,7 @@
         "./src/**/*.ts",
     ],
     "files": [
-        "./src/system/countries/myanmar/myanmarTownships.json"
+        "./src/system/countries/myanmar/myanmarTownships.json",
+        "./src/system/countries/myanmar/myanmarAdminStack.json"
     ]
 }

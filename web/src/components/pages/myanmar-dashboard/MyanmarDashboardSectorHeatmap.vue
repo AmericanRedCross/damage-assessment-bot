@@ -29,10 +29,10 @@ export default class MyanmarDashboardSectorHeatmap extends Vue {
     <table class="dashboard-heatmap">
         <tr class="dashboard-heatmap-header-row">
             <th></th><!-- empty header -->
-            <th v-for="sectorId of sectorIds" :key="sectorId">{{sectorId}}</th>
+            <th v-for="sectorId of sectorIds" :key="sectorId">{{localizer.mm.sectors[sectorId]}}</th>
         </tr>
         <tr>
-            <td class="dashboard-heatmap-row-header">Severity</td>
+            <td class="dashboard-heatmap-row-header">{{localizer.mm.dashboardSectorHeatmapSeverityHeader}}</td>
             <td v-for="sectorId of sectorIds" :key="sectorId" :style="cellStyle(sectorData[sectorId].severity)">
                 <div class="dashboard-heatmap-cell-value">{{sectorData[sectorId].severity}}</div>
             </td>
@@ -44,7 +44,7 @@ export default class MyanmarDashboardSectorHeatmap extends Vue {
             </td>
         </tr>
         <tr>
-            <td class="dashboard-heatmap-row-header">Concern for Basic Needs</td>
+            <td class="dashboard-heatmap-row-header">{{localizer.mm.dashboardSectorHeatmapBasicNeedsHeader}}</td>
             <td v-for="sectorId of sectorIds" :key="sectorId" :style="cellStyle(sectorData[sectorId].basicNeedsConcern)">
                 <div class="dashboard-heatmap-cell-value">{{sectorData[sectorId].basicNeedsConcern}}</div>
             </td>

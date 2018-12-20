@@ -23,13 +23,7 @@ export default class WebChatPage extends Vue {
       bubbleFromUserBackground: 'rgba(0, 0, 0, 1)',
       bubbleFromUserTextColor: "White"
     });
-
-    // After generated, you can modify the CSS rules
-    // styleSet.textContent = { ...styleSet.textContent,
-    //   // fontFamily: '\'Comic Sans MS\', \'Arial\', sans-serif',
-    //   // fontWeight: 'bold'
-    // };
-
+    
     renderWebChat({ 
       directLine: directLine,
       styleSet: styleSet
