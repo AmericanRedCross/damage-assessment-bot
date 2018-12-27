@@ -230,8 +230,4 @@ function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, district: 
             }
         ]
     };
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 8d559513d9f234fff2fb7fc43bf12fff9b0a823a
