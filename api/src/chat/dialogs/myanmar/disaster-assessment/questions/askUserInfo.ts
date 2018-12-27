@@ -1,4 +1,4 @@
-import { Prompts, ListStyle } from "botbuilder";
+import { Prompts,ListStyle,TextFormat, Session, Message } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
@@ -230,4 +230,8 @@ function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, district: 
             }
         ]
     };
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8d559513d9f234fff2fb7fc43bf12fff9b0a823a
