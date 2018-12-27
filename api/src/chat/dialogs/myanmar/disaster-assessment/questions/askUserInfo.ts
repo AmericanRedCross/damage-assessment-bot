@@ -78,15 +78,15 @@ export const askUserAdminStack = rcdaChatDialog(
             RcdaPrompts.adaptiveCard(session, createAdaptiveCardforRegions(localizer));
         },
         ({ session, localizer, result}) => {
-            const selectedRegion: string = result.response.region;
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, selectedRegion));
+            const selectedRegionCode: string = result.response.regionCode;
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, selectedRegionCode));
         },
         ({ session, localizer, result}) => {
-            const selectedDistrict: string = result.response.district;
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, selectedDistrict));
+            const selectedDistrictCode: string = result.response.districtCode;
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, selectedDistrictCode));
         },
         ({ session, result }) => {
-            session.userData.adminStack = result.response.township;
+            session.userData.adminStack = result.response.townshipCode;
             session.endDialog();
         }
     ]
@@ -106,23 +106,23 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
 
     const myanmarRegionSet:Set<string> = new Set();
     myanmarTownships.forEach(myanmarTownship => {
-        myanmarRegionSet.add(myanmarTownship.regionName);
+        myanmarRegionSet.add(myanmarTownship.regionCode);
     });
 
     const myanmarRegionArray = Array.from(myanmarRegionSet).sort();
 
     const myanmarRegionChoices: object[] = [];
-    myanmarRegionArray.forEach(myanmarRegion => {
+    myanmarRegionArray.forEach(myanmarRegionCode => {
         myanmarRegionChoices.push({
-            title: myanmarRegion,
-            value: myanmarRegion
+            title: localizer.mm.regions[myanmarRegionCode],
+            value: myanmarRegionCode
         });
     });
 
     adaptiveCardBody.push({
         "type": "Input.ChoiceSet",
         "style": "compact",
-        "id": "region",
+        "id": "regionCode",
         "choices": [...myanmarRegionChoices]
     });
 
@@ -137,7 +137,7 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
     };
 }
 
-function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, region: string) {
+function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, regionCode: string) {
     const adaptiveCardBody: object[] = [
         {
             "type": "TextBlock",
@@ -151,25 +151,25 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, region: st
     const myanmarDistrictSet: Set<string> = new Set();
     
     myanmarTownships.forEach(myanmarTownship => {
-        if (myanmarTownship.regionName === region) {
-            myanmarDistrictSet.add(myanmarTownship.districtName);
+        if (myanmarTownship.regionCode === regionCode) {
+            myanmarDistrictSet.add(myanmarTownship.districtCode);
         }
     });
 
     const myanmarDistrictArray = Array.from(myanmarDistrictSet).sort();
 
     const myanmarDistrictChoices: object[] = [];
-    myanmarDistrictArray.forEach(myanmarDistrict => {
+    myanmarDistrictArray.forEach(myanmarDistrictCode => {
         myanmarDistrictChoices.push({
-            title: myanmarDistrict,
-            value: myanmarDistrict
+            title: localizer.mm.districts[myanmarDistrictCode],
+            value: myanmarDistrictCode
         });
     });
 
     adaptiveCardBody.push({
         "type": "Input.ChoiceSet",
         "style": "compact",
-        "id": "district",
+        "id": "districtCode",
         "choices": [...myanmarDistrictChoices]
     });
 
@@ -184,7 +184,7 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, region: st
     };
 }
 
-function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, district: string) {
+function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, districtCode: string) {
     const adaptiveCardBody:object[] = [
         {
             "type": "TextBlock",
@@ -198,25 +198,25 @@ function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, district: 
     const myanmarTownshipSet:Set<string> = new Set();
     
     myanmarTownships.forEach(myanmarTownship => {
-        if (myanmarTownship.districtName === district) {
-            myanmarTownshipSet.add(myanmarTownship.townshipName);
+        if (myanmarTownship.districtCode === districtCode) {
+            myanmarTownshipSet.add(myanmarTownship.townshipCode);
         }
     });
 
     const myanmarTownshipArray = Array.from(myanmarTownshipSet).sort();
 
     const myanmarTownshipChoices:object[] = [];
-    myanmarTownshipArray.forEach(myanmarTownship => {
+    myanmarTownshipArray.forEach(myanmarTownshipCode => {
         myanmarTownshipChoices.push({
-            title: myanmarTownship,
-            value: myanmarTownship
+            title: localizer.mm.townships[myanmarTownshipCode],
+            value: myanmarTownshipCode
         });
     });
 
     adaptiveCardBody.push({
         "type": "Input.ChoiceSet",
         "style": "compact",
-        "id": "township",
+        "id": "townshipCode",
         "choices": [...myanmarTownshipChoices]
     });
 

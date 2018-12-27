@@ -48,3 +48,11 @@ export function setValueAtPath(target: any, path: string[], value: any) {
     }
     target[path[lastPathIndex]] = value;
 }
+
+export function makeObjectWithKeys<TValue>(keyList: (string|number)[], mapper: (x: string) => TValue): { [x: string]: TValue } {
+    let result: { [x: string]: TValue } = <any>{};
+    keyList.forEach(key => {
+        result[key] = mapper(<any>key);
+    });
+    return result;
+}
