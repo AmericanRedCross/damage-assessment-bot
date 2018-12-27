@@ -38,11 +38,11 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     askTownshipName = "မည်သည့် မြို့နယ်အတွက် သတင်းပို့လိုပါသလဲ။";
     askDisasterType = "မည်သည့် ဘေးအန္တရာယ်အမျိုးအစားဖြစ်သနည်း။";
     askGeographicalSettingType = "မည်သည့် ဒေသတွင်ဖြစ်ပါသနည်း။";
-    tellCurrentAdminStack = (currentAdminStack: string) => `The current admin stack selected is - ${currentAdminStack}. Do you want to change it?`;
-    askAdminStackRegionName = "Please select the **Region** you are reporting on -";
-    askAdminStackDistrictName = "Please select the **District** you are reporting on -";
-    askAdminStackTownshipName = "Please select the **Township** you are reporting on -";
-    reportCurrentAdminStack = (currentAdminStack:string) => `You are now reporting on Admin Stack - **${currentAdminStack}**`;
+    tellCurrentAdminStack = (currentAdminStack: string) => `လက်ရှိ ရွေးချယ်ထားခြင်း ခံရသည့် စီမံခန့်ခွဲမှု အဆင့် မှာ ${currentAdminStack}. သင့် အနေဖြင့် ထိုအဆင့် ကို ပြောင်းလဲချင် ပါသလား၊`;
+    askAdminStackRegionName = "သင် သတင်းပေးပို့နေရသည့် တိုင်းဒေသကြီး ကို ရွေးချယ်ပါ။ -";
+    askAdminStackDistrictName = "သင် သတင်းပေးပို့နေရသည့် ခရိုင် ကို ရွေးချယ်ပါ။ -";
+    askAdminStackTownshipName = "သင် သတင်းပေးပို့နေ ရသည့် မြို့နယ် ကို ရွေးချယ်ပါ။ -";
+    reportCurrentAdminStack = (currentAdminStack:string) => `ယခု သင် သတင်းပေးပို့နေရသည့် စီမံခန့်ခွဲမှု အဆင့် - **${currentAdminStack}**`;
     // report section selection
     askNextSectionToReport = "မည်သည့် ကိစ္စကို သတင်းပို့လိုပါသနည်း။";
     reportSectionNamePeople = "လူများ";
@@ -52,9 +52,9 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     // review
     reviewSectionHeader = (sectionName: string) => `ကျေးဇူးပြု၍ပြန်လည်သုံးသပ်ရန် **${sectionName}**`;
     reviewSectionNoResponseValue = "တုံ့ပြန်မှု မရှိပါ";
-    reviewSectorListHeader = "Please confirm the selected **Sectors**";
-    reviewSectorsReported = "You **have** reported on these sectors:";
-    reviewSectorsNotReported = "You **have not** reported on these sectors:";
+    reviewSectorListHeader = "ရွေးချယ်ထားသော ကဏ္ဍများကို ကျေးဇူးပြု၍ အတည်ပြုပါ";
+    reviewSectorsReported = "ဤကဏ္ဍများကို သင့် အနေဖြင့် သတင်း ပေးပို့ပြီး  ဖြစ်သည်။ :";
+    reviewSectorsNotReported = "ဤကဏ္ဍများကို သင့် အနေဖြင့် သတင်း မပေးပို့ရသေးပါ။ :";
     // people section
     inputLabelNumberOfPeopleBeforeDisaster = "ဘေးအန္တရာယ်မတိုင်မီ လူဦးရေ";
     inputLabelNumberOfPeopleLeftArea = "ဒေသကိုစွန့် ခွာသွားသည့် လူဦးရေ";
