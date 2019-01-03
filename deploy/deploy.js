@@ -34,6 +34,7 @@ const asyncTimeout = require("./utils/asyncTimeout");
         await deployArmTemplate("main", armSessionToken);
 
         await deployStorageQueues(storageSessionToken);
+        await deployStorageAccountSettings(storageSessionToken)
 
         await deployCosmos(armSessionToken);
 
@@ -74,7 +75,7 @@ async function getActiveKeyVaultAccessPolicies(armSessionToken) {
 
 async function deployStorageQueues(storageSessionToken) {
 
-    console.log("Deploying azures storage queues");
+    console.log("Deploying azure storage queues");
 
     let storageHttpConfig = {
         headers: {
@@ -91,15 +92,39 @@ async function deployStorageQueues(storageSessionToken) {
     }
 }
 
+async function deployStorageAccountSettings(storageSessionToken) {
+
+    console.log("Configuring storage account for static site hosting");
+
+    let blobStorageHttpConfig = {
+        headers: {
+            "x-ms-version": "2018-03-28",
+            "x-ms-date": new Date().toUTCString(),
+            "x-ms-blob-type": "BlockBlob"
+        }
+    }
+
+    // set properties (enables static website hosting)
+    let blobServicePropertiesXml = fs.readFileSync(`${__dirname}/definitions/storage/blobService.properties.xml`)
+
+    await put(`https://${configValues.storageAccountName}.blob.core.windows.net/?restype=service&comp=properties`,
+        blobServicePropertiesXml,
+        storageSessionToken,
+        blobStorageHttpConfig);
+}
+
 async function deployAzureFunctions(armSessionToken) {
 
     console.log("Deploying azure functions");
 
-    let botServiceKeyResult = await get(azureResourceUrl("Microsoft.BotService/botServices", `${configValues.functionAppName}/channels/WebChatChannel/listkeys`, "2018-07-12"), armSessionToken);
+    let botServiceKeyResult = await get(azureResourceUrl("Microsoft.BotService/botServices", `${configValues.functionAppName}/channels/DirectLineChannel/listkeys`, "2018-07-12"), armSessionToken);
+    let storageAccount = await get(azureResourceUrl("Microsoft.Storage/storageAccounts", configValues.storageAccountName, "2018-07-01"), armSessionToken);
     
     // deploy app settings to the deployment slot
     await deployArmTemplate("appsettings", armSessionToken, {
-        "botServiceWebChatSecret": botServiceKeyResult.data.properties.properties.sites[0].key
+        "botServiceDirectLineSecret": botServiceKeyResult.data.properties.properties.sites[0].key,
+        // until DNS is set up for the site, this gets set to the storage account's public url
+        "webAppUrl": storageAccount.data.properties.primaryEndpoints.web
     });
 
     // get publish profile credentials
@@ -125,10 +150,10 @@ async function deployAzureFunctions(armSessionToken) {
     
     console.log("Pinging api's health check endpoint in the deployment slot.")
 
-    let apiHealthResponse = await get(`https://${configValues.functionAppName}-swap.azurewebsites.net/api/health`);
+    let apiHealthResponse = await get(`https://${configValues.functionAppName}-swap.azurewebsites.net/api/v1/health`);
 
     if (apiHealthResponse.status !== 200) {
-        throw new Error(`Api health check of deployment slot failed. GET /api/health returned status ${apiHealthResponse.status}. Swap to live slot did not occur.`);
+        throw new Error(`Api health check of deployment slot failed. GET /api/v1/health returned status ${apiHealthResponse.status}. Swap to live slot did not occur.`);
     }
 
     console.log("Health check succeeded.");
@@ -161,33 +186,36 @@ async function deployFrontendResources(storageSessionToken) {
 
     console.log("Deploying frontend app resources");
 
-    let blobStorageHttpConfig = {
-        headers: {
-            "x-ms-version": "2018-03-28",
-            "x-ms-date": new Date().toUTCString(),
-            "x-ms-blob-type": "BlockBlob"
-        }
-    }
-
-    // set properties (enables static website hosting)
-    let blobServicePropertiesXml = fs.readFileSync(`${__dirname}/definitions/storage/blobService.properties.xml`)
-
-    await put(`https://${configValues.storageAccountName}.blob.core.windows.net/?restype=service&comp=properties`,
-        blobServicePropertiesXml,
-        storageSessionToken,
-        blobStorageHttpConfig);
-
     let frontentFiles = glob.sync("**", { cwd: `${__dirname}/../web/dist` });
     for (let fileName of frontentFiles) {
+        let requestConfig = {
+            headers: {
+                "x-ms-version": "2018-03-28",
+                "x-ms-date": new Date().toUTCString(),
+                "x-ms-blob-type": "BlockBlob"
+            }
+        }
+
+        if (fileName.endsWith(".gz")) {
+            requestConfig.headers["x-ms-blob-content-encoding"] = "gzip";
+        }
+
         await put(`https://${configValues.storageAccountName}.blob.core.windows.net/$web/dist/${fileName}`,
             fs.readFileSync(`${__dirname}/../web/dist/${fileName}`),
             storageSessionToken,
-            blobStorageHttpConfig);
+            requestConfig);
     }
 
     //deploy index.html (TODO: put index.html in dist folder as part of web build?)
     await put(`https://${configValues.storageAccountName}.blob.core.windows.net/$web/index.html`,
         fs.readFileSync(`${__dirname}/../web/index.html`),
         storageSessionToken,
-        { headers: { ...blobStorageHttpConfig.headers, "Content-Type": "text/html" } });
+        { 
+            headers: {
+                "x-ms-version": "2018-03-28",
+                "x-ms-date": new Date().toUTCString(),
+                "x-ms-blob-type": "BlockBlob", 
+                "Content-Type": "text/html" 
+            } 
+        });
 }

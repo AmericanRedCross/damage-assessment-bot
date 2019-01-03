@@ -1,8 +1,10 @@
 <script lang="ts">
 import Vue from "vue";
-import { renderWebChat, createDirectLine, createStyleSet } from "botframework-webchat/lib";
-import { Component, Inject } from "vue-property-decorator";
+import { renderWebChat, createStyleSet } from "botframework-webchat/lib";
+import { Component, Inject, Watch } from "vue-property-decorator";
 import ChatService from "@/services/ChatService";
+import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
+import { RcdaLanguages } from "@common/system/RcdaLanguages";
 
 @Component
 export default class WebChatPage extends Vue {
@@ -12,22 +14,31 @@ export default class WebChatPage extends Vue {
 
   // hooks
   async mounted() {
-    let token = await this.chatService.getWebChatToken();
-    let directLine = createDirectLine({ 
-      token: token
-    });
+    // TODO need to clean this up on destroy?
+    let chatConnection = await this.chatService.getChatConnection(false);
     
     const styleSet = createStyleSet({
-      bubbleTextColor: 'Black',
       bubbleBackground: 'rgba(215, 215, 216, 1)',
+      bubbleTextColor: 'Black',
       bubbleFromUserBackground: 'rgba(0, 0, 0, 1)',
       bubbleFromUserTextColor: "White"
     });
     
-    renderWebChat({ 
-      directLine: directLine,
-      styleSet: styleSet
+    let webchat = renderWebChat({ 
+      directLine: chatConnection,
+      styleSet: styleSet,
     }, this.$refs.webChatRoot);
+
+    let self = this;
+
+    // chatConnection.activity$.filter(x => x.type === "message").subscribe(x => {
+    //   console.log("message event");
+    // });
+
+    // TODO: add localized props to all vue components
+    (<any>self).rcdaLocalizerEvents.$on("set-language", async (language: RcdaLanguages) => {
+      await self.chatService.setChatLanguage(language);
+    });
   }
 }
 </script>

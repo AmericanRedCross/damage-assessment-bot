@@ -82,17 +82,23 @@ export const askIndividualRankingDialog = rcdaChatDialogStateful(
             session.send(askRankingPromptText);
             RcdaPrompts.adaptiveCard(session, createAdaptiveCardForRankingSection(localizer, rankingData, choiceData, inputLabelGetter));
         },
-        ({ session, result: { response } }) => {
+        ({ session, result: { response }, localizer }) => {
 
-            session.conversationData.mm.rankings[session.dialogData.rankingResultProperty] = getRankings(response);
+            session.conversationData.mm.rankings[session.dialogData.rankingResultProperty] = getRankings(response, localizer.common.selectDropdownPlaceholder);
             
             session.endDialog();
         }
     ]
 );
 
-function getRankings(response: any): MyanmarRankingInput<any>[] {
-    const getRanking = (rank: number) => ({ value: response[`ranking${rank}`], rank: rank });
+function getRankings(response: any, placeholderValue: string): MyanmarRankingInput<any>[] {
+    const getRanking = (rank: number) => {
+        let result = ({ value: response[`ranking${rank}`], rank: rank });
+        if (result.value === placeholderValue) {
+            result.value = null;
+        }
+        return result;
+    }
 
     return [
         getRanking(1),

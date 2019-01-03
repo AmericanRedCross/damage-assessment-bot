@@ -22,7 +22,8 @@ export class RcdaCommonTextEnglish {
     dropdownInputSelectAllOption = "All";
     // login
     loginFieldsMissingError = "A value must be provided for username and password";
-    loginInvalidError = "Login failed due to invalid username or password";
+    loginCredentialsInvalidError = "Invalid username or password";
+    loginUnknownError = "Login failed unexpectedly, please try again later";
     loginUsernameLabel = "Username";
     loginPasswordLabel = "Password";
     loginPasswordRecoveryLink = "Forgot Password?";

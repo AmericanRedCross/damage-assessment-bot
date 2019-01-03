@@ -2,20 +2,20 @@ import RcdaApiClient from "@/services/utils/RcdaApiClient";
 import UserSession from "@common/models/resources/UserSession";
 import LoginRequest from "@common/models/services/login/LoginRequest";
 import LoginResponse from "@common/models/services/login/LoginResponse";
-import axios from "axios";
+import RcdaStorageClient from "@/services/utils/RcdaStorageClient";
 
 export default class AuthService {
 
-    constructor(private apiClient: RcdaApiClient) { }
-
-    private static localStorageSessionKey = "sessionToken";
+    constructor(private apiClient: RcdaApiClient, private storageClient: RcdaStorageClient) { }
 
     public get hasActiveSession(): boolean {
-        if (!this.userSession) {
+
+        let userSession = this.storageClient.apiSession;
+        if (!userSession) {
             return false;
         }
 
-        return Date.now() < (this.userSession.exp * 1000 /* convert to milliseconds */);
+        return Date.now() < (userSession.exp * 1000 /* convert to milliseconds */);
     }
 
     public async login(username: string, password: string): Promise<boolean> {
@@ -23,26 +23,16 @@ export default class AuthService {
             username,
             password
         };
-        let loginResponse = await this.apiClient.post<LoginResponse>("api/login", loginRequest);
+        let loginResponse = await this.apiClient.post<LoginResponse>("api/v1/login", loginRequest);
         if (loginResponse.status === 400) {
             return false;
         }
         else if (loginResponse.status === 200) {
-            localStorage.setItem(AuthService.localStorageSessionKey, loginResponse.data.sessionToken);
+            this.storageClient.apiSessionToken = loginResponse.data.sessionToken;
             return true;
         }
         else {
             throw loginResponse.data;
         }
     };
-
-    private get userSession(): UserSession|null {
-        let sessionToken = localStorage.getItem(AuthService.localStorageSessionKey);
-        if (sessionToken) {
-            var base64Url = sessionToken.split('.')[1];
-            var base64 = base64Url.replace('-', '+').replace('_', '/');
-            return JSON.parse(window.atob(base64));
-        }
-        return null;
-    }
 }

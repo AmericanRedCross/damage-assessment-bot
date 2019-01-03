@@ -19,7 +19,7 @@
         }
     },
     "variables": {
-        "apiHealthEndpoint": "/api/health"
+        "apiHealthEndpoint": "/api/v1/health"
     },
     "resources": [
         {
@@ -206,7 +206,7 @@
                 "displayName": "[parameters('functionAppName')]",
                 "description": "",
                 "iconUrl": "//bot-framework.azureedge.net/bot-icons-v1/bot-framework-default.png",
-                "endpoint": "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/api/chat/messages')]",
+                "endpoint": "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/api/v1/chat/messages')]",
                 "msaAppId": "[parameters('microsoftAppId')]",
                 "developerAppInsightKey": "[reference(resourceId('Microsoft.Insights/components', parameters('functionAppName')), '2015-05-01').InstrumentationKey]",
                 "developerAppInsightsApplicationId": "[reference(resourceId('Microsoft.Insights/components', parameters('functionAppName')), '2015-05-01').AppId]",

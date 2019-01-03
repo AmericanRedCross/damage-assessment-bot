@@ -1,7 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const targetEnvironment = (process.env.TargetEnvironment || "custom").toLowerCase();
+const isProductionGradeBuild = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/main.ts',
@@ -102,12 +104,16 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map',
-  mode: process.env.NODE_ENV
+  devtool: '#source-map',
+  mode: process.env.NODE_ENV,
+  plugins: [
+    new webpack.ProvidePlugin({
+      "markdownit": 'markdown-it',
+    })
+  ]
 }
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+if (isProductionGradeBuild) {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
@@ -115,8 +121,10 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"production"'
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
+    // The app currently serves files out of azure storage for static sites, which does not currently support compression
+    new CompressionPlugin({
+      algorithm: "gzip",
+      deleteOriginalAssets: false
     })
   ])
 }

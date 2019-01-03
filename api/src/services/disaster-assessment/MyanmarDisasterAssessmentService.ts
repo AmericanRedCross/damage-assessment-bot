@@ -92,6 +92,7 @@ export default class MyanmarDisasterAssessmentService {
     // currently validates striclty for create scenarios. may need modification to support update
     public validateModel(model: MyanmarDisasterAssessmentReportModel): RcdaModelValidationResult<MyanmarDisasterAssessmentReportModel> {
         let validation = new RcdaModelValidator(model, { mutateModel: true });
+
         // required fields
         validation.path("userId").mustNotBeEmpty(); //TODO validate userId exists
 
@@ -141,7 +142,7 @@ export default class MyanmarDisasterAssessmentService {
             if (sectorFactors) {
                 for (let factorId of getKeys(sectorFactors).filter(key => MyanmarSectorFactors.hasOwnProperty(key))) {
                     validation.path("sectors", sectorId, "factors", factorId)
-                              .mustNotBeEmpty()
+                              .mustBeNumber()
                               .mustBeEnum(MyanmarSectorFactorImpactScale);
                 }
             }

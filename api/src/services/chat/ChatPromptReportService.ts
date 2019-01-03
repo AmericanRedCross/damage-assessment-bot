@@ -19,7 +19,6 @@ export default class ChatPromptReportService {
             throw new RcdaError(RcdaErrorTypes.ClientError, "Invalid country specified in request");
         }
 
-        //TODO filter by admin stack
         let users = await this.userRepo.getAllByCountry(chatPromptRequest.country);
 
         let chatPrompts: ChatPromptRequest[] = [];

@@ -14,7 +14,7 @@ export const rootMyanmarDialog = rcdaChatDialog(
             [
                 localizer.mm.startDisasterAssessmentOption,
                 localizer.mm.getHelpOption
-            ], { 
+            ], {
                 listStyle: ListStyle.button,
                 retryPrompt: localizer.mm.invalidChoicePromptRetry
             });

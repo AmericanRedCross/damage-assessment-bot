@@ -14,7 +14,6 @@ import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessme
 import { MyanmarResponseModalities } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarResponseModalities";
 import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarVulnerableGroups";
 import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
-import summaryResponse from "@/components/pages/myanmar-dashboard/sampleSummaryResponse";
 import GenerateMyanmarDisasterAssessmentSummaryRequest from "@common/models/services/myanmar-disaster-assessment-summary/GenerateMyanmarDisasterAssessmentSummaryRequest";
 
 @Component({
@@ -27,15 +26,10 @@ import GenerateMyanmarDisasterAssessmentSummaryRequest from "@common/models/serv
 })
 export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
-  constructor() {
-    super();
-    this.summary = summaryResponse;
-  }
-
   @Inject()
   readonly myanmarDashboardService!: MyanmarDashboardService;
 
-  summary!: GenerateMyanmarDisasterAssessmentSummaryResponse;
+  summary: GenerateMyanmarDisasterAssessmentSummaryResponse = MyanmarDashboardService.getEmptySummaryResponse();
 
   showFilters = true;
   isProcessing = false;
@@ -93,16 +87,29 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
     return result;
   }
+
+  // hooks
+  public async mounted() {
+    var now = new Date();
+    var weekPrevious = new Date();
+    weekPrevious.setDate(now.getDate() - 7);
+
+    // initiate population of actual results for the last week 
+    await this.getSummary({
+      startDate: weekPrevious,
+      endDate: now
+    });
+  }
 }
 </script>
 
 <template>
 <div class="dashboard">
-  <myanmar-dashboard-filter-panel v-if="showFilters" @apply-filters="getSummary" />
+  <myanmar-dashboard-filter-panel :class="{'dashboard-filter-panel-hidden': !showFilters}" @apply-filters="getSummary" />
   <div class="dashboard-main-panel">
     <div class="dashboard-actions dashboard-row">
       <button class="rcda-button-primary" v-if="showFilters" @click="showFilters = false">{{localizer.mm.dashboardCloseFilterPanelButton}}</button>
-      <button class="rcda-button-primary" v-if="!showFilters" @click="showFilters = true">{{localizer.mm.dashboardOpenFilterPanelButton}}</button>
+      <button class="rcda-button-primary" v-else @click="showFilters = true">{{localizer.mm.dashboardOpenFilterPanelButton}}</button>
       <myanmar-dashboard-file-import />
       <button class="rcda-button-primary" @click="myanmarDashboardService.downloadImportTemplate()">{{localizer.mm.dashboardDownloadCsvTemplateButton}}</button>
     </div>
@@ -133,6 +140,10 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
 .dashboard {
   overflow-y: scroll;
+}
+
+.dashboard-filter-panel-hidden {
+  display: none;
 }
 
 .dashboard-actions {
@@ -170,7 +181,7 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
   padding-bottom: 20px;
 }
 
-.dashboard-main-panel:not(:first-child) {
+.dashboard-filter-panel:not(.dashboard-filter-panel-hidden) + .dashboard-main-panel {
   width: calc(100% - 270px);
   left: 270px;
 }

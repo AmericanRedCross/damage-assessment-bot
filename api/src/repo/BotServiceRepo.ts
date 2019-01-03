@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, AxiosError } from "axios";
+import ChatAuthResult from "@common/models/services/chat-auth/ChatAuthResult";
 
 export interface BotServiceRepoOptions {
-    webChatSecret: string
+    directLineSecret: string
 }
 
 export default class BotServiceRepo {
@@ -9,18 +10,33 @@ export default class BotServiceRepo {
 
     static getInstance() {
         return new BotServiceRepo(axios, { 
-            webChatSecret: process.env["BotServiceWebChatSecret"]
+            directLineSecret: process.env["BotServiceDirectLineSecret"]
         });
     }
 
-    public async getWebChatToken(): Promise<string> {
+    public async getChatAuthToken(userId: string): Promise<ChatAuthResult> {
         
-        let result = await this.axios.get<string>(`https://webchat.botframework.com/api/tokens`, {
+        let result = await this.axios.post<DirectLineTokenResponse>(`https://directline.botframework.com/v3/directline/tokens/generate`, {
+            user: {
+                // the dl_ prefix is required by direct line. it will be included in the chat session user id and must be removed to get the real user id.
+                id: `dl_${userId}`
+            }
+        }, {
             headers: {
-                "Authorization": `BotConnector ${this.options.webChatSecret}`
+                "Authorization": `Bearer ${this.options.directLineSecret}`
             }
         });
         
-        return result.data;
+        return {
+            conversationId: result.data.conversationId,
+            token: result.data.token,
+            expires: Date.now() + (result.data.expires_in * 1000)
+        };
     }
+}
+
+interface DirectLineTokenResponse {
+    conversationId: string;
+    token: string;
+    expires_in: number;
 }

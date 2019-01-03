@@ -4,11 +4,14 @@ import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 
 export const webchatRedirectMiddleware = rcdaChatMiddleware(
-    null,
-    ({ session, next, localizer }) => {
-        if (session.message.address.channelId !== "webchat") {
-            let redirectionHeroCard = new Message(session).addAttachment(createRedirectionHeroCard(session, localizer))
-            session.send(redirectionHeroCard);
+    () => ({
+        webChatUrl: process.env["WebAppUrl"] + "/chat"
+    }),
+    ({ session, next, localizer }, { webChatUrl }) => {
+        const channelId = session.message.address.channelId;
+        if (channelId !== "directline" && channelId !== "emulator") {
+            session.send(localizer.mm.webchatRedirectToUrlMessage);
+            session.send(new Message(session).addAttachment(createRedirectionHeroCard(session, localizer, webChatUrl)));
         }
         else {
             next();
@@ -17,15 +20,15 @@ export const webchatRedirectMiddleware = rcdaChatMiddleware(
 
 
 
-function createRedirectionHeroCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer): HeroCard {
+function createRedirectionHeroCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer, webChatUrl: string): HeroCard {
+
     let redirectionHeroCard = new HeroCard(session);
 
-    redirectionHeroCard.subtitle(localizer.mm.webchatRedirectToUrlMessage);
     redirectionHeroCard.buttons([
         new CardAction(session)
             .title(localizer.mm.redirectButtonText)
             .type("openUrl")
-            .value(process.env["WebChatUrl"])
+            .value(webChatUrl)
     ]);
 
     return redirectionHeroCard;

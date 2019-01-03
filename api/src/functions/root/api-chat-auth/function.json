@@ -2,9 +2,9 @@
   "bindings": [
     {
       "type": "httpTrigger",
-      "route": "chat/web/token",
+      "route": "chat/auth",
       "methods": [
-        "get"
+        "post"
       ],
       "authLevel": "anonymous",
       "direction": "in",

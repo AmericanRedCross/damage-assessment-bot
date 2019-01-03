@@ -1,7 +1,7 @@
 const axios = require("axios");
 const asyncTimeout = require("./asyncTimeout");
 
-async function http(method, url, data, authToken, config = {}, ignoreNotFound=false, transientErrorRetriesLeft=3) {
+async function http(method, url, data, authToken, config = {}, ignoreNotFound = false, transientErrorRetriesLeft = 3) {
     try {
         if (!config.headers) {
             config.headers = {};

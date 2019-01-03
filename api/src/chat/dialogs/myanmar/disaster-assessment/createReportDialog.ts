@@ -11,6 +11,7 @@ import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessme
 import RcdaCountries from "@common/system/RcdaCountries";
 import MyanmarDisasterAssessmentService from "@/services/disaster-assessment/MyanmarDisasterAssessmentService";
 import RcdaBotUserData from "@/chat/models/RcdaBotUserData";
+import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
 
 export const createReportDialog = rcdaChatDialog(
     "/createReport",
@@ -31,9 +32,16 @@ export const createReportDialog = rcdaChatDialog(
             
             // Save the report
             let model = getMyanmarDisasterAssessmentModel(session.conversationData.mm, session.userData);
-            await disasterAssessmentService.create(model);
-            
-            session.endDialog(localizer.mm.confirmReportSubmitted);
+            //TODO verify user id in middleware
+            console.log(JSON.stringify(model));
+            try {
+                await disasterAssessmentService.create(model);
+                session.endDialog(localizer.mm.confirmReportSubmitted);
+            }
+            catch (ex) {
+                console.log(JSON.stringify(ex));
+                session.endDialog("Sorry, something went wrong...")
+            }
         }
     ],
     {
@@ -43,16 +51,17 @@ export const createReportDialog = rcdaChatDialog(
 function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData, userData: RcdaBotUserData): MyanmarDisasterAssessmentModel {
 
     let sectors = makeObjectWithEnumKeys(myanmarData.sectors.selectedSectorIds, sectorId => myanmarData.sectors.completedSectors.find(x => x.id === sectorId));
+    let township = myanmarTownships[myanmarData.townshipId];
 
     let report: MyanmarDisasterAssessmentModel = {
-        id: uuid(),
-        userId: userData.userId,//TODO, get this aligned with user
-        creationDate: JSON.stringify(new Date()).slice(1, -1),
-        country: RcdaCountries.Myanmar,
+        id: null,
+        creationDate: null,
+        country: null,
+        userId: userData.userId || "default",
         location: {
-            regionCode: "",
-            districtCode: "",
-            townshipCode: ""
+            regionCode: township.regionCode,
+            districtCode: township.districtCode,
+            townshipCode: township.code
         },
         disasterType: myanmarData.disasterTypeId,
         geographicalSetting: myanmarData.geographicalSettingId,
@@ -72,10 +81,10 @@ function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData,
             factors: makeObjectWithEnumKeys(enumValues<MyanmarSectorFactors>(MyanmarSectorFactors), factorId => sectors[sectorId].factors.find(x => x.id === factorId).factorScore)
         })),
         rankings: {
-            responseModalities: myanmarData.rankings.responseModalities.filter(x => x.value != null).sort((a, b) => a.rank - b.rank).map(x => x.value),
-            vulnerableGroups: myanmarData.rankings.vulnerableGroups.filter(x => x.value != null).sort((a, b) => a.rank - b.rank).map(x => x.value),
-            affectedGroups: myanmarData.rankings.affectedGroups.filter(x => x.value != null).sort((a, b) => a.rank - b.rank).map(x => x.value),
-            prioritySectors: myanmarData.rankings.prioritySectors.filter(x => x.value != null).sort((a, b) => a.rank - b.rank).map(x => x.value),
+            responseModalities: myanmarData.rankings.responseModalities.filter(x => x.value).sort((a, b) => a.rank - b.rank).map(x => x.value),
+            vulnerableGroups: myanmarData.rankings.vulnerableGroups.filter(x => x.value).sort((a, b) => a.rank - b.rank).map(x => x.value),
+            affectedGroups: myanmarData.rankings.affectedGroups.filter(x => x.value).sort((a, b) => a.rank - b.rank).map(x => x.value),
+            prioritySectors: myanmarData.rankings.prioritySectors.filter(x => x.value).sort((a, b) => a.rank - b.rank).map(x => x.value),
         }
     }
 

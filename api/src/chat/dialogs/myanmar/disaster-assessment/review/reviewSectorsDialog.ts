@@ -112,6 +112,7 @@ function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession, l
         "text": localizer.mm.reviewSectorsReported,
         "wrap": true,
         "separator": true,
+        "spacing": "Medium",
         "horizontalAlignment": "left"
     });
     for (let sectorId of selectedSectorIds) {

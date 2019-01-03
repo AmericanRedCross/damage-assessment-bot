@@ -6,17 +6,14 @@ import testRcdaHttpFunction from "@/test/utils/testRcdaHttpFunction";
 import UserRepo from "@/repo/UserRepo";
 import { TestUserSession } from "@/test/data/TestUserSession";
 import TestUserModel from "@/test/data/TestUserModel";
-import { RcdaHttpResponseError } from "@/functions/utils/rcda-http-types";
-import { RcdaErrorTypes } from "@common/system/RcdaError";
 import { RcdaRoles } from "@common/system/RcdaRoles";
 import LoginService from "@/services/LoginService";
 import IfrcGoAuthRepo from "@/repo/IfrcGoAuthRepo";
-import SessionUtility from "@/services/utils/SessionUtility";
 import LoginRequest from "@common/models/services/login/LoginRequest";
 import LoginResponse from "@common/models/services/login/LoginResponse";
 import TestSessionUtility from "@/test/utils/TestSessionUtility";
 
-describe("api/login function", () => {
+describe("api/v1/login function", () => {
     
     describe("happy path", () => { 
 
