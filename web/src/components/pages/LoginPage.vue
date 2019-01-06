@@ -47,26 +47,27 @@ export default class LoginPage extends Vue {
 <template>
 <div class="login-background">
   <div class="login-modal">
-    <h2 class="login-header">Damage Assessment Dashboard</h2>
-    <form @submit="$event.preventDefault(); login()">      
+    <h2 class="login-header">{{localizer.common.siteTitle}}</h2>
+    <form @submit.prevent="login()">  
       <div v-if="hasErrorMessages" class="login-errors">
-        <div v-if="missingRequiredFields">A value must be provided for username and password</div>
-        <div v-if="loginFailed">Login failed due to invalid username or password</div>
+        <div v-if="missingRequiredFields">{{localizer.common.loginFieldsMissingError}}</div>
+        <div v-if="loginFailed">{{localizer.common.loginInvalidError}}</div>
+        <!-- TODO add message for unknown error -->
       </div>
       <div class="rcda-form-item">
-        <label class="rcda-input-label">Username</label>
+        <label class="rcda-input-label">{{localizer.common.loginUsernameLabel}}</label>
         <input type="text" v-model="username" class="rcda-input" />
       </div>
       <div class="rcda-form-item">
-        <label class="rcda-input-label">Password</label>
+        <label class="rcda-input-label">{{localizer.common.loginPasswordLabel}}</label>
         <input type="password" v-model="password" class="rcda-input"/>
       </div>
-      <a href="https://go.ifrc.org/recover-account" class="login-forgot-password-link">Forgot Password?</a>
-      <button type="submit" class="login-button">Login</button>
+      <a href="https://go.ifrc.org/recover-account" class="login-forgot-password-link">{{localizer.common.loginPasswordRecoveryLink}}</a>
+      <button type="submit" class="login-button">{{localizer.common.loginSubmitButton}}</button>
       <div class="login-ifrc-auth-info">
         <div class="login-ifrc-auth-info-logo">logo</div>
-        <span>Use your IFRC GO credentials</span>
-        <a href="https://go.ifrc.org/register" class="login-register-link">Register for an account</a>
+        <span>{{localizer.common.loginProviderDescription}}</span>
+        <a href="https://go.ifrc.org/register" class="login-register-link">{{localizer.common.loginRegistrationLink}}</a>
       </div>
     </form>
   </div>

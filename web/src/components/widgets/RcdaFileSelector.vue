@@ -43,7 +43,7 @@ export default class RcdaFileSelector extends Vue {
 <div>
     <div class="rcda-file-selector">
         <div class="rcda-file-selector-text" :title="fileName">{{fileName}}</div>
-        <div class="rcda-file-selector-button" @click="browseFiles">Browse</div>
+        <div class="rcda-file-selector-button" @click="browseFiles">{{localizer.common.fileSelectorLabel}}</div>
     </div>
     <!-- Actual file input is hidden off-screen. Using a fake proxy input is necessary because the real input can't use custom styles -->
     <input type="file" ref="fileInput" @input="fileInputUpdated" :accept="accept" tabindex="0" style="position: fixed; left: -20px; width: 1px;"/>

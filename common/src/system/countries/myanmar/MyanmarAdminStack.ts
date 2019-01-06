@@ -32,8 +32,6 @@ type MyanmarLocation = {
 }
 
 // @ts-ignore
-// export const myanmarAdminStack: MyanmarAdminStack = myanmarAdminStackJson.default;
-
 export const myanmarAdminStack: MyanmarAdminStack = myanmarAdminStackJson;
 
 export const myanmarRegions = myanmarAdminStack.regions;

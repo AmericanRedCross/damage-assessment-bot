@@ -17,7 +17,6 @@ import SiteBanner from "@/components/SiteBanner.vue";
             { path: '/', component: DashboardPage },
             { path: '/login', component: LoginPage },
             { path: '/chat', component: WebChatPage },
-            { path: '/chat/register', component: ChatRegistrationPage },
             { path: '*', redirect: '/' }
         ]
     }),
@@ -47,6 +46,9 @@ export default class RootComponent extends Vue {
 
     // hooks
     private errorCaptured(error: Error) {
+        if ((<any>error).status === 401) {                
+            this.$router.replace({ path: `/login` });
+        }
         // TODO: error notifications in UI?
         console.error("Rcda logger - error caught: " + error.message);
     }
@@ -78,7 +80,7 @@ export default class RootComponent extends Vue {
 
 .rcda-main-panel {
     position: fixed;
-    top: 76px;
+    top: 78px;
     left: 0;
     right: 0;
     bottom: 0;
