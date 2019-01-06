@@ -1,8 +1,8 @@
-import { Prompts,ListStyle,TextFormat, Session, Message } from "botbuilder";
+import { Prompts, ListStyle } from "botbuilder";
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
-import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarTownship"
+import { myanmarRegions, myanmarDistricts } from "@common/system/countries/myanmar/MyanmarAdminStack";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import { getKeys, getValues } from "@common/utils/objectHelpers";
 
@@ -36,11 +36,11 @@ export const confirmUserAdminStack = rcdaChatDialog(
     null,
     [
         ({ session, localizer, next }) => {
-            const currentAdminStack: string = session.userData.adminStack;
-            if (currentAdminStack !== undefined) {
+            const lastUsedTownship: string = session.userData.lastUsedTownship;
+            if (lastUsedTownship) {
                 Prompts.choice(
                     session,
-                    localizer.mm.tellCurrentAdminStack(currentAdminStack),
+                    localizer.mm.askToChangeSelectedAdminStack(localizer.mm.townships[lastUsedTownship]),
                     [
                         localizer.common.yes, 
                         localizer.common.no
@@ -51,15 +51,15 @@ export const confirmUserAdminStack = rcdaChatDialog(
             }
         },
         ({ session, result, localizer, next }) => {
-            if (!session.userData.adminStack || result.response.entity === localizer.common.yes) {
+            if (!session.userData.lastUsedTownship || result.response.entity === localizer.common.yes) {
                 session.beginDialog(askUserAdminStack.id);
             } else {
                 next();
             }
         },
         ({ session, localizer }) => {
-            session.send(localizer.mm.reportCurrentAdminStack(session.userData.adminStack));
-            session.conversationData.mm.townshipId = session.userData.adminStack;
+            session.send(localizer.mm.reportCurrentAdminStack(localizer.mm.townships[session.userData.lastUsedTownship]));
+            session.conversationData.mm.townshipId = session.userData.lastUsedTownship;
             session.endDialog();
         }
     ],
@@ -78,15 +78,13 @@ export const askUserAdminStack = rcdaChatDialog(
             RcdaPrompts.adaptiveCard(session, createAdaptiveCardforRegions(localizer));
         },
         ({ session, localizer, result}) => {
-            const selectedRegionCode: string = result.response.regionCode;
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, selectedRegionCode));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, result.response.regionCode));
         },
         ({ session, localizer, result}) => {
-            const selectedDistrictCode: string = result.response.districtCode;
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, selectedDistrictCode));
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, result.response.districtCode));
         },
         ({ session, result }) => {
-            session.userData.adminStack = result.response.townshipCode;
+            session.userData.lastUsedTownship = result.response.townshipCode;
             session.endDialog();
         }
     ]
@@ -94,40 +92,25 @@ export const askUserAdminStack = rcdaChatDialog(
 
 
 function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
-    const adaptiveCardBody:Array<object> = [
-        {
-            "type": "TextBlock",
-            "size": "medium",
-            "weight": "default",
-            "text": localizer.mm.askAdminStackRegionName,
-            "horizontalAlignment": "left"
-        }
-    ];
-
-    const myanmarRegionSet:Set<string> = new Set();
-    myanmarTownships.forEach(myanmarTownship => {
-        myanmarRegionSet.add(myanmarTownship.regionCode);
-    });
-
-    const myanmarRegionArray = Array.from(myanmarRegionSet).sort();
-
-    const myanmarRegionChoices: object[] = [];
-    myanmarRegionArray.forEach(myanmarRegionCode => {
-        myanmarRegionChoices.push({
-            title: localizer.mm.regions[myanmarRegionCode],
-            value: myanmarRegionCode
-        });
-    });
-
-    adaptiveCardBody.push({
-        "type": "Input.ChoiceSet",
-        "style": "compact",
-        "id": "regionCode",
-        "choices": [...myanmarRegionChoices]
-    });
-
     return {
-        body: [...adaptiveCardBody],
+        body: [
+            {
+                "type": "TextBlock",
+                "size": "medium",
+                "weight": "default",
+                "text": localizer.mm.askAdminStackRegionName,
+                "horizontalAlignment": "left"
+            }, {
+                "type": "Input.ChoiceSet",
+                "style": "compact",
+                "id": "regionCode",
+                "choices": getKeys(myanmarRegions).map(myanmarRegionCode => ({
+                    title: localizer.mm.regions[myanmarRegionCode],
+                    value: myanmarRegionCode
+                }))
+            }
+
+        ],
             actions: [
                 {
                     "type": "Action.Submit",
@@ -138,43 +121,24 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
 }
 
 function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, regionCode: string) {
-    const adaptiveCardBody: object[] = [
-        {
-            "type": "TextBlock",
-            "size": "medium",
-            "weight": "default",
-            "text": localizer.mm.askAdminStackDistrictName,
-            "horizontalAlignment": "left"
-        }
-    ];
-
-    const myanmarDistrictSet: Set<string> = new Set();
-    
-    myanmarTownships.forEach(myanmarTownship => {
-        if (myanmarTownship.regionCode === regionCode) {
-            myanmarDistrictSet.add(myanmarTownship.districtCode);
-        }
-    });
-
-    const myanmarDistrictArray = Array.from(myanmarDistrictSet).sort();
-
-    const myanmarDistrictChoices: object[] = [];
-    myanmarDistrictArray.forEach(myanmarDistrictCode => {
-        myanmarDistrictChoices.push({
-            title: localizer.mm.districts[myanmarDistrictCode],
-            value: myanmarDistrictCode
-        });
-    });
-
-    adaptiveCardBody.push({
-        "type": "Input.ChoiceSet",
-        "style": "compact",
-        "id": "districtCode",
-        "choices": [...myanmarDistrictChoices]
-    });
-
     return {
-        body: [...adaptiveCardBody],
+        body: [
+            {
+                "type": "TextBlock",
+                "size": "medium",
+                "weight": "default",
+                "text": localizer.mm.askAdminStackDistrictName,
+                "horizontalAlignment": "left"
+            }, {
+                "type": "Input.ChoiceSet",
+                "style": "compact",
+                "id": "districtCode",
+                "choices": getKeys(myanmarRegions[regionCode]).map(myanmarDistrictCode => ({
+                    title: localizer.mm.districts[myanmarDistrictCode],
+                    value: myanmarDistrictCode
+                }))
+            }
+        ],
         actions: [
             {
                 "type": "Action.Submit",
@@ -185,43 +149,24 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, regionCode
 }
 
 function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, districtCode: string) {
-    const adaptiveCardBody:object[] = [
-        {
-            "type": "TextBlock",
-            "size": "medium",
-            "weight": "default",
-            "text": localizer.mm.askAdminStackTownshipName,
-            "horizontalAlignment": "left"
-        }
-    ];
-
-    const myanmarTownshipSet:Set<string> = new Set();
-    
-    myanmarTownships.forEach(myanmarTownship => {
-        if (myanmarTownship.districtCode === districtCode) {
-            myanmarTownshipSet.add(myanmarTownship.townshipCode);
-        }
-    });
-
-    const myanmarTownshipArray = Array.from(myanmarTownshipSet).sort();
-
-    const myanmarTownshipChoices:object[] = [];
-    myanmarTownshipArray.forEach(myanmarTownshipCode => {
-        myanmarTownshipChoices.push({
-            title: localizer.mm.townships[myanmarTownshipCode],
-            value: myanmarTownshipCode
-        });
-    });
-
-    adaptiveCardBody.push({
-        "type": "Input.ChoiceSet",
-        "style": "compact",
-        "id": "townshipCode",
-        "choices": [...myanmarTownshipChoices]
-    });
-
     return {
-        body: [...adaptiveCardBody],
+        body: [
+            {
+                "type": "TextBlock",
+                "size": "medium",
+                "weight": "default",
+                "text": localizer.mm.askAdminStackTownshipName,
+                "horizontalAlignment": "left"
+            }, {
+                "type": "Input.ChoiceSet",
+                "style": "compact",
+                "id": "townshipCode",
+                "choices": getKeys(myanmarDistricts[districtCode]).map(myanmarTownshipCode => ({
+                    title: localizer.mm.townships[myanmarTownshipCode],
+                    value: myanmarTownshipCode
+                }))
+            }
+        ],
         actions: [
             {
                 "type": "Action.Submit",

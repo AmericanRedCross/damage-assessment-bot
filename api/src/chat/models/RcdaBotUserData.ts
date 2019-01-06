@@ -1,7 +1,7 @@
 import UserModel from "@common/models/resources/UserModel";
 
 export default class RcdaBotUserData {
-    adminStack: string;
+    lastUsedTownship: string;
     userSession: UserModel;
     userId: string;
 }

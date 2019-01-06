@@ -53,6 +53,7 @@ module.exports = {
       '@common': pathHelper.root("../common/src")
     }
   },
+  mode: process.env.NODE_ENV,
   plugins: [
     new copyWebpackPlugin([
       {

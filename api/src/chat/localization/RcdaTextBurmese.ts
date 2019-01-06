@@ -40,11 +40,11 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     askTownshipName = "What township are you reporting on?";
     askDisasterType = "What is the disaster type?";
     askGeographicalSettingType = "What is the setting?";
-    tellCurrentAdminStack = (currentAdminStack: string) => `The current admin stack selected is - **${this.townships[currentAdminStack]}**. Do you want to change it?`;
-    askAdminStackRegionName = "Please select the **Region** you are reporting on -";
-    askAdminStackDistrictName = "Please select the **District** you are reporting on -";
-    askAdminStackTownshipName = "Please select the **Township** you are reporting on -";
-    reportCurrentAdminStack = (currentAdminStack:string) => `You are now reporting on Admin Stack - **${this.townships[currentAdminStack]}**`;
+    askToChangeSelectedAdminStack = (townshipName: string) => `The current township selected is **${townshipName}**. Do you want to change it?`;
+    askAdminStackRegionName = "Please select the **Region** you are reporting on";
+    askAdminStackDistrictName = "Please select the **District** you are reporting on";
+    askAdminStackTownshipName = "Please select the **Township** you are reporting on";
+    reportCurrentAdminStack = (townshipName: string) => `Township is set to **${townshipName}**`;
     // report section selection
     askNextSectionToReport = "What do you want to report on?";
     reportSectionNamePeople = "People";
