@@ -1,3 +1,5 @@
+import { makeObjectWithKeys, getKeys } from "@common/utils/objectHelpers";
+import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
 import RcdaEnumLabels from "@/chat/localization/utils/RcdaEnumLabels";
 import { MyanmarAffectedGroups as AffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
 import { MyanmarDisasterTypes as DisasterTypes } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarDisasterTypes";
@@ -38,6 +40,11 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     askTownshipName = "What township are you reporting on?";
     askDisasterType = "What is the disaster type?";
     askGeographicalSettingType = "What is the setting?";
+    askToChangeSelectedAdminStack = (townshipName: string) => `The current township selected is **${townshipName}**. Do you want to change it?`;
+    askAdminStackRegionName = "Please select the **Region** you are reporting on";
+    askAdminStackDistrictName = "Please select the **District** you are reporting on";
+    askAdminStackTownshipName = "Please select the **Township** you are reporting on";
+    reportCurrentAdminStack = (townshipName: string) => `Township is set to **${townshipName}**`;
     // report section selection
     askNextSectionToReport = "What do you want to report on?";
     reportSectionNamePeople = "People";
@@ -164,4 +171,7 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
         [VulnerableGroups.Sick]: "Sick",
         [VulnerableGroups.SingleHeadedHousehold]: "Single Headed Household"
     };
+    regions = makeObjectWithKeys(getKeys(myanmarRegions), (regionCode) => myanmarRegions[regionCode].nameBurmese);
+    districts = makeObjectWithKeys(getKeys(myanmarDistricts), (districtCode) => myanmarDistricts[districtCode].nameBurmese);
+    townships = makeObjectWithKeys(getKeys(myanmarTownships), (townshipCode) => myanmarTownships[townshipCode].nameBurmese);
 }

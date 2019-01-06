@@ -1,10 +1,12 @@
 import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions } from "botbuilder";
 import RcdaBotConversationData from "@/chat/models/RcdaBotConversationData";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import RcdaBotUserData from "@/chat/models/RcdaBotUserData";
 
 export interface RcdaTypedSession<TDialogData extends {}={}> extends Session {
     dialogData: TDialogData,
-    conversationData: RcdaBotConversationData
+    conversationData: RcdaBotConversationData,
+    userData: RcdaBotUserData
 }
 
 type DefaultDialogWaterfallStepResult = any|IDialogResult<any>;

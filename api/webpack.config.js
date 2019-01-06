@@ -53,6 +53,7 @@ module.exports = {
       '@common': pathHelper.root("../common/src")
     }
   },
+  mode: process.env.NODE_ENV,
   plugins: [
     new copyWebpackPlugin([
       {
@@ -67,15 +68,7 @@ module.exports = {
         to: 'locale'
       }
     ])
-  ].concat(!isProductionBuild ? [] : [
-    // production-only plugins
-    new uglifyJSPlugin({
-      uglifyOptions: {
-        ecma: 6,
-        compress: true
-      }
-    })
-  ]),
+  ],
   node: {
     __filename: false,
     __dirname: false,

@@ -10,6 +10,7 @@ import { makeObjectWithEnumKeys, enumValues } from "@common/utils/enumHelpers";
 import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
 import RcdaCountries from "@common/system/RcdaCountries";
 import MyanmarDisasterAssessmentService from "@/services/disaster-assessment/MyanmarDisasterAssessmentService";
+import RcdaBotUserData from "@/chat/models/RcdaBotUserData";
 
 export const createReportDialog = rcdaChatDialog(
     "/createReport",
@@ -39,7 +40,7 @@ export const createReportDialog = rcdaChatDialog(
         references: [askUserInfoDialog, selectFormSectionDialog, reviewAndSubmitDialog]
     });
 
-function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData, userData: any): MyanmarDisasterAssessmentModel {
+function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData, userData: RcdaBotUserData): MyanmarDisasterAssessmentModel {
 
     let sectors = makeObjectWithEnumKeys(myanmarData.sectors.selectedSectorIds, sectorId => myanmarData.sectors.completedSectors.find(x => x.id === sectorId));
 
