@@ -19,10 +19,14 @@ export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
     selectDropdownPlaceholder = "Choose...";
     yes = "Yes";
     no = "No";
+    unsupportedChannel = "We currently do not support this channel. Please visit us at - https://esthumstrbotstg01.z13.web.core.windows.net/?#/chat";
     formatNumber = (value: number) => value.toString();
 }
 
 export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
+    //misc
+    webchatRedirectToUrlMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
+    redirectButtonText = "Click here to sign in";
     // intro
     promptUserToSelectChatbotFeature = "What can I assist with?";
     startDisasterAssessmentOption = "Start reporting on a disaster";

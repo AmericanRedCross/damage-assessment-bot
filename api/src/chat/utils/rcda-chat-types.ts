@@ -1,4 +1,4 @@
-import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions } from "botbuilder";
+import { Dialog, IDialogWaterfallStep, Session, IDialogResult, ISessionMiddleware, ITriggerActionOptions, IEventMiddleware, IEvent } from "botbuilder";
 import RcdaBotConversationData from "@/chat/models/RcdaBotConversationData";
 import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 import RcdaBotUserData from "@/chat/models/RcdaBotUserData";
@@ -41,7 +41,7 @@ export interface RcdaChatDialog {
 }
 
 export interface RcdaSessionMiddleware<TDependencies> {
-    (context: { session: RcdaTypedSession, next: Function }, dependencies: TDependencies): void;
+    (context: { session: RcdaTypedSession, localizer: RcdaChatLocalizer ,next: Function }, dependencies: TDependencies): void;
 }
 
 export interface RcdaChatMiddleware<TDependencies> {
