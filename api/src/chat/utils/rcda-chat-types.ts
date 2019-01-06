@@ -41,7 +41,7 @@ export interface RcdaChatDialog {
 }
 
 export interface RcdaSessionMiddleware<TDependencies> {
-    (context: { session: RcdaTypedSession, localizer?: RcdaChatLocalizer ,next: Function }, dependencies: TDependencies): void;
+    (context: { session: RcdaTypedSession, localizer: RcdaChatLocalizer ,next: Function }, dependencies: TDependencies): void;
 }
 
 export interface RcdaChatMiddleware<TDependencies> {
