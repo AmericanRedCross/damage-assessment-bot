@@ -41,3 +41,6 @@ export default interface GenerateMyanmarDisasterAssessmentSummaryResponse {
         }
     }
 }
+
+const x: GenerateMyanmarDisasterAssessmentSummaryResponse = <any>null;
+export type  MyanmarDisasterAssessmentSummaryPeople = typeof x.people;

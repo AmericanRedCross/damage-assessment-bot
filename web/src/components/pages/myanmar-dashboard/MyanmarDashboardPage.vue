@@ -1,5 +1,5 @@
 <script lang="ts">
-import Vue from "vue";
+import RcdaBaseComponent from "@/components/RcdaBaseComponent";
 import { Component, Inject } from "vue-property-decorator";
 import MyanmarDashboardService from "@/services/MyanmarDashboardService";
 import MyanmarDashboardFilterPanel from "@/components/pages/myanmar-dashboard/MyanmarDashboardFilterPanel.vue";
@@ -17,7 +17,6 @@ import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessm
 import summaryResponse from "@/components/pages/myanmar-dashboard/sampleSummaryResponse";
 import GenerateMyanmarDisasterAssessmentSummaryRequest from "@common/models/services/myanmar-disaster-assessment-summary/GenerateMyanmarDisasterAssessmentSummaryRequest";
 
-
 @Component({
   components: {
     MyanmarDashboardFilterPanel,
@@ -26,7 +25,7 @@ import GenerateMyanmarDisasterAssessmentSummaryRequest from "@common/models/serv
     MyanmarDashboardFileImport
   }
 })
-export default class MyanmarDashboardPage extends Vue {
+export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
   constructor() {
     super();
@@ -63,9 +62,9 @@ export default class MyanmarDashboardPage extends Vue {
 
   get formattedDisasterTypeHeader(): string {
     if (!this.summary || !this.summary.disasterType) {
-      return "All Disaster Event Types";
+      return this.localizer.mm.dashboardSummaryHeadersAllDisasterTypes;
     }
-    return this.summary.disasterType;
+    return this.localizer.mm.disasterTypes[this.summary.disasterType];
   }
 
   formatDate(dateString: string) {
@@ -80,34 +79,20 @@ export default class MyanmarDashboardPage extends Vue {
     if (!this.summary.location.regionCode) {
       return "All Regions";
     }
-    let result = this.summary.location.regionCode;
+    let result = this.localizer.mm.regions[this.summary.location.regionCode];
     
     if (!this.summary.location.districtCode) {
       return result;
     }
-    result += " > " + this.summary.location.districtCode;
+    result += " > " + this.localizer.mm.districts[this.summary.location.districtCode];
 
     if (!this.summary.location.townshipCode) {
       return result;
     }
-    result += " > " + this.summary.location.townshipCode;
+    result += " > " + this.localizer.mm.townships[this.summary.location.townshipCode];
 
     return result;
   }
-
-  // lifecycle hooks
-  // mounted() {
-  //   let currentDate = new Date();
-  //   let lastWeek = new Date();
-  //   this.getSummary({
-  //     disasterType: <any>null,
-  //     regionCode: <any>null,
-  //     districtCode: <any>null,
-  //     townshipCode: <any>null,
-  //     startDate: currentDate,
-  //     endDate: lastWeek
-  //   });
-  // }
 }
 </script>
 
@@ -116,10 +101,10 @@ export default class MyanmarDashboardPage extends Vue {
   <myanmar-dashboard-filter-panel v-if="showFilters" @apply-filters="getSummary" />
   <div class="dashboard-main-panel">
     <div class="dashboard-actions dashboard-row">
-      <button class="rcda-button-primary" v-if="showFilters" @click="showFilters = false">Close Filters</button>
-      <button class="rcda-button-primary" v-if="!showFilters" @click="showFilters = true">Open Filters</button>
+      <button class="rcda-button-primary" v-if="showFilters" @click="showFilters = false">{{localizer.mm.dashboardCloseFilterPanelButton}}</button>
+      <button class="rcda-button-primary" v-if="!showFilters" @click="showFilters = true">{{localizer.mm.dashboardOpenFilterPanelButton}}</button>
       <myanmar-dashboard-file-import />
-      <button class="rcda-button-primary" @click="myanmarDashboardService.downloadImportTemplate()">CSV Template</button>
+      <button class="rcda-button-primary" @click="myanmarDashboardService.downloadImportTemplate()">{{localizer.mm.dashboardDownloadCsvTemplateButton}}</button>
     </div>
     <div class="dashboard-header dashboard-row">
       <p class="dashboard-header-disaster-type">{{formattedDisasterTypeHeader}}</p>
@@ -128,19 +113,19 @@ export default class MyanmarDashboardPage extends Vue {
     </div>
     <div class="dashboard-featured-metrics dashboard-row">
       <div class="dashboard-featured-metric" v-for="(populationNumberItem, index) in populationNumberDisplayItems" :key="index">
-          <div class="dashboard-featured-metric-label">{{populationNumberItem.label}}</div>
+          <div class="dashboard-featured-metric-label">{{localizer.mm.dashboardPeopleMetrics[populationNumberItem.label]}}</div>
           <div class="dashboard-featured-metric-value">{{populationNumberItem.value}}</div>
       </div>
     </div>
     <myanmar-dashboard-sector-heatmap :sector-data="summary.sectors" class="dashboard-row"/>
     <div class="dashboard-rankings">
-      <myanmar-dashboard-ranking name="Affected Groups" :ranking-data="summary.rankings.affectedGroups"/>
-      <myanmar-dashboard-ranking name="Vulnerable Groups" :ranking-data="summary.rankings.vulnerableGroups"/>
-      <myanmar-dashboard-ranking name="Priority Sectors" :ranking-data="summary.rankings.prioritySectors"/>
-      <myanmar-dashboard-ranking name="Response Modalities" :ranking-data="summary.rankings.responseModalities"/>
+      <myanmar-dashboard-ranking :name="localizer.mm.dashboardRankingAffectedGroupsTitle" :ranking-data="summary.rankings.affectedGroups" :localized-labels="localizer.mm.affectedGroups"/>
+      <myanmar-dashboard-ranking :name="localizer.mm.dashboardRankingVulnerableGroupsTitle" :ranking-data="summary.rankings.vulnerableGroups" :localized-labels="localizer.mm.vulnerableGroups"/>
+      <myanmar-dashboard-ranking :name="localizer.mm.dashboardRankingPrioritySectorsTitle" :ranking-data="summary.rankings.prioritySectors" :localized-labels="localizer.mm.sectors"/>
+      <myanmar-dashboard-ranking :name="localizer.mm.dashboardRankingResponseModalitiesTitle" :ranking-data="summary.rankings.responseModalities" :localized-labels="localizer.mm.responseModalities"/>
     </div>
   </div>
-  <a href="/chat" class="dashboard-webchat-link" @click="$event.preventDefault(), $router.push('/chat')">Go to Chatbot</a>
+  <a href="/chat" class="dashboard-webchat-link" @click.prevent="$router.push('/chat')">{{localizer.mm.dashboardChatbotLink}}</a>
 </div>
 </template>
 
@@ -205,6 +190,7 @@ export default class MyanmarDashboardPage extends Vue {
 
 .dashboard-featured-metrics {
   display: flex;
+  flex-flow: wrap;
 }
 
 .dashboard-featured-metric {
@@ -212,7 +198,8 @@ export default class MyanmarDashboardPage extends Vue {
   padding-left: 5px;
   padding-right: 5px;
   flex-grow: 1;
-  width: 1px;
+  width: 25%;
+  margin-top: 20px;
 }
 
 .dashboard-featured-metric-label {

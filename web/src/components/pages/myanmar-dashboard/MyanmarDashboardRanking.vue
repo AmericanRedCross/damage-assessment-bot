@@ -18,6 +18,9 @@ export default class MyanmarDashboardRanking extends Vue {
     rankingData!: any[]
 
     @Prop()
+    localizedLabels!: { [x: string]: string };
+
+    @Prop()
     name!: string;
 
     get topRankings() {
@@ -37,15 +40,15 @@ export default class MyanmarDashboardRanking extends Vue {
     <div class="dashboard-ranking-list">
         <div class="dashboard-ranking-list-item" v-for="(rankedItem, index) of topRankings" :key="rankedItem">
             <span class="dashboard-ranking-list-item-number">{{index + 1}}</span>
-            <span class="dashboard-ranking-list-item-value">{{rankedItem}}</span>
+            <span class="dashboard-ranking-list-item-value">{{localizedLabels[rankedItem]}}</span>
         </div>
     </div>
-    <button class="dashboard-ranking-show-all-button" @click="showAllRankings = true">See All Reported</button>
+    <button class="dashboard-ranking-show-all-button" @click="showAllRankings = true">{{localizer.mm.dashboardRankingSeeAllButton}}</button>
     <rcda-modal :is-open="showAllRankings" @close="showAllRankings = false" :title="name">
         <div class="dashboard-ranking-list">
             <div class="dashboard-ranking-list-item" v-for="(rankedItem, index) of topRankings" :key="rankedItem">
                 <span class="dashboard-ranking-list-item-number">{{index + 1}}</span>
-                <span class="dashboard-ranking-list-item-value">{{rankedItem}}</span>
+                <span class="dashboard-ranking-list-item-value">{{localizedLabels[rankedItem]}}</span>
             </div>
         </div>
     </rcda-modal>

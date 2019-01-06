@@ -1,17 +1,24 @@
 <script lang="ts">
 import Vue from "vue";
-import { Component, Inject } from "vue-property-decorator";
+import { Component, Inject, Watch } from "vue-property-decorator";
 import ChatService from "@/services/ChatService";
 import { RcdaLanguages, RcdaLanguageNames } from "@common/system/RcdaLanguages";
+import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
 
 @Component
-export default class ChatRegistrationPage extends Vue {
+export default class SiteBanner extends Vue {
 
     languages: RcdaLanguages[] = [ RcdaLanguages.English, RcdaLanguages.Burmese ] 
     languageNames = RcdaLanguageNames;
+    selectedLanguage = RcdaLanguages.English;
 
     goToDashboard() {
         this.$router.push("/");
+    }
+
+    @Watch("selectedLanguage")
+    languageChanged() {
+        (<any>this).rcdaLocalizerEvents.$emit("set-language", this.selectedLanguage);
     }
 }
 </script>
@@ -19,11 +26,11 @@ export default class ChatRegistrationPage extends Vue {
 <template>
 <div class="rcda-banner">
     <div class="rcda-site-logo">X</div>
-    <a class="rcda-site-title" @click="$event.preventDefault(); goToDashboard();" href="/">Damage Assessment Dashboard</a>
+    <a class="rcda-site-title" @click.prevent="goToDashboard();" href="/">{{localizer.common.siteTitle}}</a>
     <div class="banner-language-picker">
-        <label class="banner-language-picker-label">Choose Language</label>
-        <select class="banner-language-picker-input">
-            <option v-for="language in languages" :key="language">{{languageNames[language]}}</option>
+        <label class="banner-language-picker-label">{{localizer.common.languageSelectorLabel}}</label>
+        <select class="banner-language-picker-input" v-model="selectedLanguage">
+            <option v-for="language in languages" :value="language" :key="language">{{languageNames[language]}}</option>
         </select>
     </div>
 </div>
@@ -66,6 +73,7 @@ export default class ChatRegistrationPage extends Vue {
 
 .rcda-banner-style-dark {
     background-color: #494949;
+    border-bottom-color: #494949;
 }
 
 .rcda-banner-style-dark .rcda-site-title, .rcda-banner-style-dark .banner-language-picker-label {

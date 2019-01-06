@@ -58,18 +58,18 @@ export default class MyanmarDashboardFileImport extends Vue {
 
 <template>
 <div>
-    <button class="rcda-button-primary" @click="modalIsOpen = true">File Upload</button>
-    <rcda-modal @close="modalIsOpen = false" :is-open="modalIsOpen" title="Upload CSV File">
+    <button class="rcda-button-primary" @click="modalIsOpen = true">{{localizer.mm.dashboardFileImportButton}}</button>
+    <rcda-modal @close="modalIsOpen = false" :is-open="modalIsOpen" :title="localizer.mm.dashboardFileImportHeader">
         <div class="dashboard-upload-feedback" v-if="hasFeedbackMessage">
-            <div v-if="noFileSelectedError">No file was selected. Please select a file to import.</div>
-            <div v-if="uploadSucceeded">File import finished successfully.</div>
-            <div v-if="uploadFailed">File import failed</div>
+            <div v-if="noFileSelectedError">{{localizer.mm.dashboardFileImportNoFileSelectedError}}</div>
+            <div v-if="uploadSucceeded">{{localizer.mm.dashboardFileImportSuccessMessage}}</div>
+            <div v-if="uploadFailed">{{localizer.mm.dashboardFileImportFailureMessage}}</div>
         </div>
-        <label class="rcda-input-label">Select File</label>
+        <label class="rcda-input-label">{{localizer.mm.dashboardFileImportSelectFileLabel}}</label>
         <rcda-file-selector v-model="selectedFile" accept=".csv,.json"/> 
         <div class="dashboard-upload-help-text">
-            <p>Only .csv and .json files with correct values will be accepted. Excel (.xlsx) files will not be accepted.</p>
-            <p>If any validation issues are found, no records will be processed. Error details will be displayed below.</p>
+            <p>{{localizer.mm.dashboardFileImportAcceptedFileTypesHelpText}}</p>
+            <p>{{localizer.mm.dashboardFileImportErrorBehaviorHelpText}}</p>
             <p>To ensure the format is correct, you can <button class="dashboard-upload-get-template-button" @click="myanmarDashboardService.downloadImportTemplate()">download a template here.</button></p>
         </div>
         <button class="rcda-button-primary" @click="importFile">Upload</button>
