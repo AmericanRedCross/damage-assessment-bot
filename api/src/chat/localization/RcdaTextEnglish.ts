@@ -25,9 +25,8 @@ export class RcdaCommonTextEnglish {
 
 export class RcdaMyanmarTextEnglish {
     //misc
-    unsupportedChannel = "**Unsupported Channel**";
-    webchatRedirectToUrlMessage = "This channel is currently not supported. Please click on the button below to be redirected to Web Chat";
-    redirectButtonText = "Redirect to WebChat";
+    webchatRedirectToUrlMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
+    redirectButtonText = "Click here to sign in";
     // intro
     promptUserToSelectChatbotFeature = "What can I assist with?";
     startDisasterAssessmentOption = "Start reporting on a disaster";

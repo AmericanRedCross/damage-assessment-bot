@@ -9,22 +9,24 @@ export const webchatRedirectMiddleware = rcdaChatMiddleware(
         if (session.message.address.channelId !== "webchat") {
             let redirectionHeroCard = new Message(session).addAttachment(createRedirectionHeroCard(session, localizer))
             session.send(redirectionHeroCard);
-            return;
         }
-        next();
+        else {
+            next();
+        }
 });
 
 
 
-function createRedirectionHeroCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer) {
+function createRedirectionHeroCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer): HeroCard {
     let redirectionHeroCard = new HeroCard(session);
-    let redirectCardAction = new CardAction(session).title(localizer.mm.redirectButtonText)
-                                                    .type("openUrl")
-                                                    .value(process.env["WebChatUrl"]);
-    
-    redirectionHeroCard.title(localizer.mm.unsupportedChannel);
+
     redirectionHeroCard.subtitle(localizer.mm.webchatRedirectToUrlMessage);
-    redirectionHeroCard.buttons( [redirectCardAction] );
+    redirectionHeroCard.buttons([
+        new CardAction(session)
+            .title(localizer.mm.redirectButtonText)
+            .type("openUrl")
+            .value(process.env["WebChatUrl"])
+    ]);
 
     return redirectionHeroCard;
 }
