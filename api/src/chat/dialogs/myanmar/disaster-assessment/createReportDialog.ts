@@ -1,17 +1,14 @@
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
-import DisasterAssessmentRepo from "@/repo/DisasterAssessmentRepo";
 import { askUserInfoDialog } from "@/chat/dialogs/myanmar/disaster-assessment/questions/askUserInfo";
 import { selectFormSectionDialog } from "@/chat/dialogs/myanmar/disaster-assessment/selectFormSectionDialog";
 import { reviewAndSubmitDialog } from "@/chat/dialogs/myanmar/disaster-assessment/reviewAndSubmitDialog";
 import MyanmarDisasterAssessmentModel from "@common/models/resources/disaster-assessment/myanmar/MyanmarDisasterAssessmentModel";
-import * as uuid from "uuid";
 import MyanmarConversationData from "@/chat/models/MyanmarConversationData";
 import { makeObjectWithEnumKeys, enumValues } from "@common/utils/enumHelpers";
 import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
-import RcdaCountries from "@common/system/RcdaCountries";
 import MyanmarDisasterAssessmentService from "@/services/disaster-assessment/MyanmarDisasterAssessmentService";
-import RcdaBotUserData from "@/chat/models/RcdaBotUserData";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
+import { getUserId } from "@/chat/utils/getUserId";
 
 export const createReportDialog = rcdaChatDialog(
     "/createReport",
@@ -31,7 +28,7 @@ export const createReportDialog = rcdaChatDialog(
         async ({ session, localizer }, { disasterAssessmentService }) => {
             
             // Save the report
-            let model = getMyanmarDisasterAssessmentModel(session.conversationData.mm, session.userData);
+            let model = getMyanmarDisasterAssessmentModel(session.conversationData.mm, getUserId(session));
             //TODO verify user id in middleware
             console.log(JSON.stringify(model));
             try {
@@ -48,7 +45,7 @@ export const createReportDialog = rcdaChatDialog(
         references: [askUserInfoDialog, selectFormSectionDialog, reviewAndSubmitDialog]
     });
 
-function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData, userData: RcdaBotUserData): MyanmarDisasterAssessmentModel {
+function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData, userId: string): MyanmarDisasterAssessmentModel {
 
     let sectors = makeObjectWithEnumKeys(myanmarData.sectors.selectedSectorIds, sectorId => myanmarData.sectors.completedSectors.find(x => x.id === sectorId));
     let township = myanmarTownships[myanmarData.townshipId];
@@ -57,7 +54,7 @@ function getMyanmarDisasterAssessmentModel(myanmarData: MyanmarConversationData,
         id: null,
         creationDate: null,
         country: null,
-        userId: userData.userId || "default",
+        userId: userId,
         location: {
             regionCode: township.regionCode,
             districtCode: township.districtCode,
