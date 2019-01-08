@@ -12,18 +12,22 @@ export default class LoginPage extends Vue {
   private username = "";
   private password = "";
   private attemptedLogin = false;
-  private loginFailed = false;
+  private badCredentialsLoginError = false;
+  private unknownLoginError = false;
 
   get missingRequiredFields() {
     return !this.username || !this.password;
   }
 
   get hasErrorMessages() {
-    return this.attemptedLogin && this.missingRequiredFields || this.loginFailed;
+    return this.attemptedLogin && this.missingRequiredFields || this.badCredentialsLoginError || this.unknownLoginError;
   }
 
   public async login() {
     this.attemptedLogin = false;
+    this.badCredentialsLoginError = false;
+    this.unknownLoginError = false;
+
     if (this.missingRequiredFields) {
       this.attemptedLogin = true;
       return;
@@ -34,8 +38,13 @@ export default class LoginPage extends Vue {
         this.$router.replace(this.$route.query.redirect || '/');
       }
     }
-    catch {
-        this.loginFailed = true;
+    catch (ex) {
+      if (ex.status === 400) {
+        this.badCredentialsLoginError = true;
+      }
+      else {        
+        this.unknownLoginError = true;
+      }
     }
     finally {      
       this.attemptedLogin = true;
@@ -51,8 +60,8 @@ export default class LoginPage extends Vue {
     <form @submit.prevent="login()">  
       <div v-if="hasErrorMessages" class="login-errors">
         <div v-if="missingRequiredFields">{{localizer.common.loginFieldsMissingError}}</div>
-        <div v-if="loginFailed">{{localizer.common.loginInvalidError}}</div>
-        <!-- TODO add message for unknown error -->
+        <div v-if="badCredentialsLoginError">{{localizer.common.loginCredentialsInvalidError}}</div>
+        <div v-if="unknownLoginError">{{localizer.common.loginUnknownError}}</div>
       </div>
       <div class="rcda-form-item">
         <label class="rcda-input-label">{{localizer.common.loginUsernameLabel}}</label>

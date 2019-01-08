@@ -13,7 +13,6 @@
     "functionAppName": null,
     "storageAccountName": null,
     "cosmosAccountName": null,
-    "cosmosDbReadUnits": null,
     "ifrcGoHost": null,
     "microsoftAppId": null,
     "microsoftAppPassword": null,

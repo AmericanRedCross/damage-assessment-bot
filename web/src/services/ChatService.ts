@@ -1,27 +1,30 @@
-import RcdaApiClient from "@/services/utils/RcdaApiClient";
-import ChatRegistrationRequest from "@common/models/services/chat-registration/ChatRegistrationRequest";
-import ChatWebTokenResult from "@common/models/services/chat-web-token/ChatWebTokenResult";
+
+import { DirectLine } from 'botframework-directlinejs';
+import RcdaChatClient from "@/services/utils/RcdaChatClient";
+import { RcdaLanguages } from "@common/system/RcdaLanguages";
 
 export default class ChatService {
 
-    constructor(private apiClient: RcdaApiClient) { }
+    constructor(private chatClient: RcdaChatClient) { }
     
-    public async registerChannel(registrationToken: string): Promise<void> {
-        let request: ChatRegistrationRequest = {
-            registrationToken
-        };
-        let sessionToken = localStorage.getItem("sessionToken");
-        let headers = { "Authorization": `Bearer ${sessionToken}` };
-        let response = await this.apiClient.post("api/chat/registration", request, { headers });
-        return;
-    }
-    
-    public async getWebChatToken(): Promise<string> {
-        
-        let sessionToken = localStorage.getItem("sessionToken");
-        let headers = { "Authorization": `Bearer ${sessionToken}` };
-        let response = await this.apiClient.get<ChatWebTokenResult>("api/chat/web/token", { headers });
+    public async getChatConnection(useCached: boolean): Promise<DirectLine> {
 
-        return response.data.token;
+        let connection = this.chatClient.getConnection();
+
+        if (!useCached || !connection) {
+            await this.chatClient.initializeConnection();
+            connection = this.chatClient.getConnection();
+        }
+ 
+        return connection;
+    }
+
+    public async setChatLanguage(language: RcdaLanguages) {
+        
+        if (!this.chatClient.getConnection()) {
+            await this.chatClient.initializeConnection();
+        }
+
+        await this.chatClient.sendEvent("setLanguage", language);
     }
 }

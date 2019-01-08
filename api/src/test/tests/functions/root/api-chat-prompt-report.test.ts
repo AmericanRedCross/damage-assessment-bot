@@ -13,7 +13,7 @@ import { RcdaErrorTypes } from "@common/system/RcdaError";
 import { RcdaRoles } from "@common/system/RcdaRoles";
 import RcdaCountries from "@common/system/RcdaCountries";
 
-describe("api/chat/prompt/report function", () => {
+describe("api/v1/chat/prompt/report function", () => {
     
     describe("happy path", () => { 
 

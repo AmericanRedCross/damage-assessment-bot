@@ -4,7 +4,10 @@
         "install-api": "cd api && npm install",
         "install-common": "cd common && npm install",
         "install-web": "cd web && npm install",
-        "install-deploy": "cd deploy && npm install"
+        "install-deploy": "cd deploy && npm install",
+        "deploy": "npm run build-web && npm run build-api && cd deploy && npm start",
+        "build-web": "cd web && npm run build",
+        "build-api": "cd api && npm run build"
     },
     "devDependencies": {
         "axios": "^0.18.0"

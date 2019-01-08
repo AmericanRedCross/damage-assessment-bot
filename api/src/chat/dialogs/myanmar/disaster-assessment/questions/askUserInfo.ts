@@ -104,6 +104,7 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
                 "type": "Input.ChoiceSet",
                 "style": "compact",
                 "id": "regionCode",
+                "placeholder": localizer.common.selectDropdownPlaceholder,
                 "choices": getKeys(myanmarRegions).map(myanmarRegionCode => ({
                     title: localizer.mm.regions[myanmarRegionCode],
                     value: myanmarRegionCode
@@ -133,7 +134,8 @@ function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, regionCode
                 "type": "Input.ChoiceSet",
                 "style": "compact",
                 "id": "districtCode",
-                "choices": getKeys(myanmarRegions[regionCode]).map(myanmarDistrictCode => ({
+                "placeholder": localizer.common.selectDropdownPlaceholder,
+                "choices": getKeys(myanmarRegions[regionCode].districts).map(myanmarDistrictCode => ({
                     title: localizer.mm.districts[myanmarDistrictCode],
                     value: myanmarDistrictCode
                 }))
@@ -161,7 +163,8 @@ function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, districtCo
                 "type": "Input.ChoiceSet",
                 "style": "compact",
                 "id": "townshipCode",
-                "choices": getKeys(myanmarDistricts[districtCode]).map(myanmarTownshipCode => ({
+                "placeholder": localizer.common.selectDropdownPlaceholder,
+                "choices": getKeys(myanmarDistricts[districtCode].townships).map(myanmarTownshipCode => ({
                     title: localizer.mm.townships[myanmarTownshipCode],
                     value: myanmarTownshipCode
                 }))

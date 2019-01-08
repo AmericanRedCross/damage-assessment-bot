@@ -22,7 +22,8 @@ export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
     dropdownInputSelectAllOption = "အားလုံး";
     // login
     loginFieldsMissingError = "A value must be provided for username and password";
-    loginInvalidError = "Login failed due to invalid username or password";
+    loginCredentialsInvalidError = "Invalid username or password";
+    loginUnknownError = "Login failed unexpectedly, please try again later";
     loginUsernameLabel = "နာမတျောကို";
     loginPasswordLabel = "စကားဝှက်ကို";
     loginPasswordRecoveryLink = "စကားဝှက်ကိုမေ့နေပါသလား?";

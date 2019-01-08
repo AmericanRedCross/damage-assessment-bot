@@ -25,7 +25,10 @@ module.exports = async function deployCosmos(armSessionToken) {
         let dbFolderName = dbFile.slice(0, dbFile.indexOf("/"));
         let db = require(`${cosmosFolderRelativePath}/${dbFile}`);
         // the throughput will only be set on first run. additonal changes must be made in the portal
-        await client.databases.createIfNotExists(db, { offerThroughput: 400 });
+        // the throughput is set on the database.json config. This is not a natively supported config, so we pull it off then remove it
+        let { _offerThroughput } = db;
+        delete db._offerThroughput;
+        await client.databases.createIfNotExists(db, { offerThroughput: _offerThroughput });
 
         let collectionFiles = glob.sync(`./${dbFolderName}/collections/*.collection.json`, { cwd: `${__dirname}/${cosmosFolderRelativePath}` });
         for (let collectionFile of collectionFiles) {

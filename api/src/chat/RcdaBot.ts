@@ -2,8 +2,6 @@ import { LuisRecognizer, UniversalBot, ChatConnector, MemoryBotStorage, Middlewa
 import { DocumentDbClient, AzureBotStorage } from "botbuilder-azure";
 import { RcdaChatDialog, RcdaChatMiddleware } from "@/chat/utils/rcda-chat-types";
 import { rootDialog } from "@/chat/dialogs/rootDialog";
-import authenticationDialog from "@/chat/dialogs/authenticationDialog";
-import authenticationMiddleware from "@/chat/middleware/authenticationMiddleware";
 import promptReportDialog from "@/chat/dialogs/promptReportDialog";
 import { registerRcdaPrompts } from "@/chat/prompts/RcdaPrompts"
 import { conversationDataInitMiddleware } from "@/chat/middleware/conversationDataInitMiddleware";
@@ -20,7 +18,7 @@ export default class RcdaBot extends UniversalBot {
         const cosmosClient = new DocumentDbClient({
             host: process.env["CosmosDbHost"],
             masterKey: process.env["CosmosDbKey"],
-            database: "Rcda",
+            database: "RcdaFixedSize",
             collection: "ChatBotStorage"
         });
         const cosmosStorage = new AzureBotStorage({ gzipData: false }, cosmosClient);
@@ -35,17 +33,21 @@ export default class RcdaBot extends UniversalBot {
     
         this.use(Middleware.sendTyping());
         this.useSessionMiddleware(webchatRedirectMiddleware);
-        //this.useSessionMiddleware(authenticationMiddleware);
         this.useSessionMiddleware(conversationDataInitMiddleware);
 
         registerRcdaPrompts(this);
 
         this.addDialog(rootDialog);
-        this.addDialog(authenticationDialog);
         this.addDialog(promptReportDialog);
 
         // Recognizers
         this.recognizer(new LuisRecognizer(process.env.LuisConnectionString));
+
+        // Events
+        //this.registerEventListener()
+        this.on("setLanguage", (data) => {
+            console.log(data);
+        });
     }
 
     private readonly _registeredDialogs: RcdaChatDialog[] = [];
@@ -88,5 +90,9 @@ export default class RcdaBot extends UniversalBot {
 
     private useSessionMiddleware<TDependencies>(rcdaMiddleware: RcdaChatMiddleware<TDependencies>) {
         this.use({ botbuilder: rcdaMiddleware.sessionMiddleware });
+    }
+
+    private registerEventListener(eventDefinition: any) {
+
     }
 }

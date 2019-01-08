@@ -9,36 +9,49 @@
                     "code": "MMR001D001",
                     "name": "Myitkyina",
                     "nameBurmese": "မြစ်ကြီးနားခရိုင်",
+                    "regionCode": "MMR001",
                     "townships": {
                         "MMR001001": {
                             "code": "MMR001001",
                             "name": "Myitkyina",
-                            "nameBurmese": "မြစ်ကြီးနား"
+                            "nameBurmese": "မြစ်ကြီးနား",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         },
                         "MMR001002": {
                             "code": "MMR001002",
                             "name": "Waingmaw",
-                            "nameBurmese": "ဝိုင်းမော်"
+                            "nameBurmese": "ဝိုင်းမော်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         },
                         "MMR001003": {
                             "code": "MMR001003",
                             "name": "Injangyang",
-                            "nameBurmese": "အင်ဂျန်းယန်"
+                            "nameBurmese": "အင်ဂျန်းယန်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         },
                         "MMR001004": {
                             "code": "MMR001004",
                             "name": "Tanai",
-                            "nameBurmese": "တနိုင်း"
+                            "nameBurmese": "တနိုင်း",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         },
                         "MMR001005": {
                             "code": "MMR001005",
                             "name": "Chipwi",
-                            "nameBurmese": "ချီဗွေ"
+                            "nameBurmese": "ချီဗွေ",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         },
                         "MMR001006": {
                             "code": "MMR001006",
                             "name": "Tsawlaw",
-                            "nameBurmese": "ဆော့လော်"
+                            "nameBurmese": "ဆော့လော်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D001"
                         }
                     }
                 },
@@ -46,21 +59,28 @@
                     "code": "MMR001D002",
                     "name": "Mohnyin",
                     "nameBurmese": "မိုးညှင်းခရိုင်",
+                    "regionCode": "MMR001",
                     "townships": {
                         "MMR001007": {
                             "code": "MMR001007",
                             "name": "Mohnyin",
-                            "nameBurmese": "မိုးညှင်း"
+                            "nameBurmese": "မိုးညှင်း",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D002"
                         },
                         "MMR001008": {
                             "code": "MMR001008",
                             "name": "Mogaung",
-                            "nameBurmese": "မိုးကောင်း"
+                            "nameBurmese": "မိုးကောင်း",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D002"
                         },
                         "MMR001009": {
                             "code": "MMR001009",
                             "name": "Hpakant",
-                            "nameBurmese": "ဖားကန့်"
+                            "nameBurmese": "ဖားကန့်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D002"
                         }
                     }
                 },
@@ -68,26 +88,35 @@
                     "code": "MMR001D003",
                     "name": "Bhamo",
                     "nameBurmese": "ဗန်းမော်ခရိုင်",
+                    "regionCode": "MMR001",
                     "townships": {
                         "MMR001010": {
                             "code": "MMR001010",
                             "name": "Bhamo",
-                            "nameBurmese": "ဗန်းမော်"
+                            "nameBurmese": "ဗန်းမော်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D003"
                         },
                         "MMR001011": {
                             "code": "MMR001011",
                             "name": "Shwegu",
-                            "nameBurmese": "ရွှေကူ"
+                            "nameBurmese": "ရွှေကူ",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D003"
                         },
                         "MMR001012": {
                             "code": "MMR001012",
                             "name": "Momauk",
-                            "nameBurmese": "မိုးမောက်"
+                            "nameBurmese": "မိုးမောက်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D003"
                         },
                         "MMR001013": {
                             "code": "MMR001013",
                             "name": "Mansi",
-                            "nameBurmese": "မန်စီ"
+                            "nameBurmese": "မန်စီ",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D003"
                         }
                     }
                 },
@@ -95,31 +124,42 @@
                     "code": "MMR001D004",
                     "name": "Puta-O",
                     "nameBurmese": "ပူတာအိုခရိုင်",
+                    "regionCode": "MMR001",
                     "townships": {
                         "MMR001014": {
                             "code": "MMR001014",
                             "name": "Puta-O",
-                            "nameBurmese": "ပူတာအို"
+                            "nameBurmese": "ပူတာအို",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D004"
                         },
                         "MMR001015": {
                             "code": "MMR001015",
                             "name": "Sumprabum",
-                            "nameBurmese": "ဆွမ်ပရာဘွမ်"
+                            "nameBurmese": "ဆွမ်ပရာဘွမ်",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D004"
                         },
                         "MMR001016": {
                             "code": "MMR001016",
                             "name": "Machanbaw",
-                            "nameBurmese": "မချမ်းဘော"
+                            "nameBurmese": "မချမ်းဘော",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D004"
                         },
                         "MMR001017": {
                             "code": "MMR001017",
                             "name": "Nawngmun",
-                            "nameBurmese": "နောင်မွန်း"
+                            "nameBurmese": "နောင်မွန်း",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D004"
                         },
                         "MMR001018": {
                             "code": "MMR001018",
                             "name": "Khaunglanhpu",
-                            "nameBurmese": "ခေါင်လန်ဖူး"
+                            "nameBurmese": "ခေါင်လန်ဖူး",
+                            "regionCode": "MMR001",
+                            "districtCode": "MMR001D004"
                         }
                     }
                 }
@@ -134,26 +174,35 @@
                     "code": "MMR002D001",
                     "name": "Loikaw",
                     "nameBurmese": "လွိုင်ကော်ခရိုင်",
+                    "regionCode": "MMR002",
                     "townships": {
                         "MMR002001": {
                             "code": "MMR002001",
                             "name": "Loikaw",
-                            "nameBurmese": "လွိုင်ကော်"
+                            "nameBurmese": "လွိုင်ကော်",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D001"
                         },
                         "MMR002002": {
                             "code": "MMR002002",
                             "name": "Demoso",
-                            "nameBurmese": "ဒီမောဆို"
+                            "nameBurmese": "ဒီမောဆို",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D001"
                         },
                         "MMR002003": {
                             "code": "MMR002003",
                             "name": "Hpruso",
-                            "nameBurmese": "ဖရူဆို"
+                            "nameBurmese": "ဖရူဆို",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D001"
                         },
                         "MMR002004": {
                             "code": "MMR002004",
                             "name": "Shadaw",
-                            "nameBurmese": "ရှားတော"
+                            "nameBurmese": "ရှားတော",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D001"
                         }
                     }
                 },
@@ -161,21 +210,28 @@
                     "code": "MMR002D002",
                     "name": "Bawlake",
                     "nameBurmese": "ဘောလခဲခရိုင်",
+                    "regionCode": "MMR002",
                     "townships": {
                         "MMR002005": {
                             "code": "MMR002005",
                             "name": "Bawlake",
-                            "nameBurmese": "ဘောလခဲ"
+                            "nameBurmese": "ဘောလခဲ",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D002"
                         },
                         "MMR002006": {
                             "code": "MMR002006",
                             "name": "Hpasawng",
-                            "nameBurmese": "ဖားဆောင်း"
+                            "nameBurmese": "ဖားဆောင်း",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D002"
                         },
                         "MMR002007": {
                             "code": "MMR002007",
                             "name": "Mese",
-                            "nameBurmese": "မယ်စဲ့"
+                            "nameBurmese": "မယ်စဲ့",
+                            "regionCode": "MMR002",
+                            "districtCode": "MMR002D002"
                         }
                     }
                 }
@@ -190,21 +246,28 @@
                     "code": "MMR003D001",
                     "name": "Hpa-An",
                     "nameBurmese": "ဘားအံခရိုင်",
+                    "regionCode": "MMR003",
                     "townships": {
                         "MMR003001": {
                             "code": "MMR003001",
                             "name": "Hpa-An",
-                            "nameBurmese": "ဘားအံ"
+                            "nameBurmese": "ဘားအံ",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D001"
                         },
                         "MMR003002": {
                             "code": "MMR003002",
                             "name": "Hlaingbwe",
-                            "nameBurmese": "လှိုင်းဘွဲ့"
+                            "nameBurmese": "လှိုင်းဘွဲ့",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D001"
                         },
                         "MMR003004": {
                             "code": "MMR003004",
                             "name": "Thandaunggyi",
-                            "nameBurmese": "သံတောင်ကြီး"
+                            "nameBurmese": "သံတောင်ကြီး",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D001"
                         }
                     }
                 },
@@ -212,11 +275,14 @@
                     "code": "MMR003D002",
                     "name": "Myawaddy",
                     "nameBurmese": "မြဝတီခရိုင်",
+                    "regionCode": "MMR003",
                     "townships": {
                         "MMR003005": {
                             "code": "MMR003005",
                             "name": "Myawaddy",
-                            "nameBurmese": "မြဝတီ"
+                            "nameBurmese": "မြဝတီ",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D002"
                         }
                     }
                 },
@@ -224,16 +290,21 @@
                     "code": "MMR003D003",
                     "name": "Kawkareik",
                     "nameBurmese": "ကော့ကရိတ်ခရိုင်",
+                    "regionCode": "MMR003",
                     "townships": {
                         "MMR003006": {
                             "code": "MMR003006",
                             "name": "Kawkareik",
-                            "nameBurmese": "ကော့ကရိတ်"
+                            "nameBurmese": "ကော့ကရိတ်",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D003"
                         },
                         "MMR003007": {
                             "code": "MMR003007",
                             "name": "Kyainseikgyi",
-                            "nameBurmese": "ကြာအင်းဆိပ်ကြီး"
+                            "nameBurmese": "ကြာအင်းဆိပ်ကြီး",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D003"
                         }
                     }
                 },
@@ -241,11 +312,14 @@
                     "code": "MMR003D004",
                     "name": "Hpapun",
                     "nameBurmese": "ဖာပွန်ခရိုင်",
+                    "regionCode": "MMR003",
                     "townships": {
                         "MMR003003": {
                             "code": "MMR003003",
                             "name": "Hpapun",
-                            "nameBurmese": "ဖာပွန်"
+                            "nameBurmese": "ဖာပွန်",
+                            "regionCode": "MMR003",
+                            "districtCode": "MMR003D004"
                         }
                     }
                 }
@@ -260,21 +334,28 @@
                     "code": "MMR004D001",
                     "name": "Falam",
                     "nameBurmese": "ဖလန်းခရိုင်",
+                    "regionCode": "MMR004",
                     "townships": {
                         "MMR004001": {
                             "code": "MMR004001",
                             "name": "Falam",
-                            "nameBurmese": "ဖလမ်း"
+                            "nameBurmese": "ဖလမ်း",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D001"
                         },
                         "MMR004004": {
                             "code": "MMR004004",
                             "name": "Tedim",
-                            "nameBurmese": "တီးတိန်"
+                            "nameBurmese": "တီးတိန်",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D001"
                         },
                         "MMR004005": {
                             "code": "MMR004005",
                             "name": "Tonzang",
-                            "nameBurmese": "တွန်းဇံ"
+                            "nameBurmese": "တွန်းဇံ",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D001"
                         }
                     }
                 },
@@ -282,26 +363,35 @@
                     "code": "MMR004D002",
                     "name": "Mindat",
                     "nameBurmese": "မင်းတပ်ခရိုင်",
+                    "regionCode": "MMR004",
                     "townships": {
                         "MMR004006": {
                             "code": "MMR004006",
                             "name": "Mindat",
-                            "nameBurmese": "မင်းတပ်"
+                            "nameBurmese": "မင်းတပ်",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D002"
                         },
                         "MMR004007": {
                             "code": "MMR004007",
                             "name": "Matupi",
-                            "nameBurmese": "မတူပီ"
+                            "nameBurmese": "မတူပီ",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D002"
                         },
                         "MMR004008": {
                             "code": "MMR004008",
                             "name": "Kanpetlet",
-                            "nameBurmese": "ကန်ပက်လက်"
+                            "nameBurmese": "ကန်ပက်လက်",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D002"
                         },
                         "MMR004009": {
                             "code": "MMR004009",
                             "name": "Paletwa",
-                            "nameBurmese": "ပလက်ဝ"
+                            "nameBurmese": "ပလက်ဝ",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D002"
                         }
                     }
                 },
@@ -309,16 +399,21 @@
                     "code": "MMR004D003",
                     "name": "Hakha",
                     "nameBurmese": "ဟားခါးခရိုင်",
+                    "regionCode": "MMR004",
                     "townships": {
                         "MMR004002": {
                             "code": "MMR004002",
                             "name": "Hakha",
-                            "nameBurmese": "ဟားခါး"
+                            "nameBurmese": "ဟားခါး",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D003"
                         },
                         "MMR004003": {
                             "code": "MMR004003",
                             "name": "Thantlang",
-                            "nameBurmese": "ထန်တလန်"
+                            "nameBurmese": "ထန်တလန်",
+                            "regionCode": "MMR004",
+                            "districtCode": "MMR004D003"
                         }
                     }
                 }
@@ -333,21 +428,28 @@
                     "code": "MMR005D001",
                     "name": "Sagaing",
                     "nameBurmese": "စစ်ကိုင်းခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005001": {
                             "code": "MMR005001",
                             "name": "Sagaing",
-                            "nameBurmese": "စစ်ကိုင်း"
+                            "nameBurmese": "စစ်ကိုင်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D001"
                         },
                         "MMR005002": {
                             "code": "MMR005002",
                             "name": "Myinmu",
-                            "nameBurmese": "မြင်းမူ"
+                            "nameBurmese": "မြင်းမူ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D001"
                         },
                         "MMR005003": {
                             "code": "MMR005003",
                             "name": "Myaung",
-                            "nameBurmese": "မြောင်"
+                            "nameBurmese": "မြောင်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D001"
                         }
                     }
                 },
@@ -355,36 +457,49 @@
                     "code": "MMR005D002",
                     "name": "Shwebo",
                     "nameBurmese": "ရွှေဘိုခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005004": {
                             "code": "MMR005004",
                             "name": "Shwebo",
-                            "nameBurmese": "ရွှေဘို"
+                            "nameBurmese": "ရွှေဘို",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         },
                         "MMR005005": {
                             "code": "MMR005005",
                             "name": "Khin-U",
-                            "nameBurmese": "ခင်ဦး"
+                            "nameBurmese": "ခင်ဦး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         },
                         "MMR005006": {
                             "code": "MMR005006",
                             "name": "Wetlet",
-                            "nameBurmese": "ဝက်လက်"
+                            "nameBurmese": "ဝက်လက်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         },
                         "MMR005009": {
                             "code": "MMR005009",
                             "name": "Ye-U",
-                            "nameBurmese": "ရေဦး"
+                            "nameBurmese": "ရေဦး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         },
                         "MMR005010": {
                             "code": "MMR005010",
                             "name": "Tabayin",
-                            "nameBurmese": "ဒီပဲယင်း"
+                            "nameBurmese": "ဒီပဲယင်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         },
                         "MMR005011": {
                             "code": "MMR005011",
                             "name": "Taze",
-                            "nameBurmese": "တန့်ဆည်"
+                            "nameBurmese": "တန့်ဆည်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D002"
                         }
                     }
                 },
@@ -392,26 +507,35 @@
                     "code": "MMR005D003",
                     "name": "Monywa",
                     "nameBurmese": "မုံရွာခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005012": {
                             "code": "MMR005012",
                             "name": "Monywa",
-                            "nameBurmese": "မုံရွာ"
+                            "nameBurmese": "မုံရွာ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D003"
                         },
                         "MMR005013": {
                             "code": "MMR005013",
                             "name": "Budalin",
-                            "nameBurmese": "ဘုတလင်"
+                            "nameBurmese": "ဘုတလင်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D003"
                         },
                         "MMR005014": {
                             "code": "MMR005014",
                             "name": "Ayadaw",
-                            "nameBurmese": "အရာတော်"
+                            "nameBurmese": "အရာတော်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D003"
                         },
                         "MMR005015": {
                             "code": "MMR005015",
                             "name": "Chaung-U",
-                            "nameBurmese": "ချောင်းဦး"
+                            "nameBurmese": "ချောင်းဦး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D003"
                         }
                     }
                 },
@@ -419,41 +543,56 @@
                     "code": "MMR005D004",
                     "name": "Katha",
                     "nameBurmese": "ကသာခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005020": {
                             "code": "MMR005020",
                             "name": "Katha",
-                            "nameBurmese": "ကသာ"
+                            "nameBurmese": "ကသာ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005021": {
                             "code": "MMR005021",
                             "name": "Indaw",
-                            "nameBurmese": "အင်းတော်"
+                            "nameBurmese": "အင်းတော်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005022": {
                             "code": "MMR005022",
                             "name": "Tigyaing",
-                            "nameBurmese": "ထီးချိုင့်"
+                            "nameBurmese": "ထီးချိုင့်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005023": {
                             "code": "MMR005023",
                             "name": "Banmauk",
-                            "nameBurmese": "ဗန်းမောက်"
+                            "nameBurmese": "ဗန်းမောက်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005024": {
                             "code": "MMR005024",
                             "name": "Kawlin",
-                            "nameBurmese": "ကောလင်း"
+                            "nameBurmese": "ကောလင်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005025": {
                             "code": "MMR005025",
                             "name": "Wuntho",
-                            "nameBurmese": "ဝန်းသို"
+                            "nameBurmese": "ဝန်းသို",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         },
                         "MMR005026": {
                             "code": "MMR005026",
                             "name": "Pinlebu",
-                            "nameBurmese": "ပင်လည်ဘူး"
+                            "nameBurmese": "ပင်လည်ဘူး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D004"
                         }
                     }
                 },
@@ -461,21 +600,28 @@
                     "code": "MMR005D005",
                     "name": "Kale",
                     "nameBurmese": "ကလေးခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005027": {
                             "code": "MMR005027",
                             "name": "Kale",
-                            "nameBurmese": "ကလေး"
+                            "nameBurmese": "ကလေး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D005"
                         },
                         "MMR005028": {
                             "code": "MMR005028",
                             "name": "Kalewa",
-                            "nameBurmese": "ကလေးဝ"
+                            "nameBurmese": "ကလေးဝ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D005"
                         },
                         "MMR005029": {
                             "code": "MMR005029",
                             "name": "Mingin",
-                            "nameBurmese": "မင်းကင်း"
+                            "nameBurmese": "မင်းကင်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D005"
                         }
                     }
                 },
@@ -483,11 +629,14 @@
                     "code": "MMR005D006",
                     "name": "Tamu",
                     "nameBurmese": "တမူးခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005030": {
                             "code": "MMR005030",
                             "name": "Tamu",
-                            "nameBurmese": "တမူး"
+                            "nameBurmese": "တမူး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D006"
                         }
                     }
                 },
@@ -495,16 +644,21 @@
                     "code": "MMR005D007",
                     "name": "Mawlaik",
                     "nameBurmese": "မော်လိုက်ခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005031": {
                             "code": "MMR005031",
                             "name": "Mawlaik",
-                            "nameBurmese": "မော်လိုက်"
+                            "nameBurmese": "မော်လိုက်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D007"
                         },
                         "MMR005032": {
                             "code": "MMR005032",
                             "name": "Paungbyin",
-                            "nameBurmese": "ဖေါင်းပြင်"
+                            "nameBurmese": "ဖေါင်းပြင်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D007"
                         }
                     }
                 },
@@ -512,31 +666,42 @@
                     "code": "MMR005D008",
                     "name": "Hkamti",
                     "nameBurmese": "ခန္တီးခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005033": {
                             "code": "MMR005033",
                             "name": "Hkamti",
-                            "nameBurmese": "ခန္တီး"
+                            "nameBurmese": "ခန္တီး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D008"
                         },
                         "MMR005034": {
                             "code": "MMR005034",
                             "name": "Homalin",
-                            "nameBurmese": "ဟုမ္မလင်း"
+                            "nameBurmese": "ဟုမ္မလင်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D008"
                         },
                         "MMR005035": {
                             "code": "MMR005035",
                             "name": "Lay Shi",
-                            "nameBurmese": "လေရှီး"
+                            "nameBurmese": "လေရှီး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D008"
                         },
                         "MMR005036": {
                             "code": "MMR005036",
                             "name": "Lahe",
-                            "nameBurmese": "လဟယ်"
+                            "nameBurmese": "လဟယ်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D008"
                         },
                         "MMR005037": {
                             "code": "MMR005037",
                             "name": "Nanyun",
-                            "nameBurmese": "နန်းယွန်း"
+                            "nameBurmese": "နန်းယွန်း",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D008"
                         }
                     }
                 },
@@ -544,26 +709,35 @@
                     "code": "MMR005D009",
                     "name": "Yinmarbin",
                     "nameBurmese": "ယင်းမာပင်ခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005016": {
                             "code": "MMR005016",
                             "name": "Yinmarbin",
-                            "nameBurmese": "ယင်းမာပင်"
+                            "nameBurmese": "ယင်းမာပင်",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D009"
                         },
                         "MMR005017": {
                             "code": "MMR005017",
                             "name": "Kani",
-                            "nameBurmese": "ကနီ"
+                            "nameBurmese": "ကနီ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D009"
                         },
                         "MMR005018": {
                             "code": "MMR005018",
                             "name": "Salingyi",
-                            "nameBurmese": "ဆားလင်းကြီး"
+                            "nameBurmese": "ဆားလင်းကြီး",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D009"
                         },
                         "MMR005019": {
                             "code": "MMR005019",
                             "name": "Pale",
-                            "nameBurmese": "ပုလဲ"
+                            "nameBurmese": "ပုလဲ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D009"
                         }
                     }
                 },
@@ -571,16 +745,21 @@
                     "code": "MMR005D010",
                     "name": "Kanbalu",
                     "nameBurmese": "ကန့်ဘလူခရိုင်",
+                    "regionCode": "MMR005",
                     "townships": {
                         "MMR005007": {
                             "code": "MMR005007",
                             "name": "Kanbalu",
-                            "nameBurmese": "ကန့်ဘလူ"
+                            "nameBurmese": "ကန့်ဘလူ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D010"
                         },
                         "MMR005008": {
                             "code": "MMR005008",
                             "name": "Kyunhla",
-                            "nameBurmese": "ကျွန်းလှ"
+                            "nameBurmese": "ကျွန်းလှ",
+                            "regionCode": "MMR005",
+                            "districtCode": "MMR005D010"
                         }
                     }
                 }
@@ -595,26 +774,35 @@
                     "code": "MMR006D001",
                     "name": "Dawei",
                     "nameBurmese": "ထားဝယ်ခရိုင်",
+                    "regionCode": "MMR006",
                     "townships": {
                         "MMR006001": {
                             "code": "MMR006001",
                             "name": "Dawei",
-                            "nameBurmese": "ထားဝယ်"
+                            "nameBurmese": "ထားဝယ်",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D001"
                         },
                         "MMR006002": {
                             "code": "MMR006002",
                             "name": "Launglon",
-                            "nameBurmese": "လောင်းလုံ"
+                            "nameBurmese": "လောင်းလုံ",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D001"
                         },
                         "MMR006003": {
                             "code": "MMR006003",
                             "name": "Thayetchaung",
-                            "nameBurmese": "သရက်ချောင်း"
+                            "nameBurmese": "သရက်ချောင်း",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D001"
                         },
                         "MMR006004": {
                             "code": "MMR006004",
                             "name": "Yebyu",
-                            "nameBurmese": "ရေဖြူ"
+                            "nameBurmese": "ရေဖြူ",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D001"
                         }
                     }
                 },
@@ -622,26 +810,35 @@
                     "code": "MMR006D002",
                     "name": "Myeik",
                     "nameBurmese": "မြိတ်ခရိုင်",
+                    "regionCode": "MMR006",
                     "townships": {
                         "MMR006005": {
                             "code": "MMR006005",
                             "name": "Myeik",
-                            "nameBurmese": "မြိတ်"
+                            "nameBurmese": "မြိတ်",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D002"
                         },
                         "MMR006006": {
                             "code": "MMR006006",
                             "name": "Kyunsu",
-                            "nameBurmese": "ကျွန်းစု"
+                            "nameBurmese": "ကျွန်းစု",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D002"
                         },
                         "MMR006007": {
                             "code": "MMR006007",
                             "name": "Palaw",
-                            "nameBurmese": "ပုလော"
+                            "nameBurmese": "ပုလော",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D002"
                         },
                         "MMR006008": {
                             "code": "MMR006008",
                             "name": "Tanintharyi",
-                            "nameBurmese": "တနင်္သာရီ"
+                            "nameBurmese": "တနင်္သာရီ",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D002"
                         }
                     }
                 },
@@ -649,16 +846,21 @@
                     "code": "MMR006D003",
                     "name": "Kawthoung",
                     "nameBurmese": "ကော့သောင်းခရိုင်",
+                    "regionCode": "MMR006",
                     "townships": {
                         "MMR006009": {
                             "code": "MMR006009",
                             "name": "Kawthoung",
-                            "nameBurmese": "ကော့သောင်း"
+                            "nameBurmese": "ကော့သောင်း",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D003"
                         },
                         "MMR006010": {
                             "code": "MMR006010",
                             "name": "Bokpyin",
-                            "nameBurmese": "ဘုတ်ပြင်း"
+                            "nameBurmese": "ဘုတ်ပြင်း",
+                            "regionCode": "MMR006",
+                            "districtCode": "MMR006D003"
                         }
                     }
                 }
@@ -673,46 +875,63 @@
                     "code": "MMR007D001",
                     "name": "Bago",
                     "nameBurmese": "ပဲခူးခရိုင်",
+                    "regionCode": "MMR007",
                     "townships": {
                         "MMR007001": {
                             "code": "MMR007001",
                             "name": "Bago",
-                            "nameBurmese": "ပဲခူး"
+                            "nameBurmese": "ပဲခူး",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007002": {
                             "code": "MMR007002",
                             "name": "Thanatpin",
-                            "nameBurmese": "သနပ်ပင်"
+                            "nameBurmese": "သနပ်ပင်",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007003": {
                             "code": "MMR007003",
                             "name": "Kawa",
-                            "nameBurmese": "ကဝ"
+                            "nameBurmese": "ကဝ",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007004": {
                             "code": "MMR007004",
                             "name": "Waw",
-                            "nameBurmese": "ဝေါ"
+                            "nameBurmese": "ဝေါ",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007005": {
                             "code": "MMR007005",
                             "name": "Nyaunglebin",
-                            "nameBurmese": "ညောင်လေးပင်"
+                            "nameBurmese": "ညောင်လေးပင်",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007006": {
                             "code": "MMR007006",
                             "name": "Kyauktaga",
-                            "nameBurmese": "ကျောက်တံခါး"
+                            "nameBurmese": "ကျောက်တံခါး",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007007": {
                             "code": "MMR007007",
                             "name": "Daik-U",
-                            "nameBurmese": "ဒိုက်ဦး"
+                            "nameBurmese": "ဒိုက်ဦး",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         },
                         "MMR007008": {
                             "code": "MMR007008",
                             "name": "Shwegyin",
-                            "nameBurmese": "ရွှေကျင်"
+                            "nameBurmese": "ရွှေကျင်",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D001"
                         }
                     }
                 },
@@ -720,36 +939,49 @@
                     "code": "MMR007D002",
                     "name": "Taungoo",
                     "nameBurmese": "တောင်ငူခရိုင်",
+                    "regionCode": "MMR007",
                     "townships": {
                         "MMR007009": {
                             "code": "MMR007009",
                             "name": "Taungoo",
-                            "nameBurmese": "တောင်ငူ"
+                            "nameBurmese": "တောင်ငူ",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         },
                         "MMR007010": {
                             "code": "MMR007010",
                             "name": "Yedashe",
-                            "nameBurmese": "ရေတာရှည်"
+                            "nameBurmese": "ရေတာရှည်",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         },
                         "MMR007011": {
                             "code": "MMR007011",
                             "name": "Kyaukkyi",
-                            "nameBurmese": "ကျောက်ကြီး"
+                            "nameBurmese": "ကျောက်ကြီး",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         },
                         "MMR007012": {
                             "code": "MMR007012",
                             "name": "Phyu",
-                            "nameBurmese": "ဖြူး"
+                            "nameBurmese": "ဖြူး",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         },
                         "MMR007013": {
                             "code": "MMR007013",
                             "name": "Oktwin",
-                            "nameBurmese": "အုတ်တွင်း"
+                            "nameBurmese": "အုတ်တွင်း",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         },
                         "MMR007014": {
                             "code": "MMR007014",
                             "name": "Htantabin",
-                            "nameBurmese": "ထန်းတပင်"
+                            "nameBurmese": "ထန်းတပင်",
+                            "regionCode": "MMR007",
+                            "districtCode": "MMR007D002"
                         }
                     }
                 }
@@ -764,36 +996,49 @@
                     "code": "MMR008D001",
                     "name": "Pyay",
                     "nameBurmese": "ပြည်ခရိုင်",
+                    "regionCode": "MMR008",
                     "townships": {
                         "MMR008001": {
                             "code": "MMR008001",
                             "name": "Pyay",
-                            "nameBurmese": "ပြည်"
+                            "nameBurmese": "ပြည်",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         },
                         "MMR008002": {
                             "code": "MMR008002",
                             "name": "Paukkhaung",
-                            "nameBurmese": "ပေါက်ခေါင်း"
+                            "nameBurmese": "ပေါက်ခေါင်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         },
                         "MMR008003": {
                             "code": "MMR008003",
                             "name": "Padaung",
-                            "nameBurmese": "ပန်းတောင်း"
+                            "nameBurmese": "ပန်းတောင်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         },
                         "MMR008004": {
                             "code": "MMR008004",
                             "name": "Paungde",
-                            "nameBurmese": "ပေါင်းတည်"
+                            "nameBurmese": "ပေါင်းတည်",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         },
                         "MMR008005": {
                             "code": "MMR008005",
                             "name": "Thegon",
-                            "nameBurmese": "သဲကုန်း"
+                            "nameBurmese": "သဲကုန်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         },
                         "MMR008006": {
                             "code": "MMR008006",
                             "name": "Shwedaung",
-                            "nameBurmese": "ရွှေတောင်"
+                            "nameBurmese": "ရွှေတောင်",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D001"
                         }
                     }
                 },
@@ -801,46 +1046,63 @@
                     "code": "MMR008D002",
                     "name": "Thayarwady",
                     "nameBurmese": "သာယာဝတီခရိုင်",
+                    "regionCode": "MMR008",
                     "townships": {
                         "MMR008007": {
                             "code": "MMR008007",
                             "name": "Thayarwady",
-                            "nameBurmese": "သာယာဝတီ"
+                            "nameBurmese": "သာယာဝတီ",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008008": {
                             "code": "MMR008008",
                             "name": "Letpadan",
-                            "nameBurmese": "လက်ပံတန်း"
+                            "nameBurmese": "လက်ပံတန်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008009": {
                             "code": "MMR008009",
                             "name": "Minhla",
-                            "nameBurmese": "မင်းလှ"
+                            "nameBurmese": "မင်းလှ",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008010": {
                             "code": "MMR008010",
                             "name": "Okpho",
-                            "nameBurmese": "အုတ်ဖို"
+                            "nameBurmese": "အုတ်ဖို",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008011": {
                             "code": "MMR008011",
                             "name": "Zigon",
-                            "nameBurmese": "ဇီးကုန်း"
+                            "nameBurmese": "ဇီးကုန်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008012": {
                             "code": "MMR008012",
                             "name": "Nattalin",
-                            "nameBurmese": "နတ္တလင်း"
+                            "nameBurmese": "နတ္တလင်း",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008013": {
                             "code": "MMR008013",
                             "name": "Monyo",
-                            "nameBurmese": "မိုးညို"
+                            "nameBurmese": "မိုးညို",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         },
                         "MMR008014": {
                             "code": "MMR008014",
                             "name": "Gyobingauk",
-                            "nameBurmese": "ကြို့ပင်ကောက်"
+                            "nameBurmese": "ကြို့ပင်ကောက်",
+                            "regionCode": "MMR008",
+                            "districtCode": "MMR008D002"
                         }
                     }
                 }
@@ -855,36 +1117,49 @@
                     "code": "MMR009D001",
                     "name": "Magway",
                     "nameBurmese": "မကွေးခရိုင်",
+                    "regionCode": "MMR009",
                     "townships": {
                         "MMR009001": {
                             "code": "MMR009001",
                             "name": "Magway",
-                            "nameBurmese": "မကွေး"
+                            "nameBurmese": "မကွေး",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         },
                         "MMR009002": {
                             "code": "MMR009002",
                             "name": "Yenangyaung",
-                            "nameBurmese": "ရေနံချောင်း"
+                            "nameBurmese": "ရေနံချောင်း",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         },
                         "MMR009003": {
                             "code": "MMR009003",
                             "name": "Chauk",
-                            "nameBurmese": "ချောက်"
+                            "nameBurmese": "ချောက်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         },
                         "MMR009004": {
                             "code": "MMR009004",
                             "name": "Taungdwingyi",
-                            "nameBurmese": "တောင်တွင်းကြီး"
+                            "nameBurmese": "တောင်တွင်းကြီး",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         },
                         "MMR009005": {
                             "code": "MMR009005",
                             "name": "Myothit",
-                            "nameBurmese": "မြို့သစ်"
+                            "nameBurmese": "မြို့သစ်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         },
                         "MMR009006": {
                             "code": "MMR009006",
                             "name": "Natmauk",
-                            "nameBurmese": "နတ်မောက်"
+                            "nameBurmese": "နတ်မောက်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D001"
                         }
                     }
                 },
@@ -892,31 +1167,42 @@
                     "code": "MMR009D002",
                     "name": "Minbu",
                     "nameBurmese": "မင်းဘူးခရိုင်",
+                    "regionCode": "MMR009",
                     "townships": {
                         "MMR009007": {
                             "code": "MMR009007",
                             "name": "Minbu",
-                            "nameBurmese": "မင်းဘူး"
+                            "nameBurmese": "မင်းဘူး",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D002"
                         },
                         "MMR009008": {
                             "code": "MMR009008",
                             "name": "Pwintbyu",
-                            "nameBurmese": "ပွင့်ဖြူ"
+                            "nameBurmese": "ပွင့်ဖြူ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D002"
                         },
                         "MMR009009": {
                             "code": "MMR009009",
                             "name": "Ngape",
-                            "nameBurmese": "ငဖဲ"
+                            "nameBurmese": "ငဖဲ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D002"
                         },
                         "MMR009010": {
                             "code": "MMR009010",
                             "name": "Salin",
-                            "nameBurmese": "စလင်း"
+                            "nameBurmese": "စလင်း",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D002"
                         },
                         "MMR009011": {
                             "code": "MMR009011",
                             "name": "Sidoktaya",
-                            "nameBurmese": "စေတုတ္တရာ"
+                            "nameBurmese": "စေတုတ္တရာ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D002"
                         }
                     }
                 },
@@ -924,36 +1210,49 @@
                     "code": "MMR009D003",
                     "name": "Thayet",
                     "nameBurmese": "သရက်ခရိုင်",
+                    "regionCode": "MMR009",
                     "townships": {
                         "MMR009012": {
                             "code": "MMR009012",
                             "name": "Thayet",
-                            "nameBurmese": "သရက်"
+                            "nameBurmese": "သရက်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         },
                         "MMR009013": {
                             "code": "MMR009013",
                             "name": "Minhla",
-                            "nameBurmese": "မင်းလှ"
+                            "nameBurmese": "မင်းလှ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         },
                         "MMR009014": {
                             "code": "MMR009014",
                             "name": "Mindon",
-                            "nameBurmese": "မင်းတုန်း"
+                            "nameBurmese": "မင်းတုန်း",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         },
                         "MMR009015": {
                             "code": "MMR009015",
                             "name": "Kamma",
-                            "nameBurmese": "ကံမ"
+                            "nameBurmese": "ကံမ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         },
                         "MMR009016": {
                             "code": "MMR009016",
                             "name": "Aunglan",
-                            "nameBurmese": "အောင်လံ"
+                            "nameBurmese": "အောင်လံ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         },
                         "MMR009017": {
                             "code": "MMR009017",
                             "name": "Sinbaungwe",
-                            "nameBurmese": "ဆင်ပေါင်ဝဲ"
+                            "nameBurmese": "ဆင်ပေါင်ဝဲ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D003"
                         }
                     }
                 },
@@ -961,31 +1260,42 @@
                     "code": "MMR009D004",
                     "name": "Pakokku",
                     "nameBurmese": "ပခုက္ကူခရိုင်",
+                    "regionCode": "MMR009",
                     "townships": {
                         "MMR009018": {
                             "code": "MMR009018",
                             "name": "Pakokku",
-                            "nameBurmese": "ပခုက္ကူ"
+                            "nameBurmese": "ပခုက္ကူ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D004"
                         },
                         "MMR009019": {
                             "code": "MMR009019",
                             "name": "Yesagyo",
-                            "nameBurmese": "ရေစကြို"
+                            "nameBurmese": "ရေစကြို",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D004"
                         },
                         "MMR009020": {
                             "code": "MMR009020",
                             "name": "Myaing",
-                            "nameBurmese": "မြိုင်"
+                            "nameBurmese": "မြိုင်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D004"
                         },
                         "MMR009021": {
                             "code": "MMR009021",
                             "name": "Pauk",
-                            "nameBurmese": "ပေါက်"
+                            "nameBurmese": "ပေါက်",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D004"
                         },
                         "MMR009022": {
                             "code": "MMR009022",
                             "name": "Seikphyu",
-                            "nameBurmese": "ဆိပ်ဖြူ"
+                            "nameBurmese": "ဆိပ်ဖြူ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D004"
                         }
                     }
                 },
@@ -993,21 +1303,28 @@
                     "code": "MMR009D005",
                     "name": "Gangaw",
                     "nameBurmese": "ဂန့်ဂေါခရိုင်",
+                    "regionCode": "MMR009",
                     "townships": {
                         "MMR009023": {
                             "code": "MMR009023",
                             "name": "Gangaw",
-                            "nameBurmese": "ဂန့်ဂေါ"
+                            "nameBurmese": "ဂန့်ဂေါ",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D005"
                         },
                         "MMR009024": {
                             "code": "MMR009024",
                             "name": "Tilin",
-                            "nameBurmese": "ထီးလင်း"
+                            "nameBurmese": "ထီးလင်း",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D005"
                         },
                         "MMR009025": {
                             "code": "MMR009025",
                             "name": "Saw",
-                            "nameBurmese": "ဆော"
+                            "nameBurmese": "ဆော",
+                            "regionCode": "MMR009",
+                            "districtCode": "MMR009D005"
                         }
                     }
                 }
@@ -1022,41 +1339,56 @@
                     "code": "MMR010D001",
                     "name": "Mandalay",
                     "nameBurmese": "မန္တလေးခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010001": {
                             "code": "MMR010001",
                             "name": "Aungmyaythazan",
-                            "nameBurmese": "အောင်မြေသာဇံ"
+                            "nameBurmese": "အောင်မြေသာဇံ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010002": {
                             "code": "MMR010002",
                             "name": "Chanayethazan",
-                            "nameBurmese": "ချမ်းအေးသာဇံ"
+                            "nameBurmese": "ချမ်းအေးသာဇံ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010003": {
                             "code": "MMR010003",
                             "name": "Mahaaungmyay",
-                            "nameBurmese": "မဟာအောင်မြေ"
+                            "nameBurmese": "မဟာအောင်မြေ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010004": {
                             "code": "MMR010004",
                             "name": "Chanmyathazi",
-                            "nameBurmese": "ချမ်းမြသာစည်"
+                            "nameBurmese": "ချမ်းမြသာစည်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010005": {
                             "code": "MMR010005",
                             "name": "Pyigyitagon",
-                            "nameBurmese": "ပြည်ကြီးတံခွန်"
+                            "nameBurmese": "ပြည်ကြီးတံခွန်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010006": {
                             "code": "MMR010006",
                             "name": "Amarapura",
-                            "nameBurmese": "အမရပူရ"
+                            "nameBurmese": "အမရပူရ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         },
                         "MMR010007": {
                             "code": "MMR010007",
                             "name": "Patheingyi",
-                            "nameBurmese": "ပုသိမ်ကြီး"
+                            "nameBurmese": "ပုသိမ်ကြီး",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D001"
                         }
                     }
                 },
@@ -1064,31 +1396,42 @@
                     "code": "MMR010D002",
                     "name": "Pyinoolwin",
                     "nameBurmese": "ပြင်ဦးလွင်ခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010008": {
                             "code": "MMR010008",
                             "name": "Pyinoolwin",
-                            "nameBurmese": "ပြင်ဦးလွင်"
+                            "nameBurmese": "ပြင်ဦးလွင်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D002"
                         },
                         "MMR010009": {
                             "code": "MMR010009",
                             "name": "Madaya",
-                            "nameBurmese": "မတ္တရာ"
+                            "nameBurmese": "မတ္တရာ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D002"
                         },
                         "MMR010010": {
                             "code": "MMR010010",
                             "name": "Singu",
-                            "nameBurmese": "စဉ့်ကူး"
+                            "nameBurmese": "စဉ့်ကူး",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D002"
                         },
                         "MMR010011": {
                             "code": "MMR010011",
                             "name": "Mogoke",
-                            "nameBurmese": "မိုးကုတ်"
+                            "nameBurmese": "မိုးကုတ်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D002"
                         },
                         "MMR010012": {
                             "code": "MMR010012",
                             "name": "Thabeikkyin",
-                            "nameBurmese": "သပိတ်ကျဉ်း"
+                            "nameBurmese": "သပိတ်ကျဉ်း",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D002"
                         }
                     }
                 },
@@ -1096,26 +1439,35 @@
                     "code": "MMR010D003",
                     "name": "Kyaukse",
                     "nameBurmese": "ကျောက်ဆည်ခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010013": {
                             "code": "MMR010013",
                             "name": "Kyaukse",
-                            "nameBurmese": "ကျောက်ဆည်"
+                            "nameBurmese": "ကျောက်ဆည်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D003"
                         },
                         "MMR010014": {
                             "code": "MMR010014",
                             "name": "Sintgaing",
-                            "nameBurmese": "စဉ့်ကိုင်"
+                            "nameBurmese": "စဉ့်ကိုင်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D003"
                         },
                         "MMR010015": {
                             "code": "MMR010015",
                             "name": "Myittha",
-                            "nameBurmese": "မြစ်သား"
+                            "nameBurmese": "မြစ်သား",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D003"
                         },
                         "MMR010016": {
                             "code": "MMR010016",
                             "name": "Tada-U",
-                            "nameBurmese": "တံတားဦး"
+                            "nameBurmese": "တံတားဦး",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D003"
                         }
                     }
                 },
@@ -1123,26 +1475,35 @@
                     "code": "MMR010D004",
                     "name": "Myingyan",
                     "nameBurmese": "မြင်းခြံခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010017": {
                             "code": "MMR010017",
                             "name": "Myingyan",
-                            "nameBurmese": "မြင်းခြံ"
+                            "nameBurmese": "မြင်းခြံ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D004"
                         },
                         "MMR010018": {
                             "code": "MMR010018",
                             "name": "Taungtha",
-                            "nameBurmese": "တောင်သာ"
+                            "nameBurmese": "တောင်သာ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D004"
                         },
                         "MMR010019": {
                             "code": "MMR010019",
                             "name": "Natogyi",
-                            "nameBurmese": "နွားထိုးကြီး"
+                            "nameBurmese": "နွားထိုးကြီး",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D004"
                         },
                         "MMR010021": {
                             "code": "MMR010021",
                             "name": "Ngazun",
-                            "nameBurmese": "ငါန်းဇွန်"
+                            "nameBurmese": "ငါန်းဇွန်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D004"
                         }
                     }
                 },
@@ -1150,16 +1511,21 @@
                     "code": "MMR010D005",
                     "name": "Nyaung-U",
                     "nameBurmese": "ညောင်ဦးခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010020": {
                             "code": "MMR010020",
                             "name": "Kyaukpadaung",
-                            "nameBurmese": "ကျောက်ပန်းတောင်း"
+                            "nameBurmese": "ကျောက်ပန်းတောင်း",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D005"
                         },
                         "MMR010022": {
                             "code": "MMR010022",
                             "name": "Nyaung-U",
-                            "nameBurmese": "ညောင်ဦး"
+                            "nameBurmese": "ညောင်ဦး",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D005"
                         }
                     }
                 },
@@ -1167,16 +1533,21 @@
                     "code": "MMR010D006",
                     "name": "Yamethin",
                     "nameBurmese": "ရမည်းသင်းခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010023": {
                             "code": "MMR010023",
                             "name": "Yamethin",
-                            "nameBurmese": "ရမည်းသင်း"
+                            "nameBurmese": "ရမည်းသင်း",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D006"
                         },
                         "MMR010024": {
                             "code": "MMR010024",
                             "name": "Pyawbwe",
-                            "nameBurmese": "ပျော်ဘွယ်"
+                            "nameBurmese": "ပျော်ဘွယ်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D006"
                         }
                     }
                 },
@@ -1184,26 +1555,35 @@
                     "code": "MMR010D007",
                     "name": "Meiktila",
                     "nameBurmese": "မိတ္ထီလာခရိုင်",
+                    "regionCode": "MMR010",
                     "townships": {
                         "MMR010028": {
                             "code": "MMR010028",
                             "name": "Meiktila",
-                            "nameBurmese": "မိတ္ထီလာ"
+                            "nameBurmese": "မိတ္ထီလာ",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D007"
                         },
                         "MMR010029": {
                             "code": "MMR010029",
                             "name": "Mahlaing",
-                            "nameBurmese": "မလှိုင်"
+                            "nameBurmese": "မလှိုင်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D007"
                         },
                         "MMR010030": {
                             "code": "MMR010030",
                             "name": "Thazi",
-                            "nameBurmese": "သာစည်"
+                            "nameBurmese": "သာစည်",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D007"
                         },
                         "MMR010031": {
                             "code": "MMR010031",
                             "name": "Wundwin",
-                            "nameBurmese": "ဝမ်းတွင်း"
+                            "nameBurmese": "ဝမ်းတွင်း",
+                            "regionCode": "MMR010",
+                            "districtCode": "MMR010D007"
                         }
                     }
                 }
@@ -1218,36 +1598,49 @@
                     "code": "MMR011D001",
                     "name": "Mawlamyine",
                     "nameBurmese": "မော်လမြိုင်ခရိုင်",
+                    "regionCode": "MMR011",
                     "townships": {
                         "MMR011001": {
                             "code": "MMR011001",
                             "name": "Mawlamyine",
-                            "nameBurmese": "မော်လမြိုင်"
+                            "nameBurmese": "မော်လမြိုင်",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         },
                         "MMR011002": {
                             "code": "MMR011002",
                             "name": "Kyaikmaraw",
-                            "nameBurmese": "ကျိုက္မရော"
+                            "nameBurmese": "ကျိုက္မရော",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         },
                         "MMR011003": {
                             "code": "MMR011003",
                             "name": "Chaungzon",
-                            "nameBurmese": "ချောင်းဆုံ"
+                            "nameBurmese": "ချောင်းဆုံ",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         },
                         "MMR011004": {
                             "code": "MMR011004",
                             "name": "Thanbyuzayat",
-                            "nameBurmese": "သံဖြူဇရပ်"
+                            "nameBurmese": "သံဖြူဇရပ်",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         },
                         "MMR011005": {
                             "code": "MMR011005",
                             "name": "Mudon",
-                            "nameBurmese": "မုဒုံ"
+                            "nameBurmese": "မုဒုံ",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         },
                         "MMR011006": {
                             "code": "MMR011006",
                             "name": "Ye",
-                            "nameBurmese": "ရေး"
+                            "nameBurmese": "ရေး",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D001"
                         }
                     }
                 },
@@ -1255,26 +1648,35 @@
                     "code": "MMR011D002",
                     "name": "Thaton",
                     "nameBurmese": "သထုံခရိုင်",
+                    "regionCode": "MMR011",
                     "townships": {
                         "MMR011007": {
                             "code": "MMR011007",
                             "name": "Thaton",
-                            "nameBurmese": "သထုံ"
+                            "nameBurmese": "သထုံ",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D002"
                         },
                         "MMR011008": {
                             "code": "MMR011008",
                             "name": "Paung",
-                            "nameBurmese": "ပေါင်"
+                            "nameBurmese": "ပေါင်",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D002"
                         },
                         "MMR011009": {
                             "code": "MMR011009",
                             "name": "Kyaikto",
-                            "nameBurmese": "ကျိုက်ထို"
+                            "nameBurmese": "ကျိုက်ထို",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D002"
                         },
                         "MMR011010": {
                             "code": "MMR011010",
                             "name": "Bilin",
-                            "nameBurmese": "ဘီးလင်း"
+                            "nameBurmese": "ဘီးလင်း",
+                            "regionCode": "MMR011",
+                            "districtCode": "MMR011D002"
                         }
                     }
                 }
@@ -1289,26 +1691,35 @@
                     "code": "MMR012D001",
                     "name": "Sittwe",
                     "nameBurmese": "စစ်တွေခရိုင်",
+                    "regionCode": "MMR012",
                     "townships": {
                         "MMR012001": {
                             "code": "MMR012001",
                             "name": "Sittwe",
-                            "nameBurmese": "စစ်တွေ"
+                            "nameBurmese": "စစ်တွေ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D001"
                         },
                         "MMR012002": {
                             "code": "MMR012002",
                             "name": "Ponnagyun",
-                            "nameBurmese": "ပုဏ္ဏားကျွန်း"
+                            "nameBurmese": "ပုဏ္ဏားကျွန်း",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D001"
                         },
                         "MMR012007": {
                             "code": "MMR012007",
                             "name": "Pauktaw",
-                            "nameBurmese": "ပေါက်တော"
+                            "nameBurmese": "ပေါက်တော",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D001"
                         },
                         "MMR012008": {
                             "code": "MMR012008",
                             "name": "Rathedaung",
-                            "nameBurmese": "ရသေ့တောင်"
+                            "nameBurmese": "ရသေ့တောင်",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D001"
                         }
                     }
                 },
@@ -1316,16 +1727,21 @@
                     "code": "MMR012D002",
                     "name": "Maungdaw",
                     "nameBurmese": "မောင်တောခရိုင်",
+                    "regionCode": "MMR012",
                     "townships": {
                         "MMR012009": {
                             "code": "MMR012009",
                             "name": "Maungdaw",
-                            "nameBurmese": "မောင်တော"
+                            "nameBurmese": "မောင်တော",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D002"
                         },
                         "MMR012010": {
                             "code": "MMR012010",
                             "name": "Buthidaung",
-                            "nameBurmese": "ဘူးသီးတောင်"
+                            "nameBurmese": "ဘူးသီးတောင်",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D002"
                         }
                     }
                 },
@@ -1333,26 +1749,35 @@
                     "code": "MMR012D003",
                     "name": "Kyaukpyu",
                     "nameBurmese": "ကျောက်ဖြူခရိုင်",
+                    "regionCode": "MMR012",
                     "townships": {
                         "MMR012011": {
                             "code": "MMR012011",
                             "name": "Kyaukpyu",
-                            "nameBurmese": "ကျောက်ဖြူ"
+                            "nameBurmese": "ကျောက်ဖြူ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D003"
                         },
                         "MMR012012": {
                             "code": "MMR012012",
                             "name": "Munaung",
-                            "nameBurmese": "မာန်အောင်"
+                            "nameBurmese": "မာန်အောင်",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D003"
                         },
                         "MMR012013": {
                             "code": "MMR012013",
                             "name": "Ramree",
-                            "nameBurmese": "ရမ်းဗြဲ"
+                            "nameBurmese": "ရမ်းဗြဲ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D003"
                         },
                         "MMR012014": {
                             "code": "MMR012014",
                             "name": "Ann",
-                            "nameBurmese": "အမ်း"
+                            "nameBurmese": "အမ်း",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D003"
                         }
                     }
                 },
@@ -1360,21 +1785,28 @@
                     "code": "MMR012D004",
                     "name": "Thandwe",
                     "nameBurmese": "သံတွဲခရိုင်",
+                    "regionCode": "MMR012",
                     "townships": {
                         "MMR012015": {
                             "code": "MMR012015",
                             "name": "Thandwe",
-                            "nameBurmese": "သံတွဲ"
+                            "nameBurmese": "သံတွဲ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D004"
                         },
                         "MMR012016": {
                             "code": "MMR012016",
                             "name": "Toungup",
-                            "nameBurmese": "တောင်ကုတ်"
+                            "nameBurmese": "တောင်ကုတ်",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D004"
                         },
                         "MMR012017": {
                             "code": "MMR012017",
                             "name": "Gwa",
-                            "nameBurmese": "ဂွ"
+                            "nameBurmese": "ဂွ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D004"
                         }
                     }
                 },
@@ -1382,26 +1814,35 @@
                     "code": "MMR012D005",
                     "name": "Mrauk-U",
                     "nameBurmese": "မြောက်ဦးခရိုင်",
+                    "regionCode": "MMR012",
                     "townships": {
                         "MMR012003": {
                             "code": "MMR012003",
                             "name": "Mrauk-U",
-                            "nameBurmese": "မြောက်ဦး"
+                            "nameBurmese": "မြောက်ဦး",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D005"
                         },
                         "MMR012004": {
                             "code": "MMR012004",
                             "name": "Kyauktaw",
-                            "nameBurmese": "ကျောက်တော်"
+                            "nameBurmese": "ကျောက်တော်",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D005"
                         },
                         "MMR012005": {
                             "code": "MMR012005",
                             "name": "Minbya",
-                            "nameBurmese": "မင်းပြား"
+                            "nameBurmese": "မင်းပြား",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D005"
                         },
                         "MMR012006": {
                             "code": "MMR012006",
                             "name": "Myebon",
-                            "nameBurmese": "မြေပုံ"
+                            "nameBurmese": "မြေပုံ",
+                            "regionCode": "MMR012",
+                            "districtCode": "MMR012D005"
                         }
                     }
                 }
@@ -1416,46 +1857,63 @@
                     "code": "MMR013D001",
                     "name": "Yangon (North)",
                     "nameBurmese": "ရန်ကုန်မြောက်ပိုင်းခရိုင်",
+                    "regionCode": "MMR013",
                     "townships": {
                         "MMR013001": {
                             "code": "MMR013001",
                             "name": "Insein",
-                            "nameBurmese": "အင်းစိန်"
+                            "nameBurmese": "အင်းစိန်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013002": {
                             "code": "MMR013002",
                             "name": "Mingaladon",
-                            "nameBurmese": "မင်္ဂလာဒုံ"
+                            "nameBurmese": "မင်္ဂလာဒုံ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013003": {
                             "code": "MMR013003",
                             "name": "Hmawbi",
-                            "nameBurmese": "မှော်ဘီ"
+                            "nameBurmese": "မှော်ဘီ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013004": {
                             "code": "MMR013004",
                             "name": "Hlegu",
-                            "nameBurmese": "လှည်းကူး"
+                            "nameBurmese": "လှည်းကူး",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013005": {
                             "code": "MMR013005",
                             "name": "Taikkyi",
-                            "nameBurmese": "တိုက်ကြီး"
+                            "nameBurmese": "တိုက်ကြီး",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013006": {
                             "code": "MMR013006",
                             "name": "Htantabin",
-                            "nameBurmese": "ထန်းတပင်"
+                            "nameBurmese": "ထန်းတပင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013007": {
                             "code": "MMR013007",
                             "name": "Shwepyithar",
-                            "nameBurmese": "ရွှေပြည်သာ"
+                            "nameBurmese": "ရွှေပြည်သာ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         },
                         "MMR013008": {
                             "code": "MMR013008",
                             "name": "Hlaingtharya",
-                            "nameBurmese": "လှိုင်သာယာ"
+                            "nameBurmese": "လှိုင်သာယာ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D001"
                         }
                     }
                 },
@@ -1463,76 +1921,105 @@
                     "code": "MMR013D002",
                     "name": "Yangon (East)",
                     "nameBurmese": "ရန်ကုန်အရှေ့ပိုင်းခရိုင်",
+                    "regionCode": "MMR013",
                     "townships": {
                         "MMR013009": {
                             "code": "MMR013009",
                             "name": "Thingangyun",
-                            "nameBurmese": "သင်္ဃန်းကျွန်း"
+                            "nameBurmese": "သင်္ဃန်းကျွန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013010": {
                             "code": "MMR013010",
                             "name": "Yankin",
-                            "nameBurmese": "ရန်ကင်း"
+                            "nameBurmese": "ရန်ကင်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013011": {
                             "code": "MMR013011",
                             "name": "South Okkalapa",
-                            "nameBurmese": "တောင်ဥက္ကလာပ"
+                            "nameBurmese": "တောင်ဥက္ကလာပ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013012": {
                             "code": "MMR013012",
                             "name": "North Okkalapa",
-                            "nameBurmese": "မြောက်ဥက္ကလာပ"
+                            "nameBurmese": "မြောက်ဥက္ကလာပ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013013": {
                             "code": "MMR013013",
                             "name": "Thaketa",
-                            "nameBurmese": "သာကေတ"
+                            "nameBurmese": "သာကေတ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013014": {
                             "code": "MMR013014",
                             "name": "Dawbon",
-                            "nameBurmese": "ဒေါပုံ"
+                            "nameBurmese": "ဒေါပုံ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013015": {
                             "code": "MMR013015",
                             "name": "Tamwe",
-                            "nameBurmese": "တာမွေ"
+                            "nameBurmese": "တာမွေ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013016": {
                             "code": "MMR013016",
                             "name": "Pazundaung",
-                            "nameBurmese": "ပုဇွန်တောင်"
+                            "nameBurmese": "ပုဇွန်တောင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013017": {
                             "code": "MMR013017",
                             "name": "Botahtaung",
-                            "nameBurmese": "ဗိုလ်တထောင်"
+                            "nameBurmese": "ဗိုလ်တထောင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013018": {
                             "code": "MMR013018",
                             "name": "Dagon Myothit (South)",
-                            "nameBurmese": "ဒဂုံမြို့သစ်တောင်ပိုင်း"
+                            "nameBurmese": "ဒဂုံမြို့သစ်တောင်ပိုင်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013019": {
                             "code": "MMR013019",
                             "name": "Dagon Myothit (North)",
-                            "nameBurmese": "ဒဂုံမြို့သစ်မြောက်ပိုင်း"
+                            "nameBurmese": "ဒဂုံမြို့သစ်မြောက်ပိုင်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013020": {
                             "code": "MMR013020",
                             "name": "Dagon Myothit (East)",
-                            "nameBurmese": "ဒဂုံမြို့သစ်အရှေ့ပိုင်း"
+                            "nameBurmese": "ဒဂုံမြို့သစ်အရှေ့ပိုင်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013021": {
                             "code": "MMR013021",
                             "name": "Dagon Myothit (Seikkan)",
-                            "nameBurmese": "ဒဂုံမြို့သစ်ဆိပ်ကမ်း"
+                            "nameBurmese": "ဒဂုံမြို့သစ်ဆိပ်ကမ်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         },
                         "MMR013022": {
                             "code": "MMR013022",
                             "name": "Mingalartaungnyunt",
-                            "nameBurmese": "မင်္ဂလာတောင်ညွန်"
+                            "nameBurmese": "မင်္ဂလာတောင်ညွန်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D002"
                         }
                     }
                 },
@@ -1540,56 +2027,77 @@
                     "code": "MMR013D003",
                     "name": "Yangon (South)",
                     "nameBurmese": "ရန်ကုန်တောင်ပိုင်းခရိုင်",
+                    "regionCode": "MMR013",
                     "townships": {
                         "MMR013023": {
                             "code": "MMR013023",
                             "name": "Thanlyin",
-                            "nameBurmese": "သန်လျှင်"
+                            "nameBurmese": "သန်လျှင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013024": {
                             "code": "MMR013024",
                             "name": "Kyauktan",
-                            "nameBurmese": "ကျောက်တန်း"
+                            "nameBurmese": "ကျောက်တန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013025": {
                             "code": "MMR013025",
                             "name": "Thongwa",
-                            "nameBurmese": "သုံးခွ"
+                            "nameBurmese": "သုံးခွ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013026": {
                             "code": "MMR013026",
                             "name": "Kayan",
-                            "nameBurmese": "ခရမ်း"
+                            "nameBurmese": "ခရမ်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013027": {
                             "code": "MMR013027",
                             "name": "Twantay",
-                            "nameBurmese": "တွံတေး"
+                            "nameBurmese": "တွံတေး",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013028": {
                             "code": "MMR013028",
                             "name": "Kawhmu",
-                            "nameBurmese": "ကော့မှုး"
+                            "nameBurmese": "ကော့မှုး",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013029": {
                             "code": "MMR013029",
                             "name": "Kungyangon",
-                            "nameBurmese": "ကွမ်းခြံကုန်း"
+                            "nameBurmese": "ကွမ်းခြံကုန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013030": {
                             "code": "MMR013030",
                             "name": "Dala",
-                            "nameBurmese": "ဒလ"
+                            "nameBurmese": "ဒလ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013031": {
                             "code": "MMR013031",
                             "name": "Seikgyikanaungto",
-                            "nameBurmese": "ဆိပ်ကြီးခနောင်တို"
+                            "nameBurmese": "ဆိပ်ကြီးခနောင်တို",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         },
                         "MMR013032": {
                             "code": "MMR013032",
                             "name": "Cocokyun",
-                            "nameBurmese": "ကိုကိုးကျွန်း"
+                            "nameBurmese": "ကိုကိုးကျွန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D003"
                         }
                     }
                 },
@@ -1597,71 +2105,98 @@
                     "code": "MMR013D004",
                     "name": "Yangon (West)",
                     "nameBurmese": "ရန်ကုန်အနောက်ပိုင်းခရိုင်",
+                    "regionCode": "MMR013",
                     "townships": {
                         "MMR013033": {
                             "code": "MMR013033",
                             "name": "Kyauktada",
-                            "nameBurmese": "ကျောက်တံတား"
+                            "nameBurmese": "ကျောက်တံတား",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013034": {
                             "code": "MMR013034",
                             "name": "Pabedan",
-                            "nameBurmese": "ပန်းပဲတန်း"
+                            "nameBurmese": "ပန်းပဲတန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013035": {
                             "code": "MMR013035",
                             "name": "Lanmadaw",
-                            "nameBurmese": "လမ်းမတော်"
+                            "nameBurmese": "လမ်းမတော်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013036": {
                             "code": "MMR013036",
                             "name": "Latha",
-                            "nameBurmese": "လသာ"
+                            "nameBurmese": "လသာ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013037": {
                             "code": "MMR013037",
                             "name": "Ahlone",
-                            "nameBurmese": "အလုံ"
+                            "nameBurmese": "အလုံ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013038": {
                             "code": "MMR013038",
                             "name": "Kyeemyindaing",
-                            "nameBurmese": "ကြည့်မြင်တိုင်"
+                            "nameBurmese": "ကြည့်မြင်တိုင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013039": {
                             "code": "MMR013039",
                             "name": "Sanchaung",
-                            "nameBurmese": "စမ်းချောင်း"
+                            "nameBurmese": "စမ်းချောင်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013040": {
                             "code": "MMR013040",
                             "name": "Hlaing",
-                            "nameBurmese": "လှိုင်"
+                            "nameBurmese": "လှိုင်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013041": {
                             "code": "MMR013041",
                             "name": "Kamaryut",
-                            "nameBurmese": "ကမာရွတ်"
+                            "nameBurmese": "ကမာရွတ်",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013042": {
                             "code": "MMR013042",
                             "name": "Mayangone",
-                            "nameBurmese": "မရမ်းကုန်း"
+                            "nameBurmese": "မရမ်းကုန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013043": {
                             "code": "MMR013043",
                             "name": "Dagon",
-                            "nameBurmese": "ဒဂုံ"
+                            "nameBurmese": "ဒဂုံ",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013044": {
                             "code": "MMR013044",
                             "name": "Bahan",
-                            "nameBurmese": "ဗဟန်း"
+                            "nameBurmese": "ဗဟန်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         },
                         "MMR013045": {
                             "code": "MMR013045",
                             "name": "Seikkan",
-                            "nameBurmese": "ဆိပ်ကမ်း"
+                            "nameBurmese": "ဆိပ်ကမ်း",
+                            "regionCode": "MMR013",
+                            "districtCode": "MMR013D004"
                         }
                     }
                 }
@@ -1676,56 +2211,77 @@
                     "code": "MMR014D001",
                     "name": "Taunggyi",
                     "nameBurmese": "တောင်ကြီးခရိုင်",
+                    "regionCode": "MMR014",
                     "townships": {
                         "MMR014001": {
                             "code": "MMR014001",
                             "name": "Taunggyi",
-                            "nameBurmese": "တောင်ကြီး"
+                            "nameBurmese": "တောင်ကြီး",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014002": {
                             "code": "MMR014002",
                             "name": "Nyaungshwe",
-                            "nameBurmese": "ညောင်ရွှေ"
+                            "nameBurmese": "ညောင်ရွှေ",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014003": {
                             "code": "MMR014003",
                             "name": "Hopong",
-                            "nameBurmese": "ဟိုပုံး"
+                            "nameBurmese": "ဟိုပုံး",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014004": {
                             "code": "MMR014004",
                             "name": "Hsihseng",
-                            "nameBurmese": "ဆီဆိုင်"
+                            "nameBurmese": "ဆီဆိုင်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014005": {
                             "code": "MMR014005",
                             "name": "Kalaw",
-                            "nameBurmese": "ကလော"
+                            "nameBurmese": "ကလော",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014006": {
                             "code": "MMR014006",
                             "name": "Pindaya",
-                            "nameBurmese": "ပင်းတယ"
+                            "nameBurmese": "ပင်းတယ",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014007": {
                             "code": "MMR014007",
                             "name": "Ywangan",
-                            "nameBurmese": "ရွာငံ"
+                            "nameBurmese": "ရွာငံ",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014008": {
                             "code": "MMR014008",
                             "name": "Lawksawk",
-                            "nameBurmese": "ရပ်စောက်"
+                            "nameBurmese": "ရပ်စောက်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014009": {
                             "code": "MMR014009",
                             "name": "Pinlaung",
-                            "nameBurmese": "ပင်လောင်း"
+                            "nameBurmese": "ပင်လောင်း",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         },
                         "MMR014010": {
                             "code": "MMR014010",
                             "name": "Pekon",
-                            "nameBurmese": "ဖယ်ခုံ"
+                            "nameBurmese": "ဖယ်ခုံ",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D001"
                         }
                     }
                 },
@@ -1733,41 +2289,56 @@
                     "code": "MMR014D002",
                     "name": "Loilen",
                     "nameBurmese": "လွိုင်လင်ခရိုင်",
+                    "regionCode": "MMR014",
                     "townships": {
                         "MMR014011": {
                             "code": "MMR014011",
                             "name": "Loilen",
-                            "nameBurmese": "လွိုင်လင်"
+                            "nameBurmese": "လွိုင်လင်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014012": {
                             "code": "MMR014012",
                             "name": "Laihka",
-                            "nameBurmese": "လဲချား"
+                            "nameBurmese": "လဲချား",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014013": {
                             "code": "MMR014013",
                             "name": "Nansang",
-                            "nameBurmese": "နမ့်စန်"
+                            "nameBurmese": "နမ့်စန်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014014": {
                             "code": "MMR014014",
                             "name": "Kunhing",
-                            "nameBurmese": "ကွန်ဟိန်း"
+                            "nameBurmese": "ကွန်ဟိန်း",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014015": {
                             "code": "MMR014015",
                             "name": "Kyethi",
-                            "nameBurmese": "ကျေးသီး"
+                            "nameBurmese": "ကျေးသီး",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014016": {
                             "code": "MMR014016",
                             "name": "Mongkaing",
-                            "nameBurmese": "မိုင်းကိုင်"
+                            "nameBurmese": "မိုင်းကိုင်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         },
                         "MMR014017": {
                             "code": "MMR014017",
                             "name": "Monghsu",
-                            "nameBurmese": "မိုင်းရှုး"
+                            "nameBurmese": "မိုင်းရှုး",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D002"
                         }
                     }
                 },
@@ -1775,26 +2346,35 @@
                     "code": "MMR014D003",
                     "name": "Langkho",
                     "nameBurmese": "လင်းခေးရိုင်",
+                    "regionCode": "MMR014",
                     "townships": {
                         "MMR014018": {
                             "code": "MMR014018",
                             "name": "Langkho",
-                            "nameBurmese": "လင်းခေး"
+                            "nameBurmese": "လင်းခေး",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D003"
                         },
                         "MMR014019": {
                             "code": "MMR014019",
                             "name": "Mongnai",
-                            "nameBurmese": "မိုးနဲ"
+                            "nameBurmese": "မိုးနဲ",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D003"
                         },
                         "MMR014020": {
                             "code": "MMR014020",
                             "name": "Mawkmai",
-                            "nameBurmese": "မောက်မယ်"
+                            "nameBurmese": "မောက်မယ်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D003"
                         },
                         "MMR014021": {
                             "code": "MMR014021",
                             "name": "Mongpan",
-                            "nameBurmese": "မိုင်းပန်"
+                            "nameBurmese": "မိုင်းပန်",
+                            "regionCode": "MMR014",
+                            "districtCode": "MMR014D003"
                         }
                     }
                 }
@@ -1809,31 +2389,42 @@
                     "code": "MMR015D001",
                     "name": "Lashio",
                     "nameBurmese": "လားရှိုးခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015001": {
                             "code": "MMR015001",
                             "name": "Lashio",
-                            "nameBurmese": "လားရှိုး"
+                            "nameBurmese": "လားရှိုး",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D001"
                         },
                         "MMR015002": {
                             "code": "MMR015002",
                             "name": "Hseni",
-                            "nameBurmese": "သိန်းနီ"
+                            "nameBurmese": "သိန်းနီ",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D001"
                         },
                         "MMR015003": {
                             "code": "MMR015003",
                             "name": "Mongyai",
-                            "nameBurmese": "မိုင်းရယ်"
+                            "nameBurmese": "မိုင်းရယ်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D001"
                         },
                         "MMR015004": {
                             "code": "MMR015004",
                             "name": "Tangyan",
-                            "nameBurmese": "တန့်ယန်း"
+                            "nameBurmese": "တန့်ယန်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D001"
                         },
                         "MMR015020": {
                             "code": "MMR015020",
                             "name": "Kunlong",
-                            "nameBurmese": "ကွမ်းလုံ"
+                            "nameBurmese": "ကွမ်းလုံ",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D001"
                         }
                     }
                 },
@@ -1841,21 +2432,28 @@
                     "code": "MMR015D002",
                     "name": "Muse",
                     "nameBurmese": "မူဆယ်ခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015009": {
                             "code": "MMR015009",
                             "name": "Muse",
-                            "nameBurmese": "မူဆယ်"
+                            "nameBurmese": "မူဆယ်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D002"
                         },
                         "MMR015010": {
                             "code": "MMR015010",
                             "name": "Namhkan",
-                            "nameBurmese": "နမ့်ခမ်း"
+                            "nameBurmese": "နမ့်ခမ်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D002"
                         },
                         "MMR015011": {
                             "code": "MMR015011",
                             "name": "Kutkai",
-                            "nameBurmese": "ကွတ်ခိုင်"
+                            "nameBurmese": "ကွတ်ခိုင်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D002"
                         }
                     }
                 },
@@ -1863,36 +2461,49 @@
                     "code": "MMR015D003",
                     "name": "Kyaukme",
                     "nameBurmese": "ကျောက်မဲခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015012": {
                             "code": "MMR015012",
                             "name": "Kyaukme",
-                            "nameBurmese": "ကျောက်မဲ"
+                            "nameBurmese": "ကျောက်မဲ",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         },
                         "MMR015013": {
                             "code": "MMR015013",
                             "name": "Nawnghkio",
-                            "nameBurmese": "နောင်ချို"
+                            "nameBurmese": "နောင်ချို",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         },
                         "MMR015014": {
                             "code": "MMR015014",
                             "name": "Hsipaw",
-                            "nameBurmese": "သီပေါ"
+                            "nameBurmese": "သီပေါ",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         },
                         "MMR015015": {
                             "code": "MMR015015",
                             "name": "Namtu",
-                            "nameBurmese": "နမ္မတူ"
+                            "nameBurmese": "နမ္မတူ",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         },
                         "MMR015016": {
                             "code": "MMR015016",
                             "name": "Namhsan",
-                            "nameBurmese": "နမ့်ဆန်"
+                            "nameBurmese": "နမ့်ဆန်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         },
                         "MMR015019": {
                             "code": "MMR015019",
                             "name": "Manton",
-                            "nameBurmese": "မန်တုန်"
+                            "nameBurmese": "မန်တုန်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D003"
                         }
                     }
                 },
@@ -1900,16 +2511,21 @@
                     "code": "MMR015D005",
                     "name": "Laukkaing",
                     "nameBurmese": "လောက်ကိုင်ခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015022": {
                             "code": "MMR015022",
                             "name": "Laukkaing",
-                            "nameBurmese": "လောက်ကိုင်"
+                            "nameBurmese": "လောက်ကိုင်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D005"
                         },
                         "MMR015023": {
                             "code": "MMR015023",
                             "name": "Konkyan",
-                            "nameBurmese": "ကုန်းကြမ်း"
+                            "nameBurmese": "ကုန်းကြမ်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D005"
                         }
                     }
                 },
@@ -1917,21 +2533,28 @@
                     "code": "MMR015D006",
                     "name": "Hopang",
                     "nameBurmese": "ဟိုပန်ခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015007": {
                             "code": "MMR015007",
                             "name": "Pangwaun",
-                            "nameBurmese": "ပန်ဝိုင်"
+                            "nameBurmese": "ပန်ဝိုင်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D006"
                         },
                         "MMR015008": {
                             "code": "MMR015008",
                             "name": "Mongmao",
-                            "nameBurmese": "မိုင်းမော"
+                            "nameBurmese": "မိုင်းမော",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D006"
                         },
                         "MMR015021": {
                             "code": "MMR015021",
                             "name": "Hopang",
-                            "nameBurmese": "ဟိုပန်"
+                            "nameBurmese": "ဟိုပန်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D006"
                         }
                     }
                 },
@@ -1939,21 +2562,28 @@
                     "code": "MMR015D007",
                     "name": "Matman",
                     "nameBurmese": "မက်မန်းခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015005": {
                             "code": "MMR015005",
                             "name": "Pangsang",
-                            "nameBurmese": "ပန်ဆန်း"
+                            "nameBurmese": "ပန်ဆန်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D007"
                         },
                         "MMR015006": {
                             "code": "MMR015006",
                             "name": "Narphan",
-                            "nameBurmese": "နားဖန့်"
+                            "nameBurmese": "နားဖန့်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D007"
                         },
                         "MMR015024": {
                             "code": "MMR015024",
                             "name": "Matman",
-                            "nameBurmese": "မက်မန်း"
+                            "nameBurmese": "မက်မန်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D007"
                         }
                     }
                 },
@@ -1961,16 +2591,21 @@
                     "code": "MMR015D008",
                     "name": "Mongmit",
                     "nameBurmese": "မိုးမိတ်ခရိုင်",
+                    "regionCode": "MMR015",
                     "townships": {
                         "MMR015017": {
                             "code": "MMR015017",
                             "name": "Mongmit",
-                            "nameBurmese": "မိုးမိတ်"
+                            "nameBurmese": "မိုးမိတ်",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D008"
                         },
                         "MMR015018": {
                             "code": "MMR015018",
                             "name": "Mabein",
-                            "nameBurmese": "မဘိမ်း"
+                            "nameBurmese": "မဘိမ်း",
+                            "regionCode": "MMR015",
+                            "districtCode": "MMR015D008"
                         }
                     }
                 }
@@ -1985,31 +2620,42 @@
                     "code": "MMR016D001",
                     "name": "Kengtung",
                     "nameBurmese": "ကျိုင်းတုံခရိုင်",
+                    "regionCode": "MMR016",
                     "townships": {
                         "MMR016001": {
                             "code": "MMR016001",
                             "name": "Kengtung",
-                            "nameBurmese": "ကျိုင်းတုံ"
+                            "nameBurmese": "ကျိုင်းတုံ",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D001"
                         },
                         "MMR016002": {
                             "code": "MMR016002",
                             "name": "Mongkhet",
-                            "nameBurmese": "မိုင်းခတ်"
+                            "nameBurmese": "မိုင်းခတ်",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D001"
                         },
                         "MMR016003": {
                             "code": "MMR016003",
                             "name": "Mongyang",
-                            "nameBurmese": "မိုင်းယန်း"
+                            "nameBurmese": "မိုင်းယန်း",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D001"
                         },
                         "MMR016005": {
                             "code": "MMR016005",
                             "name": "Mongla",
-                            "nameBurmese": "မိုင်းလား"
+                            "nameBurmese": "မိုင်းလား",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D001"
                         },
                         "MMR016007": {
                             "code": "MMR016007",
                             "name": "Mongping",
-                            "nameBurmese": "မိုင်းပျင်း"
+                            "nameBurmese": "မိုင်းပျင်း",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D001"
                         }
                     }
                 },
@@ -2017,16 +2663,21 @@
                     "code": "MMR016D002",
                     "name": "Monghsat",
                     "nameBurmese": "မိုင်းဆတ်ခရိုင်",
+                    "regionCode": "MMR016",
                     "townships": {
                         "MMR016006": {
                             "code": "MMR016006",
                             "name": "Monghsat",
-                            "nameBurmese": "မိုင်းဆတ်"
+                            "nameBurmese": "မိုင်းဆတ်",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D002"
                         },
                         "MMR016008": {
                             "code": "MMR016008",
                             "name": "Mongton",
-                            "nameBurmese": "မိုင်းတုံ"
+                            "nameBurmese": "မိုင်းတုံ",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D002"
                         }
                     }
                 },
@@ -2034,21 +2685,28 @@
                     "code": "MMR016D003",
                     "name": "Tachileik",
                     "nameBurmese": "တာချီလိတ်ခရိုင်",
+                    "regionCode": "MMR016",
                     "townships": {
                         "MMR016009": {
                             "code": "MMR016009",
                             "name": "Tachileik",
-                            "nameBurmese": "တာချီလိတ်"
+                            "nameBurmese": "တာချီလိတ်",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D003"
                         },
                         "MMR016010": {
                             "code": "MMR016010",
                             "name": "Monghpyak",
-                            "nameBurmese": "မိုင်းဖြတ်"
+                            "nameBurmese": "မိုင်းဖြတ်",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D003"
                         },
                         "MMR016011": {
                             "code": "MMR016011",
                             "name": "Mongyawng",
-                            "nameBurmese": "မိုင်းယောင်း"
+                            "nameBurmese": "မိုင်းယောင်း",
+                            "regionCode": "MMR016",
+                            "districtCode": "MMR016D003"
                         }
                     }
                 }
@@ -2063,41 +2721,56 @@
                     "code": "MMR017D001",
                     "name": "Pathein",
                     "nameBurmese": "ပုသိမ်ခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017001": {
                             "code": "MMR017001",
                             "name": "Pathein",
-                            "nameBurmese": "ပုသိမ်"
+                            "nameBurmese": "ပုသိမ်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017002": {
                             "code": "MMR017002",
                             "name": "Kangyidaunt",
-                            "nameBurmese": "ကန်ကြီးထောင့်"
+                            "nameBurmese": "ကန်ကြီးထောင့်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017003": {
                             "code": "MMR017003",
                             "name": "Thabaung",
-                            "nameBurmese": "သာပေါင်း"
+                            "nameBurmese": "သာပေါင်း",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017004": {
                             "code": "MMR017004",
                             "name": "Ngapudaw",
-                            "nameBurmese": "ငပုတော"
+                            "nameBurmese": "ငပုတော",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017005": {
                             "code": "MMR017005",
                             "name": "Kyonpyaw",
-                            "nameBurmese": "ကျုံပျော်"
+                            "nameBurmese": "ကျုံပျော်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017006": {
                             "code": "MMR017006",
                             "name": "Yegyi",
-                            "nameBurmese": "ရေကြည်"
+                            "nameBurmese": "ရေကြည်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         },
                         "MMR017007": {
                             "code": "MMR017007",
                             "name": "Kyaunggon",
-                            "nameBurmese": "ကျောင်းကုန်း"
+                            "nameBurmese": "ကျောင်းကုန်း",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D001"
                         }
                     }
                 },
@@ -2105,36 +2778,49 @@
                     "code": "MMR017D002",
                     "name": "Hinthada",
                     "nameBurmese": "ဟင်္သာတခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017008": {
                             "code": "MMR017008",
                             "name": "Hinthada",
-                            "nameBurmese": "ဟင်္သာတ"
+                            "nameBurmese": "ဟင်္သာတ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         },
                         "MMR017009": {
                             "code": "MMR017009",
                             "name": "Zalun",
-                            "nameBurmese": "ဇလွန်"
+                            "nameBurmese": "ဇလွန်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         },
                         "MMR017010": {
                             "code": "MMR017010",
                             "name": "Lemyethna",
-                            "nameBurmese": "လေးမျက်နှာ"
+                            "nameBurmese": "လေးမျက်နှာ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         },
                         "MMR017011": {
                             "code": "MMR017011",
                             "name": "Myanaung",
-                            "nameBurmese": "မြန်အောင်"
+                            "nameBurmese": "မြန်အောင်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         },
                         "MMR017012": {
                             "code": "MMR017012",
                             "name": "Kyangin",
-                            "nameBurmese": "ကြံခင်း"
+                            "nameBurmese": "ကြံခင်း",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         },
                         "MMR017013": {
                             "code": "MMR017013",
                             "name": "Ingapu",
-                            "nameBurmese": "အင်္ဂပူ"
+                            "nameBurmese": "အင်္ဂပူ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D002"
                         }
                     }
                 },
@@ -2142,21 +2828,28 @@
                     "code": "MMR017D003",
                     "name": "Myaungmya",
                     "nameBurmese": "မြောင်းမြခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017014": {
                             "code": "MMR017014",
                             "name": "Myaungmya",
-                            "nameBurmese": "မြောင်းမြ"
+                            "nameBurmese": "မြောင်းမြ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D003"
                         },
                         "MMR017015": {
                             "code": "MMR017015",
                             "name": "Einme",
-                            "nameBurmese": "အိမ္မဲ"
+                            "nameBurmese": "အိမ္မဲ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D003"
                         },
                         "MMR017017": {
                             "code": "MMR017017",
                             "name": "Wakema",
-                            "nameBurmese": "ဝါးခယ်မ"
+                            "nameBurmese": "ဝါးခယ်မ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D003"
                         }
                     }
                 },
@@ -2164,16 +2857,21 @@
                     "code": "MMR017D004",
                     "name": "Labutta",
                     "nameBurmese": "လပွတ္တာခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017016": {
                             "code": "MMR017016",
                             "name": "Labutta",
-                            "nameBurmese": "လပွတ္တာ"
+                            "nameBurmese": "လပွတ္တာ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D004"
                         },
                         "MMR017018": {
                             "code": "MMR017018",
                             "name": "Mawlamyinegyun",
-                            "nameBurmese": "မော်လမြိုင်ကျွန်း"
+                            "nameBurmese": "မော်လမြိုင်ကျွန်း",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D004"
                         }
                     }
                 },
@@ -2181,26 +2879,35 @@
                     "code": "MMR017D005",
                     "name": "Maubin",
                     "nameBurmese": "မအူပင်ခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017019": {
                             "code": "MMR017019",
                             "name": "Maubin",
-                            "nameBurmese": "မအူပင်"
+                            "nameBurmese": "မအူပင်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D005"
                         },
                         "MMR017020": {
                             "code": "MMR017020",
                             "name": "Pantanaw",
-                            "nameBurmese": "ပန်းတနော်"
+                            "nameBurmese": "ပန်းတနော်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D005"
                         },
                         "MMR017021": {
                             "code": "MMR017021",
                             "name": "Nyaungdon",
-                            "nameBurmese": "ညောင်တုန်း"
+                            "nameBurmese": "ညောင်တုန်း",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D005"
                         },
                         "MMR017022": {
                             "code": "MMR017022",
                             "name": "Danubyu",
-                            "nameBurmese": "ဓနုဖြူ"
+                            "nameBurmese": "ဓနုဖြူ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D005"
                         }
                     }
                 },
@@ -2208,26 +2915,35 @@
                     "code": "MMR017D006",
                     "name": "Pyapon",
                     "nameBurmese": "ဖျာပုံခရိုင်",
+                    "regionCode": "MMR017",
                     "townships": {
                         "MMR017023": {
                             "code": "MMR017023",
                             "name": "Pyapon",
-                            "nameBurmese": "ဖျာပုံ"
+                            "nameBurmese": "ဖျာပုံ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D006"
                         },
                         "MMR017024": {
                             "code": "MMR017024",
                             "name": "Bogale",
-                            "nameBurmese": "ဘိုကလေး"
+                            "nameBurmese": "ဘိုကလေး",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D006"
                         },
                         "MMR017025": {
                             "code": "MMR017025",
                             "name": "Kyaiklat",
-                            "nameBurmese": "ကျိုက်လတ်"
+                            "nameBurmese": "ကျိုက်လတ်",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D006"
                         },
                         "MMR017026": {
                             "code": "MMR017026",
                             "name": "Dedaye",
-                            "nameBurmese": "ဒေးဒရဲ"
+                            "nameBurmese": "ဒေးဒရဲ",
+                            "regionCode": "MMR017",
+                            "districtCode": "MMR017D006"
                         }
                     }
                 }
@@ -2242,26 +2958,35 @@
                     "code": "MMR018D001",
                     "name": "Oke Ta Ra",
                     "nameBurmese": "ဥတ္တရခရိုင်",
+                    "regionCode": "MMR018",
                     "townships": {
                         "MMR018001": {
                             "code": "MMR018001",
                             "name": "Zay Yar Thi Ri",
-                            "nameBurmese": "ဇေယျာသီရိ"
+                            "nameBurmese": "ဇေယျာသီရိ",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D001"
                         },
                         "MMR018003": {
                             "code": "MMR018003",
                             "name": "Tatkon",
-                            "nameBurmese": "တပ်ကုန်း"
+                            "nameBurmese": "တပ်ကုန်း",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D001"
                         },
                         "MMR018005": {
                             "code": "MMR018005",
                             "name": "Poke Ba Thi Ri",
-                            "nameBurmese": "ပုဗ္ဗသီရိ"
+                            "nameBurmese": "ပုဗ္ဗသီရိ",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D001"
                         },
                         "MMR018008": {
                             "code": "MMR018008",
                             "name": "Oke Ta Ra Thi Ri",
-                            "nameBurmese": "ဥတ္တရသီရိ"
+                            "nameBurmese": "ဥတ္တရသီရိ",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D001"
                         }
                     }
                 },
@@ -2269,26 +2994,35 @@
                     "code": "MMR018D002",
                     "name": "Det Khi Na",
                     "nameBurmese": "ဒက္ခိဏခရိုင်",
+                    "regionCode": "MMR018",
                     "townships": {
                         "MMR018002": {
                             "code": "MMR018002",
                             "name": "Za Bu Thi Ri",
-                            "nameBurmese": "ဇမ္ဗူသီရိ"
+                            "nameBurmese": "ဇမ္ဗူသီရိ",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D002"
                         },
                         "MMR018004": {
                             "code": "MMR018004",
                             "name": "Det Khi Na Thi Ri",
-                            "nameBurmese": "ဒက္ခိဏသီရိ"
+                            "nameBurmese": "ဒက္ခိဏသီရိ",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D002"
                         },
                         "MMR018006": {
                             "code": "MMR018006",
                             "name": "Pyinmana",
-                            "nameBurmese": "ပျဉ်းမနား"
+                            "nameBurmese": "ပျဉ်းမနား",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D002"
                         },
                         "MMR018007": {
                             "code": "MMR018007",
                             "name": "Lewe",
-                            "nameBurmese": "လယ်ဝေး"
+                            "nameBurmese": "လယ်ဝေး",
+                            "regionCode": "MMR018",
+                            "districtCode": "MMR018D002"
                         }
                     }
                 }

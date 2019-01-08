@@ -8,9 +8,7 @@ type RcdaMyanmarText = RcdaMyanmarTextEnglish;
 
 export default class RcdaChatLocalizer {
 
-    constructor(public language: RcdaLanguages) {
-        // this class inherits from the base Vue type, which makes it reactive (updating the 'language' will cause all text to re-render).
-     }
+    constructor(public language: RcdaLanguages) {}
     
     static readonly CommonTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaCommonText} = {
         [RcdaLanguages.English]: RcdaCommonTextEnglish,

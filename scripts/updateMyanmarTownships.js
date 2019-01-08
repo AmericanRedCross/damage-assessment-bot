@@ -84,6 +84,7 @@ const fs = require("fs");
         district.code = township.districtCode;
         district.name = township.districtName;
         district.nameBurmese = township.districtNameBurmese;
+        district.regionCode = region.code;
         district.townships = district.townships || {};
         
         let township2 = district.townships[township.townshipCode];
@@ -93,6 +94,8 @@ const fs = require("fs");
         township2.code = township.townshipCode;
         township2.name = township.townshipName;
         township2.nameBurmese = township.townshipNameBurmese;
+        township2.regionCode = region.code;
+        township2.districtCode = district.code;
     }
     
     fs.writeFileSync(`${__dirname}/../common/src/system/countries/myanmar/myanmarAdminStack.json`, JSON.stringify(locations, null, 4));

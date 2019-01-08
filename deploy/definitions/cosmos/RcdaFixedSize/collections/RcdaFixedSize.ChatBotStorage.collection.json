@@ -1,10 +1,6 @@
 {
-    "id": "ChatRegistrations",
-    "defaultTtl": 30000,
-    "partitionKey": {
-        "paths": [ "/partitionKey" ],
-        "kind": "Hash"
-    },
+    "id": "ChatBotStorage",
+    "defaultTtl": -1,
     "indexingPolicy": {
         "automatic": true,
         "indexingMode": "Consistent",

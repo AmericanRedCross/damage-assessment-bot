@@ -29,6 +29,7 @@ export default class LoginService {
             throw new RcdaError(RcdaErrorTypes.ClientError, "The provided authentication credentials are invalid");
         }
 
+        // TODO: additional testing where there are multiple accounts? only ever tested with one
         let user = await this.userRepo.getByAccount(ifrcUser.id, RcdaAuthenticationProviders.IfrcGo);
         if (!user) {
             user = await this.userRepo.create({

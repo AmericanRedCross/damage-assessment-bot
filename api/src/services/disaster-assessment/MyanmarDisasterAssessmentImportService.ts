@@ -157,6 +157,7 @@ export default class MyanmarDisasterAssessmentImportService {
         
         let validationErrors: any[] = [];
         for (let i = 0; i < items.length; i++) {
+            // TODO: consider validate first, normalize second?
             let item = this.disasterAssessmentService.normalizeModel(items[i]);
             let validationResult = this.disasterAssessmentService.validateModel(item);
             if (validationResult.hasErrors) {
