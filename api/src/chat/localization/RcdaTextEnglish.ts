@@ -18,6 +18,7 @@ export class RcdaCommonTextEnglish {
     selectDropdownPlaceholder = "Choose...";
     yes = "Yes";
     no = "No";
+    askToChangeSelectedLanguage = "Would you like to change your language? The conversation will start over and any unsubmitted report data will be reset."
     formatNumber = (value: number) => value.toString();
 }
 

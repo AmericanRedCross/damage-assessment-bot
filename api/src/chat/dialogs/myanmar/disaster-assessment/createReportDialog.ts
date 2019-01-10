@@ -9,6 +9,7 @@ import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessme
 import MyanmarDisasterAssessmentService from "@/services/disaster-assessment/MyanmarDisasterAssessmentService";
 import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
 import { getUserId } from "@/chat/utils/getUserId";
+import { rootDialog } from "@/chat/dialogs/rootDialog";
 
 export const createReportDialog = rcdaChatDialog(
     "/createReport",
@@ -29,8 +30,7 @@ export const createReportDialog = rcdaChatDialog(
             
             // Save the report
             let model = getMyanmarDisasterAssessmentModel(session.conversationData.mm, getUserId(session));
-            //TODO verify user id in middleware
-            console.log(JSON.stringify(model));
+            
             try {
                 await disasterAssessmentService.create(model);
                 session.endDialog(localizer.mm.confirmReportSubmitted);
@@ -39,6 +39,10 @@ export const createReportDialog = rcdaChatDialog(
                 console.log(JSON.stringify(ex));
                 session.endDialog("Sorry, something went wrong...")
             }
+
+            // erase report data and start over
+            session.conversationData.mm = <any>{};
+            session.beginDialog(rootDialog.id);
         }
     ],
     {

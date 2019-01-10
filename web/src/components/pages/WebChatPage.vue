@@ -35,6 +35,9 @@ export default class WebChatPage extends Vue {
     //   console.log("message event");
     // });
 
+    // TODO use a chat service to cache the last used language
+    await self.chatService.setChatLanguage(<RcdaLanguages>"en");
+
     // TODO: add localized props to all vue components
     (<any>self).rcdaLocalizerEvents.$on("set-language", async (language: RcdaLanguages) => {
       await self.chatService.setChatLanguage(language);

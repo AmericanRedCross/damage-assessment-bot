@@ -1,24 +1,35 @@
 import { IEvent } from "botbuilder";
-import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
+import { RcdaTypedSession, RcdaChatDialog } from "@/chat/utils/rcda-chat-types";
+import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
+import rcdaChatDialog from "./rcdaChatDialog";
 
-interface RcdaChatEventDefinition<TDependencies> {
+export interface RcdaChatEventDefinition<TDependencies> {
     name: string,
     dependencyFactory: () => TDependencies,
-    eventHandler: (event: IEvent, session: RcdaTypedSession, dependencies: TDependencies) => void,
-    wrapper: (event: IEvent) => void;
+    eventHandler: (value: RcdaEventArgs, dependencies: TDependencies) => void,
+    config: RcdaEventConfig
 }
 
 export default function rcdaChatEvent<TDependencies>(
     name: string, 
     dependencyFactory: () => TDependencies, 
-    eventHandler: (event: IEvent, session: RcdaTypedSession, dependencies: TDependencies) => void): RcdaChatEventDefinition<TDependencies> {
+    eventHandler: (args: RcdaEventArgs, dependencies: TDependencies) => void,
+    config: RcdaEventConfig): RcdaChatEventDefinition<TDependencies> {
 
     return {
         name,
         dependencyFactory,
         eventHandler,
-        wrapper(event) {
-            
-        }
-    }
+        config
+    };
+}
+
+interface RcdaEventArgs {
+    value: string,
+    session: RcdaTypedSession, 
+    localizer: RcdaChatLocalizer
+}
+
+interface RcdaEventConfig {
+    references: () => RcdaChatDialog[]
 }

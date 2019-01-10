@@ -8,29 +8,31 @@ export type RcdaMyanmarText = RcdaMyanmarTextEnglish;
 
 export default class RcdaChatLocalizer {
 
-    constructor(session: RcdaTypedSession) {
-        this.common = getLocalizedText(CommonTextLocaleMap, session);
-        this.mm = getLocalizedText(MyanmarTextLocaleMap, session);
+    constructor(language: RcdaLanguages)
+    constructor(session: RcdaTypedSession)
+    constructor(config: RcdaLanguages|RcdaTypedSession) {
+        let language = typeof config === "string" ? config : config.conversationData.language;
+        this.common = getLocalizedText(CommonTextLocaleMap, language);
+        this.mm = getLocalizedText(MyanmarTextLocaleMap, language);
     }
 
     common: RcdaCommonText;
     mm: RcdaMyanmarText;
 }
 
-const CommonTextLocaleMap: {[key:string]: new() => RcdaCommonText} = {
+const CommonTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaCommonText} = {
     [RcdaLanguages.English]: RcdaCommonTextEnglish,
     [RcdaLanguages.Burmese]: RcdaCommonTextBurmese
 };
-const MyanmarTextLocaleMap: {[key:string]: new() => RcdaMyanmarText} = {
+const MyanmarTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaMyanmarText} = {
     [RcdaLanguages.English]: RcdaMyanmarTextEnglish,
     [RcdaLanguages.Burmese]: RcdaMyanmarTextBurmese
 };
 
 function getLocalizedText<TResult>(
-    textLocaleMap: {[key:string]: new() => TResult},
-    session: RcdaTypedSession): TResult {
+    textLocaleMap: {[key in RcdaLanguages]: new() => TResult},
+    language: RcdaLanguages): TResult {
 
-    let language = session.conversationData.language;
     let localizedTextType = textLocaleMap[language] || textLocaleMap[RcdaLanguages.English];
     let localizedText = new localizedTextType();
     

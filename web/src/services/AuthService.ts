@@ -19,6 +19,8 @@ export default class AuthService {
     }
 
     public async login(username: string, password: string): Promise<boolean> {
+        this.storageClient.clear();
+
         let loginRequest: LoginRequest = {
             username,
             password

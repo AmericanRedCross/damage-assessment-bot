@@ -19,6 +19,8 @@ export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
     selectDropdownPlaceholder = "ရွေးပါ...";
     yes = "ဟုတ်သည်/ရှိသည်";
     no = "မဟုတ်ပါ/မရှိပါ";
+    // TODO: The below text was obtained from Google translate. Need a real translation
+    askToChangeSelectedLanguage = "သင်သည်သင်၏ဘာသာစကားပြောင်းလဲပစ်ရန်လိုပါသလား အဆိုပါစကားပြောဆိုမှုအပေါ်စတင်ပါလိမ့်မည်နှင့်မည်သည့်မပြီးဆုံးသေးသောအစီရင်ခံစာများပြန်လည်သတ်မှတ်မှုဖြစ်လိမ့်မည်။"
     formatNumber = (value: number) => value.toString();
 }
 
