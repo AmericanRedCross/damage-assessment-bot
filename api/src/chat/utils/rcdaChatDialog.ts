@@ -36,8 +36,9 @@ export function rcdaChatDialogStateful<TDialogData, TDependencies>(
             dialog = <Dialog>rcdaDialog;
         }
     }
-    
-    return { id, dialog, options }
+    // apply prefix
+    id = `*:${id}`;
+    return { id , dialog, options }
 }
 
 function standardDialogAdapter<TDialogData, TDependencies>(
