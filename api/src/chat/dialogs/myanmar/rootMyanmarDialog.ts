@@ -10,9 +10,9 @@ export const rootMyanmarDialog = rcdaChatDialog(
     [
         ({ session, localizer }) => {            
             if (!session.conversationData.hasBeenWelcomed) {                
-                session.send("Welcome to the Red Cross Disaster Assessment chat bot!");
+                session.send("Welcome to the Red Cross Disaster Assessment chat bot");
                 session.conversationData.hasBeenWelcomed = true;
-                session.delay(2000);
+                session.delay(1500);
             }
 
             // prompt choice of 'start report' or 'help'
