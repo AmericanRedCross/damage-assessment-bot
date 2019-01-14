@@ -30,14 +30,6 @@ module.exports = {
         ],
       },
       {
-        test: /\.sass$/,
-        use: [
-          'vue-style-loader',
-          'css-loader',
-          'sass-loader?indentedSyntax'
-        ],
-      },
-      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -49,11 +41,6 @@ module.exports = {
               'vue-style-loader',
               'css-loader',
               'sass-loader'
-            ],
-            'sass': [
-              'vue-style-loader',
-              'css-loader',
-              'sass-loader?indentedSyntax'
             ],
             'ts':  [
               {
@@ -92,14 +79,16 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@config': path.resolve(__dirname, `src/config/config.${targetEnvironment}.ts`),
       '@': path.resolve(__dirname, "src"),
-      '@common': path.resolve(__dirname, "../common/src")
+      '@common': path.resolve(__dirname, "../common/src"),
+      'styles': path.resolve(__dirname, "src/components/styles"),
     },
     extensions: ['*', '.js', '.ts', '.vue', '.json']
   },
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    disableHostCheck: true
   },
   performance: {
     hints: false

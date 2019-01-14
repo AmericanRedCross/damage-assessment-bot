@@ -16,11 +16,14 @@ import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/syst
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextEnglish {
     siteTitle = "Damage Assessment Dashboard";
+    signOutButton = "Sign out";
+    confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
     // inputs
     languageSelectorLabel = "Choose Language";
     fileSelectorLabel = "Browse";
     dropdownInputSelectAllOption = "All";
     // login
+    loginHeader = "Login";
     loginFieldsMissingError = "A value must be provided for username and password";
     loginCredentialsInvalidError = "Invalid username or password";
     loginUnknownError = "Login failed unexpectedly, please try again later";

@@ -14,6 +14,7 @@ export default class LoginPage extends Vue {
   private attemptedLogin = false;
   private badCredentialsLoginError = false;
   private unknownLoginError = false;
+  private isProcessing = false;
 
   get missingRequiredFields() {
     return !this.username || !this.password;
@@ -27,6 +28,7 @@ export default class LoginPage extends Vue {
     this.attemptedLogin = false;
     this.badCredentialsLoginError = false;
     this.unknownLoginError = false;
+    this.isProcessing = true;
 
     if (this.missingRequiredFields) {
       this.attemptedLogin = true;
@@ -39,7 +41,7 @@ export default class LoginPage extends Vue {
       }
     }
     catch (ex) {
-      if (ex.status === 400) {
+      if (ex.response.status === 400) {
         this.badCredentialsLoginError = true;
       }
       else {        
@@ -48,6 +50,7 @@ export default class LoginPage extends Vue {
     }
     finally {      
       this.attemptedLogin = true;
+      this.isProcessing = false;
     }
   }
 }
@@ -55,9 +58,9 @@ export default class LoginPage extends Vue {
 
 <template>
 <div class="login-background">
-  <div class="login-modal">
-    <h2 class="login-header">{{localizer.common.siteTitle}}</h2>
-    <form @submit.prevent="login()">  
+  <div class="login-panel">
+    <h2 class="login-header">{{localizer.common.loginHeader}}</h2>
+    <form @submit.prevent="login()" :disabled="isProcessing">  
       <div v-if="hasErrorMessages" class="login-errors">
         <div v-if="missingRequiredFields">{{localizer.common.loginFieldsMissingError}}</div>
         <div v-if="badCredentialsLoginError">{{localizer.common.loginCredentialsInvalidError}}</div>
@@ -83,7 +86,9 @@ export default class LoginPage extends Vue {
 </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "~styles/responsive";
+@import "~styles/colors";
 
 .rcda-form-item {
   padding-top: 10px;
@@ -91,35 +96,56 @@ export default class LoginPage extends Vue {
 }
 
 .login-background {  
-  background-color: #6D6E70;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-}
+  background-color: $rcda-dark;
 
-.login-modal {
-  background-color: white;
-  max-width: 470px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 20px;
-  max-height: 90%;
+  margin: auto;
+  
+  @include mobile {
+    background-color: $rcda-light;
+  }
 
-  z-index: 10000;
-  width: 600px;
-  background-color: white;
-  padding-top: 32px;
-  padding-left: 39px;
-  padding-right: 39px;
-  padding-bottom: 40px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, .16) 
-}
+  @include desktop {    
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
 
-.login-header {
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  padding-bottom: 30px;
+  .login-panel {
+
+    $login-panel-side-padding: 39px;
+
+    background-color: $rcda-light;
+    padding-top: 26px;
+    padding-left: $login-panel-side-padding;
+    padding-right: $login-panel-side-padding;
+    padding-bottom: 40px;
+
+    @include mobile {
+      /* none needed */
+    }
+
+    @include desktop {
+      max-width: 470px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 20px;
+      width: 600px;
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, .16);
+      margin: auto;
+    }
+
+    .login-header {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: #D7D7D8 1px solid;
+      margin-right: -$login-panel-side-padding;
+      margin-left: -$login-panel-side-padding;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+  }
 }
 
 .login-errors {
@@ -128,7 +154,7 @@ export default class LoginPage extends Vue {
     padding-bottom: 21px;
     padding-left: 24px;
     padding-right: 24px;
-    background-color: rgb(65,99,155, .2);
+    background-color: rgba(65,99,155, .2);
     color: #41639B;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -138,7 +164,7 @@ export default class LoginPage extends Vue {
     background-color: #C22A26;
     font-size: 16px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: $rcda-light;
     border: none;
     padding-top: 7px;
     padding-bottom: 8px;
@@ -155,7 +181,7 @@ export default class LoginPage extends Vue {
   display: block;
   text-align: right;
   font-size: 14px;
-  color: #007CAF;
+  color: $rcda-info;
   text-decoration: none;
   padding-top: 5px;
   padding-bottom: 5px;
@@ -170,14 +196,14 @@ export default class LoginPage extends Vue {
   width: 45px;
   height: 45px;
   margin-left: 14px;
-  color: white;
+  color: $rcda-light;
 }
 
 .login-register-link {
   margin-top: 5px;
   display: block;  
   font-size: 14px;
-  color: #007CAF;
+  color: $rcda-info;
   text-decoration: none;
 }
 </style>

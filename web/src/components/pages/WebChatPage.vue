@@ -52,14 +52,16 @@ export default class WebChatPage extends Vue {
 </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "~styles/responsive";
 
 .webchat-main-panel {
   background-color: #6D6E70;
+  height: 100%;
 }
 
 .webchat-conversation-panel {
-  width: 530px;
+  max-width: 530px;
   background-color: white;
   height: 100%;
   margin-left: auto;

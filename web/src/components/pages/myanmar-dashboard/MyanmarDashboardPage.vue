@@ -138,8 +138,13 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
 <style>
 
-.dashboard {
-  overflow-y: scroll;
+.dashboard {  
+  display: flex;
+}
+
+.dashboard > div {
+  flex: 1;
+  padding-bottom: 60px;
 }
 
 .dashboard-filter-panel-hidden {
@@ -172,18 +177,11 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 }
 
 .dashboard-main-panel {
-  position: absolute;
-  width: 100%;
-  left: 0px;
+  overflow-y: auto;
   padding-top: 10px;
   padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 20px;
-}
-
-.dashboard-filter-panel:not(.dashboard-filter-panel-hidden) + .dashboard-main-panel {
-  width: calc(100% - 270px);
-  left: 270px;
 }
 
 .dashboard-header-disaster-type {

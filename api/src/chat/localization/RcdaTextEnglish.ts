@@ -31,7 +31,7 @@ export class RcdaMyanmarTextEnglish {
     startDisasterAssessmentOption = "Start reporting on a disaster";
     getHelpOption = "Help";
     invalidChoicePromptRetry = "Sorry, I didn't understand that. Please select one of the listed options.";
-    choiceNotYetSupportedPromptRetry = "Not yet implemented, please select another option";
+    requestForHelpResponse = "The system is still under development. Please contact your supervisor.";
     // card buttons
     submitCard = "Save";
     acceptReviewCard = "Accept";

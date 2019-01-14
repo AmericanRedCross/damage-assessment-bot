@@ -33,7 +33,7 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     startDisasterAssessmentOption = "ဘေးအန္တရာယ် ဆိုင်ရာ သတင်းပေးပို့မှု စတင်ပြုလုပ်ပါ။";
     getHelpOption = "အကူအညီရယူရန်";
     invalidChoicePromptRetry = "ဝမ်းနည်ပါတယ်၊ ကျွန်ုပ် နားမလည်ပါ။ ကျေးဇူးပြု၍  ဖော်ပြထားသော စာရင်းထဲမှ တစ်ခုကို ရွေးချယ်ပါ။";
-    choiceNotYetSupportedPromptRetry = "မလုပ်ဆောင်ရသေးပါ၊ ကျေးဇူးပြု၍ အခြားရွေးချယ်မှုပြုလုပ်ပါ။";
+    requestForHelpResponse = "The system is still under development. Please contact your supervisor.";
     // card buttons
     submitCard = "သိမ်းဆည်းရန်";
     acceptReviewCard = "လက်ခံရန်";

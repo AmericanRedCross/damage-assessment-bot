@@ -37,4 +37,8 @@ export default class AuthService {
             throw loginResponse.data;
         }
     };
+
+    public async logout() {
+        this.storageClient.clear();
+    }
 }

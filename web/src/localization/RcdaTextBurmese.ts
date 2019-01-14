@@ -16,11 +16,14 @@ import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/syst
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
     siteTitle = "ပျက်စီးဆုံးရှုံးမှုအကဲဖြတ်ဒိုင်ခွက်";
+    signOutButton = "ဆိုင်းအောက်";
+    confirmSignOut = "သငျသညျအထဲကလက်မှတ်ထိုးရန်လိုခငျြတာသေချာလား? မဆိုမပြီးဆုံးသေးသောချက်တင်အစီရင်ခံစာများကယ်တင်ခြင်းသို့ရောက်လိမ့်မည်မဟုတ်။";
     // inputs
     languageSelectorLabel = "ဘာသာစကားများကိုရွေးချယ်ပါ";
     fileSelectorLabel = "ရှေးခယျြ";
     dropdownInputSelectAllOption = "အားလုံး";
     // login
+    loginHeader = "လော့ဂ်အင်";
     loginFieldsMissingError = "A value must be provided for username and password";
     loginCredentialsInvalidError = "Invalid username or password";
     loginUnknownError = "Login failed unexpectedly, please try again later";
@@ -30,7 +33,6 @@ export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
     loginSubmitButton = "လော့ဂ်အင်";
     loginProviderDescription = "Use your IFRC GO credentials";
     loginRegistrationLink = "Register for an account";
-
 }
 
 export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {

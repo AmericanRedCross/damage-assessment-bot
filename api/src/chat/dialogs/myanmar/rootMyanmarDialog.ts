@@ -33,7 +33,7 @@ export const rootMyanmarDialog = rcdaChatDialog(
             }
             if (selection === localizer.mm.getHelpOption) {
                 // not yet supported, start over
-                session.send(localizer.mm.choiceNotYetSupportedPromptRetry);
+                session.send(localizer.mm.requestForHelpResponse);
                 session.delay(200);
                 session.replaceDialog(rootMyanmarDialog.id);
             }

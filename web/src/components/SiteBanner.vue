@@ -4,9 +4,13 @@ import { Component, Inject, Watch } from "vue-property-decorator";
 import ChatService from "@/services/ChatService";
 import { RcdaLanguages, RcdaLanguageNames } from "@common/system/RcdaLanguages";
 import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
+import AuthService from "@/services/AuthService";
 
 @Component
 export default class SiteBanner extends Vue {
+
+    @Inject("authService")
+    private authService!: AuthService;
 
     languages: RcdaLanguages[] = [ RcdaLanguages.English, RcdaLanguages.Burmese ] 
     languageNames = RcdaLanguageNames;
@@ -19,6 +23,17 @@ export default class SiteBanner extends Vue {
     @Watch("selectedLanguage")
     languageChanged() {
         (<any>this).rcdaLocalizerEvents.$emit("set-language", this.selectedLanguage);
+    }
+
+    isSignedIn(): boolean {
+        return true;//this.authService.hasActiveSession;
+    }
+
+    signOut() {
+        if (confirm((<any>this).localizer.common.confirmSignOut)) {
+            this.authService.logout();
+            this.$router.push({ path: `/login`, query: { redirect: this.$router.currentRoute.path } });
+        }
     }
 }
 </script>
@@ -33,15 +48,26 @@ export default class SiteBanner extends Vue {
             <option v-for="language in languages" :value="language" :key="language">{{languageNames[language]}}</option>
         </select>
     </div>
+    <div class="banner-sign-out">
+        <button type="button" class="rcda-link-button" v-if="isSignedIn()" @click.prevent="signOut()">{{localizer.common.signOutButton}}</button>
+    </div>
 </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "~styles/responsive";
+@import "~styles/common";
+
+.rcda-banner {
+    border-bottom: #D7D7D8 1px solid;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    display: flex;
+}
 
 .rcda-site-logo {
     color: rgba(0, 0, 0, 0);
     width: 95px;
-    float: left;
     padding-left: 30px;
     padding-right: 30px;
     border-right: #D7D7D8 1px solid;
@@ -57,44 +83,64 @@ export default class SiteBanner extends Vue {
     display: block;
     text-decoration: none;
     color: inherit;
+    flex-grow: 1;
+
+    @include mobile {
+        display: none;
+    }
+
+    :hover {
+        cursor: pointer;
+    }
 }
 
-.rcda-site-title:hover {
-    cursor: pointer;
+@include desktop {
+    .rcda-banner-style-dark {
+        
+        background-color: #494949;
+        border-bottom: none;
+        
+        .rcda-site-title,
+        .banner-language-picker-label {
+            color: white;
+        }
+
+        .rcda-link-button {
+            color: #ecb731;
+        }
+    }
 }
 
-.rcda-banner {
-    width: 100%;
-    border-bottom: #D7D7D8 1px solid;
-    padding-top: 17px;
-    padding-bottom: 60px;
-    box-sizing: border-box;
-}
-
-.rcda-banner-style-dark {
-    background-color: #494949;
-    border-bottom-color: #494949;
-}
-
-.rcda-banner-style-dark .rcda-site-title, .rcda-banner-style-dark .banner-language-picker-label {
-    color: white;
-}
 
 .banner-language-picker {
-    float: right;
-    padding-right: 30px;
+    padding-right: 20px;
+    border-right: #D7D7D8 1px solid;
+    margin-right: 20px;
+    margin-left: auto;
 }
 
 .banner-language-picker-label {
     font-size: 16px;
+    margin-right: 12px;
+    
+    @include mobile {
+        display: none;
+    }
 }
+
 .banner-language-picker-input {
     font-size: 16px;
-    margin-bottom: 20px;
     height: 40px;
     width: 125px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 15px;
+    padding-left: 14px;
 }
+
+.banner-sign-out {
+    align-self: center;
+    
+    button {
+        margin-right: 25px;
+    }
+}
+
 </style>
