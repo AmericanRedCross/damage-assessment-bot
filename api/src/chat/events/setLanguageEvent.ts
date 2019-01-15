@@ -10,15 +10,17 @@ export default rcdaChatEvent(
     null,
     ({ value, session }) => {
         let newLanguage = <RcdaLanguages>value;
-        let languageChanged = session.conversationData.language !== newLanguage;
+        let languageChanged = session.userData.language !== newLanguage;
         let dialogStack = session.dialogStack();
 
         if (dialogStack.length === 0) {
-            session.conversationData.language = newLanguage;
+            session.userData.language = newLanguage;
             session.beginDialog(rootDialog.id);
             return;
         }
-        if (languageChanged) {    
+
+        let isInApproveLanguageChangeDialogAlready = dialogStack.slice(-2)[0].id === approveLanguageChangeDialog.id;
+        if (languageChanged && !isInApproveLanguageChangeDialogAlready) {    
             session.beginDialog(approveLanguageChangeDialog.id, value);
         }
     },
@@ -50,7 +52,7 @@ export const approveLanguageChangeDialog = rcdaChatDialogStateful(
             let yesText = getYesText(localizer, newLangLocalizer);
             
             if (choice === yesText) {
-                session.conversationData.language = session.dialogData.newLanguage;
+                session.userData.language = session.dialogData.newLanguage;
                 session.replaceDialog(rootDialog.id);
             }
             else {

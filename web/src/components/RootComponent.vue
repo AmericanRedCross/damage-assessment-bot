@@ -70,20 +70,37 @@ export default class RootComponent extends Vue {
 </script>
 
 <template>
-<div>
-    <site-banner :class="bannerStyle"/>
-    <router-view class="rcda-main-panel"></router-view>
+<div class="rcda-root">
+    <site-banner :class="bannerStyle" />
+    <div class="rcda-main-panel-container">
+        <div class="rcda-main-panel">
+            <router-view></router-view>
+        </div>
+    </div>
 </div>
 </template>
 
-<style>
+<style lang="scss">
 
-.rcda-main-panel {
-    position: fixed;
-    top: 78px;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.rcda-root {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100vh;
+}
+
+.rcda-main-panel-container {
+    position: relative;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    .rcda-main-panel {        
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
 }
 
 .rcda-input-label {

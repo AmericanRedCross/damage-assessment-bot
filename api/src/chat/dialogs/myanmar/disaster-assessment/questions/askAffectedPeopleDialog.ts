@@ -39,7 +39,7 @@ function createAdaptiveCardForAffectedPeople(myanmarData: MyanmarConversationDat
             },
             {
                 "type": "Input.Number",
-                "placeholder": "Quantity",
+                "placeholder": localizer.mm.numberInputPlaceholder,
                 "min": 0,
                 // Check if there is any maximum value for these type of questions. Just confirm. "max": 5,
                 "value": myanmarData.people[questionName],
@@ -62,7 +62,7 @@ function createAdaptiveCardForAffectedPeople(myanmarData: MyanmarConversationDat
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Save"
+                "title": localizer.mm.submitCard
             }
         ]
     };

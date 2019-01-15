@@ -3,10 +3,13 @@ import UserSession from "@common/models/resources/UserSession";
 import LoginRequest from "@common/models/services/login/LoginRequest";
 import LoginResponse from "@common/models/services/login/LoginResponse";
 import RcdaStorageClient from "@/services/utils/RcdaStorageClient";
+import RcdaReactiveValue from "@/services/utils/RcdaReactiveValue";
 
 export default class AuthService {
 
     constructor(private apiClient: RcdaApiClient, private storageClient: RcdaStorageClient) { }
+
+    private loginStatus = new RcdaReactiveValue(this.hasActiveSession);
 
     public get hasActiveSession(): boolean {
 
@@ -19,7 +22,7 @@ export default class AuthService {
     }
 
     public async login(username: string, password: string): Promise<boolean> {
-        this.storageClient.clear();
+        this.logout();
 
         let loginRequest: LoginRequest = {
             username,
@@ -31,10 +34,20 @@ export default class AuthService {
         }
         else if (loginResponse.status === 200) {
             this.storageClient.apiSessionToken = loginResponse.data.sessionToken;
+            this.loginStatus.value = true;
             return true;
         }
         else {
             throw loginResponse.data;
         }
     };
+
+    public async logout() {
+        this.storageClient.clear();
+        this.loginStatus.value = false;
+    }
+
+    public onLoginStatusChange(callback: (isSignedIn: boolean) => void) {
+        this.loginStatus.subscribe(callback);
+    }
 }

@@ -70,14 +70,14 @@ function createRankingsReviewCard(session: RcdaTypedSession, localizer: RcdaChat
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Edit",
+                "title": localizer.mm.editReviewCard,
                 "data": {
                     "id": "edit"
                 }
             },
             {
                 "type": "Action.Submit",
-                "title": "Accept",
+                "title": localizer.mm.acceptReviewCard,
                 "data": {
                     "id": "accept"
                 }

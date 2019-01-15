@@ -16,11 +16,14 @@ import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/syst
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextEnglish {
     siteTitle = "Damage Assessment Dashboard";
+    signOutButton = "Sign out";
+    confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
     // inputs
     languageSelectorLabel = "Choose Language";
     fileSelectorLabel = "Browse";
     dropdownInputSelectAllOption = "All";
     // login
+    loginHeader = "Login";
     loginFieldsMissingError = "A value must be provided for username and password";
     loginCredentialsInvalidError = "Invalid username or password";
     loginUnknownError = "Login failed unexpectedly, please try again later";
@@ -41,6 +44,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardChatbotLink = "Go to Chatbot";
     dashboardRankingSeeAllButton = "See All Reported";
     dashboardSummaryHeadersAllDisasterTypes = "All Disaster Event Types";
+    dashboardSummaryHeadersAllRegions = "All Regions";
     dashboardSectorHeatmapHeader = "Summary";
     // filter panel
     dashboardFilterHeader = "Filters";
@@ -61,6 +65,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardFileImportSelectFileLabel = "Select File";
     dashboardFileImportAcceptedFileTypesHelpText = "Only .csv and .json files with correct values will be accepted. Excel (.xlsx) files will not be accepted.";
     dashboardFileImportErrorBehaviorHelpText = "If any validation issues are found, no records will be processed. Error details will be displayed below.";
+    dashboardFileImportSubmitButton = "Submit";
     // people
     dashboardPeopleMetrics: { [x in keyof MyanmarDisasterAssessmentSummaryPeople]: string } = {
         numberAffected: "Number of people affected (SUM)",
@@ -78,6 +83,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardRankingVulnerableGroupsTitle = "Vulnerable Groups";
     dashboardRankingAffectedGroupsTitle = "Affected Groups";
     // sectors    
+    dashboardSectorHeatMapHeader = "Sectors";
     dashboardSectorHeatmapSeverityHeader = "Severity";
     dashboardSectorHeatmapFactorsHeader = "Factors";
     dashboardSectorHeatmapBasicNeedsHeader = "Basic Needs";

@@ -1,6 +1,5 @@
 import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
 import { rootMyanmarDialog } from "@/chat/dialogs/myanmar/rootMyanmarDialog";
-import { selectLanguageDialog } from "@/chat/dialogs/selectLanguageDialog";
 
 export const rootDialog = rcdaChatDialog(
     "/",
@@ -12,5 +11,5 @@ export const rootDialog = rcdaChatDialog(
         }
     ],
     {
-        references: [ rootMyanmarDialog, selectLanguageDialog ]
+        references: [ rootMyanmarDialog ]
     });

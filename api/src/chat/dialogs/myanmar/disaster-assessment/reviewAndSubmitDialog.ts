@@ -9,10 +9,10 @@ export const reviewAndSubmitDialog = rcdaChatDialog(
     null,
     [
         ({ session, localizer }) => {
-            Prompts.choice(session, "Are you ready to submit the report?", 
+            Prompts.choice(session, localizer.mm.askIfReadyToSubmit, 
             [
-                "Review",
-                "Submit"
+                localizer.mm.reviewReportOption,
+                localizer.mm.submitReportOption
             ], { 
                 listStyle: ListStyle.button,
                 retryPrompt: localizer.mm.invalidChoicePromptRetry
@@ -20,16 +20,16 @@ export const reviewAndSubmitDialog = rcdaChatDialog(
         },
         ({ session, localizer, result }) => {
             const selection = (<IPromptChoiceResult>result).response.entity;
-            if (selection === "Submit") {
+            if (selection === localizer.mm.submitReportOption) {
                 session.endDialog();
                 return;
             }
-            if (selection === "Review") {
-                Prompts.choice(session, "Which section would you like to review?", 
+            if (selection === localizer.mm.reviewReportOption) {
+                Prompts.choice(session, localizer.mm.askWhichSectionToReview, 
                 [
-                    "People",
-                    "Sectors",
-                    "Rankings"
+                    localizer.mm.reportSectionNamePeople,
+                    localizer.mm.reportSectionNameSectors,
+                    localizer.mm.reportSectionNameRankings
                 ], { 
                     listStyle: ListStyle.button,
                     retryPrompt: localizer.mm.invalidChoicePromptRetry
@@ -37,17 +37,17 @@ export const reviewAndSubmitDialog = rcdaChatDialog(
                 return;
             }
         },
-        ({ session, result }) => {
+        ({ session, result, localizer }) => {
             const selection = (<IPromptChoiceResult>result).response.entity;
-            if (selection === "People") {
+            if (selection === localizer.mm.reportSectionNamePeople) {
                 session.beginDialog(reviewAffectedPeopleDialog.id);
                 return;
             }
-            if (selection === "Sectors") {
+            if (selection === localizer.mm.reportSectionNameSectors) {
                 session.beginDialog(reviewSectorsDialog.id);
                 return;
             }
-            if (selection === "Rankings") {
+            if (selection === localizer.mm.reportSectionNameRankings) {
                 session.beginDialog(reviewRankingsDialog.id);
                 return;
             }

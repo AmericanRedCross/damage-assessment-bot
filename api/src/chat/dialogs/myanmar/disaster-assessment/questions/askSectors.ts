@@ -16,7 +16,7 @@ export const askSectorsDialog = rcdaChatDialog(
             RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAskSectorsToReport(localizer, session.conversationData.mm.sectors.selectedSectorIds));
         },
         ({ session, result }) => {
-            session.conversationData.mm.sectors.selectedSectorIds = result.response.sectors.split(",");
+            session.conversationData.mm.sectors.selectedSectorIds = (result.response.sectors || "").split(",");
 
             session.beginDialog(askUncompletedSectorsDialog.id);
         },
@@ -222,7 +222,7 @@ function createAdaptiveCardForAskSector(localizer: RcdaChatLocalizer, sectorData
                     "sectorId": sectorId
                 },
                 "type": "Action.Submit",
-                "title": "Save"
+                "title": localizer.mm.submitCard
             }
         ]
     };

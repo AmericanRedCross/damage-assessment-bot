@@ -167,8 +167,8 @@ class RcdaModelPathValidator<TModel> {
         if (!pathExists || this.isNullOrUndefined(value)) {
             return this;
         }
-        if (Object.getOwnPropertyNames(value).filter(prop => !validProps.includes(prop)).length > 0) {
-            this.validator.addError(RcdaFieldValidationErrorType.MustNotExceedMaxLength, this.path);
+        if (Object.getOwnPropertyNames(value).filter(prop => validProps.indexOf(prop) === -1).length > 0) {
+            this.validator.addError(RcdaFieldValidationErrorType.MustHaveValidProperties, this.path);
         }
         return this;
     }
