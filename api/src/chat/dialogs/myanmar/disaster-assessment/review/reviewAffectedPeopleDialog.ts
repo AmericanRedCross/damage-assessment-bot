@@ -66,14 +66,14 @@ function createAffectedPeopleReviewCard(session: RcdaTypedSession, localizer: Rc
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Edit",
+                "title": localizer.mm.editReviewCard,
                 "data": {
                     "action": editAction
                 }
             },
             {
                 "type": "Action.Submit",
-                "title": "Accept",
+                "title": localizer.mm.acceptReviewCard,
                 "data": {
                     "action": saveAction
                 }

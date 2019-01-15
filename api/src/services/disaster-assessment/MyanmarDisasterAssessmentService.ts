@@ -102,7 +102,7 @@ export default class MyanmarDisasterAssessmentService {
         validation.path("country").mustBeEmpty();
 
         //people
-        validation.path("people", "numberBeforeDisaster").mustBeNumber();
+        validation.path("people", "numberBeforeDisaster").mustBeNumber(); // TODO must be greater than 0
         validation.path("people", "numberLeftArea").mustBeNumber();
         validation.path("people", "numberReturned").mustBeNumber();
         validation.path("people", "numberStayedInArea").mustBeNumber();

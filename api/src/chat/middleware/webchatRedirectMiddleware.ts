@@ -10,7 +10,7 @@ export const webchatRedirectMiddleware = rcdaChatMiddleware(
     ({ session, next, localizer }, { webChatUrl }) => {
         const channelId = session.message.address.channelId;
         if (channelId !== "directline" && channelId !== "emulator") {
-            session.send(localizer.mm.webchatRedirectToUrlMessage);
+            session.send(localizer.mm.chatRedirectToWebAppMessage);
             session.send(new Message(session).addAttachment(createRedirectionHeroCard(session, localizer, webChatUrl)));
         }
         else {

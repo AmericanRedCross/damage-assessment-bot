@@ -149,14 +149,14 @@ function createAdaptiveCardForReviewSelectedSectors(session: RcdaTypedSession, l
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Edit",
+                "title": localizer.mm.editReviewCard,
                 "data": {
                     "id": "Edit"
                 }
             },
             {
                 "type": "Action.Submit",
-                "title": "Accept",
+                "title": localizer.mm.acceptReviewCard,
                 "data": {
                     "id": "Accept"
                 }
@@ -186,7 +186,7 @@ function createAdaptiveCardForReviewIndividualSector(session: RcdaTypedSession, 
     const sectorData = session.conversationData.mm.sectors.completedSectors.find(x => x.id === sectorId);
 
     facts.push({
-        title: "Severity",
+        title: localizer.mm.sectorSeverityQuestionHeader,
         value: sectorData.severity ? `${sectorData.severity} - ${localizer.mm.sectorSeverityScale[sectorData.severity]}` : localizer.mm.reviewSectionNoResponseValue
     });
 
@@ -207,14 +207,14 @@ function createAdaptiveCardForReviewIndividualSector(session: RcdaTypedSession, 
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Edit",
+                "title": localizer.mm.editReviewCard,
                 "data": {
                     "id": "Edit"
                 }
             },
             {
                 "type": "Action.Submit",
-                "title": "Accept",
+                "title": localizer.mm.acceptReviewCard,
                 "data": {
                     "id": "Accept"
                 }

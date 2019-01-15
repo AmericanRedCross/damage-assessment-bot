@@ -128,17 +128,12 @@ export default class MyanmarDashboardFilterPanel extends Vue {
 <style>
 
 .dashboard-filter-panel {
-    float: left;
-    overflow-y: hidden;
-    height: 170%;
-    width: 270px;
+    max-width: 270px;
     background-color: #EFEFEF;
-    box-sizing: border-box;
     padding-top: 26px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 30px;
-    overflow: visible;
 }
 
 .dashboard-filter-header {

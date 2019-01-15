@@ -24,20 +24,27 @@ export class RcdaCommonTextEnglish {
 
 export class RcdaMyanmarTextEnglish {
     //misc
-    webchatRedirectToUrlMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
+    chatRedirectToWebAppMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
     redirectButtonText = "Click here to sign in";
+    welcomeMessage = "Welcome to the Red Cross Disaster Assessment chat bot";
     // intro
     promptUserToSelectChatbotFeature = "What can I assist with?";
     startDisasterAssessmentOption = "Start reporting on a disaster";
     getHelpOption = "Help";
     invalidChoicePromptRetry = "Sorry, I didn't understand that. Please select one of the listed options.";
-    choiceNotYetSupportedPromptRetry = "Not yet implemented, please select another option";
+    requestForHelpResponse = "The system is still under development. Please contact your supervisor.";
+    // submission
+    reportSubmissionError = "Sorry, something went wrong and your report was not submitted. Please try again.";
     // card buttons
     submitCard = "Save";
     acceptReviewCard = "Accept";
     editReviewCard = "Edit";
     // report navigation
     askReportOnAnotherSection = "Would you like to report on anything else?";
+    askIfReadyToSubmit = "Are you ready to submit the report?";
+    reviewReportOption = "Review";
+    submitReportOption = "Submit";
+    askWhichSectionToReview = "Which section would you like to review?";
     confirmReportSubmitted = "Thank you, your report has been submitted";
     // report info section
     askTownshipName = "What township are you reporting on?";
@@ -69,6 +76,7 @@ export class RcdaMyanmarTextEnglish {
     inputLabelNumberOfPeopleDisplaced = "Number of people displaced";
     inputLabelNumberOfPeopleNotDisplaced = "Number of people affected non-displaced";
     inputLabelNumberOfCasualties = "Number of casualties";
+    numberInputPlaceholder = "Quantity";
     // sectors section
     sectorSelectionHeader = "Please select the **Sectors** to report";
     sectorSeverityQuestionHeader = "Severity";

@@ -14,10 +14,11 @@ export const askUserInfoDialog = rcdaChatDialog(
             session.beginDialog(confirmUserAdminStack.id);
         },
         ({ session, localizer }) => {
-            Prompts.choice(session, localizer.mm.askDisasterType, localizer.mm.disasterTypes, { listStyle: ListStyle.button });
+            
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDisasterTypes(localizer));
         },
         ({ session, localizer, result: { response } }) => {
-            session.conversationData.mm.disasterTypeId = response.entity;
+            session.conversationData.mm.disasterTypeId = response.disasterType;
             Prompts.choice(session, localizer.mm.askGeographicalSettingType, getValues(localizer.mm.geographicalSettings), { listStyle: ListStyle.button });
         },
         ({ session, localizer, result: { response } }) => {
@@ -167,6 +168,35 @@ function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, districtCo
                 "choices": getKeys(myanmarDistricts[districtCode].townships).map(myanmarTownshipCode => ({
                     title: localizer.mm.townships[myanmarTownshipCode],
                     value: myanmarTownshipCode
+                }))
+            }
+        ],
+        actions: [
+            {
+                "type": "Action.Submit",
+                "title": localizer.mm.submitCard,
+            }
+        ]
+    };
+}
+
+function createAdaptiveCardForDisasterTypes(localizer: RcdaChatLocalizer) {
+    return {
+        body: [
+            {
+                "type": "TextBlock",
+                "size": "medium",
+                "weight": "default",
+                "text": localizer.mm.askDisasterType,
+                "horizontalAlignment": "left"
+            }, {
+                "type": "Input.ChoiceSet",
+                "style": "compact",
+                "id": "disasterType",
+                "placeholder": localizer.common.selectDropdownPlaceholder,
+                "choices": getKeys(localizer.mm.disasterTypes).map(disasterType => ({
+                    title: localizer.mm.disasterTypes[disasterType],
+                    value: disasterType
                 }))
             }
         ],

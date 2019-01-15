@@ -11,7 +11,7 @@ export default class RcdaChatLocalizer {
     constructor(language: RcdaLanguages)
     constructor(session: RcdaTypedSession)
     constructor(config: RcdaLanguages|RcdaTypedSession) {
-        let language = typeof config === "string" ? config : config.conversationData.language;
+        let language = typeof config === "string" ? config : config.userData.language;
         this.common = getLocalizedText(CommonTextLocaleMap, language);
         this.mm = getLocalizedText(MyanmarTextLocaleMap, language);
     }

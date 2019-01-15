@@ -26,20 +26,27 @@ export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
 
 export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     //misc
-    webchatRedirectToUrlMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
+    chatRedirectToWebAppMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
     redirectButtonText = "Click here to sign in";
+    welcomeMessage = "Welcome to the Red Cross Disaster Assessment chat bot";
     // intro
     promptUserToSelectChatbotFeature = "ကျွန်ပ်ဘာကူညီပေးရမလဲ";
     startDisasterAssessmentOption = "ဘေးအန္တရာယ် ဆိုင်ရာ သတင်းပေးပို့မှု စတင်ပြုလုပ်ပါ။";
     getHelpOption = "အကူအညီရယူရန်";
     invalidChoicePromptRetry = "ဝမ်းနည်ပါတယ်၊ ကျွန်ုပ် နားမလည်ပါ။ ကျေးဇူးပြု၍  ဖော်ပြထားသော စာရင်းထဲမှ တစ်ခုကို ရွေးချယ်ပါ။";
-    choiceNotYetSupportedPromptRetry = "မလုပ်ဆောင်ရသေးပါ၊ ကျေးဇူးပြု၍ အခြားရွေးချယ်မှုပြုလုပ်ပါ။";
+    requestForHelpResponse = "The system is still under development. Please contact your supervisor.";
+    // submission
+    reportSubmissionError = "Sorry, something went wrong and your report was not submitted. Please try again.";
     // card buttons
     submitCard = "သိမ်းဆည်းရန်";
     acceptReviewCard = "လက်ခံရန်";
     editReviewCard = "ပြန်လည်ပြင်ဆင်ရန်";
     // report navigation
     askReportOnAnotherSection = "အခြားကိစ္စတခုခုကို သတင်းပေးပို့ လိုပါသလား။";
+    askIfReadyToSubmit = "Are you ready to submit the report?";
+    reviewReportOption = "Review";
+    submitReportOption = "Submit";
+    askWhichSectionToReview = "Which section would you like to review?";
     confirmReportSubmitted = "ကျေးဇူးတင်ပါတယ်။ သင့် သတင်းပေးပိုမှု အား တင်ပြပြီးဖြစ်ပါသည်။";
     // report info section
     askTownshipName = "မည်သည့် မြို့နယ်အတွက် သတင်းပို့လိုပါသလဲ။";
@@ -71,6 +78,7 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     inputLabelNumberOfPeopleDisplaced = "နေရပ်စွန့်ခွာသည့် လူဦးရေ";
     inputLabelNumberOfPeopleNotDisplaced = "နေရပ်မစွန့်ခွာ ပဲ ထိခိုက်ခံရသည့် လူဦးရေ";
     inputLabelNumberOfCasualties = "ဒဏ်ရာရသည့် လူဦးရေ";
+    numberInputPlaceholder = "Quantity";
     // sectors section
     sectorSelectionHeader = "မည်သည့်ကဏ္ဍကို သတင်းပို့နိုင်ပါသလဲ";
     sectorSeverityQuestionHeader = "ပြင်းထန်မှု";
