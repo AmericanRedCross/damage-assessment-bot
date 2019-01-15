@@ -138,7 +138,7 @@ function createAdaptiveCardForRankingSection(localizer: RcdaChatLocalizer, ranki
         actions: [
             {
                 "type": "Action.Submit",
-                "title": "Save"
+                "title": localizer.mm.submitCard
             }
         ]
     };

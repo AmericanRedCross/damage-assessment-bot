@@ -41,7 +41,7 @@ export default class LoginPage extends Vue {
       }
     }
     catch (ex) {
-      if (ex.response.status === 400) {
+      if (ex.response && ex.response.status === 400) {
         this.badCredentialsLoginError = true;
       }
       else {        
@@ -97,8 +97,7 @@ export default class LoginPage extends Vue {
 
 .login-background {  
   background-color: $rcda-dark;
-
-  margin: auto;
+  min-height: 100%;
   
   @include mobile {
     background-color: $rcda-light;

@@ -5,9 +5,10 @@ import { Component, Inject, Watch } from "vue-property-decorator";
 import ChatService from "@/services/ChatService";
 import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
 import { RcdaLanguages } from "@common/system/RcdaLanguages";
+import RcdaBaseComponent from "@/components/RcdaBaseComponent";
 
 @Component
-export default class WebChatPage extends Vue {
+export default class WebChatPage extends RcdaBaseComponent {
 
   @Inject()
   private chatService!: ChatService;
@@ -31,15 +32,10 @@ export default class WebChatPage extends Vue {
 
     let self = this;
 
-    // chatConnection.activity$.filter(x => x.type === "message").subscribe(x => {
-    //   console.log("message event");
-    // });
-
     // TODO use a chat service to cache the last used language
-    await self.chatService.setChatLanguage(<RcdaLanguages>"en");
+    await self.chatService.setChatLanguage(this.rcdaLocalizerEvents.language || RcdaLanguages.English);
 
-    // TODO: add localized props to all vue components
-    (<any>self).rcdaLocalizerEvents.$on("set-language", async (language: RcdaLanguages) => {
+    self.rcdaLocalizerEvents.$on("set-language", async (language: RcdaLanguages) => {
       await self.chatService.setChatLanguage(language);
     });
   }

@@ -18,7 +18,9 @@ export default rcdaChatEvent(
             session.beginDialog(rootDialog.id);
             return;
         }
-        if (languageChanged) {    
+
+        let isInApproveLanguageChangeDialogAlready = dialogStack.slice(-2)[0].id === approveLanguageChangeDialog.id;
+        if (languageChanged && !isInApproveLanguageChangeDialogAlready) {    
             session.beginDialog(approveLanguageChangeDialog.id, value);
         }
     },

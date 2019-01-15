@@ -71,7 +71,7 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
       return "";
     }
     if (!this.summary.location.regionCode) {
-      return "All Regions";
+      return this.localizer.mm.dashboardSummaryHeadersAllRegions;
     }
     let result = this.localizer.mm.regions[this.summary.location.regionCode];
     

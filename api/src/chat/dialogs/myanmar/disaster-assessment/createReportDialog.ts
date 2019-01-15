@@ -36,8 +36,7 @@ export const createReportDialog = rcdaChatDialog(
                 session.endDialog(localizer.mm.confirmReportSubmitted);
             }
             catch (ex) {
-                console.log(JSON.stringify(ex));
-                session.endDialog("Sorry, something went wrong...")
+                session.endDialog(localizer.mm.reportSubmissionError);
             }
 
             // erase report data and start over

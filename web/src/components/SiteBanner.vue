@@ -5,9 +5,10 @@ import ChatService from "@/services/ChatService";
 import { RcdaLanguages, RcdaLanguageNames } from "@common/system/RcdaLanguages";
 import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
 import AuthService from "@/services/AuthService";
+import RcdaBaseComponent from "@/components/RcdaBaseComponent";
 
 @Component
-export default class SiteBanner extends Vue {
+export default class SiteBanner extends RcdaBaseComponent {
 
     @Inject("authService")
     private authService!: AuthService;
@@ -22,17 +23,27 @@ export default class SiteBanner extends Vue {
 
     @Watch("selectedLanguage")
     languageChanged() {
-        (<any>this).rcdaLocalizerEvents.$emit("set-language", this.selectedLanguage);
+        this.rcdaLocalizerEvents.language = this.selectedLanguage;
+        this.rcdaLocalizerEvents.$emit("set-language", this.selectedLanguage);
     }
-
-    isSignedIn(): boolean {
-        return true;//this.authService.hasActiveSession;
-    }
-
+    
     signOut() {
         if (confirm((<any>this).localizer.common.confirmSignOut)) {
             this.authService.logout();
             this.$router.push({ path: `/login`, query: { redirect: this.$router.currentRoute.path } });
+        }
+    }
+    
+    // auth status is non-reactive, so we have to subscribe to changes of that value
+    isSignedIn = false;
+    hasSubscribedToLoginStatus = false;
+    mounted() {
+        this.isSignedIn = this.authService.hasActiveSession;
+        if (!this.hasSubscribedToLoginStatus) {
+            let self = this;
+            this.authService.onLoginStatusChange(function(isSignedIn: boolean) {
+                self.isSignedIn = isSignedIn;
+            });
         }
     }
 }
@@ -48,8 +59,8 @@ export default class SiteBanner extends Vue {
             <option v-for="language in languages" :value="language" :key="language">{{languageNames[language]}}</option>
         </select>
     </div>
-    <div class="banner-sign-out">
-        <button type="button" class="rcda-link-button" v-if="isSignedIn()" @click.prevent="signOut()">{{localizer.common.signOutButton}}</button>
+    <div class="banner-sign-out" v-if="isSignedIn">
+        <button type="button" class="rcda-link-button" @click.prevent="signOut()">{{localizer.common.signOutButton}}</button>
     </div>
 </div>
 </template>
@@ -63,6 +74,15 @@ export default class SiteBanner extends Vue {
     padding-top: 13px;
     padding-bottom: 12px;
     display: flex;
+    align-items: center;
+
+    &:after:last-child {
+        content: "";
+        order: 4;
+        border-right: #D7D7D8 1px solid;
+        margin-left: 20px;
+        height: 45px;
+    }
 }
 
 .rcda-site-logo {
@@ -76,7 +96,6 @@ export default class SiteBanner extends Vue {
 }
 
 .rcda-site-title {
-    padding-top: 10px;
     float: left;
     font-size: 20px;
     font-weight: bold;
@@ -111,12 +130,16 @@ export default class SiteBanner extends Vue {
     }
 }
 
-
 .banner-language-picker {
-    padding-right: 20px;
-    border-right: #D7D7D8 1px solid;
-    margin-right: 20px;
     margin-left: auto;
+    margin-right: 20px;
+
+    @include mobile {
+
+        &:not(:last-child) {
+            margin-right: auto;
+        }
+    }
 }
 
 .banner-language-picker-label {
@@ -137,6 +160,8 @@ export default class SiteBanner extends Vue {
 
 .banner-sign-out {
     align-self: center;
+    margin-left: 20px;
+    order: 5;
     
     button {
         margin-right: 25px;

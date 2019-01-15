@@ -44,6 +44,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardChatbotLink = "Go to Chatbot";
     dashboardRankingSeeAllButton = "See All Reported";
     dashboardSummaryHeadersAllDisasterTypes = "All Disaster Event Types";
+    dashboardSummaryHeadersAllRegions = "All Regions";
     dashboardSectorHeatmapHeader = "Summary";
     // filter panel
     dashboardFilterHeader = "Filters";
@@ -64,6 +65,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardFileImportSelectFileLabel = "Select File";
     dashboardFileImportAcceptedFileTypesHelpText = "Only .csv and .json files with correct values will be accepted. Excel (.xlsx) files will not be accepted.";
     dashboardFileImportErrorBehaviorHelpText = "If any validation issues are found, no records will be processed. Error details will be displayed below.";
+    dashboardFileImportSubmitButton = "Submit";
     // people
     dashboardPeopleMetrics: { [x in keyof MyanmarDisasterAssessmentSummaryPeople]: string } = {
         numberAffected: "Number of people affected (SUM)",
@@ -81,6 +83,7 @@ export class RcdaMyanmarTextEnglish {
     dashboardRankingVulnerableGroupsTitle = "Vulnerable Groups";
     dashboardRankingAffectedGroupsTitle = "Affected Groups";
     // sectors    
+    dashboardSectorHeatMapHeader = "Sectors";
     dashboardSectorHeatmapSeverityHeader = "Severity";
     dashboardSectorHeatmapFactorsHeader = "Factors";
     dashboardSectorHeatmapBasicNeedsHeader = "Basic Needs";

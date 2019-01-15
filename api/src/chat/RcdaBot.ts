@@ -2,7 +2,6 @@ import { LuisRecognizer, UniversalBot, ChatConnector, MemoryBotStorage, Middlewa
 import { DocumentDbClient, AzureBotStorage, IMessage } from "botbuilder-azure";
 import { RcdaChatDialog, RcdaChatMiddleware } from "@/chat/utils/rcda-chat-types";
 import { rootDialog } from "@/chat/dialogs/rootDialog";
-import promptReportDialog from "@/chat/dialogs/promptReportDialog";
 import { registerRcdaPrompts } from "@/chat/prompts/RcdaPrompts"
 import { conversationDataInitMiddleware } from "@/chat/middleware/conversationDataInitMiddleware";
 import { webchatRedirectMiddleware  } from "@/chat/middleware/webchatRedirectMiddleware";
@@ -41,7 +40,6 @@ export default class RcdaBot extends UniversalBot {
         registerRcdaPrompts(this);
 
         this.addDialog(rootDialog);
-        this.addDialog(promptReportDialog);
 
         // Events 
         this.registerEventListener(setLanguageEvent);
