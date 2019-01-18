@@ -17,12 +17,12 @@ if (isTravisDeployment) {
     targetEnvironment = getDeployValue("TargetEnvironment");
 }
 configValues.tenantId = getDeployValue("TenantId");
-configValues.subscriptionId = getDeployValue("SubscriptionId");
+configValues.subscriptionId = getDeployValue("SubscriptionId",targetEnvironment);
 configValues.resourceGroupName = getDeployValue("ResourceGroupName", targetEnvironment);
-configValues.location = getDeployValue("Location", targetEnvironment);
+configValues.deploymentRegion = getDeployValue("DeploymentRegion", targetEnvironment);
 configValues.keyVaultName = getDeployValue("KeyVaultName", targetEnvironment);
-configValues.deployAgentClientId = getDeployValue("DeployAgentClientId", targetEnvironment);
-configValues.deployAgentClientSecret = getDeployValue("DeployAgentClientSecret", targetEnvironment);
+configValues.deployAgentClientId = getDeployValue("DeployAgentClientId");
+configValues.deployAgentClientSecret = getDeployValue("DeployAgentClientSecret");
 
 let configKeys = require("../config/config.keys.json");
 

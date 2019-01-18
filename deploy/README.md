@@ -25,7 +25,9 @@ Before proceeding ahead with the deployment, please ensure that you meet the fol
         4. keyVaultName -- This is the name of the Azure Key Vault which would be deployed to store secrets for the Bot.
         5. deployAgentClientId -- This is the application/client ID which is generated after creating an app registration. This parameter should contain the App Id which would be used for deployments.
         6. deployAgentClientSecret -- This is the app secret which can be created after the app registration is complete. This is used along with the "deployAgentClientId" to authenticate and deploy resources. Please ensure that you are aware of the expiry of this secret (if any).
-        7. useKeyVaultForConfig -- 
+        7. useKeyVaultForConfig -- This should be kept to "True" because we want to use Key Vault for configuration. In the rare chance that you don't want to use Key Vault Configuration, set this to False.
+        8. deploymentRegion -- This is the region in Azure where components would be deployed.
+        9. 
 
 # Configuration Settings & Values for the Chatbot
     1. FUNCTIONS_WORKER_RUNTIME = "node"

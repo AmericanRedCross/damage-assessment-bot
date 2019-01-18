@@ -8,7 +8,7 @@
         "storageAccountName": {
             "type": "string"
         },
-        "location": {
+        "deploymentRegion": {
             "type": "string"
         },
         "cosmosAccountName": {
@@ -26,7 +26,7 @@
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[parameters('storageAccountName')]",
             "apiVersion": "2018-07-01",
-            "location": "[parameters('location')]",
+            "location": "[parameters('deploymentRegion')]",
             "sku": {
                 "name": "Standard_RAGRS",
                 "tier": "Standard"
@@ -61,7 +61,7 @@
             "kind": "functionapp",
             "name": "[parameters('functionAppName')]",
             "apiVersion": "2018-02-01",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('deploymentRegion')]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -78,7 +78,7 @@
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-02-01",
             "name": "[parameters('functionAppName')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('deploymentRegion')]",
             "kind": "functionapp",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/serverfarms', parameters('functionAppName'))]",
@@ -99,9 +99,10 @@
             "resources": [
                 {
                     "apiVersion": "2018-02-01",
-                    "name": "swap",
-                    "type": "slots",
-                    "location": "[resourceGroup().location]",
+                    "name": "[concat(parameters('functionAppName'), '/','swap')]",
+                    "type": "Microsoft.Web/sites/slots",
+                    "kind": "functionapp",
+                    "location": "[parameters('deploymentRegion')]",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
                     ],
@@ -122,7 +123,7 @@
             "apiVersion": "2015-05-01",
             "name": "[parameters('functionAppName')]",
             "type": "Microsoft.Insights/components",
-            "location": "[resourceGroup().location]",
+            "location": "East US",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
             ],
@@ -134,7 +135,7 @@
             "apiVersion": "2015-05-01",
             "name": "api-health-check",
             "type": "Microsoft.Insights/webtests",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('deploymentRegion')]",
             "tags": {
                 "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('functionAppName')))]": "Resource"
             },
@@ -176,17 +177,17 @@
             "type": "Microsoft.DocumentDB/databaseAccounts",
             "kind": "GlobalDocumentDB",
             "name": "[parameters('cosmosAccountName')]",
-            "location": "[parameters('location')]",
+            "location": "[parameters('deploymentRegion')]",
             "properties": {
                 "name": "[parameters('cosmosAccountName')]",
                 "databaseAccountOfferType": "Standard",
                 "locations": [
                     {
-                        "locationName": "[parameters('location')]",
+                        "locationName": "[parameters('deploymentRegion')]",
                         "failoverPriority": 0
                     },
                     {
-                        "locationName": "[parameters('location')]",
+                        "locationName": "[parameters('deploymentRegion')]",
                         "failoverPriority": 1
                     }
                 ],
