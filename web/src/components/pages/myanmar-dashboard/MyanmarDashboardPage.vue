@@ -63,7 +63,8 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
 
   formatDate(dateString: string) {
     let date = new Date(dateString);
-    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
+    // JS Date months are 0-indexed, so need to add by one
+    return `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`
   }
 
   get formattedLocationHeader(): string {

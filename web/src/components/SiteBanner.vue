@@ -51,11 +51,13 @@ export default class SiteBanner extends RcdaBaseComponent {
 
 <template>
 <div class="rcda-banner">
-    <div class="rcda-site-logo">X</div>
+    <div class="rcda-site-logo"></div>
     <a class="rcda-site-title" @click.prevent="goToDashboard();" href="/">{{localizer.common.siteTitle}}</a>
     <div class="banner-language-picker">
         <label class="banner-language-picker-label">{{localizer.common.languageSelectorLabel}}</label>
+        <i class="icon-language"></i>
         <select class="banner-language-picker-input" v-model="selectedLanguage">
+            <i class="icon-caret-down"></i>
             <option v-for="language in languages" :value="language" :key="language">{{languageNames[language]}}</option>
         </select>
     </div>
@@ -86,12 +88,15 @@ export default class SiteBanner extends RcdaBaseComponent {
 }
 
 .rcda-site-logo {
-    color: rgba(0, 0, 0, 0);
-    width: 95px;
-    padding-left: 30px;
-    padding-right: 30px;
+    background-image: url('/dist/images/site-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    box-sizing: content-box;
     border-right: #D7D7D8 1px solid;
     height: 45px;
+    padding-right: 20px;
+    margin-left: 20px;
     margin-right: 20px;
 }
 
@@ -133,6 +138,8 @@ export default class SiteBanner extends RcdaBaseComponent {
 .banner-language-picker {
     margin-left: auto;
     margin-right: 20px;
+    display: flex;
+    align-items: center;
 
     @include mobile {
 
@@ -140,11 +147,17 @@ export default class SiteBanner extends RcdaBaseComponent {
             margin-right: auto;
         }
     }
+
+    .icon-language {
+        color: inherit;
+        font-size: 30px;
+        margin-right: 12px;
+    }
 }
 
 .banner-language-picker-label {
     font-size: 16px;
-    margin-right: 12px;
+    margin-right: 10px;
     
     @include mobile {
         display: none;
@@ -153,15 +166,27 @@ export default class SiteBanner extends RcdaBaseComponent {
 
 .banner-language-picker-input {
     font-size: 16px;
+    margin-bottom: 20px;
     height: 40px;
-    width: 125px;
-    padding-left: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px #D7D7D8 solid;
+    margin-bottom: 0px;
+    position: relative;
+    
+    @include desktop {
+        width: 100%;
+        min-width: 100px;
+    }
 }
 
 .banner-sign-out {
     align-self: center;
     margin-left: 20px;
     order: 5;
+    max-width: 125px;
     
     button {
         margin-right: 25px;

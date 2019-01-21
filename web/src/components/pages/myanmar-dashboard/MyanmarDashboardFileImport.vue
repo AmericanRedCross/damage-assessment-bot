@@ -70,7 +70,7 @@ export default class MyanmarDashboardFileImport extends Vue {
         <div class="dashboard-upload-help-text">
             <p>{{localizer.mm.dashboardFileImportAcceptedFileTypesHelpText}}</p>
             <p>{{localizer.mm.dashboardFileImportErrorBehaviorHelpText}}</p>
-            <p>To ensure the format is correct, you can <button class="dashboard-upload-get-template-button" @click="myanmarDashboardService.downloadImportTemplate()">download a template here.</button></p>
+            <p>{{localizer.mm.dashboardFileImportFormatHelpTextPart1OutsideLink}} <button class="dashboard-upload-get-template-button" @click="myanmarDashboardService.downloadImportTemplate()">{{localizer.mm.dashboardFileImportFormatHelpTextPart2InsideLink}}</button></p>
         </div>
         <button class="rcda-button-primary" @click="importFile">{{localizer.mm.dashboardFileImportSubmitButton}}</button>
     </rcda-modal>

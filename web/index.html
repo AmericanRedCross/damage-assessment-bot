@@ -4,10 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Red Cross Damage Assessment</title>
+    <!-- eagerly fetch images so they they are pre-cached by the time the app boostraps -->
+    <img src="/dist/images/site-logo.png" hidden />
+    <img src="/dist/images/ifrc-go-logo.png" hidden />
   </head>
   <body>
     <div id="app"></div>
     <!--TODO: During build, apply a version id in query string to break cache-->
-    <script src="dist/app.js"></script>
+    <script src="dist/app.js.gz"></script>
   </body>
 </html>

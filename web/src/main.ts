@@ -1,6 +1,7 @@
-import "@/polyfills/object-assign"; //polyfill
+import "@/polyfills/all-ie-polyfills";
 import "native-promise-only";
 import "normalize.css";
+import "@/icons/style.css";
 import Vue from 'vue';
 import VueRouter from "vue-router";
 import { rcdaApiClient } from '@/services/utils/RcdaApiClient';

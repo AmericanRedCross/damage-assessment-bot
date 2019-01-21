@@ -16,7 +16,7 @@ export const webchatRedirectMiddleware = rcdaChatMiddleware(
         else {
             next();
         }
-});
+    });
 
 
 

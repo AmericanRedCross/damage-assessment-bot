@@ -74,12 +74,16 @@ export default class LoginPage extends Vue {
         <label class="rcda-input-label">{{localizer.common.loginPasswordLabel}}</label>
         <input type="password" v-model="password" class="rcda-input"/>
       </div>
-      <a href="https://go.ifrc.org/recover-account" class="login-forgot-password-link">{{localizer.common.loginPasswordRecoveryLink}}</a>
+      <div class="login-forgot-password-link">
+        <a href="https://go.ifrc.org/recover-account">{{localizer.common.loginPasswordRecoveryLink}}</a>
+      </div>
       <button type="submit" class="login-button">{{localizer.common.loginSubmitButton}}</button>
       <div class="login-ifrc-auth-info">
-        <div class="login-ifrc-auth-info-logo">logo</div>
-        <span>{{localizer.common.loginProviderDescription}}</span>
-        <a href="https://go.ifrc.org/register" class="login-register-link">{{localizer.common.loginRegistrationLink}}</a>
+        <div class="login-ifrc-auth-info-logo"></div>
+        <div>
+          <span>{{localizer.common.loginProviderDescription}}</span>
+          <a href="https://go.ifrc.org/register" class="login-register-link">{{localizer.common.loginRegistrationLink}}</a>
+        </div>
       </div>
     </form>
   </div>
@@ -137,6 +141,7 @@ export default class LoginPage extends Vue {
       font-size: 24px;
       font-weight: bold;
       text-align: center;
+      padding-top: 2px;
       padding-bottom: 20px;
       border-bottom: #D7D7D8 1px solid;
       margin-right: -$login-panel-side-padding;
@@ -188,13 +193,18 @@ export default class LoginPage extends Vue {
 
 .login-ifrc-auth-info {
   margin-top: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .login-ifrc-auth-info-logo {
+  background-image: url('/dist/images/ifrc-go-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   float: left;
   width: 45px;
   height: 45px;
-  margin-left: 14px;
+  margin-right: 14px;
   color: $rcda-light;
 }
 
