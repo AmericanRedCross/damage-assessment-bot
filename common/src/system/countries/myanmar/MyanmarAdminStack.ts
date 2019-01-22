@@ -23,6 +23,7 @@ interface MyanmarLocation {
     code: string;
     name: string;
     nameBurmese: string;
+    nameBurmeseZawgyi: string;
 }
 
 export const myanmarAdminStack: MyanmarAdminStack = myanmarAdminStackJson;

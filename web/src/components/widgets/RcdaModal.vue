@@ -21,8 +21,7 @@ export default class RcdaModal extends Vue {
 <div v-if="isOpen" class="rcda-modal-backdrop">
     <div class="rcda-modal">
         <div class="rcda-modal-header"> 
-            <!-- TODO font awesome -->
-            <button class="rcda-modal-close-button" @click="close">X</button>
+            <button class="rcda-modal-close-button" @click="close"><i class="icon-close"></i></button>
             <h2 class="rcda-modal-title">{{title}}</h2>
         </div>
         <div class="rcda-modal-content">
@@ -71,6 +70,7 @@ export default class RcdaModal extends Vue {
     border-radius: 100px;
     color: white;
     font-size: 18px;
+    font-weight: lighter;
 }
 
 .rcda-modal-close-button:hover {  

@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es2015",
+        "target": "es5",
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "./built/",
         "sourceMap": true,
         "strict": true,
-        "lib": [ "es6", "dom" ],
+        "lib": [ "dom", "es2015" ],
         "experimentalDecorators": true,
         "noImplicitAny": true,
         "baseUrl": "src",

@@ -12,7 +12,6 @@ export const rootMyanmarDialog = rcdaChatDialog(
             if (!session.conversationData.hasBeenWelcomed) {                
                 session.send(localizer.mm.welcomeMessage);
                 session.conversationData.hasBeenWelcomed = true;
-                session.delay(1500);
             }
 
             // prompt choice of 'start report' or 'help'

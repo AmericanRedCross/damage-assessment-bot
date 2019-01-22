@@ -19,7 +19,7 @@ export class RcdaCommonTextEnglish {
     signOutButton = "Sign out";
     confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
     // inputs
-    languageSelectorLabel = "Choose Language";
+    languageSelectorLabel = "";
     fileSelectorLabel = "Browse";
     dropdownInputSelectAllOption = "All";
     // login
@@ -66,6 +66,8 @@ export class RcdaMyanmarTextEnglish {
     dashboardFileImportAcceptedFileTypesHelpText = "Only .csv and .json files with correct values will be accepted. Excel (.xlsx) files will not be accepted.";
     dashboardFileImportErrorBehaviorHelpText = "If any validation issues are found, no records will be processed. Error details will be displayed below.";
     dashboardFileImportSubmitButton = "Submit";
+    dashboardFileImportFormatHelpTextPart1OutsideLink = "To ensure the format is correct, you can";
+    dashboardFileImportFormatHelpTextPart2InsideLink = "download a template here.";
     // people
     dashboardPeopleMetrics: { [x in keyof MyanmarDisasterAssessmentSummaryPeople]: string } = {
         numberAffected: "Number of people affected (SUM)",

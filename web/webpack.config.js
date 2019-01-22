@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 const targetEnvironment = (process.env.TargetEnvironment || "custom").toLowerCase();
 const isProductionGradeBuild = process.env.NODE_ENV === 'production';
@@ -71,6 +72,10 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
+      },
+      { 
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+        loader: 'url-loader?limit=100000'
       }
     ]
   },
@@ -88,7 +93,15 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true,
-    disableHostCheck: true
+    disableHostCheck: true,
+    before(app) {
+      app.use((req, res, next) => {
+        if (req.path.endsWith(".gz")) {
+          res.set('Content-Encoding', 'gzip');
+        }
+        next()
+      })
+    }
   },
   performance: {
     hints: false
@@ -96,8 +109,16 @@ module.exports = {
   devtool: '#source-map',
   mode: process.env.NODE_ENV,
   plugins: [
-    new webpack.ProvidePlugin({
-      "markdownit": 'markdown-it',
+    new copyWebpackPlugin([
+      {
+        context: 'src',
+        from: 'images/*'
+      }
+    ]),
+    // The app serves files out of azure storage for static sites, which does not currently perform compression
+    new CompressionPlugin({
+      algorithm: "gzip",
+      deleteOriginalAssets: false
     })
   ]
 }
@@ -109,11 +130,6 @@ if (isProductionGradeBuild) {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    }),
-    // The app currently serves files out of azure storage for static sites, which does not currently support compression
-    new CompressionPlugin({
-      algorithm: "gzip",
-      deleteOriginalAssets: false
     })
   ])
 }

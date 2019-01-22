@@ -15,78 +15,80 @@ import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/syst
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
-    siteTitle = "ပျက်စီးဆုံးရှုံးမှုအကဲဖြတ်ဒိုင်ခွက်";
-    signOutButton = "ဆိုင်းအောက်";
-    confirmSignOut = "သငျသညျအထဲကလက်မှတ်ထိုးရန်လိုခငျြတာသေချာလား? မဆိုမပြီးဆုံးသေးသောချက်တင်အစီရင်ခံစာများကယ်တင်ခြင်းသို့ရောက်လိမ့်မည်မဟုတ်။";
+    siteTitle = "ထိခိုက်မှုဆန်းစစ်အကဲဖြတ်ချက်ဆိုင်ရာ သိမှတ်စရာ အကြောင်းအရာများ";
+    signOutButton = "အကောင့်မှထွက်ခွာမည်";
+    confirmSignOut = "အကောင့်မှ ထွက်ခွာမည်ဆိုတာ သေချာပါသလား။ မပြီးဆုံးသေးသော အချက်အလက် အစီအရင်ခံစာ မှန်သမျှ သိမ်းဆည်းထားမည်မဟုတ်ပါ။";
     // inputs
-    languageSelectorLabel = "ဘာသာစကားများကိုရွေးချယ်ပါ";
-    fileSelectorLabel = "ရှေးခယျြ";
+    languageSelectorLabel = "ဘာသာစကား ရွေးပါ။";
+    fileSelectorLabel = "ဝက်(ဘ်)ဆိုက် စာမျက်နှာများကိုဖတ်မည်။";
     dropdownInputSelectAllOption = "အားလုံး";
     // login
-    loginHeader = "လော့ဂ်အင်";
-    loginFieldsMissingError = "ဆိုင်းအောက်";
-    loginCredentialsInvalidError = "ဆိုင်းအောက်";
-    loginUnknownError = "ဆိုင်းအောက်";
-    loginUsernameLabel = "နာမတျောကို";
-    loginPasswordLabel = "စကားဝှက်ကို";
-    loginPasswordRecoveryLink = "စကားဝှက်ကိုမေ့နေပါသလား?";
-    loginSubmitButton = "လော့ဂ်အင်";
-    loginProviderDescription = "ဆိုင်းအောက်";
-    loginRegistrationLink = "ဆိုင်းအောက်";
+    loginHeader = "အကောင့် ဝင်ရောက်မည်။";
+    loginFieldsMissingError = "အကောင့်နာမည်နှင့် စကားဝှက်ဖြည့်သွင်းပေးပါ။";
+    loginCredentialsInvalidError = "အကောင့်နာမည်နှင့် စကားဝှက် မမှန်ကန်ပါ။";
+    loginUnknownError = "မမျှော်လင့်ပဲ အကောင့် ဝင်ရောက်၍ မရပါ။ ကျေးဇူးပြုပြီး နောက်တစ်ခါ ပြန်လည် ကြိုးစားပါ။";
+    loginUsernameLabel = "အကောင့်နာမည်";
+    loginPasswordLabel = "စကားဝှက်";
+    loginPasswordRecoveryLink = "စကားဝှက် မေ့နေပါသလား။";
+    loginSubmitButton = "အကောင့် ဝင်ရောက်မည်။";
+    loginProviderDescription = "သင်၏ IFRC GO အရည်အချင်းအထောက်အထားများ အသုံးပြုရန်";
+    loginRegistrationLink = "အကောင့် စာရင်းသွင်းရန်။";
 }
 
 export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     // dashboard
-    dashboardCloseFilterPanelButton = "အနီးကပ်စိစစ်မှုများ";
-    dashboardOpenFilterPanelButton = "ပွင့်လင်းစိစစ်မှုများ";
-    dashboardFileImportButton = "လွှတ်တင်ခြင်း";
-    dashboardDownloadCsvTemplateButton = "လွှတ်တင်ခြင်း";
-    dashboardChatbotLink = "စကားပြောဆိုမှုလျှောက်လွှာကိုသွားပါ";
-    dashboardRankingSeeAllButton = "အားလုံးနားဆင်နိုင်ပါတယ်ကိုကြည့်ပါ";
-    dashboardSummaryHeadersAllDisasterTypes = "အားလုံးဘေးအန္တရာယ်အမျိုးအစားများ";
-    dashboardSummaryHeadersAllRegions = "အားလုံးဘေးအန္တရာယ်အမျိုးအစားများ";
-    dashboardSectorHeatmapHeader = "ကဏ္ဍများ";
+    dashboardCloseFilterPanelButton = "စီစစ်ချက်များ ပိတ်ရန်";
+    dashboardOpenFilterPanelButton = "စီစစ်ချက်များ ဖွင့်ရန်";
+    dashboardFileImportButton = "ဖိုင်လ်များ တင်ရန်";
+    dashboardDownloadCsvTemplateButton = "CSV ပုံစံ";
+    dashboardChatbotLink = "chatbot သို့သွားရန်";
+    dashboardRankingSeeAllButton = "အစီရင်ခံထားသည်များ အားလုံးကိုကြည့်ရန်။";
+    dashboardSummaryHeadersAllDisasterTypes = "ဘေးအန္တရာယ်ဖြစ်စဉ်အမျိုးအစားအားလုံး";
+    dashboardSummaryHeadersAllRegions = "ပြည်နယ်အားလုံး";
+    dashboardSectorHeatmapHeader = "အကျဉ်းချုပ်";
     // filter panel
-    dashboardFilterHeader = "စိစစ်မှုများ";
-    dashboardFilterDisasterTypeInutLabel = "သဘာဝဘေးအမျိုးအစား";
+    dashboardFilterHeader = "စီစစ်ချက်များ";
+    dashboardFilterDisasterTypeInutLabel = "ဘေးအန္တရာယ်ဖြစ်စဉ်အမျိုးအစား";
     dashboardFilterLocationInputGroupLabel = "တည်နေရာ";
-    dashboardFilterRegionInputLabel = "ဒေသ";
-    dashboardFilterDistrictInputLabel = "နယ်";
+    dashboardFilterRegionInputLabel = "ပြည်နယ်";
+    dashboardFilterDistrictInputLabel = "ခရိုင်";
     dashboardFilterTownshipInputLabel = "မြို့နယ်";
-    dashboardFilterDateRangeInputGroupLabel = "ရက်စွဲများ";
-    dashboardFilterStartDateInputLabel = "ရက်စွဲကိုစတင်ခြင်း";
-    dashboardFilterEndDateInputLabel = "ရက်စွဲကိုအဆုံးသတ်ခြင်း";
-    dashboarFilterApplyButton = "ရေစစ်";
+    dashboardFilterDateRangeInputGroupLabel = "ရက်စွဲ အပိုင်းအခြား";
+    dashboardFilterStartDateInputLabel = "စတင်သည့် ရက်စွဲ";
+    dashboardFilterEndDateInputLabel = "ပြီးဆုံးသည့် ရက်စွဲ";
+    dashboarFilterApplyButton = "စီစစ်ချက်များအသုံးပြုရန်";
     // file import
-    dashboardFileImportHeader = "ဆိုင်းအောက်";
-    dashboardFileImportNoFileSelectedError = "ဆိုင်းအောက်";
-    dashboardFileImportSuccessMessage = "ဆိုင်းအောက်";
-    dashboardFileImportFailureMessage = "ဆိုင်းအောက်";
-    dashboardFileImportSelectFileLabel = "ဆိုင်းအောက်";
-    dashboardFileImportAcceptedFileTypesHelpText = "ဆိုင်းအောက်";
-    dashboardFileImportErrorBehaviorHelpText = "ဆိုင်းအောက်";
-    dashboardFileImportSubmitButton = "ဆိုင်းအောက်";
+    dashboardFileImportHeader = "CSV ဖိုင်လ်တင်ရန်";
+    dashboardFileImportNoFileSelectedError = "မည်သည့် ဖိုင်လ်မှ ရွေးချယ်ထားခြင်းမရှိသေးပါ။ ကျေးဇူးပြုပြီး တင်ပို့ရန် ဖိုင်လ်တစ်ခု ရွေးချယ်ပါ။";
+    dashboardFileImportSuccessMessage = "ဖိုင်လ်တင်ပို့ခြင်း အောင်မြင်စွာ ပြီးဆုံးပါပြီ။";
+    dashboardFileImportFailureMessage = "ဖိုင်လ်တင်ပို့၍ မရပါ။";
+    dashboardFileImportSelectFileLabel = "ဖိုင်လ်ရွေးချယ်ပါ။";
+    dashboardFileImportAcceptedFileTypesHelpText = "မှန်ကန်သည့် ကိန်းဂဏန်းများပါဝင်သော .csv နှင့် .json ဖိုင်လ်များသာ လက်ခံပါမည်။ Excel (.xlsx) ဖိုင်လ်များ လက်မခံပါ။";
+    dashboardFileImportErrorBehaviorHelpText = "ထောက်အထားပြုခြင်းဆိုင်ရာ အခက်အခဲများ တွေ့ရှိခဲ့ပါက မည်သည့်အစီအရင်ခံစာများကိုမှ လုပ်ဆောင်မည်မဟုတ်ပါ။ မှားယွင်းချက် အသေးစိတ်ကို အောက်တွင်ဖော်ပြပါမည်။";
+    dashboardFileImportSubmitButton = "တင်ပြမည်။";
+    dashboardFileImportFormatHelpTextPart1OutsideLink = "ပုံစံအချိုးအစား(format) မှန်ကန်ရန်";
+    dashboardFileImportFormatHelpTextPart2InsideLink = "ပုံစံ(template)ကို ဒီမှာ ဒေါင်းလုပ်ဆွဲပါ။";
     // people
     dashboardPeopleMetrics = {
-        numberAffected: "ဆိုင်းအောက်",
-        numberBeforeDisaster: "ဆိုင်းအောက်",
-        numberDisplaced: "ဆိုင်းအောက်",
-        numberLeftArea: "ဆိုင်းအောက်",
-        numberNotDisplaced: "ဆိုင်းအောက်",
-        numberOfCasualties: "ဆိုင်းအောက်",
-        numberReturned: "ဆိုင်းအောက်",
-        numberStayedInArea: "ဆိုင်းအောက်"
+        numberBeforeDisaster: "ဘေးအန္တရာယ်မတိုင်မီ လူဦးရေ",
+        numberLeftArea: "ဒေသကိုစွန့် ခွာသွားသည့် လူဦးရေ",
+        numberReturned: "ပြန်လည်ရောက်ရှိလာသည့် လူဦးရေ",
+        numberStayedInArea: "ဒေသတွင်လက်ရှိနေထိုင်သည့် လူဦးရေ",
+        numberAffected: "ထိခိုက်ခံရသည့် လူဦးရေ (စုစုပေါင်း)",
+        numberDisplaced: "နေရပ်စွန့်ခွာသည့် လူဦးရေ",
+        numberNotDisplaced: "နေရပ်မစွန့်ခွာ ပဲ ထိခိုက်ခံရသည့် လူဦးရေ",
+        numberOfCasualties: "ဒဏ်ရာရသည့် လူဦးရေ"
     };
     // rankings    
-    dashboardRankingResponseModalitiesTitle = "ဆိုင်းအောက်";
-    dashboardRankingPrioritySectorsTitle = "ဆိုင်းအောက်";
-    dashboardRankingVulnerableGroupsTitle = "ဆိုင်းအောက်";
-    dashboardRankingAffectedGroupsTitle = "ဆိုင်းအောက်";
+    dashboardRankingResponseModalitiesTitle = "တုံ့ပြန်မှုဆိုင်ရာ နည်းလမ်းများ";
+    dashboardRankingPrioritySectorsTitle = "ဦးစားပေး အခန်းကဏ္ဏများ";
+    dashboardRankingVulnerableGroupsTitle = "ထိခိုက်ခံရလွယ်သော အုပ်စုများ";
+    dashboardRankingAffectedGroupsTitle = "အကျိုးသက်ရောက်ခံ အုပ်စုများ";
     // sectors    
-    dashboardSectorHeatMapHeader = "ဆိုင်းအောက်";
-    dashboardSectorHeatmapSeverityHeader = "ဆိုင်းအောက်";
-    dashboardSectorHeatmapFactorsHeader = "ဆိုင်းအောက်";
-    dashboardSectorHeatmapBasicNeedsHeader = "ဆိုင်းအောက်";
+    dashboardSectorHeatMapHeader = "အခန်းကဏ္ဏများ";
+    dashboardSectorHeatmapSeverityHeader = "ပြင်းထန်မှု";
+    dashboardSectorHeatmapFactorsHeader = "အကြောင်းအရင်းများ";
+    dashboardSectorHeatmapBasicNeedsHeader = "အခြေခံ လိုအပ်ချက်များ";
     // value labels
     disasterTypes: RcdaEnumLabels<DisasterTypes> = {
         [DisasterTypes.CarAccident]: "ယာဉ်မတော်မဆမှု",

@@ -17,7 +17,7 @@ module.exports = {
     }
     return entryPoints;
   },
-  devtool: undefined,//isProductionBuild ? undefined : "source-map",
+  devtool: isProductionBuild ? undefined : "inline-source-map",
   output: {
     path: pathHelper.root('dist'),
     filename: '[name]/index.js',

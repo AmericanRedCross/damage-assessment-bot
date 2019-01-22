@@ -186,7 +186,7 @@ async function deployFrontendResources(storageSessionToken) {
 
     console.log("Deploying frontend app resources");
 
-    let frontentFiles = glob.sync("**", { cwd: `${__dirname}/../web/dist` });
+    let frontentFiles = glob.sync("**", { cwd: `${__dirname}/../web/dist`, nodir: true });
     for (let fileName of frontentFiles) {
         let requestConfig = {
             headers: {
