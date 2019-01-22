@@ -1,5 +1,6 @@
 import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/chat/localization/RcdaTextEnglish";
 import { RcdaCommonTextBurmese, RcdaMyanmarTextBurmese } from "@/chat/localization/RcdaTextBurmese";
+import { RcdaCommonTextBurmeseZawgyiEncoding, RcdaMyanmarTextBurmeseZawgyiEncoding } from "@/chat/localization/RcdaTextBurmeseZawgyiEncoding";
 import { RcdaTypedSession } from "@/chat/utils/rcda-chat-types";
 import { RcdaLanguages } from "@common/system/RcdaLanguages"
 
@@ -22,11 +23,13 @@ export default class RcdaChatLocalizer {
 
 const CommonTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaCommonText} = {
     [RcdaLanguages.English]: RcdaCommonTextEnglish,
-    [RcdaLanguages.Burmese]: RcdaCommonTextBurmese
+    [RcdaLanguages.Burmese]: RcdaCommonTextBurmese,
+    [RcdaLanguages.BurmeseZawgyi]: RcdaCommonTextBurmeseZawgyiEncoding
 };
 const MyanmarTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaMyanmarText} = {
     [RcdaLanguages.English]: RcdaMyanmarTextEnglish,
-    [RcdaLanguages.Burmese]: RcdaMyanmarTextBurmese
+    [RcdaLanguages.Burmese]: RcdaMyanmarTextBurmese,
+    [RcdaLanguages.BurmeseZawgyi]: RcdaMyanmarTextBurmeseZawgyiEncoding
 };
 
 function getLocalizedText<TResult>(

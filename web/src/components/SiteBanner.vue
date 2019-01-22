@@ -6,6 +6,7 @@ import { RcdaLanguages, RcdaLanguageNames } from "@common/system/RcdaLanguages";
 import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
 import AuthService from "@/services/AuthService";
 import RcdaBaseComponent from "@/components/RcdaBaseComponent";
+import { getKeys } from "@common/utils/objectHelpers";
 
 @Component
 export default class SiteBanner extends RcdaBaseComponent {
@@ -13,7 +14,7 @@ export default class SiteBanner extends RcdaBaseComponent {
     @Inject("authService")
     private authService!: AuthService;
 
-    languages: RcdaLanguages[] = [ RcdaLanguages.English, RcdaLanguages.Burmese ] 
+    languages = [ RcdaLanguages.English, RcdaLanguages.Burmese, RcdaLanguages.BurmeseZawgyi ];
     languageNames = RcdaLanguageNames;
     selectedLanguage = RcdaLanguages.English;
 
@@ -53,6 +54,9 @@ export default class SiteBanner extends RcdaBaseComponent {
 <div class="rcda-banner">
     <div class="rcda-site-logo"></div>
     <a class="rcda-site-title" @click.prevent="goToDashboard();" href="/">{{localizer.common.siteTitle}}</a>
+    <div class="banner-sign-out" v-if="isSignedIn">
+        <button type="button" class="rcda-link-button" @click.prevent="signOut()">{{localizer.common.signOutButton}}</button>
+    </div>
     <div class="banner-language-picker">
         <label class="banner-language-picker-label">{{localizer.common.languageSelectorLabel}}</label>
         <i class="icon-language"></i>
@@ -60,9 +64,6 @@ export default class SiteBanner extends RcdaBaseComponent {
             <i class="icon-caret-down"></i>
             <option v-for="language in languages" :value="language" :key="language">{{languageNames[language]}}</option>
         </select>
-    </div>
-    <div class="banner-sign-out" v-if="isSignedIn">
-        <button type="button" class="rcda-link-button" @click.prevent="signOut()">{{localizer.common.signOutButton}}</button>
     </div>
 </div>
 </template>
@@ -77,24 +78,16 @@ export default class SiteBanner extends RcdaBaseComponent {
     padding-bottom: 12px;
     display: flex;
     align-items: center;
-
-    &:after:last-child {
-        content: "";
-        order: 4;
-        border-right: #D7D7D8 1px solid;
-        margin-left: 20px;
-        height: 45px;
-    }
 }
 
 .rcda-site-logo {
     background-image: url('/dist/images/site-logo.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: 80px;
+    width: 70px;
     box-sizing: content-box;
     border-right: #D7D7D8 1px solid;
-    height: 45px;
+    height: 40px;
     padding-right: 20px;
     margin-left: 20px;
     margin-right: 20px;
@@ -125,7 +118,8 @@ export default class SiteBanner extends RcdaBaseComponent {
         border-bottom: none;
         
         .rcda-site-title,
-        .banner-language-picker-label {
+        .banner-language-picker-label,
+        .icon-language {
             color: white;
         }
 
@@ -149,9 +143,13 @@ export default class SiteBanner extends RcdaBaseComponent {
     }
 
     .icon-language {
-        color: inherit;
         font-size: 30px;
         margin-right: 12px;
+    }
+
+    .banner-sign-out ~ & {
+        padding-right: 20px;
+        border-right: 1px #D7D7D8 solid;
     }
 }
 
@@ -177,14 +175,12 @@ export default class SiteBanner extends RcdaBaseComponent {
     position: relative;
     
     @include desktop {
-        width: 100%;
         min-width: 100px;
     }
 }
 
 .banner-sign-out {
     align-self: center;
-    margin-left: 20px;
     order: 5;
     max-width: 125px;
     

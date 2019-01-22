@@ -14,168 +14,168 @@ import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/localization/Rc
 import { myanmarRegions, myanmarDistricts, myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
-export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
-    siteTitle = "ထိခိုက်မှုဆန်းစစ်အကဲဖြတ်ချက်ဆိုင်ရာ သိမှတ်စရာ အကြောင်းအရာများ";
-    signOutButton = "အကောင့်မှထွက်ခွာမည်";
-    confirmSignOut = "အကောင့်မှ ထွက်ခွာမည်ဆိုတာ သေချာပါသလား။ မပြီးဆုံးသေးသော အချက်အလက် အစီအရင်ခံစာ မှန်သမျှ သိမ်းဆည်းထားမည်မဟုတ်ပါ။";
+export class RcdaCommonTextBurmeseZawgyiEncoding implements RcdaCommonTextEnglish {
+    siteTitle = "ထိခိုက္မႈဆန္းစစ္အကဲျဖတ္ခ်က္ဆိုင္ရာ သိမွတ္စရာ အေၾကာင္းအရာမ်ား";
+    signOutButton = "အေကာင့္မွထြက္ခြာမည္";
+    confirmSignOut = "အေကာင့္မွ ထြက္ခြာမည္ဆိုတာ ေသခ်ာပါသလား။ မျပီးဆံုးေသးေသာ အခ်က္အလက္ အစီအရင္ခံစာ မွန္သမွ် သိမ္းဆည္းထားမည္မဟုတ္ပါ။";
     // inputs
-    languageSelectorLabel = "ဘာသာစကား ရွေးပါ။";
-    fileSelectorLabel = "ဝက်(ဘ်)ဆိုက် စာမျက်နှာများကိုဖတ်မည်။";
-    dropdownInputSelectAllOption = "အားလုံး";
+    languageSelectorLabel = "ဘာသာစကား ေရြးပါ။";
+    fileSelectorLabel = "၀က္(ဘ္)ဆိုက္ စာမ်က္နွာမ်ားကိုဖတ္မည္။";
+    dropdownInputSelectAllOption = "အားလံုး";
     // login
-    loginHeader = "အကောင့် ဝင်ရောက်မည်။";
-    loginFieldsMissingError = "အကောင့်နာမည်နှင့် စကားဝှက်ဖြည့်သွင်းပေးပါ။";
-    loginCredentialsInvalidError = "အကောင့်နာမည်နှင့် စကားဝှက် မမှန်ကန်ပါ။";
-    loginUnknownError = "မမျှော်လင့်ပဲ အကောင့် ဝင်ရောက်၍ မရပါ။ ကျေးဇူးပြုပြီး နောက်တစ်ခါ ပြန်လည် ကြိုးစားပါ။";
-    loginUsernameLabel = "အကောင့်နာမည်";
-    loginPasswordLabel = "စကားဝှက်";
-    loginPasswordRecoveryLink = "စကားဝှက် မေ့နေပါသလား။";
-    loginSubmitButton = "အကောင့် ဝင်ရောက်မည်။";
-    loginProviderDescription = "သင်၏ IFRC GO အရည်အချင်းအထောက်အထားများ အသုံးပြုရန်";
-    loginRegistrationLink = "အကောင့် စာရင်းသွင်းရန်။";
+    loginHeader = "အေကာင့္ ၀င္ေရာက္မည္။";
+    loginFieldsMissingError = "အေကာင့္နာမည္နွင့္ စကား၀ွက္ျဖည့္သြင္းေပးပါ။";
+    loginCredentialsInvalidError = "အေကာင့္နာမည္ႏွင့္ စကား၀ွက္ မမွန္ကန္ပါ။";
+    loginUnknownError = "မေမွ်ာ္လင့္ပဲ အေကာင့္ ၀င္ေရာက္၍ မရပါ။ ေက်းဇူးျပဳျပီး ေနာက္တစ္ခါ ျပန္လည္ ၾကိဳးစားပါ။";
+    loginUsernameLabel = "အေကာင့္နာမည္";
+    loginPasswordLabel = "စကား၀ွက္";
+    loginPasswordRecoveryLink = "စကား၀ွက္ ေမ့ေနပါသလား။";
+    loginSubmitButton = "အေကာင့္ ၀င္ေရာက္မည္။";
+    loginProviderDescription = "သင္၏ IFRC GO အရည္အခ်င္းအေထာက္အထားမ်ား အသံုးျပဳရန္";
+    loginRegistrationLink = "အေကာင့္ စာရင္းသြင္းရန္။";
 }
 
-export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
+export class RcdaMyanmarTextBurmeseZawgyiEncoding implements RcdaMyanmarTextEnglish {
     // dashboard
-    dashboardCloseFilterPanelButton = "စီစစ်ချက်များ ပိတ်ရန်";
-    dashboardOpenFilterPanelButton = "စီစစ်ချက်များ ဖွင့်ရန်";
-    dashboardFileImportButton = "ဖိုင်လ်များ တင်ရန်";
-    dashboardDownloadCsvTemplateButton = "CSV ပုံစံ";
-    dashboardChatbotLink = "chatbot သို့သွားရန်";
-    dashboardRankingSeeAllButton = "အစီရင်ခံထားသည်များ အားလုံးကိုကြည့်ရန်။";
-    dashboardSummaryHeadersAllDisasterTypes = "ဘေးအန္တရာယ်ဖြစ်စဉ်အမျိုးအစားအားလုံး";
-    dashboardSummaryHeadersAllRegions = "ပြည်နယ်အားလုံး";
-    dashboardSectorHeatmapHeader = "အကျဉ်းချုပ်";
+    dashboardCloseFilterPanelButton = "စီစစ္ခ်က္မ်ား ပိတ္ရန္";
+    dashboardOpenFilterPanelButton = "စီစစ္ခ်က္မ်ား ဖြင့္ရန္";
+    dashboardFileImportButton = "ဖိုင္လ္မ်ား တင္ရန္";
+    dashboardDownloadCsvTemplateButton = "CSV ပံုစံ";
+    dashboardChatbotLink = "chatbot သို႕သြားရန္";
+    dashboardRankingSeeAllButton = "အစီရင္ခံထားသည္မ်ား အားလံုးကိုၾကည့္ရန္။";
+    dashboardSummaryHeadersAllDisasterTypes = "ေဘးအႏၲရာယ္ျဖစ္စဥ္အမ်ိဳးအစားအားလံုး";
+    dashboardSummaryHeadersAllRegions = "ျပည္နယ္အားလံုး";
+    dashboardSectorHeatmapHeader = "အက်ဥ္းခ်ဳပ္";
     // filter panel
-    dashboardFilterHeader = "စီစစ်ချက်များ";
-    dashboardFilterDisasterTypeInutLabel = "ဘေးအန္တရာယ်ဖြစ်စဉ်အမျိုးအစား";
-    dashboardFilterLocationInputGroupLabel = "တည်နေရာ";
-    dashboardFilterRegionInputLabel = "ပြည်နယ်";
-    dashboardFilterDistrictInputLabel = "ခရိုင်";
-    dashboardFilterTownshipInputLabel = "မြို့နယ်";
-    dashboardFilterDateRangeInputGroupLabel = "ရက်စွဲ အပိုင်းအခြား";
-    dashboardFilterStartDateInputLabel = "စတင်သည့် ရက်စွဲ";
-    dashboardFilterEndDateInputLabel = "ပြီးဆုံးသည့် ရက်စွဲ";
-    dashboarFilterApplyButton = "စီစစ်ချက်များအသုံးပြုရန်";
+    dashboardFilterHeader = "စီစစ္ခ်က္မ်ား";
+    dashboardFilterDisasterTypeInutLabel = "ေဘးအႏၲရာယ္ျဖစ္စဥ္အမ်ိဳးအစား";
+    dashboardFilterLocationInputGroupLabel = "တည္ေနရာ";
+    dashboardFilterRegionInputLabel = "ျပည္နယ္";
+    dashboardFilterDistrictInputLabel = "ခရိုင္";
+    dashboardFilterTownshipInputLabel = "ျမိဳ႕နယ္";
+    dashboardFilterDateRangeInputGroupLabel = "ရက္စြဲ အပိုင္းအျခား";
+    dashboardFilterStartDateInputLabel = "စတင္သည့္ ရက္စြဲ";
+    dashboardFilterEndDateInputLabel = "ျပီးဆံုးသည့္ ရက္စြဲ";
+    dashboarFilterApplyButton = "စီစစ္ခ်က္မ်ားအသံုးျပဳရန္";
     // file import
-    dashboardFileImportHeader = "CSV ဖိုင်လ်တင်ရန်";
-    dashboardFileImportNoFileSelectedError = "မည်သည့် ဖိုင်လ်မှ ရွေးချယ်ထားခြင်းမရှိသေးပါ။ ကျေးဇူးပြုပြီး တင်ပို့ရန် ဖိုင်လ်တစ်ခု ရွေးချယ်ပါ။";
-    dashboardFileImportSuccessMessage = "ဖိုင်လ်တင်ပို့ခြင်း အောင်မြင်စွာ ပြီးဆုံးပါပြီ။";
-    dashboardFileImportFailureMessage = "ဖိုင်လ်တင်ပို့၍ မရပါ။";
-    dashboardFileImportSelectFileLabel = "ဖိုင်လ်ရွေးချယ်ပါ။";
-    dashboardFileImportAcceptedFileTypesHelpText = "မှန်ကန်သည့် ကိန်းဂဏန်းများပါဝင်သော .csv နှင့် .json ဖိုင်လ်များသာ လက်ခံပါမည်။ Excel (.xlsx) ဖိုင်လ်များ လက်မခံပါ။";
-    dashboardFileImportErrorBehaviorHelpText = "ထောက်အထားပြုခြင်းဆိုင်ရာ အခက်အခဲများ တွေ့ရှိခဲ့ပါက မည်သည့်အစီအရင်ခံစာများကိုမှ လုပ်ဆောင်မည်မဟုတ်ပါ။ မှားယွင်းချက် အသေးစိတ်ကို အောက်တွင်ဖော်ပြပါမည်။";
-    dashboardFileImportSubmitButton = "တင်ပြမည်။";
-    dashboardFileImportFormatHelpTextPart1OutsideLink = "ပုံစံအချိုးအစား(format) မှန်ကန်ရန်";
-    dashboardFileImportFormatHelpTextPart2InsideLink = "ပုံစံ(template)ကို ဒီမှာ ဒေါင်းလုပ်ဆွဲပါ။";
+    dashboardFileImportHeader = "CSV ဖိုင္လ္တင္ရန္";
+    dashboardFileImportNoFileSelectedError = "မည္သည့္ ဖိုင္လ္မွ ေရြးခ်ယ္ထားျခင္းမရွိေသးပါ။ ေက်းဇူးျပဳျပီး တင္ပို႕ရန္ ဖိုင္လ္တစ္ခု ေရြးခ်ယ္ပါ။";
+    dashboardFileImportSuccessMessage = "ဖိုင္လ္တင္ပို႕ျခင္း ေအာင္ျမင္စြာ ျပီးဆံုးပါျပီ။";
+    dashboardFileImportFailureMessage = "ဖိုင္လ္တင္ပို႕၍ မရပါ။";
+    dashboardFileImportSelectFileLabel = "ဖိုင္လ္ေရြးခ်ယ္ပါ။";
+    dashboardFileImportAcceptedFileTypesHelpText = "မွန္ကန္သည့္ ကိန္းဂဏန္းမ်ားပါ၀င္ေသာ .csv နွင့္ .json ဖိုင္လ္မ်ားသာ လက္ခံပါမည္။ Excel (.xlsx) ဖိုင္လ္မ်ား လက္မခံပါ။";
+    dashboardFileImportErrorBehaviorHelpText = "အေထာက္အထားျပဳျခင္းဆုိင္ရာ အခက္အခဲမ်ား ေတြ႕ရွိခဲ့ပါက မည္သည့္အစီအရင္ခံစာမ်ားကိုမွ လုပ္ေဆာင္မည္မဟုတ္ပါ။ မွားယြင္းခ်က္ အေသးစိတ္ကို ေအာက္တြင္ေဖာ္ျပပါမည္။";
+    dashboardFileImportSubmitButton = "တင္ျပမည္။";
+    dashboardFileImportFormatHelpTextPart1OutsideLink = "ပံုစံအခ်ိဳးအစား(format) မွန္ကန္ရန္";
+    dashboardFileImportFormatHelpTextPart2InsideLink = "ပံုစံ(template)ကို ဒီမွာ ေဒါင္းလုပ္ဆြဲပါ။";
     // people
-    dashboardPeopleMetrics = {
-        numberBeforeDisaster: "ဘေးအန္တရာယ်မတိုင်မီ လူဦးရေ",
-        numberLeftArea: "ဒေသကိုစွန့် ခွာသွားသည့် လူဦးရေ",
-        numberReturned: "ပြန်လည်ရောက်ရှိလာသည့် လူဦးရေ",
-        numberStayedInArea: "ဒေသတွင်လက်ရှိနေထိုင်သည့် လူဦးရေ",
-        numberAffected: "ထိခိုက်ခံရသည့် လူဦးရေ (စုစုပေါင်း)",
-        numberDisplaced: "နေရပ်စွန့်ခွာသည့် လူဦးရေ",
-        numberNotDisplaced: "နေရပ်မစွန့်ခွာ ပဲ ထိခိုက်ခံရသည့် လူဦးရေ",
-        numberOfCasualties: "ဒဏ်ရာရသည့် လူဦးရေ"
+    dashboardPeopleMetrics = {        
+        numberBeforeDisaster: "ေဘးအႏၲရာယ္မတိုင္မီ လူဦးေရ",
+        numberLeftArea: "ေဒသကိုစြန္႔ခြာသြားသည့္ လူဦးေရ",
+        numberReturned: "ျပန္လည္ေရာက္ရွိလာသည့္ လူဦးေရ",
+        numberStayedInArea: "ေဒသတြင္လက္ရွိေနထိုင္သည့္ လူဦးေရ",
+        numberAffected: "ထိခိုက္ခံရသည့္ လူဦးေရ (စုစုေပါင္း)",
+        numberDisplaced: "ေနရပ္စြန္႕ခြာသည့္ လူဦးေရ",
+        numberNotDisplaced: "ေနရပ္မစြန္႕ခြာ ပဲ ထိခိုက္ခံရသည့္ လူဦးေရ",
+        numberOfCasualties: "ဒဏ္ရာရသည့္ လူဦးေရ"
     };
     // rankings    
-    dashboardRankingResponseModalitiesTitle = "တုံ့ပြန်မှုဆိုင်ရာ နည်းလမ်းများ";
-    dashboardRankingPrioritySectorsTitle = "ဦးစားပေး အခန်းကဏ္ဏများ";
-    dashboardRankingVulnerableGroupsTitle = "ထိခိုက်ခံရလွယ်သော အုပ်စုများ";
-    dashboardRankingAffectedGroupsTitle = "အကျိုးသက်ရောက်ခံ အုပ်စုများ";
+    dashboardRankingResponseModalitiesTitle = "တံု႕ျပန္မႈဆိုင္ရာ နည္းလမ္းမ်ား";
+    dashboardRankingPrioritySectorsTitle = "ဦးစားေပး အခန္းကဏၰမ်ား";
+    dashboardRankingVulnerableGroupsTitle = "ထိခိုက္ခံရလြယ္ေသာ အုပ္စုမ်ား";
+    dashboardRankingAffectedGroupsTitle = "အက်ိဳးသက္ေရာက္ခံ အုပ္စုမ်ား";
     // sectors    
-    dashboardSectorHeatMapHeader = "အခန်းကဏ္ဏများ";
-    dashboardSectorHeatmapSeverityHeader = "ပြင်းထန်မှု";
-    dashboardSectorHeatmapFactorsHeader = "အကြောင်းအရင်းများ";
-    dashboardSectorHeatmapBasicNeedsHeader = "အခြေခံ လိုအပ်ချက်များ";
+    dashboardSectorHeatMapHeader = "အခန္းကဏၰမ်ား";
+    dashboardSectorHeatmapSeverityHeader = "ျပင္းထန္မႈ";
+    dashboardSectorHeatmapFactorsHeader = "အေၾကာင္းအရင္းမ်ား";
+    dashboardSectorHeatmapBasicNeedsHeader = "အေျခခံ လိုအပ္ခ်က္မ်ား";
     // value labels
     disasterTypes: RcdaEnumLabels<DisasterTypes> = {
-        [DisasterTypes.CarAccident]: "ယာဉ်မတော်မဆမှု",
-        [DisasterTypes.Cyclone]: "ဆိုင်ကလုန်း",
-        [DisasterTypes.Earthquake]: "ငလျင်",
-        [DisasterTypes.Explosion]: "ပေါက်ကွဲမှု",
-        [DisasterTypes.Fire]: "မီးလောင်မှု",
-        [DisasterTypes.Flood]: "ရေကြီးခြင်း",
-        [DisasterTypes.IDP]: "နေရပ်စွန့်ခွာသူများ",
-        [DisasterTypes.Landslide]: "မြေပြိုခြင်း",
-        [DisasterTypes.Other]: "အခြား",
-        [DisasterTypes.Shooting]: "ပစ်ခတ်မှု",
-        [DisasterTypes.StrongWind]: "လေပြင်းတိုက်ခတ်မှု",
-        [DisasterTypes.Tornado]: "လေဆင်နှာမောင်း",
-        [DisasterTypes.Wreck]: "ရုတ်တရက်ပျက်စီးမှု"
+        [DisasterTypes.CarAccident]: "ယာဥ္မေတာ္မဆမႈ",
+        [DisasterTypes.Cyclone]: "ဆိုင္ကလုန္း",
+        [DisasterTypes.Earthquake]: "ငလ်င္",
+        [DisasterTypes.Explosion]: "ေပါက္ကြဲမႈ",
+        [DisasterTypes.Fire]: "မီးေလာင္မႈ",
+        [DisasterTypes.Flood]: "ေရႀကီးျခင္း",
+        [DisasterTypes.IDP]: "ေနရပ္စြန္႕ခြာသူမ်ား",
+        [DisasterTypes.Landslide]: "ေျမၿပိဳျခင္း",
+        [DisasterTypes.Other]: "အျခား",
+        [DisasterTypes.Shooting]: "ပစ္ခတ္မႈ",
+        [DisasterTypes.StrongWind]: "ေလျပင္းတုိက္ခတ္မႈ",
+        [DisasterTypes.Tornado]: "ေလဆင္နွာေမာင္း",
+        [DisasterTypes.Wreck]: "႐ုတ္တရက္ပ်က္စီးမႈ"
     };
     geographicalSettings: RcdaEnumLabels<GeographicalSettings> = {
-        [GeographicalSettings.Rural]: "ကျေးလက်ဒေသ",
-        [GeographicalSettings.Urban]: "မြို့ပြ",
-        [GeographicalSettings.SemiUrban]: "အလယ်အလတ်မြို့ပြ"
+        [GeographicalSettings.Rural]: "ေက်းလက္ေဒသ",
+        [GeographicalSettings.Urban]: "ၿမိဳ႕ျပ",
+        [GeographicalSettings.SemiUrban]: "အလယ္အလတ္ၿမိဳ႕ျပ"
     };
     sectors: RcdaEnumLabels<Sectors> = {
-        [Sectors.Health]: "ကျန်းမာရေး",
+        [Sectors.Health]: "က်န္းမာေရး",
         [Sectors.Food]: "အစားအစာ",
-        [Sectors.Wash]: "သန့်ရှင်းမှု",
-        [Sectors.ShelterNFI]: "အမိုးအကာ / အစားအစာ မဟုတ်သော ပစ္စည်းများ",
-        [Sectors.Protection]: "ကာကွယ်မှု",
-        [Sectors.Education]: "ပညာရေး",
-        [Sectors.Livelihood]: "အသက်မွေးဝမ်းကြောင်း",
-        [Sectors.Other]: "အခြား"
+        [Sectors.Wash]: "သန္႕ရွင္းမႈ",
+        [Sectors.ShelterNFI]: "အမိုးအကာ / အစားအစာ မဟုတ္ေသာ ပစၥည္းမ်ား",
+        [Sectors.Protection]: "ကာကြယ္မႈ",
+        [Sectors.Education]: "ပညာေရး",
+        [Sectors.Livelihood]: "အသက္ေမြး၀မ္းေၾကာင္း",
+        [Sectors.Other]: "အျခား"
     };
     sectorFactors: RcdaEnumLabels<SectorFactors> = {
-        [SectorFactors.Access]: "လက်လှမ်းမှီနိုင်မှု",
-        [SectorFactors.Availability]: "ရရှိနိုင်မှု",
-        [SectorFactors.Quality]: "အရည်အသွေး",
-        [SectorFactors.Use]: "အသုံးပြုမှု",
+        [SectorFactors.Access]: "လက္လွမ္းမွီႏိုင္မႈ",
+        [SectorFactors.Availability]: "ရရွိနိုင္မႈ",
+        [SectorFactors.Quality]: "အရည္အေသြး",
+        [SectorFactors.Use]: "အသံုးျပဳမႈ",
     };
     sectorBasicNeedsConcernScale: RcdaEnumLabels<SectorBasicNeedsConcernScale> = {
-        [1]: "ယခုလိုအပ်ချက်များအတွက် လုံးဝပူပန်ခြင်းမရှိသော လူဦးရေ",
-        [2]: "စိုးရိမ်ပူပန်သော်လည်း ကိုင်တွယ်ဖြေရှင်းနိုင်မည်ဟု ယုံကြည်သော လူဦးရေ",
-        [3]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ဥစ္စာပစ္စည်း အတွက် စိုးရိမ်နေကြပြီး ပြန်လည်ဖြေရှင်းရန် မသေချာသော လူဦးရေ",
-        [4]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ကျန်းမာရေး အတွက် စိုးရိမ်နေကြသော လူဦးရေ",
-        [5]: "မိသားစုဝင်အချို့ (သို့) အားလုံး ၏ ဘဝအတွက် စိုးရိမ်နေကြသော လူဦးရေ"
+        [1]: "ယခုလိုအပ္ခ်က္မ်ားအတြက္ လံုး၀ပူပန္ျခင္းမရွိေသာ လူဦးေရ",
+        [2]: "စိုးရိမ္ပူပန္ေသာ္လည္း ကိုင္တြယ္ေျဖရွင္းနိုင္မည္ဟု ယံုၾကည္ေသာ လူဦးေရ",
+        [3]: "မိသားစု၀င္အခ်ိဳ႕ (သို႕) အားလံုး ၏ ဥစၥာပစၥည္း အတြက္ စိုးရိမ္ေနၾကၿပီး ျပန္လည္ေျဖရွင္းရန္ မေသခ်ာေသာ လူဦးေရ",
+        [4]: "မိသားစု၀င္အခ်ိဳ႕ (သို႕) အားလံုး ၏ က်န္းမာေရး အတြက္ စိုးရိမ္ေနၾကေသာ လူဦးေရ",
+        [5]: "မိသားစု၀င္အခ်ိဳ႕ (သို႕) အားလံုး ၏ ဘ၀အတြက္ စိုးရိမ္ေနၾကေသာ လူဦးေရ"
     };
     sectorFactorImpactScale: RcdaEnumLabels<SectorFactorImpactScale> = {
-        [0]: "အကျိုးသက်ရောက်မှုလုံးဝမရှိသော ကဏ္ဍ",
-        [1]: "အနည်းငယ်အကျိုးသက်ရောက်မှုရှိသော ကဏ္ဍ",
-        [2]: "အလယ်အလတ်အကျိုးသက်ရောက်မှုရှိသောကဏ္ဍ",
-        [3]: "ကြီးမားသော အကျိုးသက်ရောက်မှုရှိသော ကဏ္ဍ"
+        [0]: "အကိ်ဳးသက္ေရာက္မႈလံုး၀မရွိေသာ က႑",
+        [1]: "အနည္းငယ္အက်ိဳးသက္ေရာက္မႈရွိေသာ က႑",
+        [2]: "အလယ္အလတ္အက်ိဳးသက္ေရာက္မႈရွိေသာက႑",
+        [3]: "ႀကီးမားေသာ အက်ိဳးသက္ေရာက္မႈရွိေသာ က႑"
     };
     sectorSeverityScale: RcdaEnumLabels<SectorSeverityScale> = {
-        [1]: "စိုးရိမ်မှု မရှိပါ - ထိန်းချုပ်မှု အောက်တွင် ရှိသော အခြေအနေ",
-        [2]: "စိုးရိမ်မှု သော အခြေအနေ - စောင့်ကြည့်လေ့လာရန်",
-        [3]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  ခံစားနေရသော လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)",
-        [4]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  သေဆုံး နိုင်ခြေရှိသော လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)",
-        [5]: "ထောက်ပံ့မှု မလုံလောက်သောကြောင့်  သေဆုံး မည့် လူဦးရေ (ကုန်ပစ္စည်းများ (သို့) ဝန်ဆောင်မှုများ ထောက်ပံ့ပေးမှု)"
+        [1]: "စိုးရိမ္မႈ မရွိပါ - ထိန္းခ်ဳပ္မႈ ေအာက္တြင္ ရွိေသာ အေျခအေန",
+        [2]: "စိုးရိမ္မႈ ေသာ အေျခအေန - ေစာင့္ၾကည့္ေလ့လာရန္",
+        [3]: "ေထာက္ပံ့မႈ မလံုေလာက္ေသာေၾကာင့္  ခံစားေနရေသာ လူဦးေရ (ကုန္ပစၥည္းမ်ား (သို႕) ၀န္ေဆာင္မႈမ်ား ေထာက္ပံ့ေပးမႈ)",
+        [4]: "ေထာက္ပံ့မႈ မလံုေလာက္ေသာေၾကာင့္  ေသဆံုး ႏိုင္ေျခရွိေသာ လူဦးေရ (ကုန္ပစၥည္းမ်ား (သို႕) ၀န္ေဆာင္မႈမ်ား ေထာက္ပံ့ေပးမႈ)",
+        [5]: "ေထာက္ပံ့မႈ မလံုေလာက္ေသာေၾကာင့္  ေသဆံုး မည့္ လူဦးေရ (ကုန္ပစၥည္းမ်ား (သို႕) ၀န္ေဆာင္မႈမ်ား ေထာက္ပံ့ေပးမႈ)"
     };
     affectedGroups: RcdaEnumLabels<AffectedGroups> = {
-        [AffectedGroups.DisplacedIdp]: "နေရပ်စွန့်ခွာသူများ",
-        [AffectedGroups.DisplacedRefugeesAndAsylumSeekers]: "နေရပ်စွန့်ခွာပြီး ဒုက္ခခံစားရသူများ နှင့်   ခိုလှုံခွင့်တောင်းသူများ",
-        [AffectedGroups.DisplacedReturnees]: "နေရပ်စွန့်ခွားပြီး ပြန်လည်ရောက်ရှိသူများ",
-        [AffectedGroups.DisplacedOthers]: "တခြားသော စိုးရိပ်ပူပန်မှုကြောင့် နေရပ်စွန့်ခွာသူများ",
-        [AffectedGroups.NonDisplacedHost]: "နေရပ်မစွန့်ခွာသော အိမ်ရှင်မဟုတ်သူများ",
-        [AffectedGroups.NonDisplacedNonHost]: "နေရပ်မစွန့်ခွာသော အိမ်ရှင်မဟုတ်သူများ"
+        [AffectedGroups.DisplacedIdp]: "ေနရပ္စြန္႕ခြာသူမ်ား",
+        [AffectedGroups.DisplacedRefugeesAndAsylumSeekers]: "ေနရပ္စြန္႕ခြာျပီး ဒုကၡခံစားရသူမ်ား ႏွင့္   ခိုလံႈခြင့္ေတာင္းသူမ်ား",
+        [AffectedGroups.DisplacedReturnees]: "ေနရပ္စြန္႕ခြားျပီး ျပန္လည္ေရာက္ရွိသူမ်ား",
+        [AffectedGroups.DisplacedOthers]: "တျခားေသာ စိုးရိပ္ပူပန္မႈေၾကာင့္ ေနရပ္စြန္႕ခြာသူမ်ား",
+        [AffectedGroups.NonDisplacedHost]: "ေနရပ္မစြန္႕ခြာေသာ အိမ္ရွင္မ်ား",
+        [AffectedGroups.NonDisplacedNonHost]: "ေနရပ္မစြန္႕ခြာေသာ အိမ္ရွင္မဟုတ္သူမ်ား"
     };
     responseModalities: RcdaEnumLabels<ResponseModalities> = {
-        [ResponseModalities.Foods]: "အစားအစာများ",
-        [ResponseModalities.HygeineItems]: "တကိုယ်ရေ သန့်ရှင်းရေး အသုံးအဆောင်များ",
-        [ResponseModalities.Misc]: "အထွေထွေ",
-        [ResponseModalities.NFIs]: "အစားအစာ မဟုတ်သော ပစ္စည်းများ",
-        [ResponseModalities.RestoringFamilyLinks]: "မိသားစု ပြန်လည်ဆက်သွယ်ရေး",
-        [ResponseModalities.Shelter]: "နေအိမ်အမိုးအကာ"
+        [ResponseModalities.Foods]: "အစားအစာမ်ား",
+        [ResponseModalities.HygeineItems]: "တကိုယ္ေရ သန္႕ရွင္းေရး အသံုးအေဆာင္မ်ား",
+        [ResponseModalities.Misc]: "အေထြေထြ",
+        [ResponseModalities.NFIs]: "အစားအစာ မဟုတ္ေသာ ပစၥည္းမ်ား",
+        [ResponseModalities.RestoringFamilyLinks]: "မိသားစု ျပန္လည္္ဆက္သြယ္ေရး",
+        [ResponseModalities.Shelter]: "ေနအိမ္အမိုးအကာ"
     };
     vulnerableGroups: RcdaEnumLabels<VulnerableGroups> = {
-        [VulnerableGroups.Children]: "ကလေးသူငယ်များ",
-        [VulnerableGroups.ChronicallyIll]: "နာတာရှည် မကျန်းမာသောသူများ",
-        [VulnerableGroups.Elderly]: "သက်ကြီးရွယ်အိုများ",
-        [VulnerableGroups.FemaleHeadOfHousehold]: "အမျိုးသမီး ဦးဆောင်သော အိမ်ထောင်စု",
-        [VulnerableGroups.LactatingMothers]: "နို့တိုက်မိခင်များ",
-        [VulnerableGroups.MentallyDisabled]: "စိတ်ပိုင်းဆိုင်ရာ မသန်စွမ်းသူများ",
-        [VulnerableGroups.MothersWithInfants]: "မွေးကင်းစ ကလေးမိခင်များ",
-        [VulnerableGroups.PhysicallyDisabled]: "ရုပ်ပိုင်းဆိုင်ရာ မသန်စွမ်းသူများ",
-        [VulnerableGroups.PregnantWomen]: "ကိုယ်ဝန်ဆောင် အမျိုးသမီးများ",
-        [VulnerableGroups.Sick]: "နာမကျန်းဖြစ်ခြင်း",
-        [VulnerableGroups.SingleHeadedHousehold]: "တစ်ဦးတည်း ဦးဆောင်သော အိမ်ထောင်စု"
+        [VulnerableGroups.Children]: "ကေလးသူငယ္မ်ား",
+        [VulnerableGroups.ChronicallyIll]: "နာတာရွည္ မက်န္းမာေသာသူမ်ား",
+        [VulnerableGroups.Elderly]: "သက္ၾကီးရြယ္အိုမ်ား",
+        [VulnerableGroups.FemaleHeadOfHousehold]: "အမ်ိဳးသမီး ဦးေဆာင္ေသာ အိမ္ေထာင္စု",
+        [VulnerableGroups.LactatingMothers]: "ႏို႕တုိက္မိခင္မ်ား",
+        [VulnerableGroups.MentallyDisabled]: "စိတ္ပိုင္းဆိုင္ရာ မသန္စြမ္းသူမ်ား",
+        [VulnerableGroups.MothersWithInfants]: "ေမြးကင္းစ ကေလးမိခင္မ်ား",
+        [VulnerableGroups.PhysicallyDisabled]: "ရုပ္ပိုင္းဆိုင္ရာ မသန္စြမ္းသူမ်ား",
+        [VulnerableGroups.PregnantWomen]: "ကိုယ္၀န္ေဆာင္ အမ်ိုဳးသမီးမ်ား",
+        [VulnerableGroups.Sick]: "နာမက်န္းျဖစ္ျခင္း",
+        [VulnerableGroups.SingleHeadedHousehold]: "တစ္ဦးတည္း ဦးေဆာင္ေသာ အိမ္ေထာင္စု"
     };
-    regions = makeObjectWithKeys(getKeys(myanmarRegions), (regionCode) => myanmarRegions[regionCode].nameBurmese);
-    districts = makeObjectWithKeys(getKeys(myanmarDistricts), (districtCode) => myanmarDistricts[districtCode].nameBurmese);
-    townships = makeObjectWithKeys(getKeys(myanmarTownships), (townshipCode) => myanmarTownships[townshipCode].nameBurmese);
+    regions = makeObjectWithKeys(getKeys(myanmarRegions), (regionCode) => myanmarRegions[regionCode].nameBurmeseZawgyi);
+    districts = makeObjectWithKeys(getKeys(myanmarDistricts), (districtCode) => myanmarDistricts[districtCode].nameBurmeseZawgyi);
+    townships = makeObjectWithKeys(getKeys(myanmarTownships), (townshipCode) => myanmarTownships[townshipCode].nameBurmeseZawgyi);
 }

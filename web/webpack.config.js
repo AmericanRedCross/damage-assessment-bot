@@ -113,12 +113,7 @@ module.exports = {
       {
         context: 'src',
         from: 'images/*'
-      },
-      {
-        context: 'src',
-        from: 'fonts/*',
-        ignore: "**/README.md"
-      },
+      }
     ]),
     // The app serves files out of azure storage for static sites, which does not currently perform compression
     new CompressionPlugin({

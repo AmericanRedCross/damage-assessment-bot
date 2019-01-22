@@ -133,11 +133,11 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
       <myanmar-dashboard-ranking :name="localizer.mm.dashboardRankingResponseModalitiesTitle" :ranking-data="summary.rankings.responseModalities" :localized-labels="localizer.mm.responseModalities"/>
     </div>
   </div>
-  <a href="/chat" class="dashboard-webchat-link" @click.prevent="$router.push('/chat')">{{localizer.mm.dashboardChatbotLink}}</a>
+  <a href="/chat" class="dashboard-webchat-link" @click.prevent="$router.push('/chat')">{{localizer.mm.dashboardChatbotLink}} <i class="icon-comments"></i></a>
 </div>
 </template>
 
-<style>
+<style lang="scss">
 
 .dashboard {  
   display: flex;
@@ -250,10 +250,18 @@ export default class MyanmarDashboardPage extends RcdaBaseComponent {
     padding-top: 11px;
     padding-bottom: 13px;
     padding-left: 22.5px;
-    padding-right: 22.5px;
+    padding-right: calc((22.5px * 2) + 10px);
     border-radius: 4px 4px 0px 0px;
     min-width: 115px;
     text-decoration: none;
+
+    i {
+      margin-left: 10px;
+      font-size: 24px;
+      position: absolute;
+      right: 22.5px;
+      bottom: 10px;
+    }
 }
 
 .dashboard-webchat-link:hover {

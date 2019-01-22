@@ -15,7 +15,6 @@ import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/chat/localizati
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
-    askPreferredLanguage = "ကျေးဇူးပြု၍ ဘာသာစကားရွေးချယ်ပါ";
     selectDropdownPlaceholder = "ရွေးပါ...";
     yes = "ဟုတ်သည်/ရှိသည်";
     no = "မဟုတ်ပါ/မရှိပါ";
