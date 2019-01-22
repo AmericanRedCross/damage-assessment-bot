@@ -1,5 +1,7 @@
 const axios = require("axios");
 const fs = require("fs");
+const google_myanmar_tools = require("myanmar-tools"); 
+const mmConverter = new google_myanmar_tools.ZawgyiConverter();
 
 (async function() {
 
@@ -14,7 +16,8 @@ const fs = require("fs");
         regions[regionId] = {
             regionCode: regionId,
             regionName: properties["ST"],
-            regionNameBurmese: properties["NAME_M3"]
+            regionNameBurmese: properties["NAME_M3"],
+            regionNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(properties["NAME_M3"])
         };
     });
     
@@ -24,7 +27,8 @@ const fs = require("fs");
         districts[districtId] = {
             districtCode: districtId,
             districtName: properties["DT"],
-            districtNameBurmese: properties["DT_Name_M3"]
+            districtNameBurmese: properties["DT_Name_M3"],
+            districtNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(properties["DT_Name_M3"])
         };
     });
 
@@ -37,6 +41,7 @@ const fs = require("fs");
             townshipCode: township["TS_PCODE"],
             townshipName: township["TS"],
             townshipNameBurmese: township["T_NAME_M3"],
+            townshipNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(township["T_NAME_M3"])
         });
     }
 
@@ -75,6 +80,7 @@ const fs = require("fs");
         region.code = township.regionCode;
         region.name = township.regionName;
         region.nameBurmese = township.regionNameBurmese;
+        region.nameBurmeseZawgyi = township.regionNameBurmeseZawgyi
         region.districts = region.districts || {};
         
         let district = region.districts[township.districtCode];
@@ -84,6 +90,7 @@ const fs = require("fs");
         district.code = township.districtCode;
         district.name = township.districtName;
         district.nameBurmese = township.districtNameBurmese;
+        district.nameBurmeseZawgyi = township.districtNameBurmeseZawgyi;
         district.regionCode = region.code;
         district.townships = district.townships || {};
         
@@ -94,6 +101,7 @@ const fs = require("fs");
         township2.code = township.townshipCode;
         township2.name = township.townshipName;
         township2.nameBurmese = township.townshipNameBurmese;
+        township2.nameBurmeseZawgyi = township.townshipNameBurmeseZawgyi;
         township2.regionCode = region.code;
         township2.districtCode = district.code;
     }

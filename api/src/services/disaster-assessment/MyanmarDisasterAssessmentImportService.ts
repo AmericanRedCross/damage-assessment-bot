@@ -81,6 +81,7 @@ export default class MyanmarDisasterAssessmentImportService {
     }
 
     private validateCsvHeaders(headers: string[]): void {
+        console.log(JSON.stringify(headers));
         let invalidHeaders: string[] = [];
         for (let header of headers) {
             if (!this.validateHeaderPath(header)) {
@@ -88,6 +89,8 @@ export default class MyanmarDisasterAssessmentImportService {
             }
         }
         if (invalidHeaders.length > 0) {
+            console.log("!!!");
+            console.log(JSON.stringify(invalidHeaders));
             throw new RcdaError(RcdaErrorTypes.ClientError, "The request CSV file contains invalid headers", invalidHeaders);
         }
     }

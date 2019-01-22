@@ -14,7 +14,6 @@ import { MyanmarVulnerableGroups as VulnerableGroups } from "@common/models/reso
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextEnglish {
-    askPreferredLanguage = "Please select a language";
     selectDropdownPlaceholder = "Choose...";
     yes = "Yes";
     no = "No";

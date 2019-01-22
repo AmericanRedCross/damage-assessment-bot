@@ -1,5 +1,5 @@
-import { Prompts, ListStyle } from "botbuilder";
-import rcdaChatDialog from "@/chat/utils/rcdaChatDialog";
+import { Prompts, ListStyle, ResumeReason } from "botbuilder";
+import rcdaChatDialog, { rcdaChatDialogStateful } from "@/chat/utils/rcdaChatDialog";
 import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
 import RcdaPrompts from "@/chat/prompts/RcdaPrompts";
 import { myanmarRegions, myanmarDistricts } from "@common/system/countries/myanmar/MyanmarAdminStack";
@@ -76,42 +76,86 @@ export const askUserAdminStack = rcdaChatDialog(
     null,
     [
         ({ session, localizer }) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardforRegions(localizer));
+            let choices = getKeys(myanmarRegions).map(myanmarRegionCode => ({
+                title: localizer.mm.regions[myanmarRegionCode],
+                value: myanmarRegionCode
+            }));
+            session.beginDialog(getUserAdminStackLevelDialog.id, { 
+                label: localizer.mm.askAdminStackRegionName, 
+                choices
+            });
         },
-        ({ session, localizer, result}) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForDistricts(localizer, result.response.regionCode));
+        ({ session, localizer, result: { response: regionCode } }) => {
+            session.beginDialog(getUserAdminStackLevelDialog.id, { 
+                label: localizer.mm.askAdminStackDistrictName, 
+                choices: getKeys(myanmarRegions[regionCode].districts).map(myanmarDistrictCode => ({
+                    title: localizer.mm.districts[myanmarDistrictCode],
+                    value: myanmarDistrictCode
+                }))
+            })
         },
-        ({ session, localizer, result}) => {
-            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForTownships(localizer, result.response.districtCode));
+        ({ session, localizer, result: { response: districtCode } }) => {
+            session.beginDialog(getUserAdminStackLevelDialog.id, { 
+                label: localizer.mm.askAdminStackTownshipName, 
+                choices: getKeys(myanmarDistricts[districtCode].townships).map(myanmarTownshipCode => ({
+                    title: localizer.mm.townships[myanmarTownshipCode],
+                    value: myanmarTownshipCode
+                }))
+            })
         },
         ({ session, result }) => {
-            session.userData.lastUsedTownship = result.response.townshipCode;
+            session.userData.lastUsedTownship = result.response;
             session.endDialog();
         }
-    ]
-);
+    ], {
+        references: () => [ getUserAdminStackLevelDialog ]
+    });
 
+export const getUserAdminStackLevelDialog = rcdaChatDialogStateful(
+    "/getUserAdminStackLevel",
+    null,
+    ({ result: { label, choices } }) => ({
+        label, 
+        choices 
+    }),
+    [
+        ({ session, localizer }) => {
+            let { label, choices } = session.dialogData;
+            RcdaPrompts.adaptiveCard(session, createAdaptiveCardForAdminStackLevelSelector(localizer, label, choices));
+        },
+        ({ session, result, localizer }) => {
+            if (result.response.value === localizer.common.selectDropdownPlaceholder) {
+                session.send("This value is required. Please try again.");
+                session.replaceDialog(getUserAdminStackLevelDialog.id, session.dialogData);
+                return;
+            }
+            session.endDialogWithResult({
+                response: result.response.value
+            });
+        }
+    ]);
 
-function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
+    
+function createAdaptiveCardForAdminStackLevelSelector(
+    localizer: RcdaChatLocalizer, 
+    label: string, 
+    choices: { title: string, value: string}[]) 
+{
     return {
         body: [
             {
                 "type": "TextBlock",
                 "size": "medium",
                 "weight": "default",
-                "text": localizer.mm.askAdminStackRegionName,
+                "text": label,
                 "horizontalAlignment": "left"
             }, {
                 "type": "Input.ChoiceSet",
                 "style": "compact",
-                "id": "regionCode",
+                "id": "value",
                 "placeholder": localizer.common.selectDropdownPlaceholder,
-                "choices": getKeys(myanmarRegions).map(myanmarRegionCode => ({
-                    title: localizer.mm.regions[myanmarRegionCode],
-                    value: myanmarRegionCode
-                }))
+                "choices": choices
             }
-
         ],
             actions: [
                 {
@@ -119,64 +163,6 @@ function createAdaptiveCardforRegions(localizer: RcdaChatLocalizer) {
                     "title": localizer.mm.submitCard,
                 }
             ]
-    };
-}
-
-function createAdaptiveCardForDistricts(localizer: RcdaChatLocalizer, regionCode: string) {
-    return {
-        body: [
-            {
-                "type": "TextBlock",
-                "size": "medium",
-                "weight": "default",
-                "text": localizer.mm.askAdminStackDistrictName,
-                "horizontalAlignment": "left"
-            }, {
-                "type": "Input.ChoiceSet",
-                "style": "compact",
-                "id": "districtCode",
-                "placeholder": localizer.common.selectDropdownPlaceholder,
-                "choices": getKeys(myanmarRegions[regionCode].districts).map(myanmarDistrictCode => ({
-                    title: localizer.mm.districts[myanmarDistrictCode],
-                    value: myanmarDistrictCode
-                }))
-            }
-        ],
-        actions: [
-            {
-                "type": "Action.Submit",
-                "title": localizer.mm.submitCard
-            }
-        ]
-    };
-}
-
-function createAdaptiveCardForTownships(localizer: RcdaChatLocalizer, districtCode: string) {
-    return {
-        body: [
-            {
-                "type": "TextBlock",
-                "size": "medium",
-                "weight": "default",
-                "text": localizer.mm.askAdminStackTownshipName,
-                "horizontalAlignment": "left"
-            }, {
-                "type": "Input.ChoiceSet",
-                "style": "compact",
-                "id": "townshipCode",
-                "placeholder": localizer.common.selectDropdownPlaceholder,
-                "choices": getKeys(myanmarDistricts[districtCode].townships).map(myanmarTownshipCode => ({
-                    title: localizer.mm.townships[myanmarTownshipCode],
-                    value: myanmarTownshipCode
-                }))
-            }
-        ],
-        actions: [
-            {
-                "type": "Action.Submit",
-                "title": localizer.mm.submitCard,
-            }
-        ]
     };
 }
 

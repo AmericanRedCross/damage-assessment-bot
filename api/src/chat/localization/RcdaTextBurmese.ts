@@ -15,48 +15,47 @@ import { RcdaCommonTextEnglish, RcdaMyanmarTextEnglish } from "@/chat/localizati
 
 // This specifies text for common functionality that is not specific to any country, such as welcome dialogues, generic labels, etc.
 export class RcdaCommonTextBurmese implements RcdaCommonTextEnglish {
-    askPreferredLanguage = "ကျေးဇူးပြု၍ ဘာသာစကားရွေးချယ်ပါ";
     selectDropdownPlaceholder = "ရွေးပါ...";
     yes = "ဟုတ်သည်/ရှိသည်";
     no = "မဟုတ်ပါ/မရှိပါ";
     // TODO: The below text was obtained from Google translate. Need a real translation
-    askToChangeSelectedLanguage = "သင်သည်သင်၏ဘာသာစကားပြောင်းလဲပစ်ရန်လိုပါသလား အဆိုပါစကားပြောဆိုမှုအပေါ်စတင်ပါလိမ့်မည်နှင့်မည်သည့်မပြီးဆုံးသေးသောအစီရင်ခံစာများပြန်လည်သတ်မှတ်မှုဖြစ်လိမ့်မည်။"
+    askToChangeSelectedLanguage = "ဘာသာစကား ပြောင်းလဲလိုပါသလား။ ဘာသာစကားပြောင်းလဲလိုပါက အသစ်ပြန်လည်စတင်မည်ဖြစ်ပြီး မတင်သွင်းရသေးသော အစီအရင်ခံချက် ဒေတာ မှန်သမျှ အစမှပြန်စမည်ဖြစ်ပါသည်။"
     formatNumber = (value: number) => value.toString();
 }
 
 export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     //misc
-    chatRedirectToWebAppMessage = "Welcome to the Red Cross Disaster Assessment chat bot! Please continue to our web app to sign in and submit your report.";
-    redirectButtonText = "Click here to sign in";
-    welcomeMessage = "Welcome to the Red Cross Disaster Assessment chat bot";
+    chatRedirectToWebAppMessage = "ကြက်ခြေနီ ဘေးအန္တရာယ် ဆန်းစစ်အကဲဖြတ်ချက် chat bot မှကြိုဆိုပါသည်။ ကျေးဇူးပြုပြီး အကောင့်ဝင်ရောက်ပြီး အစီအရင်ခံစာ တင်ရန် ကျွန်တော်တို့ web app သို့ဆက်လက်ဝင်ရောက်ပါ။";
+    redirectButtonText = "အကောင့်ဝင်ရောက်ရန် ဒီမှာ နှိပ်ပါ။";
+    welcomeMessage = "ကြက်ခြေနီ ဘေးအန္တရာယ် ဆန်းစစ်အကဲဖြတ်ချက် chat bot မှကြိုဆိုပါသည်";
     // intro
     promptUserToSelectChatbotFeature = "ကျွန်ပ်ဘာကူညီပေးရမလဲ";
     startDisasterAssessmentOption = "ဘေးအန္တရာယ် ဆိုင်ရာ သတင်းပေးပို့မှု စတင်ပြုလုပ်ပါ။";
     getHelpOption = "အကူအညီရယူရန်";
     invalidChoicePromptRetry = "ဝမ်းနည်ပါတယ်၊ ကျွန်ုပ် နားမလည်ပါ။ ကျေးဇူးပြု၍  ဖော်ပြထားသော စာရင်းထဲမှ တစ်ခုကို ရွေးချယ်ပါ။";
-    requestForHelpResponse = "The system is still under development. Please contact your supervisor.";
+    requestForHelpResponse = "စနစ်ပြုပြင်နေဆဲ ဖြစ်ပါသည်။ ကျေးဇူးပြုပြီး သင်၏ supervisor နှင့် ဆက်သွယ်ပါ။";
     // submission
-    reportSubmissionError = "Sorry, something went wrong and your report was not submitted. Please try again.";
+    reportSubmissionError = "ဝမ်းနည်းပါသည်။ တစ်စုံတစ်ခုမှားယွင်းပြီး သင်၏အစီအရင်ခံစာ တင်သွင်း၍မရပါ။ ကျေးဇူးပြု၍ နောက်တစ်ကြိမ် ကြိုးစားပါ။";
     // card buttons
     submitCard = "သိမ်းဆည်းရန်";
     acceptReviewCard = "လက်ခံရန်";
     editReviewCard = "ပြန်လည်ပြင်ဆင်ရန်";
     // report navigation
     askReportOnAnotherSection = "အခြားကိစ္စတခုခုကို သတင်းပေးပို့ လိုပါသလား။";
-    askIfReadyToSubmit = "Are you ready to submit the report?";
-    reviewReportOption = "Review";
-    submitReportOption = "Submit";
-    askWhichSectionToReview = "Which section would you like to review?";
+    askIfReadyToSubmit = "အစီအရင်ခံစာတင်ရန် အဆင်သင့်ဖြစ်ပါပြီလား။";
+    reviewReportOption = "ပြန်လည်ဆန်းစစ်ခြင်း";
+    submitReportOption = "တင်သွင်းမည်";
+    askWhichSectionToReview = "မည်သည့်အပိုင်းကို ပြန်လည်ဆန်းစစ်ချင်ပါသလဲ။";
     confirmReportSubmitted = "ကျေးဇူးတင်ပါတယ်။ သင့် သတင်းပေးပိုမှု အား တင်ပြပြီးဖြစ်ပါသည်။";
     // report info section
     askTownshipName = "မည်သည့် မြို့နယ်အတွက် သတင်းပို့လိုပါသလဲ။";
     askDisasterType = "မည်သည့် ဘေးအန္တရာယ်အမျိုးအစားဖြစ်သနည်း။";
     askGeographicalSettingType = "မည်သည့် ဒေသတွင်ဖြစ်ပါသနည်း။";
-    askToChangeSelectedAdminStack = (townshipName: string) => `The current township selected is **${townshipName}**. Do you want to change it?`;
+    askToChangeSelectedAdminStack = (townshipName: string) => `လက်ရှိရွေးချယ်ထားသော မြို့နယ်မှာ **${townshipName}** ဖြစ်ပါသည်။ ပြောင်းလဲလိုပါသလား။`;
     askAdminStackRegionName = "သင် သတင်းပေးပို့နေရသည့် တိုင်းဒေသကြီး ကို ရွေးချယ်ပါ။";
     askAdminStackDistrictName = "သင် သတင်းပေးပို့နေရသည့် ခရိုင် ကို ရွေးချယ်ပါ။";
     askAdminStackTownshipName = "သင် သတင်းပေးပို့နေ ရသည့် မြို့နယ် ကို ရွေးချယ်ပါ။";
-    reportCurrentAdminStack = (townshipName: string) => `Township is set to **${townshipName}**`;
+    reportCurrentAdminStack = (townshipName: string) => `မြို့နယ်ကို **${townshipName}** သတ်မှတ်ပြီးပါပြီ။`;
     // report section selection
     askNextSectionToReport = "မည်သည့် ကိစ္စကို သတင်းပို့လိုပါသနည်း။";
     reportSectionNamePeople = "လူများ";
@@ -78,7 +77,7 @@ export class RcdaMyanmarTextBurmese implements RcdaMyanmarTextEnglish {
     inputLabelNumberOfPeopleDisplaced = "နေရပ်စွန့်ခွာသည့် လူဦးရေ";
     inputLabelNumberOfPeopleNotDisplaced = "နေရပ်မစွန့်ခွာ ပဲ ထိခိုက်ခံရသည့် လူဦးရေ";
     inputLabelNumberOfCasualties = "ဒဏ်ရာရသည့် လူဦးရေ";
-    numberInputPlaceholder = "Quantity";
+    numberInputPlaceholder = "အရေအတွက်";
     // sectors section
     sectorSelectionHeader = "မည်သည့်ကဏ္ဍကို သတင်းပို့နိုင်ပါသလဲ";
     sectorSeverityQuestionHeader = "ပြင်းထန်မှု";
