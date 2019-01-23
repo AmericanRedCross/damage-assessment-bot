@@ -19,7 +19,7 @@ export class RcdaCommonTextEnglish {
     signOutButton = "Sign out";
     confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
     // inputs
-    languageSelectorLabel = "";
+    languageSelectorLabel = "Select Language";
     fileSelectorLabel = "Browse";
     dropdownInputSelectAllOption = "All";
     // login
