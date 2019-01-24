@@ -36,7 +36,6 @@ export default class SiteBanner extends RcdaBaseComponent {
     signOut() {
         if (confirm((<any>this).localizer.common.confirmSignOut)) {
             this.authService.logout();
-            this.$router.push({ path: `/login`, query: { redirect: this.$router.currentRoute.path } });
         }
     }
     

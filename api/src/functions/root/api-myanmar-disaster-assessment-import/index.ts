@@ -15,14 +15,14 @@ class MyanmarDisasterAssessmentImportDependencies {
 export default rcdaHttpFunction<string|MyanmarDisasterAssessmentReportModel[], void, MyanmarDisasterAssessmentImportDependencies>(
 MyanmarDisasterAssessmentImportDependencies.getInstance,
 true,
-async (req, { disasterAssessmentImportService }) => {
+async (req, { disasterAssessmentImportService }, { session }) => {
     
     let contentType = req.headers[RcdaHttpHeaders.ContentType];
     if (contentType === "text/csv") {
-        await disasterAssessmentImportService.importCsv(<string>req.body);
+        await disasterAssessmentImportService.importCsv(<string>req.body, session.userId);
     }
     else if (contentType === "application/json") {
-        await disasterAssessmentImportService.import(<MyanmarDisasterAssessmentReportModel[]>req.body);
+        await disasterAssessmentImportService.import(<MyanmarDisasterAssessmentReportModel[]>req.body, session.userId);
     }
     else {
         return {

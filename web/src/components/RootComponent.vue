@@ -66,6 +66,15 @@ export default class RootComponent extends Vue {
         // default theme does not use a class
         return "";
     }
+
+    mounted() {
+        const _this = this;
+        this.authService.onLoginStatusChange(function(isSignedIn: boolean) {
+            if (!isSignedIn) {
+                _this.$router.push({ path: `/login`, query: { redirect: _this.$router.currentRoute.path } });
+            }
+        });
+    }
 }
 </script>
 

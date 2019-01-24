@@ -42,19 +42,32 @@ export default class CsvUtility {
                 let header = headers[headerIndex];  
                 let value = row[headerIndex];
 
-                let objectPath = header.split(objectPathDelimiter);
+                if (header === "" || value === "") {
+                    continue;
+                }
+
+                let objectPathSegments = header.split(objectPathDelimiter);
                 let activeValue = item;
-                for (let i = 0; i < objectPath.length; i++) {
-                    let prop = objectPath[i];
-                    if (!activeValue[prop]) {
-                        activeValue[prop] = (i === (objectPath.length - 1)) ? value : {};
+                let propIndex = 0;
+                for (let prop of objectPathSegments) {
+                    let isLastPathSegment = propIndex === (objectPathSegments.length - 1);
+                    if (!isLastPathSegment) {
+                        if (!activeValue.hasOwnProperty(prop)) {
+                            activeValue[prop] = {};
+                        }
+                        activeValue = activeValue[prop];
                     }
-                    activeValue = activeValue[prop];
-                }  
+                    else {
+                        activeValue[prop] = value;
+                    }
+                    propIndex += 1;
+                }
+                let lastPath = objectPathSegments.slice(-1)[0];
+                activeValue[lastPath] = value;
             }
             items.push(item);
         }
-
+        console.log(JSON.stringify(items));
         return {
             headers,
             items

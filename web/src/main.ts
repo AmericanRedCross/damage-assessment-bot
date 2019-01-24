@@ -1,4 +1,4 @@
-import "@/polyfills/all-ie-polyfills";
+import "@/polyfills/objectAssign";
 import "native-promise-only";
 import "normalize.css";
 import "@/icons/style.css";

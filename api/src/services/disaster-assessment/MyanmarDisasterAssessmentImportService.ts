@@ -15,12 +15,13 @@ export default class MyanmarDisasterAssessmentImportService {
         return new MyanmarDisasterAssessmentImportService(MyanmarDisasterAssessmentService.getInstance(), new CsvUtility());
     }
 
-    public async import(items: MyanmarDisasterAssessmentReportModel[]): Promise<void> {
+    public async import(items: MyanmarDisasterAssessmentReportModel[], userId: string): Promise<void> {
         
         let validationErrors: any[] = [];
         for (let i = 0; i < items.length; i++) {
             // TODO: consider validate first, normalize second?
             let item = this.disasterAssessmentService.normalizeModel(items[i]);
+            item.userId = userId;
             let validationResult = this.disasterAssessmentService.validateModel(item);
             if (validationResult.hasErrors) {
                 validationErrors.push({
@@ -65,7 +66,7 @@ export default class MyanmarDisasterAssessmentImportService {
 
     private readonly headerPathDelimiter = ":";
 
-    public async importCsv(csvText: string): Promise<void> {
+    public async importCsv(csvText: string, userId: string): Promise<void> {
     
         let { headers, items } = await this.csvUtility.parseAsObjects(csvText);
 
@@ -73,7 +74,7 @@ export default class MyanmarDisasterAssessmentImportService {
 
         let reports = this.normalizeRowItems(items);
 
-        await this.import(reports);
+        await this.import(reports, userId);
     }
 
     private validateCsvHeaders(headers: string[]): void {
@@ -142,7 +143,6 @@ export default class MyanmarDisasterAssessmentImportService {
             addPath(header);
         }
 
-        console.log(JSON.stringify(headers));
         return headers.join(",");
     }
 }

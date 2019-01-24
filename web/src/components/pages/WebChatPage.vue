@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue from "vue";
-import { renderWebChat, createStyleSet } from "botframework-webchat/lib";
+import { renderWebChat, createStyleSet } from "botframework-webchat/lib/index-es5";
 import { Component, Inject, Watch } from "vue-property-decorator";
 import ChatService from "@/services/ChatService";
 import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
@@ -37,7 +37,7 @@ export default class WebChatPage extends RcdaBaseComponent {
     let self = this;
 
     // TODO use a chat service to cache the last used language
-    await self.chatService.setChatLanguage(this.languageService.userLanguage);
+    await self.chatService.setChatLanguage(this.languageService.userLanguage); 
 
     self.rcdaLocalizerEvents.$on("set-language", async (language: RcdaLanguages) => {
       await self.chatService.setChatLanguage(language);

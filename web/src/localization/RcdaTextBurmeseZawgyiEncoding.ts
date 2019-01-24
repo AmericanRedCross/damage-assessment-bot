@@ -18,6 +18,7 @@ export class RcdaCommonTextBurmeseZawgyiEncoding implements RcdaCommonTextEnglis
     siteTitle = "ထိခိုက္မႈဆန္းစစ္အကဲျဖတ္ခ်က္ဆိုင္ရာ သိမွတ္စရာ အေၾကာင္းအရာမ်ား";
     signOutButton = "အေကာင့္မွထြက္ခြာမည္";
     confirmSignOut = "အေကာင့္မွ ထြက္ခြာမည္ဆိုတာ ေသခ်ာပါသလား။ မျပီးဆံုးေသးေသာ အခ်က္အလက္ အစီအရင္ခံစာ မွန္သမွ် သိမ္းဆည္းထားမည္မဟုတ္ပါ။";
+    sessionTimeoutMessage = "Your session has expired. Any unfinished chat reports were not saved.";
     // inputs
     languageSelectorLabel = "ဘာသာစကား ေရြးပါ။";
     fileSelectorLabel = "၀က္(ဘ္)ဆိုက္ စာမ်က္နွာမ်ားကိုဖတ္မည္။";
@@ -61,7 +62,8 @@ export class RcdaMyanmarTextBurmeseZawgyiEncoding implements RcdaMyanmarTextEngl
     dashboardFileImportHeader = "CSV ဖိုင္လ္တင္ရန္";
     dashboardFileImportNoFileSelectedError = "မည္သည့္ ဖိုင္လ္မွ ေရြးခ်ယ္ထားျခင္းမရွိေသးပါ။ ေက်းဇူးျပဳျပီး တင္ပို႕ရန္ ဖိုင္လ္တစ္ခု ေရြးခ်ယ္ပါ။";
     dashboardFileImportSuccessMessage = "ဖိုင္လ္တင္ပို႕ျခင္း ေအာင္ျမင္စြာ ျပီးဆံုးပါျပီ။";
-    dashboardFileImportFailureMessage = "ဖိုင္လ္တင္ပို႕၍ မရပါ။";
+    dashboardFileImportFailedUnexpectedly = "File import failed unexpectedly. Please try again later.";
+    dashboardFileImportFailedValidation = "File import failed because one or more issues were found. Please fix these issues and try again.";
     dashboardFileImportSelectFileLabel = "ဖိုင္လ္ေရြးခ်ယ္ပါ။";
     dashboardFileImportAcceptedFileTypesHelpText = "မွန္ကန္သည့္ ကိန္းဂဏန္းမ်ားပါ၀င္ေသာ .csv နွင့္ .json ဖိုင္လ္မ်ားသာ လက္ခံပါမည္။ Excel (.xlsx) ဖိုင္လ္မ်ား လက္မခံပါ။";
     dashboardFileImportErrorBehaviorHelpText = "အေထာက္အထားျပဳျခင္းဆုိင္ရာ အခက္အခဲမ်ား ေတြ႕ရွိခဲ့ပါက မည္သည့္အစီအရင္ခံစာမ်ားကိုမွ လုပ္ေဆာင္မည္မဟုတ္ပါ။ မွားယြင္းခ်က္ အေသးစိတ္ကို ေအာက္တြင္ေဖာ္ျပပါမည္။";

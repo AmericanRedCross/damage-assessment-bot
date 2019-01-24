@@ -18,6 +18,7 @@ export class RcdaCommonTextEnglish {
     siteTitle = "Damage Assessment Dashboard";
     signOutButton = "Sign out";
     confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
+    sessionTimeoutMessage = "Your session has expired. Any unfinished chat reports were not saved."
     // inputs
     languageSelectorLabel = "Select Language";
     fileSelectorLabel = "Browse";
@@ -61,10 +62,11 @@ export class RcdaMyanmarTextEnglish {
     dashboardFileImportHeader = "Upload CSV File";
     dashboardFileImportNoFileSelectedError = "No file was selected. Please select a file to import.";
     dashboardFileImportSuccessMessage = "File import finished successfully.";
-    dashboardFileImportFailureMessage = "File import failed";
+    dashboardFileImportFailedUnexpectedly = "File import failed unexpectedly. Please try again later.";
+    dashboardFileImportFailedValidation = "File import failed because one or more issues were found. Please fix these issues and try again.";
     dashboardFileImportSelectFileLabel = "Select File";
     dashboardFileImportAcceptedFileTypesHelpText = "Only .csv and .json files with correct values will be accepted. Excel (.xlsx) files will not be accepted.";
-    dashboardFileImportErrorBehaviorHelpText = "If any validation issues are found, no records will be processed. Error details will be displayed below.";
+    dashboardFileImportErrorBehaviorHelpText = "If any validation issues are found, no records will be processed. Error details will be displayed above.";
     dashboardFileImportSubmitButton = "Submit";
     dashboardFileImportFormatHelpTextPart1OutsideLink = "To ensure the format is correct, you can";
     dashboardFileImportFormatHelpTextPart2InsideLink = "download a template here.";
