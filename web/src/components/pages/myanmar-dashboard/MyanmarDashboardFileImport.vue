@@ -5,11 +5,13 @@ import MyanmarDashboardService from "services/MyanmarDashboardService";
 import { enumValues } from "@common/utils/enumHelpers";
 import RcdaModal from "@/components/widgets/RcdaModal.vue";
 import RcdaFileSelector from "@/components/widgets/RcdaFileSelector.vue";
+import JsonTreeView from "vue-json-tree-view/src/TreeView.vue";
 
 @Component({
     components: {
         RcdaModal,
-        RcdaFileSelector
+        RcdaFileSelector,
+        JsonTreeView
     }
 })
 export default class MyanmarDashboardFileImport extends Vue {
@@ -22,16 +24,23 @@ export default class MyanmarDashboardFileImport extends Vue {
     get hasFeedbackMessage() {
         return this.noFileSelectedError
             || this.uploadSucceeded
-            || this.uploadFailed;
+            || this.uploadFailedValidation
+            || this.uploadFailedForUnknownReason;
     }
+
     resetFeedbackMessages() {
         this.noFileSelectedError = false;
         this.uploadSucceeded = false;
-        this.uploadFailed = false;
+        this.uploadFailedValidation = false;
+        this.uploadFailedForUnknownReason = false;
     }
+
     noFileSelectedError = false;
     uploadSucceeded = false;
-    uploadFailed = false;
+    uploadFailedValidation = false;
+    uploadFailedForUnknownReason = false;
+
+    validationErrors: any = null;
 
     async importFile() {
         this.resetFeedbackMessages();
@@ -47,8 +56,14 @@ export default class MyanmarDashboardFileImport extends Vue {
             this.uploadSucceeded = true;
             this.selectedFile = null;
         }
-        catch {
-            this.uploadFailed = true;
+        catch (exception) {
+            if (exception.response && exception.response.data && exception.response.data.error) {
+                this.uploadFailedValidation = true;
+                this.validationErrors = exception.response.data.error;
+            }
+            else {
+                this.uploadFailedForUnknownReason = true;
+            }
         }
     }
 
@@ -63,7 +78,11 @@ export default class MyanmarDashboardFileImport extends Vue {
         <div class="dashboard-upload-feedback" v-if="hasFeedbackMessage">
             <div v-if="noFileSelectedError">{{localizer.mm.dashboardFileImportNoFileSelectedError}}</div>
             <div v-if="uploadSucceeded">{{localizer.mm.dashboardFileImportSuccessMessage}}</div>
-            <div v-if="uploadFailed">{{localizer.mm.dashboardFileImportFailureMessage}}</div>
+            <div v-if="uploadFailedForUnknownReason">{{localizer.mm.dashboardFileImportFailedUnexpectedly}}</div>
+            <div v-if="uploadFailedValidation">
+                <div>{{localizer.mm.dashboardFileImportFailedValidation}}</div>
+                <json-tree-view class="dashboard-upload-errors" :data="validationErrors" :options="{ maxDepth: 6, rootObjectKey: 'error' }" />
+            </div>
         </div>
         <label class="rcda-input-label">{{localizer.mm.dashboardFileImportSelectFileLabel}}</label>
         <rcda-file-selector v-model="selectedFile" accept=".csv,.json"/> 
@@ -107,5 +126,11 @@ export default class MyanmarDashboardFileImport extends Vue {
 
 .dashboard-upload-get-template-button:hover {
     cursor: pointer;
+}
+
+.dashboard-upload-errors {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
 }
 </style>

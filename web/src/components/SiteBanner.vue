@@ -7,16 +7,20 @@ import RcdaWebLocalizer from "@/localization/RcdaWebLocalizer";
 import AuthService from "@/services/AuthService";
 import RcdaBaseComponent from "@/components/RcdaBaseComponent";
 import { getKeys } from "@common/utils/objectHelpers";
+import LanguageService from "@/services/LanguageService";
 
 @Component
 export default class SiteBanner extends RcdaBaseComponent {
 
     @Inject("authService")
     private authService!: AuthService;
+    
+    @Inject("languageService")
+    private languageService!: LanguageService;
 
     languages = [ RcdaLanguages.English, RcdaLanguages.Burmese, RcdaLanguages.BurmeseZawgyi ];
     languageNames = RcdaLanguageNames;
-    selectedLanguage = RcdaLanguages.English;
+    selectedLanguage = RcdaLanguages.English; // this gets reassigned in the mounted() hook
 
     goToDashboard() {
         this.$router.push("/");
@@ -24,6 +28,7 @@ export default class SiteBanner extends RcdaBaseComponent {
 
     @Watch("selectedLanguage")
     languageChanged() {
+        this.languageService.userLanguage = this.selectedLanguage;
         this.rcdaLocalizerEvents.language = this.selectedLanguage;
         this.rcdaLocalizerEvents.$emit("set-language", this.selectedLanguage);
     }
@@ -31,7 +36,6 @@ export default class SiteBanner extends RcdaBaseComponent {
     signOut() {
         if (confirm((<any>this).localizer.common.confirmSignOut)) {
             this.authService.logout();
-            this.$router.push({ path: `/login`, query: { redirect: this.$router.currentRoute.path } });
         }
     }
     
@@ -39,6 +43,7 @@ export default class SiteBanner extends RcdaBaseComponent {
     isSignedIn = false;
     hasSubscribedToLoginStatus = false;
     mounted() {
+        this.selectedLanguage = this.languageService.userLanguage;
         this.isSignedIn = this.authService.hasActiveSession;
         if (!this.hasSubscribedToLoginStatus) {
             let self = this;

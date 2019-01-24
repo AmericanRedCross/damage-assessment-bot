@@ -206,7 +206,7 @@ async function deployFrontendResources(storageSessionToken) {
             requestConfig);
     }
 
-    //deploy index.html (TODO: put index.html in dist folder as part of web build?)
+    //deploy index.html
     await put(`https://${configValues.storageAccountName}.blob.core.windows.net/$web/index.html`,
         fs.readFileSync(`${__dirname}/../web/index.html`),
         storageSessionToken,
@@ -217,5 +217,17 @@ async function deployFrontendResources(storageSessionToken) {
                 "x-ms-blob-type": "BlockBlob", 
                 "Content-Type": "text/html" 
             } 
+        });
+        
+    // deploy favicon.ico
+    await put(`https://${configValues.storageAccountName}.blob.core.windows.net/$web/favicon.ico`,
+        fs.readFileSync(`${__dirname}/../web/favicon.ico`),
+        storageSessionToken,
+        { 
+            headers: {
+                "x-ms-version": "2018-03-28",
+                "x-ms-date": new Date().toUTCString(),
+                "x-ms-blob-type": "BlockBlob"
+            }
         });
 }

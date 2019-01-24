@@ -15,7 +15,7 @@ export default class DisasterAssessmentRepo extends CosmosResourceRepo<MyanmarDi
 
     private readonly locationProp = modelProp<MyanmarDisasterAssessmentModel>("location");
 
-    public getMyanmarSummaryItems(query: GenerateMyanmarDisasterAssessmentSummaryRequest): Promise<MyanmarDisasterAssessmentModel[]> {
+    public getMyanmarDisasterAssessments(query: GenerateMyanmarDisasterAssessmentSummaryRequest): Promise<MyanmarDisasterAssessmentModel[]> {
         let filters: string[] = [];
         if (query.regionCode) {
             filters.push(`c.${this.locationProp}.${modelProp<MyanmarLocation>("regionCode")} = @regionCode`)

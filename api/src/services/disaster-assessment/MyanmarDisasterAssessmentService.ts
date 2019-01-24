@@ -1,11 +1,10 @@
-import fastCsv = require("fast-csv");
 import { MyanmarSectors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectors";
 import { MyanmarSectorFactors } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactors";
 import RcdaError, { RcdaErrorTypes } from "@common/system/RcdaError";
-import { enumValues, makeObjectWithEnumKeys, enumContainsValue } from "@common/utils/enumHelpers";
+import { enumValues, makeObjectWithEnumKeys } from "@common/utils/enumHelpers";
 import MyanmarDisasterAssessmentReportModel from "@common/models/resources/disaster-assessment/myanmar/MyanmarDisasterAssessmentModel";
 import DisasterAssessmentRepo from "@/repo/DisasterAssessmentRepo";
-import { getKeys, pathHelper } from "@common/utils/objectHelpers";
+import { getKeys } from "@common/utils/objectHelpers";
 import uuid = require("uuid");
 import RcdaCountries from "@common/system/RcdaCountries";
 import { MyanmarAffectedGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarAffectedGroups";
@@ -13,6 +12,12 @@ import { MyanmarResponseModalities } from "@common/models/resources/disaster-ass
 import { MyanmarVulnerableGroups } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarVulnerableGroups";
 import { MyanmarSectorFactorImpactScale } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarSectorFactorImpactScale";
 import RcdaModelValidator, { RcdaModelValidationResult } from "@common/utils/RcdaModelValidator";
+import GetMyanmarDisasterAssessmentsRequest from "@common/models/services/myanmar-disaster-assessment/GetMyanmarDisasterAssessmentsRequest";
+import { myanmarTownships } from "@common/system/countries/myanmar/MyanmarAdminStack";
+import { MyanmarDisasterTypes } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarDisasterTypes";
+import { MyanmarGeographicalSettings } from "@common/models/resources/disaster-assessment/myanmar/enums/MyanmarGeographicalSettings";
+
+const townshipIds = getKeys(myanmarTownships);
 
 export default class MyanmarDisasterAssessmentService {
     
@@ -35,6 +40,13 @@ export default class MyanmarDisasterAssessmentService {
                 throw new RcdaError(RcdaErrorTypes.ClientError, "One or more validation errors were found", validationResult.errors);
             }
         }
+
+        let township = myanmarTownships[model.location.townshipCode];
+        model.location = {
+            regionCode: township.regionCode,
+            districtCode: township.districtCode,
+            townshipCode: township.code
+        };
 
         model.id = uuid();
         model.creationDate = new Date().toJSON();
@@ -100,6 +112,11 @@ export default class MyanmarDisasterAssessmentService {
         validation.path("id").mustBeEmpty();
         validation.path("creationDate").mustBeEmpty();
         validation.path("country").mustBeEmpty();
+        validation.path("disasterType").mustBeEnumValue(MyanmarDisasterTypes);
+        validation.path("geographicalSetting").mustBeEnumValue(MyanmarGeographicalSettings);
+
+        // location
+        validation.path("location", "townshipCode").mustNotBeEmpty({ fullPath: true }).mustBeSupportedValue(townshipIds);
 
         //people
         validation.path("people", "numberBeforeDisaster").mustBeNumber(); // TODO must be greater than 0
@@ -124,7 +141,7 @@ export default class MyanmarDisasterAssessmentService {
 
                 let enumType = rankingProps[rankingProp];
                 [0, 1, 2].forEach(index => {
-                    validation.path("rankings", rankingProp, index).mustBeEnum(enumType);
+                    validation.path("rankings", rankingProp, index).mustBeEnumValue(enumType);
                 });
             }
         }
@@ -143,11 +160,15 @@ export default class MyanmarDisasterAssessmentService {
                 for (let factorId of getKeys(sectorFactors).filter(key => MyanmarSectorFactors.hasOwnProperty(key))) {
                     validation.path("sectors", sectorId, "factors", factorId)
                               .mustBeNumber()
-                              .mustBeEnum(MyanmarSectorFactorImpactScale);
+                              .mustBeEnumValue(MyanmarSectorFactorImpactScale);
                 }
             }
         }
         
         return validation.getResult();
+    }
+
+    public async get(request: GetMyanmarDisasterAssessmentsRequest) {
+        return await this.disasterAssessmentRepo.getMyanmarDisasterAssessments(request);
     }
 }

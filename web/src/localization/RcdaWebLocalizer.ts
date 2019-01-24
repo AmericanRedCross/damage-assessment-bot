@@ -6,7 +6,7 @@ import { RcdaLanguages } from "@common/system/RcdaLanguages"
 type RcdaCommonText = RcdaCommonTextEnglish;
 type RcdaMyanmarText = RcdaMyanmarTextEnglish;
 
-export default class RcdaChatLocalizer {
+export default class RcdaWebLocalizer {
 
     constructor(public language: RcdaLanguages) {}
     
@@ -16,7 +16,7 @@ export default class RcdaChatLocalizer {
         [RcdaLanguages.BurmeseZawgyi]: RcdaCommonTextBurmeseZawgyiEncoding
     };
     get common(): RcdaCommonText {
-        return new RcdaChatLocalizer.CommonTextLocaleMap[this.language]();
+        return new RcdaWebLocalizer.CommonTextLocaleMap[this.language]();
     }
     
     static readonly MyanmarTextLocaleMap: {[key in RcdaLanguages]: new() => RcdaMyanmarText} = {
@@ -25,6 +25,6 @@ export default class RcdaChatLocalizer {
         [RcdaLanguages.BurmeseZawgyi]: RcdaMyanmarTextBurmeseZawgyiEncoding
     };
     get mm(): RcdaMyanmarText {
-        return new RcdaChatLocalizer.MyanmarTextLocaleMap[this.language]();
+        return new RcdaWebLocalizer.MyanmarTextLocaleMap[this.language]();
     }
 }

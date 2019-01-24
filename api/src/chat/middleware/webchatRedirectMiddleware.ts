@@ -5,7 +5,7 @@ import RcdaChatLocalizer from "@/chat/localization/RcdaChatLocalizer";
 
 export const webchatRedirectMiddleware = rcdaChatMiddleware(
     () => ({
-        webChatUrl: process.env["WebAppUrl"] + "/chat"
+        webChatUrl: removeTrailingSlashes(process.env["WebAppUrl"]) + "/chat"
     }),
     ({ session, next, localizer }, { webChatUrl }) => {
         const channelId = session.message.address.channelId;
@@ -18,7 +18,12 @@ export const webchatRedirectMiddleware = rcdaChatMiddleware(
         }
     });
 
-
+function removeTrailingSlashes(route: string) {
+    while (route.endsWith("/")) {
+        route = route.slice(0, -1);
+    }
+    return route;
+}
 
 function createRedirectionHeroCard(session: RcdaTypedSession, localizer: RcdaChatLocalizer, webChatUrl: string): HeroCard {
 
