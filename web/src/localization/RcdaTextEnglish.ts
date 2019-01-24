@@ -18,7 +18,7 @@ export class RcdaCommonTextEnglish {
     siteTitle = "Damage Assessment Dashboard";
     signOutButton = "Sign out";
     confirmSignOut = "Are you sure you want to sign out? Any unfinished chat reports will not be saved.";
-    sessionTimeoutMessage = "Your session has expired. Any unfinished chat reports were not saved."
+    sessionTimeoutMessage = "Your session has expired. Any unfinished chat reports were not saved.";
     // inputs
     languageSelectorLabel = "Select Language";
     fileSelectorLabel = "Browse";
