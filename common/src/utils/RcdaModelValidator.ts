@@ -86,13 +86,23 @@ class RcdaModelPathValidator<TModel> {
         return this;
     }
     
-    public mustNotBeEmpty(): RcdaModelPathValidator<TModel> {
+    private getOptions<TOptions extends object>(defaultOptions: TOptions, overrideOptions?: TOptions): TOptions {
+        return overrideOptions ? Object.assign({}, defaultOptions, overrideOptions) : defaultOptions;
+    }
+
+    private static mustNotBeEmptyOptions = Object.freeze({ fullPath: false });
+    public mustNotBeEmpty(options?: typeof RcdaModelPathValidator.mustNotBeEmptyOptions): RcdaModelPathValidator<TModel> {
+        options = this.getOptions(RcdaModelPathValidator.mustNotBeEmptyOptions, options);
+
         let { value, pathExists } = getValueAtPath(this.model, this.path);
         if (!pathExists) {
+            if (options.fullPath) {
+                this.validator.addError(RcdaFieldValidationErrorType.MustNotBeEmpty, this.path);
+            }
             return this;
         }
         if (this.isNullOrUndefined(value) || this.isWhitespaceString(value) || (typeof value === "number" && isNaN(value))) {
-            this.validator.addError(RcdaFieldValidationErrorType.MustNotBeEmpty, this.path)
+            this.validator.addError(RcdaFieldValidationErrorType.MustNotBeEmpty, this.path);
         }
         return this;
     }
@@ -108,17 +118,6 @@ class RcdaModelPathValidator<TModel> {
         }
         if (!Array.isArray(value)) {
             this.validator.addError(RcdaFieldValidationErrorType.MustBeNumber, this.path)
-        }
-        return this;
-    }
-
-    public mustBeEnum(enumType: any): RcdaModelPathValidator<TModel> {
-        let { value, pathExists } = getValueAtPath(this.model, this.path);
-        if (!pathExists || this.isNullOrUndefined(value)) {
-            return this;
-        }
-        if (!enumContainsValue(enumType, value, true)) {
-            this.validator.addError(RcdaFieldValidationErrorType.MustBeEnum, this.path);
         }
         return this;
     }
@@ -172,18 +171,40 @@ class RcdaModelPathValidator<TModel> {
         }
         return this;
     }
+
+    public mustBeSupportedValue<TValue>(acceptedValues: TValue[]): RcdaModelPathValidator<TModel> {
+        let { value, pathExists } = getValueAtPath(this.model, this.path);
+        if (!pathExists || this.isNullOrUndefined(value)) {
+            return this;
+        }
+        if (acceptedValues.indexOf(value) === -1) {
+            this.validator.addError(RcdaFieldValidationErrorType.MustBeSupportedValue, this.path);
+        }
+        return this;
+    }
+
+    public mustBeEnumValue(enumType: any): RcdaModelPathValidator<TModel> {
+        let { value, pathExists } = getValueAtPath(this.model, this.path);
+        if (!pathExists || this.isNullOrUndefined(value)) {
+            return this;
+        }
+        if (!enumContainsValue(enumType, value, true)) {
+            this.validator.addError(RcdaFieldValidationErrorType.MustBeSupportedValue, this.path);
+        }
+        return this;
+    }
 }
 
 export enum RcdaFieldValidationErrorType {
     MustNotBeEmpty = "MustNotBeEmpty",
     MustBeEmpty = "MustBeEmpty",
     MustBeNumber = "MustBeNumber",
-    MustBeEnum = "MustBeEnum",
     MustBeArray = "MustBeArray",
     MustBeObject = "MustBeObject",
     MustBeDate = "MustBeDate",
     MustNotExceedMaxLength = "MustNotExceedMaxLength",
-    MustHaveValidProperties = "MustHaveValidProperties"
+    MustHaveValidProperties = "MustHaveValidProperties",
+    MustBeSupportedValue = "MustBeSupportedValue"
 }
 
 export interface RcdaFieldValidationErrors {

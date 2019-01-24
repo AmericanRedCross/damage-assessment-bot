@@ -27,7 +27,7 @@ export default class MyanmarDisasterAssessmentSummaryService {
         console.log(request.startDate);
         console.log(request.endDate);
         
-        let items = await this.disasterAssessmentRepo.getMyanmarSummaryItems(request);
+        let items = await this.disasterAssessmentRepo.getMyanmarDisasterAssessments(request);
 
         let result = this.getEmptyResponse();
 

@@ -175,6 +175,7 @@ export default class LoginPage extends Vue {
     padding-left: 26px;
     padding-right: 26px;
     border-radius: 1000px;
+    margin-top: 10px;
 }
 
 .login-button:hover {  
@@ -189,6 +190,7 @@ export default class LoginPage extends Vue {
   text-decoration: none;
   padding-top: 5px;
   padding-bottom: 5px;
+  margin-top: 5px;
 }
 
 .login-ifrc-auth-info {

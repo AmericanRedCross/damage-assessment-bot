@@ -7,7 +7,10 @@ const localizerPlugin: PluginObject<null> = {
     install(vue: VueConstructor) {
         vue.mixin({
             data() {
-                return { localizer: new RcdaWebLocalizer((<RcdaBaseComponent>this).rcdaLocalizerEvents.language || RcdaLanguages.English) };
+                return { 
+                    // just an initial value, will get overwritten below
+                    localizer: new RcdaWebLocalizer(RcdaLanguages.English)
+                };
             },
             mounted() {
                 let localizerEvents = (<RcdaBaseComponent>this).rcdaLocalizerEvents;
@@ -17,7 +20,11 @@ const localizerPlugin: PluginObject<null> = {
                     });
                 }
             },
-            inject: [ "rcdaLocalizerEvents" ]
+            inject: {
+                "rcdaLocalizerEvents": {
+                    default: null
+                }
+            }
         });
     }
 };
