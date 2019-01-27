@@ -18,15 +18,15 @@ module.exports = async function deployArmTemplate(templateId, armSessionToken, e
     await put(deploymentUrl,
         {
             "properties": {
-              "mode": "Incremental",
-              "template": template,
-              "parameters": parameters,
+                "mode": "Incremental",
+                "template": template,
+                "parameters": parameters,
             }
         },
         armSessionToken);
 
-    let timeoutInMinutes = 10; 
-    console.log(`Waiting for ${templateId} template deployment to finish. Script will timeout if deployment exceeds ${timeoutInMinutes} minutes.`)
+    let timeoutInSeconds = 600; 
+    console.log(`Waiting for ${templateId} template deployment to finish. Script will timeout if deployment exceeds ${timeoutInSeconds} seconds.`)
 
     let deploymentStartTime = Date.now();
     while (true) {
@@ -43,12 +43,12 @@ module.exports = async function deployArmTemplate(templateId, armSessionToken, e
             }
             throw new Error(`Deployment for ${templateId} template failed. Deployment id: ${deploymentId}`);
         }
-        let minutesElapsed = (Date.now() - deploymentStartTime) / (60 * 1000)
-        if (minutesElapsed > timeoutInMinutes) {
-            throw new Error(`Deployment has exceeded ${timeoutInMinutes} minute timeout. Deployment id: ${deploymentId}`);
+        let secondsElapsed = (Date.now() - deploymentStartTime) / (1000)
+        if (secondsElapsed > timeoutInSeconds) {
+            throw new Error(`Deployment has exceeded ${timeoutInSeconds} second timeout. Deployment id: ${deploymentId}`);
         }
 
-        console.log(`${minutesElapsed.toFixed(2)} minutes elapsed...`)
+        console.log(`${secondsElapsed} seconds have elapsed...`)
     }
 }
 
