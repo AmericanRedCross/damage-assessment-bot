@@ -2,7 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2018-05-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {
+        "deploymentRegion": {
             "type": "string"
         },
         "tenantId": {
@@ -36,7 +36,7 @@
             "type": "Microsoft.KeyVault/vaults",
             "name": "[parameters('keyVaultName')]",
             "kind": "StorageV2",
-            "location": "[parameters('location')]",
+            "location": "[parameters('deploymentRegion')]",
             "apiVersion": "2018-02-14",
             "properties": {
                 "sku": {
