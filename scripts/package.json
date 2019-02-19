@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "update-townships": "node ./updateMyanmarTownships.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "myanmar-tools": "^1.1.1"
+  }
+}

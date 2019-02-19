@@ -10,6 +10,10 @@ const mmConverter = new google_myanmar_tools.ZawgyiConverter();
     const myanmarDistrictsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_district_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
     const myanmarTownshipsResponse = await axios.get("http://geonode.themimu.info/geoserver/wfs?srsName=EPSG%3A4326&typename=geonode%3Amyanmar_township_boundaries&outputFormat=json&version=1.0.0&service=WFS&request=GetFeature")
 
+    let numberOfRegions = 0;
+    let numberOfDistricts = 0;
+    let numberOfTownships = 0;
+
     const regions = {};
     myanmarRegionsResponse.data.features.forEach(({ properties }) => {
         let regionId = properties["ST_PCODE"];
@@ -19,6 +23,7 @@ const mmConverter = new google_myanmar_tools.ZawgyiConverter();
             regionNameBurmese: properties["NAME_M3"],
             regionNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(properties["NAME_M3"])
         };
+        numberOfRegions++;
     });
     
     const districts = {};
@@ -30,6 +35,7 @@ const mmConverter = new google_myanmar_tools.ZawgyiConverter();
             districtNameBurmese: properties["DT_Name_M3"],
             districtNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(properties["DT_Name_M3"])
         };
+        numberOfDistricts++;
     });
 
     const townships = [];    
@@ -43,6 +49,7 @@ const mmConverter = new google_myanmar_tools.ZawgyiConverter();
             townshipNameBurmese: township["T_NAME_M3"],
             townshipNameBurmeseZawgyi: mmConverter.unicodeToZawgyi(township["T_NAME_M3"])
         });
+        numberOfTownships++;
     }
 
     // sort townships by region, then by district, then by township
@@ -107,4 +114,9 @@ const mmConverter = new google_myanmar_tools.ZawgyiConverter();
     }
     
     fs.writeFileSync(`${__dirname}/../common/src/system/countries/myanmar/myanmarAdminStack.json`, JSON.stringify(locations, null, 4));
+    console.log("The Myanmar townships list was updated successfully.");
+    console.log(`Total number of regions imported -- ${numberOfRegions}`);
+    console.log(`Total number of districts imported -- ${numberOfDistricts}`);
+    console.log(`Total number of townships imported -- ${numberOfTownships}`);
+
 })();
