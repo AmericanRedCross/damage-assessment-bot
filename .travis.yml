@@ -1,0 +1,52 @@
+language: node_js
+node_js:
+- lts/*
+install: npm install
+before_script: |
+    case "$TRAVIS_BRANCH" in
+        master) 
+            export TargetEnvironment=prod
+            ;;
+        staging) 
+            export TargetEnvironment=stage
+            ;;
+        *)
+            export TargetEnvironment=dev
+            ;;
+    esac
+    echo "TargetEnvironment: $TargetEnvironment"
+script: 
+- npm run build:dev --prefix api
+- npm run build:dev --prefix web
+- npm run build --prefix api
+- npm run build --prefix web
+- npm run test:ci --prefix api
+cache:
+  directories:
+  - node_modules
+deploy:
+- provider: script
+  script: npm run start --prefix deploy
+  skip_cleanup: true
+  verbose: true
+  on:
+    branch: dev
+- provider: script
+  script: npm run start --prefix deploy
+  skip_cleanup: true
+  verbose: true
+  on:
+    branch: staging
+- provider: script
+  script: npm run start --prefix deploy 
+  skip_cleanup: true
+  verbose: true
+  on:
+    branch: master
+- provider: script
+  script: npm run start --prefix deploy
+  skip_cleanup: true
+  verbose: true
+  on:
+    all_branches: true
+    condition: $deploy = dev && $TRAVIS_EVENT_TYPE = api # event type condition ensures this was manually triggered in travis dashboard ui

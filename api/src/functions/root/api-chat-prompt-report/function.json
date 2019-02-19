@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "type": "httpTrigger",
+      "route": "chat/prompt/report",
+      "methods": [
+        "post"
+      ],
+      "authLevel": "anonymous",
+      "direction": "in",
+      "name": "req"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "queueItems",
+      "queueName": "chat-prompt",
+      "connection": "AzureWebJobsStorage"
+    }
+  ],
+  "disabled": false
+}

@@ -1,0 +1,24 @@
+{
+    "id": "Users",
+    "defaultTtl": -1,
+    "partitionKey": {
+        "paths": [ "/partitionKey" ],
+        "kind": "Hash"
+    },
+    "indexingPolicy": {
+        "automatic": true,
+        "indexingMode": "Consistent",
+        "includedPaths": [
+            {
+                "path": "/*",
+                "indexes": [
+                    {
+                        "dataType": "String",
+                        "precision": -1,
+                        "kind": "Range"
+                    }
+                ]
+            }
+        ]
+    }
+}

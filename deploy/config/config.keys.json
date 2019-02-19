@@ -1,0 +1,9 @@
+{
+    "functionAppName": "Name of the function app resource",
+    "storageAccountName": "Name of the storage account resource used by the azure functions and web app resources",
+    "cosmosAccountName": "Name of the cosmos db instance used by the app",
+    "ifrcGoHost": "Host name of the IFRC GO api. Expected to include the protocol (should be 'https://')",
+    "microsoftAppId": "Id of the app registration used the bot registration service",
+    "microsoftAppPassword": "Password for the app registration used by the bot registration service",
+    "jsonWebTokenSignature": "Arbitrary value (guid, etc.) used to sign json web tokens for api authorization. Changing this will invalidate all active client sessions."
+}

@@ -1,0 +1,230 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "functionAppName": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "deploymentRegion": {
+            "type": "string"
+        },
+        "cosmosAccountName": {
+            "type": "string"
+        },
+        "microsoftAppId": {
+            "type": "securestring"
+        }
+    },
+    "variables": {
+        "apiHealthEndpoint": "/api/health"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccountName')]",
+            "apiVersion": "2018-07-01",
+            "location": "[parameters('deploymentRegion')]",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "StorageV2",
+            "properties": {
+                "networkAcls": {
+                    "bypass": "AzureServices",
+                    "virtualNetworkRules": [],
+                    "ipRules": [],
+                    "defaultAction": "Allow"
+                },
+                "supportsHttpsTrafficOnly": true,
+                "encryption": {
+                    "services": {
+                        "file": {
+                            "enabled": true,
+                            "lastEnabledTime": "2018-10-07T00:43:29.1745736Z"
+                        },
+                        "blob": {
+                            "enabled": true,
+                            "lastEnabledTime": "2018-10-07T00:43:29.1745736Z"
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                },
+                "accessTier": "Hot"
+            }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "kind": "functionapp",
+            "name": "[parameters('functionAppName')]",
+            "apiVersion": "2018-02-01",
+            "location": "[parameters('deploymentRegion')]",
+            "sku": {
+                "name": "Y1",
+                "tier": "Dynamic",
+                "size": "Y1",
+                "family": "Y",
+                "capacity": 0
+            },
+            "properties": {
+                "name": "[parameters('functionAppName')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('functionAppName')]",
+            "location": "[parameters('deploymentRegion')]",
+            "kind": "functionapp",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('functionAppName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('functionAppName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms',parameters('functionAppName'))]",
+                "siteConfig": {
+                    "use32BitWorkerProcess": false,
+                    "cors": {
+                        "allowedOrigins": [
+                            "*"
+                        ]
+                    }
+                }
+            },
+            "resources": [
+                {
+                    "apiVersion": "2018-02-01",
+                    "name": "[concat(parameters('functionAppName'), '/','swap')]",
+                    "type": "Microsoft.Web/sites/slots",
+                    "kind": "functionapp",
+                    "location": "[parameters('deploymentRegion')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
+                    ],
+                    "properties": {
+                        "siteConfig": {
+                            "use32BitWorkerProcess": false,
+                            "cors": {
+                                "allowedOrigins": [
+                                    "*"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "[parameters('functionAppName')]",
+            "type": "Microsoft.Insights/components",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]"
+            ],
+            "properties": {
+                "ApplicationId": "[parameters('functionAppName')]"
+            }
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "api-health-check",
+            "type": "Microsoft.Insights/webtests",
+            "location": "[parameters('deploymentRegion')]",
+            "tags": {
+                "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('functionAppName')))]": "Resource"
+            },
+            "properties": {
+                "Name": "Keep Azure Functions Runtime Warm",
+                "Description": "Pings the API's health check endpoint every 5 minutes. Verifies availability and also keeps the app running, reducing chance of slow-running cold starts.",
+                "Enabled": true,
+                "Frequency": 300,
+                "Timeout": 120,
+                "Kind": "ping",
+                "RetryEnabled": true,
+                "Locations": [
+                    {
+                        "Id": "us-ca-sjc-azr"
+                    },
+                    {
+                        "Id": "us-tx-sn1-azr"
+                    },
+                    {
+                        "Id": "us-il-ch1-azr"
+                    },
+                    {
+                        "Id": "us-va-ash-azr"
+                    },
+                    {
+                        "Id": "us-fl-mia-edge"
+                    }
+                ],
+                "Configuration": {
+                    "WebTest": "[concat('<WebTest Name=\"Keep Azure Functions Runtime Warm\" Id=\"4f2bda38-fdcd-426a-ab10-1c5467ad607a\" Enabled=\"True\" Timeout=\"120\" xmlns=\"http://microsoft.com/schemas/VisualStudio/TeamTest/2010\" PreAuthenticate=\"True\" Proxy=\"default\" StopOnError=\"False\" > <Items> <Request Method=\"GET\" Guid=\"a8ac8c43-f56b-9a5b-03f8-8db48ef530fc\" Version=\"1.1\" Url=\"https://', reference(resourceId('Microsoft.Web/sites', parameters('functionAppName'))).defaultHostName, variables('apiHealthEndpoint'), '\" ThinkTime=\"0\" Timeout=\"120\" ParseDependentRequests=\"False\" FollowRedirects=\"True\" RecordResult=\"True\" Cache=\"False\" ResponseTimeGoal=\"0\" Encoding=\"utf-8\" ExpectedHttpStatusCode=\"200\" IgnoreHttpStatusCode=\"False\" /> </Items> </WebTest>')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Insights/components', parameters('functionAppName'))]"
+            ]
+        },
+        {
+            "apiVersion": "2016-03-31",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[parameters('cosmosAccountName')]",
+            "location": "[parameters('deploymentRegion')]",
+            "properties": {
+                "name": "[parameters('cosmosAccountName')]",
+                "databaseAccountOfferType": "Standard",
+                "locations": [
+                    {
+                        "locationName": "[parameters('deploymentRegion')]",
+                        "failoverPriority": 0
+                    },
+                    {
+                        "locationName": "[parameters('deploymentRegion')]",
+                        "failoverPriority": 1
+                    }
+                ],
+                "capabilities": []
+            }
+        },
+        {
+            "apiVersion": "2018-07-12",
+            "name": "[parameters('functionAppName')]",
+            "type": "Microsoft.BotService/botServices",
+            "location": "global",
+            "sku": {
+                "name": "S1"
+            },
+            "kind": "function",
+            "properties": {
+                "displayName": "[parameters('functionAppName')]",
+                "description": "",
+                "iconUrl": "//bot-framework.azureedge.net/bot-icons-v1/bot-framework-default.png",
+                "endpoint": "[concat('https://', parameters('functionAppName'), '.azurewebsites.net/api/chat/messages')]",
+                "msaAppId": "[parameters('microsoftAppId')]",
+                "developerAppInsightKey": "[reference(resourceId('Microsoft.Insights/components', parameters('functionAppName')), '2015-05-01').InstrumentationKey]",
+                "developerAppInsightsApplicationId": "[reference(resourceId('Microsoft.Insights/components', parameters('functionAppName')), '2015-05-01').AppId]",
+                "luisAppIds": [],
+                "endpointVersion": null,
+                "configuredChannels": [],
+                "enabledChannels": [
+                    "webchat",
+                    "directline"
+                ],
+                "isDeveloperAppInsightsApiKeySet": null,
+                "publishingCredentials": null,
+                "parameters": null,
+                "allSettings": null,
+                "storageResourceId": null
+            }
+        }
+    ],
+    "outputs": {}
+}

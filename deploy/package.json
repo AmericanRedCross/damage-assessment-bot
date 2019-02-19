@@ -1,0 +1,18 @@
+{
+    "scripts": {
+        "start": "node ./deploy.js",
+        "postinstall": "npm run copy-config-template",
+        "copy-config-template": "cpy .\\config\\config.values.template.json .\\config --no-overwrite --rename=config.values.json"
+    },
+    "dependencies": {
+        "@azure/cosmos": "^2.0.1",
+        "adm-zip": "^0.4.11",
+        "axios": "^0.18.0",
+        "crypto": "^1.0.1",
+        "glob": "^7.1.3",
+        "jsonwebtoken": "^8.3.0"
+    },
+    "devDependencies": {
+        "cpy-cli": "^2.0.0"
+    }
+}

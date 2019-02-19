@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "lib": ["es6", "es2015"],
+        "types": ["reflect-metadata"],
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "noImplicitAny": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "outDir": "bin",
+        "composite": true,
+        "declarationMap": true,
+        "rootDir": "./src",
+        "baseUrl": "src",
+        "sourceRoot": "src",
+        "sourceMap": true,
+        "paths": {
+            "@common/*": [ "./*" ]
+        }
+    },
+    "include": [
+        "./src/**/*.ts",
+    ],
+    "files": [
+        "./src/system/countries/myanmar/myanmarTownships.json",
+        "./src/system/countries/myanmar/myanmarAdminStack.json"
+    ]
+}
