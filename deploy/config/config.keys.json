@@ -5,5 +5,5 @@
     "ifrcGoHost": "Host name of the IFRC GO api. Expected to include the protocol (should be 'https://')",
     "microsoftAppId": "Id of the app registration used the bot registration service",
     "microsoftAppPassword": "Password for the app registration used by the bot registration service",
-    "jsonWebTokenSignature": "Arbitrary value (guid, etc.) used to sign json web tokens for api authorization. Changing this will invalidate all active client sessions."
+    "jsonWebTokenSignature": "Arbitrary value (guid, etc.) used to sign json web tokens for api authorization. Changing this will invalidate all active client sessions. This is highly sensitive, and if leaked it can be used to impersonate any user."
 }
