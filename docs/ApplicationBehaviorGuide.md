@@ -10,6 +10,23 @@ The bot currently supports interaction in the following languages –
 - Burmese (Unicode)
 - Burmese (Zawgyi)
 
+## Myanmar Summary Aggregation Methodology
+
+The following describes how the Myanmar Diasaster Assessment Dashboard aggregates reports that are captured within the filter criteria:
+
+The 'Number of X' fields (Number of people before disaster, etc.) are aggregated as the sum of the field across all reports. If a user submits a report without one of these values, it counts as 0.
+
+The Sector and Sector Factor values (Severity, Access, etc.) are aggregated as the average across all reports. If a user submits a report without one of these values, it counts as 0.
+
+The Rankings sections (Affected Groups, Priority Sectors, etc.) are ranked by giving each ranking a 'ranking score' and taking the sum for each value. The values with the highest score sum are ranked highest. The ranking score is calculated as follows:
+
+| Rank #     | Calculation   | Ranking Score |
+|:-----------|:--------------|:--------------|
+| 1          | 1 - ( 0 / 3 ) | 1             |
+| 2          | 1 - ( 1 / 3 ) | .6666         |
+| 3          | 1 - ( 2 / 3 ) | .3333         |
+| Not ranked | 1 - ( 3 / 3 ) | 0             |
+
 ## Facebook Integration
 The integration of Facebook and the bot is very well documented over here by Microsoft - https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-facebook?view=azure-bot-service-4.0#connect-a-bot-to-facebook-messenger
 
