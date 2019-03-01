@@ -5,16 +5,22 @@ const { azureResourceUrl } = require("../utils/resourceHelpers");
 const { post } = require("../utils/httpRequests");
 const { configValues } = require("../utils/config");
 
-module.exports = async function deployCosmos(armSessionToken) {
+module.exports = async function deployCosmos(armSessionToken, { cosmosEndpoint, cosmosKey }  = {}) {
 
-    console.log("Deploying cosmos collections")
+    console.log("Deploying cosmos collections");
 
-    let cosmosKeyResponse = await post(azureResourceUrl("Microsoft.DocumentDB/databaseAccounts", `${configValues.cosmosAccountName}/listKeys`, "2015-04-08"), null, armSessionToken);
+    if (!cosmosEndpoint) {
+        cosmosEndpoint = `https://${configValues.cosmosAccountName}.documents.azure.com`;
+    }
+    if (!cosmosKey) {
+        let cosmosKeyResponse = await post(azureResourceUrl("Microsoft.DocumentDB/databaseAccounts", `${configValues.cosmosAccountName}/listKeys`, "2015-04-08"), null, armSessionToken);
+        cosmosKey = cosmosKeyResponse.data.primaryMasterKey
+    }
 
     const client = new CosmosClient({
-        endpoint: `https://${configValues.cosmosAccountName}.documents.azure.com`,
+        endpoint: cosmosEndpoint,
         auth: {
-            masterKey: cosmosKeyResponse.data.primaryMasterKey
+            masterKey: cosmosKey
         }
     });
 

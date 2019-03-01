@@ -6,6 +6,7 @@
         "install-web": "cd web && npm install",
         "install-deploy": "cd deploy && npm install",
         "install-scripts": "cd scripts && npm install && npm run update-townships",
-        "deploy": "npm run update-townships --prefix scripts && npm run build --prefix api && npm run build --prefix web && npm start --prefix deploy"
+        "deploy": "npm run update-townships --prefix scripts && npm run build --prefix api && npm run build --prefix web && npm start --prefix deploy",
+        "setup-local-cosmos": "node ./deploy/setupLocalCosmosDb.js"
     }
 }

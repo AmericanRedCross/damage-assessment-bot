@@ -23,10 +23,7 @@ export default class MyanmarDisasterAssessmentSummaryService {
     public async generateSummary(request: GenerateMyanmarDisasterAssessmentSummaryRequest): Promise<GenerateMyanmarDisasterAssessmentSummaryResponse> {
         
         this.validateGenerateSummaryRequest(request);
-
-        console.log(request.startDate);
-        console.log(request.endDate);
-        
+                
         let items = await this.disasterAssessmentRepo.getMyanmarDisasterAssessments(request);
 
         let result = this.getEmptyResponse();
@@ -196,6 +193,5 @@ class RankingHelper<TEnum extends string|number> {
 function tryAddRanking(rankingHelper: any, data: any, index: number) {
     if (data) {
         rankingHelper.addRanking(data[index], index);
-    }
-    
+    }    
 }
