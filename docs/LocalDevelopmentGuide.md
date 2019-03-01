@@ -1,69 +1,62 @@
 # Setting up a local development environment
 
-## Getting Started
-    1.	Clone the git repo locally.
-    2.	From directory root, run `npm install`. This installs npm packages for all projects (web, api, & common), which have their own package.json files.
+## Quick Start
+1. [Install dependencies](#Installing-dependencies)
+2. [Add app configuration settings](#Configuring-the-app)
+3. [Setup emulators](#Emulator-setup)
+4. [Build and run](#Running-the-app)
 
-## Build and Run
-    Before running the app locally, start the azure storage and cosmos emulators by running `./LocalDev.ps1` from the project root.
+### Installing dependencies
 
-    To start the web app, change to the 'web' directory and run `npm run dev`. This supports editing files without having to restart the development server.
+1. Ensure that you have the following installed
+    - git
+    - node.js
+    - Azure Storage Emulator
+    - Azure Cosmos DB Emulator
+    - Bot Framework Emulator
+    - ngrok (optional, used for advanced debug scenarios)
+2. Run `npm install` at the command line from the project root. This will install all required node packages and perform some additional initialization.
 
-    To Start the api app, change to the 'api' directory and run `npm run build:dev` followed by `npm run start:dev`. To make changes, the app must be rebuilt and the server restarted.
+### Configuring the app
 
-## Test
-    Tests are currently only available for 'api'. Change into the 'api' directory root and run `npm run test`, or for code coverage run `npm run test:coverage`.
+The API project requires a few configurations to be set. The configuration file will be located at `api/src/functions/root/local.settings.json`. Most of the settings in the file are pre-populated with values for local development, but some are empty. Ensure that all settings are assigned a value. Descriptions are provided for several of these settings in `deploy/config/config.keys.json`. Changes to this file are ignored by git and is for personal use.
 
-## Initial Setup
+The frontend web app also has a config file located at `web/src/config/config.custom.json`. This only has one setting, which is the URL for the backend REST API. By default it will point at the localhost port where the development server runs. It can be updated to point at an Azure environment if desired. Changes to this file are also ignored as it is intended for personal use. Note that this file will be used by builds for [custom deployments](./DeploymentGuide.md##running-a-deployment-outside-travis), so be sure to have it point to the deployment-provisioned azure storage if you are running a deployment.
 
-### VS Code Workspace
+### Emulator setup
+
+For regular use, the only thing to remember is that the Azure Storage and Cosmos DB emulators must be running for the API/Web apps to function correctly. There is a convenience powershell script to start both emulators located at the root of the project called `StartAzureEmulators.ps1`.
+
+In addition to that, it is necessary to setup the required Cosmos DB databases/collections. This can be done as follows:
+1. Make sure the Cosmos emulator is currently running (i.e. you ran `StartAzureEmulators.ps1`).
+2. From the project root, run `npm run setup-local-db`.
+3. Open the cosmos explorer and verify that databases/collections have been created for the app.
+
+Running this script again is a non-destructive operation, all data and customized settings will remain intact. This step only needs to be performed once, but if you wish to delete the database to clear existing app data this script will be useful for getting things set back up. 
+
+### Running the app
+
+Before running the app, ensure that the Azure Storage and Cosmos DB [emulators are running.](#Emulator-setup)
+
+#### API App
+
+The below instructions assume that your command line has set `api` as the working directory.
+
+- To create a build for development, run `npm run build:dev`
+- Once built, start the app with `npm run start:dev`, which will start the Azure Functions local runtime and host the app like a regular REST API server.
+- As a convenience, running `npm run restart:dev` will run a build and then start the server in a single command.
+- A production-grade build can be created by running `npm run build`. This is what gets used during deployment.
+- The project has some minimal support for unit tests. These can be started with `npm run test`.
+
+#### Web App
+
+The below instructions assume that your command line has set `web` as the working directory.
+
+- The web app has an automatically reloading development server. It can be started with `npm run dev`. This will run a dev build on the app and start the local server, and it will detect changes to web app code and automatically rebuild and update the web app in your browser.
+- If you want to run a build without the dev server, you can use `npm run build:dev` for a development build (not minified, includes source map for debugging) or `npm run build` for a production-grade build.
+
+### Development Tooling
 
 The code base is optimized for development in VS Code workspaces. To start, open VS Code, select `File > Open Workspace...` (**Note, do NOT choose `File > Open Folder...`**), and then select `damage-assessment-bot.code-workspace`. The workspace uses a multi-root configuration that is necessary for VS Code to provide accurate intellisense and linting based on typescript configurations and package references for each independent project (api/web/common). Errors may be reported and tooling may not work correctly if you open the project as a folder.
 
 **Note:** When opened as a workspace, the project root directory is visible as a folder called `/`. This is indeed the project root folder, not a subfolder. The sub-projects can not be accessed within this folder, they have been configured not to appear to reduce duplication and to encourage using the multi-root workspace folders for each sub-project.
-
-### Installing packages
-
-Packages will need to be installed when the project is first pulled down, or when a package.json file is updated with new dependencies.
-
-Every sub-project (api, web, and common) has it's own package.json with their own dependencies. You can `cd` into the project root and run `npm install` to install packages for all sub-projects at once, or you can `cd` into each folder and run `npm install` for only the projects that you are actively developing in. The 'api' and 'web' projects reference code in 'common' and have been configured to automatically install 'common' packages when you run `npm install` on them.
-
-## Building/Running the api (includes chatbot)
-
-### Build
-
-Any time code changes within the 'api', the project must be rebuilt. To rebuild for local development/debugging, `cd` into 'api' and run `npm run build:dev`. Note that `npm run build` is available, but this is intended for production builds and will not produce source maps needed for debugging.
-
-### Run/Debug
-
-The application can be started with or without the debugger attached. 
-
-To start with the debugger, open the VS Code debugger panel (Ctrl + Shift + D), make sure that 'Attach to JavaScript Functions (api)' is selected from the top drop down, and click the green play button to start the app. With this running, you should be able to add break points in the typescript files within the 'src' folder (note that the 'dist' folder is only intended for build output and is not intended to be stepped through - source maps produced by the dev build allow debugging the source code directly) and can pause code execution, allowing for line stepping and variable inspection.
-
-If the debugger is not needed, running the app from the command line can be somewhat faster. For this, `cd` into the 'api' folder and run `npm run start:dev`.
-
-**Note:** The api's development server does not automatically react to source code changes, unlike the web UI server. If code is changed, you must stop the server, rebuild the code, and then start the server again.
-
-## Running the web app
-
-Building and running the web UI project is as simple as `cd`'ing into the 'web' folder and running `npm run dev`. This will build the project, start the server, and open up the landing page in your default browser. Unlike the 'api' project, it is not necessary to stop the development server when making source code changes. The web dev server will automatically detect changes to files in 'web/src', rebuild, and update the live web page to use the updated code (via hot module replacement - no page refresh needed, application state is preserved!).
-
-## Testing the chat bot
-
-### Chatting using the Bot Framework Emulator
-
-The fastest and easiest way to get started talking to your bot and testing it is to install Microsoft's [Bot Framework Emulator](https://github.com/Microsoft/BotFramework-Emulator). Direct download link for the installer is available [here](https://github.com/Microsoft/BotFramework-Emulator/releases/download/v3.5.35/botframework-emulator-Setup-3.5.35.exe). This installs the emulator for BotFramework v3.3.35. Note that a version of the emulator is available for v4 of the bot framework, but since this is still in preview we are using the latest available v3 emulator.
-
-### 
-
-## Testing with a Facebook app
-
-## Add registration credentials
-
-https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-facebook?view=azure-bot-service-3.0
-
-To test agains
-
-### Create Facebook app and bot registration service
-
-### Debug locally with Facebook app

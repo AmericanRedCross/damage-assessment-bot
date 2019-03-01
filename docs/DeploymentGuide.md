@@ -144,7 +144,7 @@ These steps configure the chat bot with the necessary authentication to work wit
 The web app is not currently configured with a custom domain name. Instead, it is accessed via the URL generated for the resource by Azure storage. To find this, follow these steps:
 
 1. Go to the Azure Portal and navigate to the storage account in the app's resource group.
-2. In the left-hand menu, under the section 'Settings' click on 'State website'.
+2. In the left-hand menu, under the section 'Settings' click on 'Static website'.
 3. The URL for your web app will be displayed on this screen under the label 'Primary endpoint'. **Do not use 'Secondary endpoint'.**
 
 ---------------------------------------
@@ -158,7 +158,7 @@ It is possible to deploy any branch in the GitHub repo to the Development enviro
 3. On the right-hand side of the screen you should see a menu button labelled 'More options'. Click this to expand.
 4. In the expanded menu, click 'Trigger build'.
 5. Under 'SELECT A BRANCH', choose any branch you want to deploy to Dev.
-6. Under 'CUSTOM CONFIG', enter this exactly: `env: dev`
+6. Under 'CUSTOM CONFIG', enter this exactly: `env: deploy=dev`
 7. Kick off the deploy by clicking 'Trigger custom build' and the bottom.
 8. Your deploy should have started, you can monitor it's progress by going to 'Build History' to selecting the active build associated with your selected branch.
 
