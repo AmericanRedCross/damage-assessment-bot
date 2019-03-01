@@ -18,7 +18,7 @@ The 'Number of X' fields (Number of people before disaster, etc.) are aggregated
 
 The Sector and Sector Factor values (Severity, Access, etc.) are aggregated as the average across all reports. If a user submits a report without one of these values, it counts as 0.
 
-The Rankings sections (Affected Groups, Priority Sectors, etc.) are ranked by giving each ranking a 'ranking score' and taking the sum for each value. The values with the highest score sum are ranked highest. The ranking score is calculated as follows:
+The Rankings sections (Affected Groups, Priority Sectors, etc.) are ranked by giving each ranking a 'ranking score' and taking the sum for each value. The values with the highest score sum are ranked highest. Values with score sums equal to 0 are not displayed. The ranking score is calculated as follows:
 
 | Rank #     | Calculation   | Ranking Score |
 |:-----------|:--------------|:--------------|

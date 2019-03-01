@@ -15,11 +15,11 @@ The standard process for deploying changes to the Red Cross environments is to c
 
 The following shows which branches are associated to which environments.
 
-| Branch    | Environment  |
-|:----------|:-------------|
-| `master`  | Production   |
-| `staging` | Stage/UAT    |
-| `dev`     | Dev          |
+| Branch    | Environment |
+|:--------- |:------------|
+| `master`  | Production  |
+| `staging` | Stage/UAT   |
+| `dev`     | Dev         |
 
 NOTE: It is important to observe the intended flow for commits between branches, as described in the [branching strategy documentation](./BranchingStrategy.md). As a convenience for testing deployment of a feature branch before it has landed in `dev`, there is a way to [temporarily deploy any branch to the Development environment](#deploying-feature-branches-to-dev-environment) without making an actual commit in the `dev` branch.
 
